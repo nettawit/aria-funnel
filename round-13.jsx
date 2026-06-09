@@ -836,7 +836,7 @@ function ImportFlow({ onClose, onImport }) {
         <label style={{ fontSize: 14, fontWeight: 500, color: '#32324D' }}>Website URL</label>
         <div style={{ display: 'flex', gap: 8 }}>
           <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="e.g., www.example.com" style={{ ...hInput, flex: 1, width: 'auto' }} />
-          <button className="hbtn" onClick={scan} style={{ ...hBtnPrimary('medium'), flexShrink: 0 }}>{phase === 'url' ? 'Scan' : 'Re-scan'}</button>
+          <button className={phase === 'url' ? 'hbtn' : 'hbtn hbtn-secondary'} onClick={scan} style={{ ...(phase === 'url' ? hBtnPrimary('medium') : hBtnSecondary('medium')), flexShrink: 0 }}>{phase === 'url' ? 'Scan' : 'Re-scan'}</button>
         </div>
       </div>
 
