@@ -729,7 +729,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
 
               {/* action row */}
-              <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: 17, paddingBottom: 9, paddingLeft: 14, paddingRight: 14, display: 'flex', alignItems: 'center' }}>
+              <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: 13, paddingBottom: 9, paddingLeft: 14, paddingRight: 14, display: 'flex', alignItems: 'center' }}>
                 <div style={{ position: 'relative' }}>
                   {/* Add dropdown */}
                   {ov === 'dropdown' &&
@@ -756,26 +756,22 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                 <button className="hbtn" onClick={() => onGenerate && onGenerate(prompt)} style={{ ...hBtnPrimary('medium') }}>Generate site with Aria <HIc name="arrowUp" size={14} color="#fff" /></button> :
                 transitioning ?
                 <button disabled className="hbtn" style={{ ...hBtnPrimary('medium'), opacity: 0.5, cursor: 'not-allowed' }}>Thinking… <span style={{ width: 14, height: 14, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', display: 'inline-block', animation: 'h-spin 0.8s linear infinite' }} /></button> :
-                {(() => {
-                  const isDisabled = (!prompt.trim() && !asset && !refs.length && !imported) || continuing;
-                  return (
-                    <span style={{ position: 'relative', display: 'inline-flex' }}
-                      onMouseEnter={() => isDisabled && setShowContinueTip(true)}
-                      onMouseLeave={() => setShowContinueTip(false)}>
+                <span style={{ position: 'relative', display: 'inline-flex' }}
+                    onMouseEnter={() => { const d = (!prompt.trim() && !asset && !refs.length && !imported) || continuing; if (d) setShowContinueTip(true); }}
+                    onMouseLeave={() => setShowContinueTip(false)}>
+                    {(() => { const isDisabled = (!prompt.trim() && !asset && !refs.length && !imported) || continuing; return (
                       <button className="hbtn" onClick={!isDisabled ? handleContinue : undefined} disabled={isDisabled}
                         style={{ ...hBtnPrimary('medium'), opacity: isDisabled ? 0.4 : 1, cursor: isDisabled ? 'not-allowed' : 'pointer', minWidth: 172, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, pointerEvents: isDisabled ? 'none' : 'auto' }}>
                         {continuing ? <><span style={{ width: 14, height: 14, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', display: 'inline-block', animation: 'h-spin 0.8s linear infinite' }} />Loading…</> : 'Continue with Aria →'}
                       </button>
-                      {showContinueTip && isDisabled && (
-                        <div style={{ position: 'absolute', bottom: 'calc(100% + 8px)', right: 0, background: '#32324D', color: '#fff', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap', boxShadow: '0 4px 16px rgba(0,0,0,0.18)', pointerEvents: 'none', animation: 'h-fade 150ms ease', zIndex: 100 }}>
-                          Start typing to give Aria a starting point
-                          <span style={{ position: 'absolute', bottom: -5, right: 20, width: 10, height: 10, background: '#32324D', transform: 'rotate(45deg)', borderRadius: 2 }} />
-                        </div>
-                      )}
-                    </span>
-                  );
-                })()}
-                }
+                    ); })()}
+                    {showContinueTip && ((!prompt.trim() && !asset && !refs.length && !imported) || continuing) && (
+                      <div style={{ position: 'absolute', bottom: 'calc(100% + 8px)', right: 0, background: '#32324D', color: '#fff', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap', boxShadow: '0 4px 16px rgba(0,0,0,0.18)', pointerEvents: 'none', zIndex: 100 }}>
+                        Start typing to give Aria a starting point
+                        <span style={{ position: 'absolute', bottom: -5, right: 20, width: 10, height: 10, background: '#32324D', transform: 'rotate(45deg)', borderRadius: 2 }} />
+                      </div>
+                    )}
+                  </span>
               </div>
             </div>
 
