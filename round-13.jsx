@@ -438,6 +438,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   const [undoItem, setUndoItem] = hs(null); // { label, restore: fn }
   const undoTimerRef = hr(null);
   const [continuing, setContinuing] = hs(false);
+  const [showContinueTip, setShowContinueTip] = hs(false);
   const [emptyKey, setEmptyKey] = hs(0);
   const [placeholderKey, setPlaceholderKey] = hs(0);
   const prevPlaceholderRef = hr('');
@@ -757,16 +758,15 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                 <button disabled className="hbtn" style={{ ...hBtnPrimary('medium'), opacity: 0.5, cursor: 'not-allowed' }}>Thinking… <span style={{ width: 14, height: 14, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', display: 'inline-block', animation: 'h-spin 0.8s linear infinite' }} /></button> :
                 {(() => {
                   const isDisabled = (!prompt.trim() && !asset && !refs.length && !imported) || continuing;
-                  const [showTip, setShowTip] = hs(false);
                   return (
                     <span style={{ position: 'relative', display: 'inline-flex' }}
-                      onMouseEnter={() => isDisabled && setShowTip(true)}
-                      onMouseLeave={() => setShowTip(false)}>
+                      onMouseEnter={() => isDisabled && setShowContinueTip(true)}
+                      onMouseLeave={() => setShowContinueTip(false)}>
                       <button className="hbtn" onClick={!isDisabled ? handleContinue : undefined} disabled={isDisabled}
                         style={{ ...hBtnPrimary('medium'), opacity: isDisabled ? 0.4 : 1, cursor: isDisabled ? 'not-allowed' : 'pointer', minWidth: 172, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, pointerEvents: isDisabled ? 'none' : 'auto' }}>
                         {continuing ? <><span style={{ width: 14, height: 14, borderRadius: '50%', border: '2px solid rgba(255,255,255,0.4)', borderTopColor: '#fff', display: 'inline-block', animation: 'h-spin 0.8s linear infinite' }} />Loading…</> : 'Continue with Aria →'}
                       </button>
-                      {showTip && isDisabled && (
+                      {showContinueTip && isDisabled && (
                         <div style={{ position: 'absolute', bottom: 'calc(100% + 8px)', right: 0, background: '#32324D', color: '#fff', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 500, whiteSpace: 'nowrap', boxShadow: '0 4px 16px rgba(0,0,0,0.18)', pointerEvents: 'none', animation: 'h-fade 150ms ease', zIndex: 100 }}>
                           Start typing to give Aria a starting point
                           <span style={{ position: 'absolute', bottom: -5, right: 20, width: 10, height: 10, background: '#32324D', transform: 'rotate(45deg)', borderRadius: 2 }} />
