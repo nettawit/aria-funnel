@@ -728,7 +728,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
 
               {/* action row */}
-              <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: 13, paddingBottom: 9, paddingLeft: 14, paddingRight: 14, display: 'flex', alignItems: 'center' }}>
+              <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: 17, paddingBottom: 9, paddingLeft: 14, paddingRight: 14, display: 'flex', alignItems: 'center' }}>
                 <div style={{ position: 'relative' }}>
                   {/* Add dropdown */}
                   {ov === 'dropdown' &&
