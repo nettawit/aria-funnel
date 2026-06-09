@@ -387,7 +387,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
           <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Wix.com_website_logo.svg" alt="Wix" style={{ height: 22, width: 'auto', display: 'block' }} />
           <img src="image-1781023178778.webp" alt="avatar" style={{ width: 28, height: 28, borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top', border: '2px solid #fff', display: 'block', flexShrink: 0 }} />
           <div style={{ flex: 1 }} />
-          <button className="hbtn hbtn-ghost" style={{ ...hBtnGhost('small') }}>Upgrade</button>
+          <button className="hbtn hbtn-secondary" style={{ ...hBtnSecondary('medium') }}>Upgrade</button>
         </div>
 
         {/* main */}
