@@ -771,7 +771,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                         <span style={{ position: 'absolute', bottom: -5, right: 20, width: 10, height: 10, background: '#32324D', transform: 'rotate(45deg)', borderRadius: 2 }} />
                       </div>
                     )}
-                  </span>
+                  </span>}
               </div>
             </div>
 
