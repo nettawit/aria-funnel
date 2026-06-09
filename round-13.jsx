@@ -450,6 +450,9 @@ function HomeFlow({ start = 'empty', onGenerate }) {
     }
   }, [screen]);
 
+  const transitioning = screen === 'transitioning';
+  const ready = screen === 'ready';
+
   // Placeholder crossfade trigger
   const placeholderText = ready ? '' : (asset || refs.length || imported) ? 'You can add here instructions to Aria…' : 'Tell me about your site, or drop a URL to get started…';
   he(() => {
@@ -514,8 +517,6 @@ function HomeFlow({ start = 'empty', onGenerate }) {
     const t = setTimeout(() => setIsTyping(false), 1500);
     return () => clearTimeout(t);
   }, [prompt]);
-  const transitioning = screen === 'transitioning';
-  const ready = screen === 'ready';
   const hasText = screen === 'text' || ready || transitioning;
   const hasContent = asset || refs.length > 0 || imported;
   const btnLabel = ready ? 'Generate Site' : 'Continue with Aria';
