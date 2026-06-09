@@ -457,7 +457,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                         setTimeout(() => { if (textareaRef.current) { textareaRef.current.setSelectionRange(merged.length, merged.length); } }, 0);
                       }
                     }}
-                    placeholder={ready ? '' : 'Describe the site you want to build, or import from an existing site…'}
+                    placeholder={ready ? '' : 'Tell me about your site, or drop a URL to get started…'}
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', boxSizing: 'border-box', border: 0, outline: 'none', resize: 'none', background: 'transparent', padding: '24px 28px', fontSize: 18, lineHeight: 1.7, color: H_INK, fontFamily: 'inherit' }} />
                 </div>
               }
