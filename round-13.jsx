@@ -889,6 +889,21 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
 }
 
+function FanIcon({ bg, fg, icon, icon2, size = 1 }) {
+  const w = Math.round(29 * size), h = Math.round(29 * size), r = Math.round(7 * size);
+  const gap = Math.round(17 * size);
+  return (
+    <span style={{ position: 'relative', width: Math.round(44 * size) + gap - 17, height: Math.round(34 * size), flexShrink: 0, transform: 'rotate(10deg)', display: 'inline-block' }}>
+      <span style={{ position: 'absolute', left: 0, top: Math.round(4 * size), width: w, height: h, borderRadius: r, background: bg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 4px rgba(0,0,0,0.10)' }}>
+        <HIc name={icon} size={Math.round(13 * size)} color={fg} />
+      </span>
+      <span style={{ position: 'absolute', left: gap, top: Math.round(4 * size), width: w, height: h, borderRadius: r, background: bg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 5px rgba(0,0,0,0.13)' }}>
+        <HIc name={icon2} size={Math.round(13 * size)} color={fg} />
+      </span>
+    </span>
+  );
+}
+
 function DropRow({ icon, icon2, bg, fg, title, desc, onClick, hover }) {
   const [h, setH] = hs(false);
   const on = hover || h;
@@ -896,14 +911,7 @@ function DropRow({ icon, icon2, bg, fg, title, desc, onClick, hover }) {
     <button onClick={onClick} onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
     style={{ display: 'flex', alignItems: 'flex-start', gap: 12, width: '100%', boxSizing: 'border-box', padding: 10, borderRadius: 10, border: 0, background: on ? '#F4F7FF' : 'transparent', cursor: 'pointer', textAlign: 'left' }}>
       {icon2 ? (
-        <span style={{ position: 'relative', width: 44, height: 34, flexShrink: 0 }}>
-          <span style={{ position: 'absolute', left: 0, top: 4, width: 26, height: 26, borderRadius: 7, background: bg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 4px rgba(0,0,0,0.10)' }}>
-            <HIc name={icon} size={13} color={fg} />
-          </span>
-          <span style={{ position: 'absolute', left: 16, top: 4, width: 26, height: 26, borderRadius: 7, background: bg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 1px 4px rgba(0,0,0,0.13)' }}>
-            <HIc name={icon2} size={13} color={fg} />
-          </span>
-        </span>
+        <FanIcon bg={bg} fg={fg} icon={icon} icon2={icon2} size={1.1} />
       ) : (
         <span style={{ width: 34, height: 34, borderRadius: 8, background: bg, color: fg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <HIc name={icon} size={16} color={fg} />
@@ -940,13 +948,14 @@ const closeB = { width: 28, height: 28, borderRadius: '50%', background: '#F4F4F
 const cancelB = hBtnSecondary('medium');
 const addB    = hBtnPrimary('medium');
 
-function ModalHead({ icon, iconBg, iconFg, title, sub, badge, onClose, onBack, spin }) {
+function ModalHead({ icon, iconBg, iconFg, iconEl, title, sub, badge, onClose, onBack, spin }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '20px 22px 16px', borderBottom: '1px solid #EEEEEE' }}>
       {onBack && <button onClick={onBack} onMouseEnter={(e) => e.currentTarget.style.color = '#1E1E2E'} onMouseLeave={(e) => e.currentTarget.style.color = '#888898'} style={{ border: 0, background: 'transparent', cursor: 'pointer', color: '#888898', paddingRight: 10, display: 'inline-flex', alignItems: 'center', marginTop: 10 }}><HIc name="chevronLeft" size={16} color="currentColor" /></button>}
+      {iconEl ? <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>{iconEl}</span> : (
       <span style={{ width: 40, height: 40, borderRadius: 10, background: iconBg, color: iconFg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         {spin ? <span style={{ width: 22, height: 22, borderRadius: '50%', border: `2px solid #DfE3F5`, borderTopColor: H_BLUE, display: 'inline-block', animation: 'h-spin 1.2s linear infinite' }} /> : <HIc name={icon} size={18} color={iconFg} />}
-      </span>
+      </span>)}
       <div style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>{title}</span>
@@ -979,7 +988,7 @@ function AssetsModal({ onClose, onAdd }) {
   const removeAt = (i) => setFiles((f) => f.filter((_, idx) => idx !== i));
   const iconFor = (n) => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(n) ? 'image' : /\.(mp4|mov|webm)$/i.test(n) ? 'play' : 'document';
   return <Overlay><div onClick={(e) => e.stopPropagation()} style={shell}>
-    <ModalHead icon="edit" iconBg="#FFF0E8" iconFg="#C05B2A" title="Add photos or files" sub="Images, videos, PDFs, docs and more" onClose={onClose} />
+    <ModalHead iconEl={<FanIcon bg="#FFF0E8" fg="#C05B2A" icon="image" icon2="document" size={1.1} />} title="Add photos or files" sub="Images, videos, PDFs, docs and more" onClose={onClose} />
     <div style={{ padding: '18px 20px' }}>
       <input ref={inputRef} type="file" multiple style={{ display: 'none' }} onChange={(e) => {addFiles([...e.target.files].map((f) => f.name));e.target.value = '';}} />
       <div onClick={() => inputRef.current && inputRef.current.click()} style={{ border: '1.5px dashed #D8D8EE', borderRadius: 12, padding: '24px 16px', background: '#FAFBFF', textAlign: 'center', cursor: 'pointer' }}>
