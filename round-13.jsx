@@ -19,16 +19,19 @@ const HIc = ({ name, size = 16, color }) => {
   return <i style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: size, height: size, color: color || 'inherit', lineHeight: 0 }} dangerouslySetInnerHTML={{ __html: svg }} />;
 };
 
-/* Harmony button base styles */
+/* Harmony button base styles — matched to WDS stylable.css (v1.286.0)
+   WDS exact specs: medium h:36 fs:16 fw:530 p:0 24px | large h:42 | small h:30 | tiny h:24
+   font-weight 530 = WDS variable-font axis between 500–600 (confirmed from storybook CSS)
+   border-radius kept at 6-8px (non-pill) per prototype design */
 const hBtn = (size = 'medium') => {
   const sizes = {
-    tiny:   { height: 24, padding: '0 12px', fontSize: 12, borderRadius: 6 },
-    small:  { height: 30, padding: '0 16px', fontSize: 12, borderRadius: 6 },
-    medium: { height: 38, padding: '0 20px', fontSize: 14, borderRadius: 8 },
-    large:  { height: 46, padding: '0 24px', fontSize: 16, borderRadius: 8 },
+    tiny:   { height: 24, padding: '0 12px', fontSize: 12, fontWeight: 530, borderRadius: 6 },
+    small:  { height: 30, padding: '0 18px', fontSize: 14, fontWeight: 530, borderRadius: 6 },
+    medium: { height: 36, padding: '0 24px', fontSize: 16, fontWeight: 530, borderRadius: 8 },
+    large:  { height: 42, padding: '0 30px', fontSize: 16, fontWeight: 530, borderRadius: 8 },
   };
   const s = sizes[size] || sizes.medium;
-  return { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6, height: s.height, padding: s.padding, fontSize: s.fontSize, fontWeight: 600, borderRadius: s.borderRadius, cursor: 'pointer', fontFamily: 'inherit', border: 0, boxSizing: 'border-box', whiteSpace: 'nowrap', lineHeight: 1 };
+  return { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6, height: s.height, padding: s.padding, fontSize: s.fontSize, fontWeight: s.fontWeight, borderRadius: s.borderRadius, cursor: 'pointer', fontFamily: 'var(--wds-font-family-default, "Wix Madefor Text", sans-serif)', border: 0, boxSizing: 'border-box', whiteSpace: 'nowrap', lineHeight: '24px' };
 };
 // Note: spread these as style={hBtnPrimary()} + className="hbtn" etc.
 // Helper that returns {style, className} for JSX spread
@@ -629,7 +632,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
               onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
               onDragLeave={() => setDragOver(false)}
               onDrop={handleDrop}
-              style={{ background: dragOver ? '#F0F4FF' : (ready || transitioning) ? '#F4F6FF' : 'rgba(255,255,255,0.5)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', minHeight: 360, borderRadius: 16, border: dragOver ? '2px dashed #2F5DFF' : `1px solid ${(ready || transitioning) ? '#B8C5FF' : 'rgba(255,255,255,0.7)'}`, boxShadow: (ready || transitioning) ? '0 4px 32px rgba(80,100,220,0.14)' : '0 2px 12px rgba(100,100,180,0.07)', transition: 'background 0.3s ease, border-color 0.2s ease, box-shadow 0.6s ease', position: 'relative', zIndex: ov === 'dropdown' ? 30 : 1, display: 'flex', flexDirection: 'column', animation: 'card-enter 420ms ease-out' }}>
+              style={{ background: dragOver ? '#F0F4FF' : ready ? '#F4F6FF' : 'rgba(255,255,255,0.5)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', minHeight: 360, borderRadius: 16, border: dragOver ? '2px dashed #2F5DFF' : `1px solid ${ready ? '#B8C5FF' : 'rgba(255,255,255,0.7)'}`, boxShadow: ready ? '0 4px 32px rgba(80,100,220,0.14)' : '0 2px 12px rgba(100,100,180,0.07)', transition: 'background 0.3s ease, border-color 0.2s ease, box-shadow 0.6s ease', position: 'relative', zIndex: ov === 'dropdown' ? 30 : 1, display: 'flex', flexDirection: 'column', animation: 'card-enter 420ms ease-out' }}>
               {dragOver && <div style={{ position: 'absolute', inset: 0, borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, pointerEvents: 'none' }}><div style={{ background: 'rgba(47,93,255,0.06)', borderRadius: 16, padding: '12px 24px', fontSize: 14, fontWeight: 600, color: '#2F5DFF' }}>Drop files or URLs here</div></div>}
               {/* attachment chips */}
               {(asset || refs.length > 0 || imported) &&
@@ -659,7 +662,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
               {/* text area / transition view */}
               {transitioning ?
-                <div style={{ flex: 1, padding: '24px 28px 18px', fontSize: 18, lineHeight: 1.7, minHeight: 96 }}>
+                <div style={{ flex: 1, padding: '24px 28px 18px', fontSize: 18, lineHeight: 1.7, minHeight: 200 }}>
                   <span style={{ color: H_INK, fontWeight: 600 }}>{prompt}</span>
                   {ariaTouch ? <span> <TypewriterInline key={ariaTouch} text={ariaTouch} color="#5B7FFF" delay={600} /></span> : null}
                 </div> :
@@ -967,10 +970,10 @@ function ModalHead({ icon, iconBg, iconFg, iconEl, title, sub, badge, onClose, o
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '20px 22px 16px', borderBottom: '1px solid #EEEEEE' }}>
       {onBack && <button onClick={onBack} onMouseEnter={(e) => e.currentTarget.style.color = '#1E1E2E'} onMouseLeave={(e) => e.currentTarget.style.color = '#888898'} style={{ border: 0, background: 'transparent', cursor: 'pointer', color: '#888898', paddingRight: 10, display: 'inline-flex', alignItems: 'center', marginTop: 10 }}><HIc name="chevronLeft" size={16} color="currentColor" /></button>}
-      {iconEl ? <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>{iconEl}</span> : (
+      {iconEl ? <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 2 }}>{iconEl}</span> : (icon || spin) ? (
       <span style={{ width: 40, height: 40, borderRadius: 10, background: iconBg, color: iconFg, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
         {spin ? <span style={{ width: 22, height: 22, borderRadius: '50%', border: `2px solid #DfE3F5`, borderTopColor: H_BLUE, display: 'inline-block', animation: 'h-spin 1.2s linear infinite' }} /> : <HIc name={icon} size={18} color={iconFg} />}
-      </span>)}
+      </span>) : null}
       <div style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>{title}</span>
@@ -1014,7 +1017,13 @@ function AssetsModal({ onClose, onAdd }) {
   const removeAt = (i) => setFiles((f) => f.filter((_, idx) => idx !== i));
   const iconFor = (n) => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(n) ? 'image' : /\.(mp4|mov|webm)$/i.test(n) ? 'play' : 'document';
   return <Overlay><div onClick={(e) => e.stopPropagation()} style={shell}>
-    <ModalHead title="Add photos or files" sub="Images, videos, PDFs, docs and more" onClose={onClose} />
+    <div style={{ padding: '22px 22px 16px', borderBottom: '1px solid #EEEEEE', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+      <div>
+        <div style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>Add photos or files</div>
+        <div style={{ fontSize: 12, color: H_MUTED, marginTop: 2 }}>Images, videos, PDFs, docs and more</div>
+      </div>
+      <button onClick={onClose} style={closeB}>&times;</button>
+    </div>
     <div style={{ padding: '18px 20px' }}>
       {sizeErr && <div style={{ marginBottom: 10, background: '#FFF0F0', border: '1px solid #FFCCCC', borderRadius: 8, padding: '8px 12px', fontSize: 12, color: '#C0392B', display: 'flex', alignItems: 'center', gap: 8 }}><HIc name="statusWarning" size={14} color="#C0392B" />{sizeErr}</div>}
       <input ref={inputRef} type="file" multiple style={{ display: 'none' }} onChange={(e) => { addRealFiles([...e.target.files]); e.target.value = ''; }} />
