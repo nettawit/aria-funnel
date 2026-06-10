@@ -757,7 +757,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                 <button className="hbtn hbtn-secondary" onClick={() => setOv('import-url')} style={{ ...hBtnSecondary('medium') }}>
                   <HIc name="globe" size={14} color="#32324D" />
                   Create from URL
-                  <span style={{ background: '#DFF994', borderRadius: 4, padding: '2px 5px', fontSize: 10, fontWeight: 600, color: '#2D8A4E' }}>Beta</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', height: 'var(--wds-badge-size-tiny, 20px)', padding: '0 var(--wds-badge-padding-horizontal-tiny, 6px)', borderRadius: 'var(--wds-badge-border-radius-tiny, 4px)', background: '#DFF994', fontSize: 12, fontWeight: 600, lineHeight: 1, color: '#2D8A4E', flexShrink: 0 }}>Beta</span>
                 </button>
                 <div style={{ flex: 1 }} />
                 {ready ?
@@ -981,7 +981,7 @@ function ModalHead({ icon, iconBg, iconFg, iconEl, title, sub, badge, onClose, o
       <div style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>{title}</span>
-          {badge && <span style={{ background: '#EDE9FF', borderRadius: 4, padding: '2px 6px', fontSize: 10, fontWeight: 600, color: '#7B5CF0' }}>{badge}</span>}
+          {badge && <span style={{ display: 'inline-flex', alignItems: 'center', height: 'var(--wds-badge-size-tiny, 20px)', padding: '0 var(--wds-badge-padding-horizontal-tiny, 6px)', borderRadius: 'var(--wds-badge-border-radius-tiny, 4px)', background: '#EDE9FF', fontSize: 12, fontWeight: 600, lineHeight: 1, color: '#7B5CF0', flexShrink: 0 }}>{badge}</span>}
         </div>
         <div style={{ fontSize: 12, color: H_MUTED, marginTop: 2 }}>{sub}</div>
       </div>
