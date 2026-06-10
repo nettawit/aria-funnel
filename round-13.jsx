@@ -1070,7 +1070,7 @@ function UrlModal({ onClose, onAdd, onBack }) {
             disabled={!url.trim()}
             style={{ ...hBtnPrimary('medium'), flexShrink: 0, opacity: url.trim() ? 1 : 0.4, cursor: url.trim() ? 'pointer' : 'not-allowed' }}
           >
-            {phase === 'results' ? 'Re-fetch' : 'Fetch'}
+            {phase === 'results' ? 'Re-get' : 'Get'}
           </button>
         </div>
         {phase === 'error' && (
@@ -1087,7 +1087,7 @@ function UrlModal({ onClose, onAdd, onBack }) {
           <div style={{ width: '100%', height: 4, background: '#EEEEF6', borderRadius: 4, overflow: 'hidden' }}>
             <div style={{ width: '65%', height: '100%', background: '#2F5DFF', borderRadius: 4, transition: 'width 1.4s ease' }} />
           </div>
-          <div style={{ fontSize: 13, color: H_MUTED }}>Fetching {host}…</div>
+          <div style={{ fontSize: 13, color: H_MUTED }}>Getting {host}…</div>
         </div>
       )}
 
