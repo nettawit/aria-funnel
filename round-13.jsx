@@ -892,9 +892,9 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 function PhotoFan() {
   const crops = ['8% 50%', '33% 50%', '62% 50%', '88% 50%'];
   const rots  = [-15, -5, 5, 15];
-  const W = 30, H = 42;
+  const W = 40, H = 56;
   return (
-    <span style={{ position: 'relative', width: 58, height: H + 8, flexShrink: 0, display: 'inline-block' }}>
+    <span style={{ position: 'relative', width: 72, height: H + 8, flexShrink: 0, display: 'inline-block', marginTop: -12, marginBottom: -4 }}>
       {crops.map((pos, i) => (
         <span key={i} style={{ position: 'absolute', left: '50%', bottom: 0, marginLeft: -W/2, width: W, height: H, borderRadius: 5, overflow: 'hidden', transform: `rotate(${rots[i]}deg)`, transformOrigin: 'bottom center', boxShadow: '0 2px 6px rgba(0,0,0,0.18)', border: '1.5px solid rgba(255,255,255,0.9)' }}>
           <img src="wix-inspo.jpg" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, display: 'block' }} />
@@ -1171,7 +1171,7 @@ function UrlModal({ onClose, onAdd, onBack }) {
             <span style={{ fontSize: 11, color: '#AAAAAA' }}>or browse for inspiration</span>
             <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
           </div>
-          <button onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', textAlign: 'left', padding: '12px 14px', border: '1px solid #E0E0EC', borderRadius: 10, background: '#fff', cursor: 'pointer', fontFamily: 'inherit' }}>
+          <button onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', textAlign: 'left', padding: '12px 14px', border: '1px solid #E0E0EC', borderRadius: 10, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', overflow: 'visible' }}>
             <PhotoFan />
             <span style={{ flex: 1, minWidth: 0 }}>
               <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: H_INK }}>Wix Inspirations</span>
