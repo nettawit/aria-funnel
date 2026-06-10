@@ -1039,11 +1039,11 @@ function AssetsModal({ onClose, onAdd }) {
 
       <div style={{ marginTop: 12, background: '#F0F2FF', borderRadius: 8, padding: '10px 12px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 5 }}>
-          <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="sparkle" size={14} color={H_BLUE} /></span>
+          <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="askAi" size={14} color={H_BLUE} /></span>
           <span style={{ fontSize: 12, color: H_BLUE, lineHeight: 1.5 }}>Anything you'd put on your site — images, logos, docs</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-          <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="sparkle" size={14} color={H_BLUE} /></span>
+          <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="askAi" size={14} color={H_BLUE} /></span>
           <span style={{ fontSize: 12, color: H_BLUE, lineHeight: 1.5 }}>Aria will extract the content and visuals for you</span>
         </div>
       </div>
