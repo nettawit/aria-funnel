@@ -993,19 +993,31 @@ const UploadZone = () =>
 
 function AssetsModal({ onClose, onAdd }) {
   const [files, setFiles] = hs([]);
+  const [sizeErr, setSizeErr] = hs('');
   const inputRef = React.useRef(null);
+  const MAX_MB = 25;
   const SAMPLE = ['logo.png', 'hero-photo.jpg', 'brand-deck.pdf', 'product-shot.jpg', 'about.docx', 'promo-clip.mp4'];
   const addFiles = (picked) => {
     // picked = array of names; if none (sample mode) add next sample
     const names = picked && picked.length ? picked : [SAMPLE[files.length % SAMPLE.length]];
     setFiles((f) => [...f, ...names.map((n) => ({ name: n }))]);
   };
+  const addRealFiles = (fileList) => {
+    const tooBig = fileList.filter(f => f.size > MAX_MB * 1024 * 1024);
+    const ok = fileList.filter(f => f.size <= MAX_MB * 1024 * 1024);
+    if (tooBig.length) {
+      setSizeErr(`${tooBig.map(f => f.name).join(', ')} — exceeds ${MAX_MB} MB limit`);
+      setTimeout(() => setSizeErr(''), 4000);
+    }
+    if (ok.length) setFiles(f => [...f, ...ok.map(f => ({ name: f.name }))]);
+  };
   const removeAt = (i) => setFiles((f) => f.filter((_, idx) => idx !== i));
   const iconFor = (n) => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(n) ? 'image' : /\.(mp4|mov|webm)$/i.test(n) ? 'play' : 'document';
   return <Overlay><div onClick={(e) => e.stopPropagation()} style={shell}>
     <ModalHead iconEl={<FanIcon bg="#FFF0E8" fg="#C05B2A" icon="image" icon2="document" size={1.1} />} title="Add photos or files" sub="Images, videos, PDFs, docs and more" onClose={onClose} />
     <div style={{ padding: '18px 20px' }}>
-      <input ref={inputRef} type="file" multiple style={{ display: 'none' }} onChange={(e) => {addFiles([...e.target.files].map((f) => f.name));e.target.value = '';}} />
+      {sizeErr && <div style={{ marginBottom: 10, background: '#FFF0F0', border: '1px solid #FFCCCC', borderRadius: 8, padding: '8px 12px', fontSize: 12, color: '#C0392B', display: 'flex', alignItems: 'center', gap: 8 }}><HIc name="statusWarning" size={14} color="#C0392B" />{sizeErr}</div>}
+      <input ref={inputRef} type="file" multiple style={{ display: 'none' }} onChange={(e) => { addRealFiles([...e.target.files]); e.target.value = ''; }} />
       <div onClick={() => inputRef.current && inputRef.current.click()} style={{ border: '1.5px dashed #D8D8EE', borderRadius: 12, padding: '24px 16px', background: '#FAFBFF', textAlign: 'center', cursor: 'pointer' }}>
         <HIc name="upload" size={24} color="#AAAACC" />
         <div style={{ fontSize: 13, fontWeight: 600, color: H_INK, marginTop: 10 }}>Drop files here or <span style={{ color: H_BLUE }}>browse your computer</span></div>
@@ -1072,6 +1084,7 @@ function ExtractModal({ onClose, onAdd }) {
 function UrlModal({ onClose, onAdd, onBack }) {
   const [phase, setPhase] = hs('url'); // 'url' | 'scanning' | 'results' | 'error'
   const [url, setUrl] = hs('');
+  const [inspoHover, setInspoHover] = hs(false);
   const isValidUrl = (u) => /^(https?:\/\/)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/.test(u.trim());
   const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '') || '';
   const fetch_ = () => {
@@ -1170,7 +1183,7 @@ function UrlModal({ onClose, onAdd, onBack }) {
             <span style={{ fontSize: 11, color: '#AAAAAA' }}>or browse for inspiration</span>
             <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
           </div>
-          <button onClick={() => {}} style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', textAlign: 'left', padding: '12px 14px', border: '1px solid #E0E0EC', borderRadius: 10, background: '#fff', cursor: 'pointer', fontFamily: 'inherit', overflow: 'visible' }}>
+          <button onClick={() => {}} onMouseEnter={() => setInspoHover(true)} onMouseLeave={() => setInspoHover(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', textAlign: 'left', padding: '12px 14px', border: `1px solid ${inspoHover ? '#C8D0F0' : '#E0E0EC'}`, borderRadius: 10, background: inspoHover ? '#F4F7FF' : '#fff', cursor: 'pointer', fontFamily: 'inherit', overflow: 'visible', transition: 'background 120ms, border-color 120ms' }}>
             <PhotoFan />
             <span style={{ flex: 1, minWidth: 0 }}>
               <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: H_INK }}>Wix Inspirations</span>
