@@ -77,6 +77,81 @@ body { font-family: 'Wix Madefor Text', sans-serif; overflow: hidden; height: 10
 .btn-gen { background:#6B46FF;color:#fff;border:none;border-radius:12px;padding:11px 26px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer; }
 .btn-gen:hover { background:#5836E8; }
 
+/* ══ GHOST BLUEPRINT (S2 background) ══ */
+.ghost-surface {
+  position: absolute; inset: 0;
+  padding: 28px 32px;
+  display: flex; flex-direction: column; gap: 0;
+  overflow: hidden;
+}
+.ghost-biz-name {
+  height: 36px; width: 200px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 8px;
+  margin-bottom: 22px;
+  animation: ghost-pulse 2.4s ease-in-out infinite;
+}
+.ghost-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.ghost-card {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 14px;
+  animation: ghost-pulse 2.4s ease-in-out infinite;
+}
+.ghost-card.gc2 { animation-delay: 0.3s; }
+.ghost-card.gc3 { animation-delay: 0.6s; }
+.ghost-card.gc4 { animation-delay: 0.9s; }
+
+.ghost-card-label {
+  height: 8px; width: 60px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px; margin-bottom: 12px;
+}
+.ghost-card-body { display: flex; flex-direction: column; gap: 8px; }
+
+.ghost-palette { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ghost-swatch {
+  height: 52px; border-radius: 7px;
+  background: rgba(255,255,255,0.1);
+}
+.ghost-swatch.gs1 { background: rgba(200,90,26,0.25); }
+.ghost-swatch.gs2 { background: rgba(212,196,74,0.2); }
+.ghost-swatch.gs3 { background: rgba(140,123,107,0.2); }
+.ghost-swatch.gs4 { background: rgba(122,140,126,0.2); }
+
+.ghost-font-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ghost-font-aa {
+  height: 64px; border-radius: 7px;
+  background: rgba(255,255,255,0.08);
+}
+.ghost-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ghost-tag {
+  height: 20px; border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+}
+.ghost-tag:nth-child(1) { width: 52px; }
+.ghost-tag:nth-child(2) { width: 64px; }
+.ghost-tag:nth-child(3) { width: 80px; }
+
+.ghost-page-row {
+  height: 28px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+}
+.ghost-apps { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ghost-app {
+  height: 32px; border-radius: 7px;
+  background: rgba(255,255,255,0.08);
+}
+
+@keyframes ghost-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 /* ══ S3 FORK MODAL OVERLAY ══ */
 .fork-overlay {
   position:absolute;inset:0;
@@ -283,7 +358,59 @@ body { font-family: 'Wix Madefor Text', sans-serif; overflow: hidden; height: 10
     </div>
   </div>
   <div class="editor-body">
-    <div class="editor-surface"></div>
+    <div class="editor-surface">
+      <!-- Ghost blueprint squares loading in background -->
+      <div class="ghost-surface">
+        <div class="ghost-biz-name"></div>
+        <div class="ghost-grid">
+          <div class="ghost-card gc1">
+            <div class="ghost-card-label"></div>
+            <div class="ghost-card-body">
+              <div class="ghost-palette">
+                <div class="ghost-swatch gs1"></div>
+                <div class="ghost-swatch gs2"></div>
+                <div class="ghost-swatch gs3"></div>
+                <div class="ghost-swatch gs4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ghost-card gc2">
+            <div class="ghost-card-label"></div>
+            <div class="ghost-card-body">
+              <div class="ghost-font-row">
+                <div class="ghost-font-aa"></div>
+                <div class="ghost-font-aa"></div>
+              </div>
+              <div class="ghost-tags">
+                <div class="ghost-tag"></div>
+                <div class="ghost-tag"></div>
+                <div class="ghost-tag"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ghost-card gc3">
+            <div class="ghost-card-label"></div>
+            <div class="ghost-card-body">
+              <div class="ghost-page-row"></div>
+              <div class="ghost-page-row"></div>
+              <div class="ghost-page-row"></div>
+              <div class="ghost-page-row"></div>
+            </div>
+          </div>
+          <div class="ghost-card gc4">
+            <div class="ghost-card-label"></div>
+            <div class="ghost-card-body">
+              <div class="ghost-apps">
+                <div class="ghost-app"></div>
+                <div class="ghost-app"></div>
+                <div class="ghost-app"></div>
+                <div class="ghost-app"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="aria-panel">
       <div class="aria-panel-header">Ask Aria</div>
       <div class="aria-msgs">
