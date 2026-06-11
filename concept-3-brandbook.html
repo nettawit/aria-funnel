@@ -128,11 +128,60 @@ body { font-family: 'Wix Madefor Text', sans-serif; background: #fff; overflow: 
    Dark editorial, Aria on surface
 ══════════════════════════════ */
 #s4 { background:#111111; }
+.bb-body { flex:1;display:flex;overflow:hidden; }
 .bb-surface {
   flex:1;overflow-y:auto;
   padding:40px 48px 120px;
   display:flex;flex-direction:column;gap:0;
 }
+
+/* Aria side panel (dark) */
+.bb-aria-panel {
+  width:340px;flex-shrink:0;
+  background:#1A1A1A;
+  border-left:1px solid rgba(255,255,255,0.06);
+  display:flex;flex-direction:column;
+}
+.bb-aria-header {
+  padding:16px 20px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.bb-aria-title { font-size:13px;font-weight:600;color:rgba(255,255,255,0.9); }
+.bb-aria-sub { font-size:12px;color:rgba(255,255,255,0.3);margin-top:2px; }
+.bb-aria-msgs {
+  flex:1;overflow-y:auto;padding:20px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.bb-msg-aria {
+  background:#242424;border-radius:12px;
+  padding:12px 14px;font-size:13px;
+  color:rgba(255,255,255,0.75);line-height:1.6;
+}
+.bb-msg-aria strong { color:#A78BFF; }
+.bb-msg-user {
+  align-self:flex-end;
+  background:#6B46FF;color:#fff;
+  border-radius:12px 12px 2px 12px;
+  padding:10px 14px;font-size:13px;max-width:80%;line-height:1.5;
+}
+.bb-aria-input {
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:12px 16px;display:flex;gap:8px;align-items:flex-end;
+}
+.bb-aria-input input {
+  flex:1;border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;
+  padding:9px 12px;font-family:inherit;font-size:13px;
+  color:#fff;outline:none;background:rgba(255,255,255,0.05);
+  transition:border-color 0.15s;
+}
+.bb-aria-input input:focus { border-color:#6B46FF; }
+.bb-aria-input input::placeholder { color:rgba(255,255,255,0.2); }
+.bb-aria-send {
+  width:34px;height:34px;background:#6B46FF;border:none;border-radius:10px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.bb-aria-send:hover { background:#5836E8; }
+.bb-aria-send svg { width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round; }
 .bb-business-name {
   font-family:'Wix Madefor Display',sans-serif;
   font-size:52px;font-weight:800;color:#fff;
@@ -441,6 +490,7 @@ body { font-family: 'Wix Madefor Text', sans-serif; background: #fff; overflow: 
     </div>
   </div>
 
+  <div class="bb-body">
   <div class="bb-surface">
 
     <div class="bb-business-name">Goody Bakery</div>
@@ -552,12 +602,30 @@ body { font-family: 'Wix Madefor Text', sans-serif; background: #fff; overflow: 
 
   </div>
 
-  <!-- Aria bottom bar -->
-  <div class="aria-bar">
-    <div class="aria-bar-avatar">✦</div>
-    <input type="text" placeholder="Ask Aria to change anything — colors, fonts, pages…">
-    <button class="aria-bar-send"><svg viewBox="0 0 15 15"><path d="M1 7.5h13M7.5 1l6.5 6.5-6.5 6.5"/></svg></button>
+  <!-- Aria side panel -->
+  <div class="bb-aria-panel">
+    <div class="bb-aria-header">
+      <div class="bb-aria-title">Ask Aria</div>
+      <div class="bb-aria-sub">Edit anything on your brand book</div>
+    </div>
+    <div class="bb-aria-msgs">
+      <div class="bb-msg-aria">
+        Here's your <strong>brand book</strong> — the foundation I'll build from. Everything is editable.
+      </div>
+      <div class="bb-msg-aria">
+        I chose <strong>earthy warm tones</strong> and Wix Madefor based on your bakery description. Happy with the direction?
+      </div>
+      <div class="bb-msg-user">Can you make the palette a bit more minimal?</div>
+      <div class="bb-msg-aria">
+        Sure — I'll pull back to 3 core colors: dark, warm gold, and off-white. Want me to update?
+      </div>
+    </div>
+    <div class="bb-aria-input">
+      <input type="text" placeholder="Change colors, fonts, pages…">
+      <button class="bb-aria-send"><svg viewBox="0 0 14 14"><path d="M1 7h12M7 1l6 6-6 6"/></svg></button>
+    </div>
   </div>
+  </div><!-- /bb-body -->
 </div>
 
 <!-- ══════════════════
