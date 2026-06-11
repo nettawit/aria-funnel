@@ -773,7 +773,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                       <div style={{ fontSize: 10, fontWeight: 600, color: '#AAAAAA', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '8px 10px 4px' }}>Add to your prompt</div>
                       <DropRow icon="image" bg="#FFF0E8" fg="#C05B2A" title="Add assets" desc="Upload media to use in your site" onClick={() => setOv('assets')} />
                       <DropRow icon="link" icon2="image" bg="#EDE9FF" fg="#6040D0" title="Add visual references" desc="Give Aria a look & feel to start from" onClick={() => setOv('url')} />
-                      <DropRow icon="document" bg="#E8F3FF" fg="#1A6CC0" title="Add files" desc="Any info that helps Aria build a better site" onClick={() => setOv('files')} />
+                      <DropRow icon="document" bg="#E8F3FF" fg="#1A6CC0" title="Add info" desc="Any info that helps Aria build a better site" onClick={() => setOv('files')} />
                       <span style={{ position: 'absolute', left: 22, bottom: -7, width: 14, height: 14, background: '#fff', borderRight: '0.5px solid rgba(0,0,0,0.10)', borderBottom: '0.5px solid rgba(0,0,0,0.10)', transform: 'rotate(45deg)' }} />
                     </div>
                   }
@@ -851,7 +851,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
         {/* modals */}
         {ov === 'assets' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} />}
-        {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} title="Add files" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
+        {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} title="Add info" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
         {ov === 'extract' && <ExtractModal onClose={closeOverlay} onAdd={confirmAsset} />}
         {ov === 'url' && <UrlModal onClose={closeOverlay} onAdd={confirmVisualRef} onBack={() => setOv('dropdown')} />}
         {ov === 'import-url' && <ImportFlow onClose={closeOverlay} onImport={(site) => {setImportedSite(site);if (screen === 'empty') setScreen('text');setOv(null);}} />}
