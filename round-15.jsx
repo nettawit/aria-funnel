@@ -481,7 +481,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   const ready = screen === 'ready';
 
   // Placeholder crossfade trigger
-  const placeholderText = ready ? '' : (asset || refs.length || importedSite) ? 'You can add here instructions to Aria…' : 'Tell me about your site, or drop a URL to get started…';
+  const placeholderText = ready ? '' : (asset || refs.length || importedSite) ? 'Add instructions, or drag in more files to guide Aria…' : 'Tell me about your site — or drag in anything that helps Aria: files, images or links…';
   he(() => {
     if (placeholderText !== prevPlaceholderRef.current) {
       prevPlaceholderRef.current = placeholderText;
@@ -602,6 +602,12 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   const confirmRef = (url) => {
     const u = url || 'example.com';
     if (!refs.includes(u)) { setRefs(prev => [...prev, u]); if (screen === 'empty') setScreen('text'); }
+    setOv(null);
+  };
+  const confirmVisualRef = ({ files = [], url = null }) => {
+    if (files.length) { setAsset(true); setAssetFiles(prev => { const newOnes = files.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; }); }
+    if (url && !refs.includes(url)) setRefs(prev => [...prev, url]);
+    if (files.length || url) { if (screen === 'empty') setScreen('text'); }
     setOv(null);
   };
   const addContent = confirmAsset;
@@ -767,8 +773,9 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                   {ov === 'dropdown' &&
                   <div style={{ position: 'absolute', bottom: 'calc(100% + 12px)', left: 0, width: 280, background: '#fff', border: '0.5px solid rgba(0,0,0,0.10)', borderRadius: 14, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', padding: 6, zIndex: 30, animation: 'h-menu 160ms ease-out' }}>
                       <div style={{ fontSize: 10, fontWeight: 600, color: '#AAAAAA', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '8px 10px 4px' }}>Add to your prompt</div>
-                      <DropRow icon="image" icon2="document" bg="#FFF0E8" fg="#C05B2A" title="Add photos or files" desc="Images, videos, PDFs &amp; more" onClick={() => setOv('assets')} />
-                      <DropRow icon="link" bg="#EDE9FF" fg="#6040D0" title="Add a reference site" desc="Give Aria a look & feel to start from" onClick={() => setOv('url')} />
+                      <DropRow icon="image" bg="#FFF0E8" fg="#C05B2A" title="Add assets" desc="Upload media to use in your site" onClick={() => setOv('assets')} />
+                      <DropRow icon="link" icon2="image" bg="#EDE9FF" fg="#6040D0" title="Add visual references" desc="Give Aria a look & feel to start from" onClick={() => setOv('url')} />
+                      <DropRow icon="document" bg="#E8F3FF" fg="#1A6CC0" title="Add files" desc="Any info that helps Aria build a better site" onClick={() => setOv('files')} />
                       <span style={{ position: 'absolute', left: 22, bottom: -7, width: 14, height: 14, background: '#fff', borderRight: '0.5px solid rgba(0,0,0,0.10)', borderBottom: '0.5px solid rgba(0,0,0,0.10)', transform: 'rotate(45deg)' }} />
                     </div>
                   }
@@ -847,8 +854,9 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
         {/* modals */}
         {ov === 'assets' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} />}
+        {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} title="Add files" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
         {ov === 'extract' && <ExtractModal onClose={closeOverlay} onAdd={confirmAsset} />}
-        {ov === 'url' && <UrlModal onClose={closeOverlay} onAdd={confirmRef} onBack={() => setOv('dropdown')} />}
+        {ov === 'url' && <UrlModal onClose={closeOverlay} onAdd={confirmVisualRef} onBack={() => setOv('dropdown')} />}
         {ov === 'import-url' && <ImportFlow onClose={closeOverlay} onImport={(site) => {setImportedSite(site);if (screen === 'empty') setScreen('text');setOv(null);}} />}
 
         {/* Undo toast — fixed at bottom of viewport */}
@@ -965,7 +973,7 @@ const UploadZone = () =>
   </div>;
 
 
-function AssetsModal({ onClose, onAdd }) {
+function AssetsModal({ onClose, onAdd, title = 'Add assets', sub = 'Upload media to use in your site', hints = ['Anything you’d put on your site — images, logos, videos', 'Aria will extract the content and visuals for you'] }) {
   const [files, setFiles] = hs([]);
   const [sizeErr, setSizeErr] = hs('');
   const inputRef = React.useRef(null);
@@ -990,8 +998,8 @@ function AssetsModal({ onClose, onAdd }) {
   return <Overlay><div onClick={(e) => e.stopPropagation()} style={shell}>
     <div style={{ padding: '22px 22px 16px', borderBottom: '1px solid #EEEEEE', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
       <div>
-        <div style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>Add photos or files</div>
-        <div style={{ fontSize: 12, color: H_MUTED, marginTop: 2 }}>Images, videos, PDFs, docs and more</div>
+        <div style={{ fontSize: 17, fontWeight: 700, color: H_INK }}>{title}</div>
+        <div style={{ fontSize: 12, color: H_MUTED, marginTop: 2 }}>{sub}</div>
       </div>
       <button onClick={onClose} style={closeB}>&times;</button>
     </div>
@@ -1018,14 +1026,12 @@ function AssetsModal({ onClose, onAdd }) {
         }
 
       <div style={{ marginTop: 12, background: '#F0F2FF', borderRadius: 8, padding: '10px 12px' }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 5 }}>
+        {hints.map((h, i) =>
+        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: i < hints.length - 1 ? 5 : 0 }}>
           <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="askAi" size={14} color={H_BLUE} /></span>
-          <span style={{ fontSize: 12, color: H_BLUE, lineHeight: 1.5 }}>Anything you'd put on your site — images, logos, docs</span>
+          <span style={{ fontSize: 12, color: H_BLUE, lineHeight: 1.5 }}>{h}</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-          <span style={{ flexShrink: 0, marginTop: 1 }}><HIc name="askAi" size={14} color={H_BLUE} /></span>
-          <span style={{ fontSize: 12, color: H_BLUE, lineHeight: 1.5 }}>Aria will extract the content and visuals for you</span>
-        </div>
+        )}
       </div>
     </div>
     <div style={{ padding: '12px 20px 16px', borderTop: '1px solid #F0F0F8', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
@@ -1061,123 +1067,93 @@ function ExtractModal({ onClose, onAdd }) {
   </div></Overlay>;
 }
 
+/* ---- Add visual references — drag files first, URL as secondary option ---- */
 function UrlModal({ onClose, onAdd, onBack }) {
-  const [phase, setPhase] = hs('url'); // 'url' | 'scanning' | 'results' | 'error'
+  const [files, setFiles] = hs([]);
   const [url, setUrl] = hs('');
-  const [inspoHover, setInspoHover] = hs(false);
+  const [urlErr, setUrlErr] = hs(false);
+  const [dragOver, setDragOver] = hs(false);
+  const inputRef = hr(null);
   const isValidUrl = (u) => /^(https?:\/\/)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}/.test(u.trim());
-  const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '') || '';
-  const fetch_ = () => {
-    if (!isValidUrl(url)) { setPhase('error'); return; }
-    setPhase('scanning');
-    setTimeout(() => setPhase('results'), 1600);
+  const host = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+  const canAdd = files.length > 0 || url.trim().length > 0;
+  const addRealFiles = (fileList) => setFiles(f => [...f, ...fileList.map(x => ({ name: x.name })).filter(x => !f.some(y => y.name === x.name))]);
+  const submit = () => {
+    if (url.trim() && !isValidUrl(url)) { setUrlErr(true); return; }
+    onAdd({ files: files.map(f => f.name), url: url.trim() ? host : null });
   };
-  const hInput = { height: 38, boxSizing: 'border-box', padding: '0 12px', border: `1px solid ${phase === 'error' ? '#D32F2F' : '#C1C2C3'}`, borderRadius: 8, fontSize: 14, color: '#32324D', outline: 'none', fontFamily: 'inherit', background: '#fff', width: '100%', transition: 'border-color 120ms, box-shadow 120ms' };
+  const iconFor = (n) => /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(n) ? 'image' : /\.(mp4|mov|webm)$/i.test(n) ? 'play' : 'document';
   const wideShell = { ...shell, width: 520, maxWidth: '95vw', borderRadius: 16 };
 
   return <Overlay><div onClick={(e) => e.stopPropagation()} style={wideShell}>
     {/* header */}
     <div style={{ padding: '24px 24px 20px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', borderBottom: '1px solid #F0F0F4' }}>
       <div>
-        <div style={{ fontSize: 18, fontWeight: 700, color: H_INK }}>Add a reference site</div>
-        <div style={{ fontSize: 13, color: H_MUTED, marginTop: 3 }}>Paste a link to a site you love — Aria will match its style.</div>
+        <div style={{ fontSize: 18, fontWeight: 700, color: H_INK }}>Add visual references</div>
+        <div style={{ fontSize: 13, color: H_MUTED, marginTop: 3 }}>Give Aria a look &amp; feel to start from — screenshots, moodboards, designs or links.</div>
       </div>
       <button onClick={onClose} style={{ border: 0, background: 'transparent', cursor: 'pointer', padding: 6, marginTop: -2, borderRadius: 6, color: '#888898', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3L13 13M13 3L3 13" stroke="#888898" strokeWidth="1.8" strokeLinecap="round"/></svg>
       </button>
     </div>
 
-    <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-      {/* URL input row — always visible */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <div style={{ display: 'flex', gap: 8 }}>
-          <input
-            className="h-input"
-            value={url}
-            onChange={(e) => { setUrl(e.target.value); if (phase === 'error') setPhase('url'); }}
-            onKeyDown={(e) => e.key === 'Enter' && fetch_()}
-            placeholder="Paste any address or URL"
-            style={{ ...hInput, flex: 1, width: 'auto' }}
-          />
-          <button
-            className="hbtn"
-            onClick={fetch_}
-            disabled={!url.trim()}
-            style={{ ...hBtnPrimary('medium'), flexShrink: 0, opacity: url.trim() ? 1 : 0.4, cursor: url.trim() ? 'pointer' : 'not-allowed' }}
-          >
-            {phase === 'results' ? 'Refresh' : 'Get'}
-          </button>
+    <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+      {/* primary: drag & drop / browse */}
+      <input ref={inputRef} type="file" multiple style={{ display: 'none' }} onChange={(e) => { addRealFiles([...e.target.files]); e.target.value = ''; }} />
+      <div
+        onClick={() => inputRef.current && inputRef.current.click()}
+        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => { e.preventDefault(); setDragOver(false); addRealFiles([...e.dataTransfer.files]); }}
+        style={{ border: `1.5px dashed ${dragOver ? '#2F5DFF' : '#D8D8EE'}`, borderRadius: 12, padding: '26px 16px', background: dragOver ? '#F0F4FF' : '#FAFBFF', textAlign: 'center', cursor: 'pointer', transition: 'background 120ms, border-color 120ms' }}>
+        <HIc name="upload" size={24} color="#AAAACC" />
+        <div style={{ fontSize: 13, fontWeight: 600, color: H_INK, marginTop: 10 }}>Drop visual references here or <span style={{ color: H_BLUE }}>browse your computer</span></div>
+        <div style={{ fontSize: 11, color: H_MUTED, marginTop: 3 }}>Screenshots, moodboards, brand decks — anything that shows the style you want</div>
+      </div>
+
+      {files.length > 0 &&
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {files.map((f, i) =>
+          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', border: '1px solid #EEEEF6', borderRadius: 10, background: '#fff' }}>
+              <span style={{ width: 28, height: 28, borderRadius: 7, background: '#EDE9FF', color: '#6040D0', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><HIc name={iconFor(f.name)} size={14} color="#6040D0" /></span>
+              <span style={{ flex: 1, fontSize: 13, color: H_INK, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{f.name}</span>
+              <button onClick={() => setFiles(fl => fl.filter((_, idx) => idx !== i))} style={{ border: 0, background: 'transparent', cursor: 'pointer', color: '#AAAAAA', fontSize: 15, lineHeight: 1 }}>×</button>
+            </div>
+          )}
         </div>
-        {phase === 'error' && (
+      }
+
+      {/* secondary: URL option — lower hierarchy */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
+        <span style={{ fontSize: 11, color: '#AAAAAA' }}>or paste a link to a site you love</span>
+        <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <input
+          className="h-input"
+          value={url}
+          onChange={(e) => { setUrl(e.target.value); setUrlErr(false); }}
+          onKeyDown={(e) => e.key === 'Enter' && canAdd && submit()}
+          placeholder="Paste any address or URL"
+          style={{ height: 36, boxSizing: 'border-box', padding: '0 12px', border: `1px solid ${urlErr ? '#D32F2F' : '#DEDEE8'}`, borderRadius: 8, fontSize: 13, color: '#32324D', outline: 'none', fontFamily: 'inherit', background: '#fff', width: '100%', transition: 'border-color 120ms, box-shadow 120ms' }}
+        />
+        {urlErr && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', background: '#FFF3F3', border: '1px solid #FFCDD2', borderRadius: 8 }}>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#D32F2F" strokeWidth="1.4"/><path d="M8 4.5V8.5" stroke="#D32F2F" strokeWidth="1.6" strokeLinecap="round"/><circle cx="8" cy="11" r="1" fill="#D32F2F"/></svg>
-            <span style={{ fontSize: 12, color: '#B71C1C' }}>Couldn't reach this site. Check the URL and try again.</span>
+            <span style={{ fontSize: 12, color: '#B71C1C' }}>That doesn't look like a valid URL. Check it and try again.</span>
           </div>
         )}
       </div>
-
-      {/* scanning */}
-      {phase === 'scanning' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ width: '100%', height: 4, background: '#EEEEF6', borderRadius: 4, overflow: 'hidden' }}>
-            <div style={{ width: '65%', height: '100%', background: '#2F5DFF', borderRadius: 4, transition: 'width 1.4s ease' }} />
-          </div>
-          <div style={{ fontSize: 13, color: H_MUTED }}>Getting {host}…</div>
-        </div>
-      )}
-
-      {/* results — preview card */}
-      {phase === 'results' && (
-        <div style={{ border: '1px solid #C1C2C3', borderRadius: 10, overflow: 'hidden', animation: 'h-fade 300ms ease' }}>
-          {/* browser chrome */}
-          <div style={{ height: 20, background: '#F5F6FA', display: 'flex', alignItems: 'center', gap: 5, padding: '0 10px', borderBottom: '1px solid #E8E8F0' }}>
-            {[0,1,2].map(i => <span key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: ['#FF5F57','#FEBC2E','#28C840'][i] }} />)}
-            <span style={{ flex: 1, height: 14, background: '#EAEBF0', borderRadius: 4, marginLeft: 8 }} />
-          </div>
-          {/* screenshot — live */}
-          <div style={{ height: 120, overflow: 'hidden', background: '#EEF4FF' }}>
-            <img src={`https://image.thum.io/get/width/640/crop/400/${url.startsWith('http') ? url : 'https://' + url}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} />
-          </div>
-          {/* site info */}
-          <div style={{ padding: '10px 14px', background: '#fff', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 6, background: '#EEF4FF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#3D5ECC" strokeWidth="1.3"/><path d="M8 1.5C8 1.5 5.5 4.5 5.5 8C5.5 11.5 8 14.5 8 14.5M8 1.5C8 1.5 10.5 4.5 10.5 8C10.5 11.5 8 14.5 8 14.5M1.5 8H14.5" stroke="#3D5ECC" strokeWidth="1.3" strokeLinecap="round"/></svg>
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: H_INK }}>{host}</div>
-              <div style={{ fontSize: 11, color: H_MUTED }}>Reference site added</div>
-            </div>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8L6.5 11.5L13 5" stroke="#2D8A4E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </div>
-        </div>
-      )}
-
-      {/* or browse — shown only in url/error phase */}
-      {(phase === 'url' || phase === 'error') && (
-        <>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
-            <span style={{ fontSize: 11, color: '#AAAAAA' }}>or browse for inspiration</span>
-            <span style={{ flex: 1, height: 1, background: '#F0F0F8' }} />
-          </div>
-          <button onClick={() => {}} onMouseEnter={() => setInspoHover(true)} onMouseLeave={() => setInspoHover(false)} style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', boxSizing: 'border-box', textAlign: 'left', padding: '12px 14px', border: `1px solid ${inspoHover ? '#C8D0F0' : '#E0E0EC'}`, borderRadius: 10, background: inspoHover ? '#F4F7FF' : '#fff', cursor: 'pointer', fontFamily: 'inherit', overflow: 'visible', transition: 'background 120ms, border-color 120ms' }}>
-            <PhotoFan />
-            <span style={{ flex: 1, minWidth: 0 }}>
-              <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: H_INK }}>Wix Inspirations</span>
-              <span style={{ display: 'block', fontSize: 11, color: H_MUTED, marginTop: 2 }}>Browse curated sites by style &amp; category</span>
-            </span>
-            <HIc name="chevronRight" size={14} color="#AAAAAA" />
-          </button>
-        </>
-      )}
     </div>
 
     {/* footer */}
-    <div style={{ padding: '12px 24px 20px', borderTop: '1px solid #F0F0F4', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
-      <button onClick={onClose} className="hbtn hbtn-secondary" style={cancelB}>Cancel</button>
-      {phase === 'results' && (
-        <button onClick={() => onAdd(host)} className="hbtn" style={addB}>Add reference →</button>
-      )}
+    <div style={{ padding: '12px 24px 20px', borderTop: '1px solid #F0F0F4', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+      <span style={{ fontSize: 12, color: H_MUTED }}>{files.length ? `${files.length} reference${files.length > 1 ? 's' : ''} ready` : ''}</span>
+      <span style={{ display: 'flex', gap: 8 }}>
+        <button onClick={onClose} className="hbtn hbtn-secondary" style={cancelB}>Cancel</button>
+        <button onClick={submit} disabled={!canAdd} className="hbtn" style={{ ...addB, opacity: canAdd ? 1 : 0.4, cursor: canAdd ? 'pointer' : 'not-allowed' }}>Add to Aria</button>
+      </span>
     </div>
   </div></Overlay>;
 }
