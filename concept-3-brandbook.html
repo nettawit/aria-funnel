@@ -11,10 +11,10 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 .screen{position:absolute;inset:0;display:none;flex-direction:column;}
 .screen.active{display:flex;}
 
-/* ── S1 PROMPT ── */
+/* ══ S1 PROMPT ══ */
 #s1{background:linear-gradient(155deg,#EBF0FF 0%,#F2EDFF 45%,#FEF0FF 100%);}
 .s1-nav{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;flex-shrink:0;}
-.s1-logo{font-family:'Wix Madefor Display',sans-serif;font-size:24px;font-weight:800;color:#111;display:flex;align-items:center;gap:10px;}
+.s1-logo{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:800;color:#111;display:flex;align-items:center;gap:10px;letter-spacing:-.3px;}
 .s1-av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;}
 .s1-upgrade{font-size:14px;font-weight:600;color:#116DFF;background:none;border:none;cursor:pointer;}
 .s1-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 36px 60px;}
@@ -38,131 +38,137 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 .chip-more{color:#116DFF;border-color:rgba(17,109,255,.25);}
 .s1-foot{text-align:center;padding:14px;font-size:11px;color:#CACAD0;flex-shrink:0;}
 
-/* ── EDITOR CHROME ── */
+/* ══ EDITOR CHROME ══ */
 .ec{height:46px;background:#fff;border-bottom:1px solid #EAEAEF;display:flex;align-items:center;padding:0 14px;gap:0;flex-shrink:0;}
-.ec-logo{font-family:'Wix Madefor Display',sans-serif;font-size:19px;font-weight:800;color:#111;margin-right:4px;}
+.ec-logo{font-family:'Wix Madefor Display',sans-serif;font-size:19px;font-weight:800;color:#111;margin-right:4px;letter-spacing:-.3px;}
 .ec-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;}
 .ec-sep{width:1px;height:16px;background:#EAEAEF;margin:0 7px;}
 .ec-btn{display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;font-size:12px;font-weight:500;color:#555;background:transparent;border:none;cursor:pointer;}
 .ec-btn:hover{background:#F5F5F8;}
-.ec-caret{display:inline-block;width:6px;height:6px;border-right:1.5px solid #AAA;border-bottom:1.5px solid #AAA;transform:rotate(45deg) translateY(-2px);}
+.ec-caret{display:inline-block;width:6px;height:6px;border-right:1.5px solid #AAA;border-bottom:1.5px solid #AAA;transform:rotate(45deg) translateY(-2px);margin-left:1px;}
 .ec-center{flex:1;display:flex;justify-content:center;}
 .ec-fit{font-size:12px;color:#777;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;cursor:pointer;}
 .ec-right{display:flex;align-items:center;gap:4px;}
 .ec-upgrade{color:#6B46FF;font-size:12px;font-weight:600;background:none;border:none;cursor:pointer;padding:4px 8px;}
+.ec-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;color:#888;}
+.ec-icon:hover{background:#F5F5F8;}
+.ec-icon svg{width:15px;height:15px;}
 .ec-preview{padding:5px 12px;background:none;border:1px solid #D5D5DC;border-radius:7px;font-size:12px;font-weight:500;color:#333;cursor:pointer;}
-.ec-publish{padding:5px 12px;border:none;border-radius:7px;font-size:12px;font-weight:600;color:#fff;background:#CACAD8;cursor:not-allowed;}
+.ec-publish{padding:5px 14px;border:none;border-radius:7px;font-size:12px;font-weight:600;color:#fff;background:#CACAD8;cursor:not-allowed;}
 .ec-publish.live{background:#116DFF;cursor:pointer;}
-.ec-blueprint{display:none;align-items:center;gap:6px;padding:5px 10px;border:1px solid rgba(17,109,255,.2);border-radius:7px;background:rgba(17,109,255,.05);cursor:pointer;font-size:12px;font-weight:500;color:#116DFF;transition:all .15s;}
+.ec-blueprint{display:none;align-items:center;gap:6px;padding:5px 10px;border:1px solid rgba(17,109,255,.25);border-radius:7px;background:rgba(17,109,255,.05);cursor:pointer;font-size:12px;font-weight:500;color:#116DFF;transition:all .15s;}
 .ec-blueprint:hover{background:rgba(17,109,255,.1);}
 .ec-blueprint.show{display:flex;}
 
-/* ── EDITOR LAYOUT ── */
+/* ══ EDITOR LAYOUT ══ */
 .ed-body{flex:1;display:flex;overflow:hidden;position:relative;}
 .ed-surface{flex:1;background:#F2F3F6;position:relative;overflow:hidden;}
 
-/* ── ARIA PANEL ── */
-.ap{width:300px;flex-shrink:0;background:#fff;border-left:1px solid #EAEAEF;display:flex;flex-direction:column;}
+/* ══ ARIA PANEL ══ */
+.ap{width:320px;flex-shrink:0;background:#fff;border-left:1px solid #EAEAEF;display:flex;flex-direction:column;}
 .ap-head{padding:14px 16px 12px;border-bottom:1px solid #F2F2F5;display:flex;align-items:center;gap:8px;}
 .ap-head-av{width:24px;height:24px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;flex-shrink:0;}
 .ap-head-title{font-size:13px;font-weight:600;color:#111;flex:1;}
 .ap-step{font-size:11px;color:#AAA;}
-.ap-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.ap-msgs{flex:1;overflow-y:auto;padding:14px 14px 10px;display:flex;flex-direction:column;gap:10px;min-height:0;}
 .msg-a{display:flex;align-items:flex-start;gap:8px;}
 .msg-a-av{width:22px;height:22px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;margin-top:1px;}
 .msg-a-text{font-size:12.5px;color:#333;line-height:1.6;}
 .msg-u{align-self:flex-end;background:#F3F0FF;color:#111;border-radius:12px 12px 3px 12px;padding:8px 12px;font-size:12.5px;max-width:85%;line-height:1.5;}
 .ap-composer{border-top:1px solid #F2F2F5;padding:10px 12px;display:flex;flex-direction:column;gap:7px;}
-.comp-suggs{display:flex;flex-wrap:wrap;gap:5px;}
-.comp-sugg{background:#F5F5FB;border:1px solid #E8E8EF;border-radius:14px;padding:4px 11px;font-size:11.5px;color:#444;cursor:pointer;transition:all .15s;}
-.comp-sugg:hover{border-color:#116DFF;color:#116DFF;background:#F0F5FF;}
 .comp-row{display:flex;align-items:center;gap:8px;background:#F8F8FC;border:1px solid #E8E8EF;border-radius:10px;padding:8px 10px;transition:border-color .2s;}
 .comp-row:focus-within{border-color:#116DFF;}
 .comp-row input{flex:1;background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#111;}
 .comp-row input::placeholder{color:#C0C0CC;}
 .comp-send{width:28px;height:28px;border-radius:7px;background:#116DFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;}
 .comp-send:hover{background:#0055DD;}
-.comp-skip{background:none;border:none;font-size:11px;color:#CCC;cursor:pointer;text-align:right;padding:0 2px;font-family:inherit;}
-.comp-skip:hover{color:#888;}
 
-/* ── S2 TEMPLATE BACKGROUND ── */
-.s2-tpl-bg{position:absolute;inset:0;display:flex;gap:8px;padding:20px 16px;background:#ECEEF4;}
-.s2-tpl{flex:1;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.1);}
-.alive-overlay{position:absolute;inset:0;pointer-events:none;background:rgba(238,241,255,.22) !important;}
-.alive-overlay .blob{opacity:.28;}
+/* ══ QUESTION WIDGET CARD ══ */
+.q-card{background:#fff;border:1px solid #E8E8EF;border-radius:14px;margin:0 10px 12px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden;flex-shrink:0;}
+.q-card-head{padding:14px 14px 10px;}
+.q-card-title{font-size:13px;font-weight:700;color:#111;margin-bottom:3px;}
+.q-card-sub{font-size:11px;color:#888;line-height:1.4;}
+.q-options{display:flex;flex-direction:column;gap:1px;}
+.q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;border-top:1px solid #F2F2F5;}
+.q-opt:hover{background:#F8F9FF;}
+.q-opt input[type=radio]{width:15px;height:15px;accent-color:#116DFF;flex-shrink:0;cursor:pointer;}
+.q-opt-label{font-size:12px;color:#333;}
+.q-opt.selected{background:#F0F5FF;}
+.q-opt.selected .q-opt-label{color:#116DFF;font-weight:600;}
+.q-text-row{padding:8px 14px;border-top:1px solid #F2F2F5;}
+.q-text-in{width:100%;background:#F8F8FC;border:1px solid #E8E8EF;border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12px;color:#111;outline:none;transition:border-color .15s;}
+.q-text-in:focus{border-color:#116DFF;}
+.q-text-in::placeholder{color:#C0C0CC;}
+.q-actions{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 12px;border-top:1px solid #F2F2F5;}
+.q-skip{background:none;border:none;font-size:12px;color:#116DFF;font-weight:600;cursor:pointer;font-family:inherit;}
+.q-skip:hover{text-decoration:underline;}
+.q-next{background:#116DFF;color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s;}
+.q-next:hover{background:#0055DD;}
 
-/* ── S2 ALIVE BLOBS ── */
-.alive{position:absolute;inset:0;background:linear-gradient(135deg,#EEF1FF 0%,#F5EEFF 50%,#FFF0FA 100%);overflow:hidden;pointer-events:none;}
-.blob{position:absolute;border-radius:50%;filter:blur(72px);opacity:.55;}
-.b1{width:380px;height:320px;background:radial-gradient(circle,#C8D4FF,#A8B8FF);top:-60px;left:-80px;animation:m1 9s ease-in-out infinite;}
-.b2{width:300px;height:280px;background:radial-gradient(circle,#E8C8FF,#D0A0FF);top:40%;left:32%;animation:m2 11s ease-in-out infinite;}
-.b3{width:260px;height:240px;background:radial-gradient(circle,#FFD0E8,#FFB8D8);bottom:-40px;right:-40px;animation:m3 13s ease-in-out infinite;}
-.b4{width:200px;height:180px;background:radial-gradient(circle,#C8F0FF,#A0E0FF);bottom:22%;left:10%;animation:m4 8s ease-in-out infinite;}
-@keyframes m1{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 70%;transform:translate(0,0) scale(1);}33%{border-radius:40% 60% 30% 70%/70% 30% 60% 40%;transform:translate(40px,-25px) scale(1.08);}66%{border-radius:70% 30% 55% 45%/40% 70% 30% 60%;transform:translate(-20px,20px) scale(.94);}}
-@keyframes m2{0%,100%{border-radius:50% 50% 60% 40%/60% 40% 50% 50%;transform:translate(0,0) scale(1);}40%{border-radius:65% 35% 45% 55%/45% 65% 35% 55%;transform:translate(-35px,30px) scale(1.06);}70%{border-radius:40% 60% 55% 45%/55% 45% 65% 35%;transform:translate(25px,-15px) scale(.96);}}
-@keyframes m3{0%,100%{border-radius:55% 45% 65% 35%/45% 55% 45% 55%;transform:translate(0,0);}30%{border-radius:35% 65% 45% 55%/65% 35% 55% 45%;transform:translate(-30px,-20px) scale(1.04);}65%{border-radius:60% 40% 35% 65%/50% 60% 40% 60%;transform:translate(20px,25px) scale(.97);}}
-@keyframes m4{0%,100%{border-radius:45% 55% 55% 45%/55% 45% 55% 45%;transform:translate(0,0);}50%{border-radius:60% 40% 40% 60%/40% 60% 60% 40%;transform:translate(30px,-20px) scale(1.05);}}
+/* ══ S2 SKELETON ══ */
+.sk-cols{position:absolute;inset:0;display:flex;gap:12px;padding:38px 28px 60px;}
+.sk-col{flex:1;display:flex;flex-direction:column;gap:8px;}
+.sk-col-label{font-size:10.5px;font-weight:600;color:#AAAAB8;letter-spacing:.02em;}
+.sk-card{flex:1;border-radius:16px;background:linear-gradient(160deg,#E4E6EE,#D8DAE8);position:relative;overflow:hidden;}
+.sk-shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.35) 50%,transparent 100%);animation:shimmer 2s ease-in-out infinite;}
+@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+.sk-card-inner{padding:14px;height:100%;display:flex;flex-direction:column;gap:10px;}
+.sk-bar{border-radius:6px;background:rgba(255,255,255,.5);}
 
-/* ── S3 TEMPLATES ── */
-.s3-wrap{position:absolute;inset:0;padding:22px 24px 18px;display:flex;flex-direction:column;gap:14px;overflow:hidden;}
-.s3-lbl{font-size:11px;font-weight:600;color:#AAA;letter-spacing:.08em;text-transform:uppercase;}
-.tpl-grid{display:flex;gap:10px;flex:1;min-height:0;}
-.tpl{flex:1;border-radius:14px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .2s;background:#fff;display:flex;flex-direction:column;}
-.tpl:hover{border-color:#116DFF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
-.tpl.tm{flex:1.45;border:2px solid #116DFF;background:linear-gradient(160deg,#0D0D1E 0%,#1A0D3A 60%,#0D1A3A 100%);box-shadow:0 8px 32px rgba(17,109,255,.2);}
-.tpl.tm:hover{border-color:#5590FF;transform:translateY(-3px);box-shadow:0 12px 40px rgba(17,109,255,.3);}
-.tm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:12px;}
-.tm-icon{width:50px;height:50px;border-radius:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:21px;}
-.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:17px;font-weight:700;color:#fff;text-align:center;line-height:1.3;}
-.tm-sub{font-size:11.5px;color:rgba(255,255,255,.5);text-align:center;line-height:1.5;}
+/* ══ S3 TEMPLATE GRID ══ */
+.tpl-header{padding:24px 28px 0;font-size:15px;font-weight:700;color:#111;flex-shrink:0;}
+.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 28px 50px;min-height:0;}
+.tpl-col{flex:1;display:flex;flex-direction:column;gap:8px;}
+.tpl-col-label{font-size:10.5px;font-weight:600;color:#888;letter-spacing:.02em;}
+.tpl-card{flex:1;border-radius:16px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .2s;position:relative;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.tpl-card:hover{border-color:#116DFF;box-shadow:0 8px 28px rgba(17,109,255,.15);}
+.tpl-card.selected{border-color:#116DFF;box-shadow:0 0 0 3px rgba(17,109,255,.12);}
+.tpl-card.tm-card{background:linear-gradient(160deg,#0D0D1E 0%,#1A0D3A 60%,#0D1A3A 100%);border:2px solid #116DFF;box-shadow:0 8px 32px rgba(17,109,255,.2);}
+.tpl-card.tm-card:hover{border-color:#5590FF;box-shadow:0 12px 40px rgba(17,109,255,.3);}
+.tm-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:12px;height:100%;}
+.tm-icon{width:50px;height:50px;border-radius:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;}
+.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:18px;font-weight:700;color:#fff;text-align:center;line-height:1.3;}
+.tm-sub{font-size:11.5px;color:rgba(255,255,255,.5);text-align:center;line-height:1.5;max-width:160px;}
 .tm-cta{background:#116DFF;color:#fff;border:none;border-radius:10px;padding:9px 18px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .15s;}
 .tm-cta:hover{background:#3388FF;}
-.tpl-mock{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+/* template mini mockup */
+.tpl-mock{height:100%;display:flex;flex-direction:column;overflow:hidden;}
 .tpl-nav{height:26px;background:#fff;display:flex;align-items:center;padding:0 10px;gap:8px;border-bottom:1px solid #F0F0F5;flex-shrink:0;}
-.tpl-logo{font-weight:800;font-size:10px;color:#111;}
+.tpl-logo{font-weight:800;font-size:10px;}
 .tpl-links{display:flex;gap:8px;margin-left:4px;}
 .tpl-link{font-size:8px;color:#666;}
 .tpl-cta-nav{margin-left:auto;font-size:8px;font-weight:600;padding:3px 8px;border-radius:4px;}
-.tpl-hero{flex:1;position:relative;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;}
-.tpl-h{font-size:13px;font-weight:800;line-height:1.3;margin-bottom:4px;}
-.tpl-sub{font-size:8px;margin-bottom:9px;}
+.tpl-hero{flex:1;position:relative;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
+.tpl-h{font-size:14px;font-weight:800;line-height:1.3;margin-bottom:5px;}
+.tpl-sub{font-size:8px;margin-bottom:10px;}
 .tpl-btn{display:inline-block;padding:5px 12px;border-radius:5px;font-size:8px;font-weight:700;width:fit-content;}
-.tpl-secs{display:flex;gap:4px;padding:7px;flex-shrink:0;}
-.tpl-sec{flex:1;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;}
-.tpl-foot{padding:6px 10px;border-top:1px solid #F0F0F5;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
-.tpl-name{font-size:11px;font-weight:600;color:#111;}
-.tpl-tag{font-size:9px;color:#AAA;}
-.see-more{font-size:12px;color:#116DFF;font-weight:500;cursor:pointer;text-align:center;padding:3px 0;flex-shrink:0;}
-
-/* Artisan Dark */
+.tpl-secs{display:flex;gap:4px;padding:8px;flex-shrink:0;}
+.tpl-sec{flex:1;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;}
+/* artisan */
+.art .tpl-nav{background:#fff;}.art .tpl-logo{color:#2C1810;}
 .art .tpl-hero{background:linear-gradient(180deg,#2C1810,#1A0F08);}
-.art .tpl-h{color:#fff;}
-.art .tpl-sub{color:rgba(255,255,255,.6);}
+.art .tpl-h{color:#fff;}.art .tpl-sub{color:rgba(255,255,255,.6);}
 .art .tpl-btn{background:#D4A055;color:#111;}
 .art .tpl-sec{background:#F5EFE8;color:#8B6A50;}
-/* Natural Light */
+/* natural */
+.nat .tpl-logo{color:#3C2A1A;}
 .nat .tpl-hero{background:linear-gradient(180deg,#F5E8D0,#EDD5B0);}
-.nat .tpl-h{color:#3C2A1A;}
-.nat .tpl-sub{color:rgba(60,42,26,.6);}
+.nat .tpl-h{color:#3C2A1A;}.nat .tpl-sub{color:rgba(60,42,26,.6);}
 .nat .tpl-btn{background:#3C2A1A;color:#F5E8D0;}
 .nat .tpl-sec{background:#EDD5B0;color:#8B6A50;}
-/* Premium Dark */
-.prem .tpl-nav{background:#0A0A0A;border-color:#222;}
-.prem .tpl-logo{color:#C8A96E;}
+/* premium */
+.prem .tpl-nav{background:#0A0A0A;border-color:#222;}.prem .tpl-logo{color:#C8A96E;}
 .prem .tpl-link{color:#888;}
 .prem .tpl-hero{background:linear-gradient(180deg,#0A0A0A,#1A1A1A);}
-.prem .tpl-h{color:#fff;}
-.prem .tpl-sub{color:rgba(200,169,110,.65);}
+.prem .tpl-h{color:#fff;}.prem .tpl-sub{color:rgba(200,169,110,.65);}
 .prem .tpl-btn{background:#C8A96E;color:#111;}
 .prem .tpl-sec{background:#1A1A1A;color:#C8A96E;}
-.prem .tpl-foot{background:#0A0A0A;border-color:#222;}
-.prem .tpl-name{color:#C8A96E;}
-.prem .tpl-tag{color:#555;}
+.see-more{font-size:12px;color:#116DFF;font-weight:500;cursor:pointer;text-align:center;padding:4px 0;flex-shrink:0;padding-bottom:6px;}
 
-/* ── S4a MOSAIC ── */
+/* ══ S4a MOSAIC ══ */
 .mosaic{position:absolute;inset:0;background:#F5F6F8;}
-.blueprint-tab{position:absolute;left:0;top:50%;transform:translateY(-50%);background:#fff;border:1px solid #EAEAEF;border-left:none;border-radius:0 8px 8px 0;padding:8px 10px 8px 6px;display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:600;color:#116DFF;z-index:10;box-shadow:2px 0 8px rgba(0,0,0,.06);transition:all .15s;}
-.blueprint-tab:hover{background:#F0F5FF;}
+.blueprint-tab{position:absolute;left:0;top:50%;transform:translateY(-50%);background:#fff;border:1px solid #EAEAEF;border-left:none;border-radius:0 8px 8px 0;padding:10px 10px 10px 6px;display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:600;color:#116DFF;z-index:10;box-shadow:2px 0 8px rgba(0,0,0,.06);transition:all .15s;writing-mode:horizontal-tb;}
+.blueprint-tab:hover{background:#F0F5FF;padding-left:10px;}
 .sq{position:absolute;background:#fff;border:1.5px solid #E8E8EF;border-radius:14px;padding:16px;cursor:pointer;transition:border-color .2s,box-shadow .15s;opacity:0;}
 .sq:hover{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.1);}
 .sq.sq-active{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.12);}
@@ -182,11 +188,35 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 .ldot:nth-child(3){animation-delay:.4s;}
 @keyframes ld{0%,80%,100%{opacity:.3;transform:scale(.8);}40%{opacity:1;transform:scale(1.1);}}
 
-/* ── TEMPLATE WORKSPACE ── */
-.tpl-ws{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;background:#F5F6F8;overflow-y:auto;}
-.site-frame{width:320px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff;flex-shrink:0;}
+/* ══ BLUEPRINT VIEW ══ */
+.blueprint-ws{position:absolute;inset:0;background:#F5F6F8;overflow-y:auto;padding:28px;}
+.bp-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:800;color:#111;margin-bottom:20px;letter-spacing:-.3px;}
+.bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.bp-card{background:#fff;border-radius:14px;padding:18px;border:1px solid #EAEAEF;}
+.bp-card-full{background:#fff;border-radius:14px;padding:18px;border:1px solid #EAEAEF;margin-bottom:14px;}
+.bp-card-title{font-size:11px;font-weight:700;color:#AAA;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
+.bp-font-row{display:flex;gap:14px;align-items:center;}
+.bp-font-box{flex:1;background:#F8F8FC;border:1px solid #EAEAEF;border-radius:10px;padding:12px;text-align:center;}
+.bp-font-aa{font-size:32px;font-weight:700;color:#111;line-height:1;}
+.bp-font-aa.display{font-family:'Wix Madefor Display',sans-serif;font-weight:800;}
+.bp-font-aa.script{font-family:Georgia,serif;font-style:italic;}
+.bp-font-name{font-size:10px;color:#888;margin-top:4px;}
+.bp-font-divider{width:1px;height:40px;background:#EAEAEF;}
+.bp-swatches{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.bp-swatch{border-radius:10px;aspect-ratio:1.6;border:1px solid rgba(0,0,0,.05);}
+.bp-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.bp-tag{background:#1A1A2E;color:#fff;font-size:12px;font-weight:600;padding:6px 13px;border-radius:16px;}
+.bp-apps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.bp-app{background:#fff;border:1px solid #EAEAEF;border-radius:12px;padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.bp-app-ic{width:36px;height:36px;border-radius:10px;background:#F0F2F8;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.bp-app-name{font-size:10px;font-weight:600;color:#333;line-height:1.3;}
 
-/* ── DOMAIN WIDGET ── */
+/* ══ TEMPLATE WORKSPACE (S4b/S5) ══ */
+.tpl-ws{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;background:#F5F6F8;overflow-y:auto;}
+.site-frame{width:320px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff;flex-shrink:0;opacity:0;transform:translateX(40px);transition:opacity .6s ease,transform .6s ease;}
+.site-frame.in{opacity:1;transform:none;}
+
+/* ══ DOMAIN WIDGET ══ */
 .domain-w{border:1.5px solid #D8EEFF;border-radius:12px;background:#F8FBFF;padding:12px 14px;margin-top:4px;}
 .domain-w-head{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
 .domain-w-title{font-size:12px;font-weight:600;color:#111;}
@@ -197,7 +227,12 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 .btn-domain:hover{background:#0055DD;}
 .btn-skip{width:100%;background:none;border:none;font-size:11px;color:#BBB;cursor:pointer;font-family:inherit;}
 
-/* ── MODAL ── */
+/* ══ CHOICE BTNS ══ */
+.choice-row{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
+.choice-btn{text-align:left;background:#F8F8FC;border:1.5px solid #E8E8EF;border-radius:10px;padding:9px 12px;font-family:inherit;font-size:12px;cursor:pointer;transition:border-color .15s,background .15s;color:#333;}
+.choice-btn:hover{border-color:#116DFF;background:#F0F5FF;color:#116DFF;}
+
+/* ══ MODAL ══ */
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
 .modal-ov.open{opacity:1;pointer-events:all;}
 .modal{background:#fff;border-radius:18px;width:500px;max-height:78vh;overflow:hidden;display:flex;flex-direction:column;transform:scale(.95);transition:transform .25s ease;}
@@ -210,20 +245,20 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 .msec{margin-bottom:20px;}
 .msec-title{font-size:11px;font-weight:600;color:#AAA;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
 .color-row{display:flex;gap:8px;flex-wrap:wrap;}
-.cswatch{width:44px;height:44px;border-radius:10px;cursor:pointer;transition:transform .1s;position:relative;}
+.cswatch{width:44px;height:44px;border-radius:10px;cursor:pointer;transition:transform .1s;}
 .cswatch:hover{transform:scale(1.08);}
 .font-prev{padding:12px;background:#F8F8FC;border-radius:10px;}
 .font-prev-big{font-size:30px;font-weight:700;color:#111;font-family:'Wix Madefor Display',sans-serif;}
 .font-prev-sm{font-size:12px;color:#888;margin-top:2px;}
-.app-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;}
+.app-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;background:#F8F8FC;}
 
-/* ── STEPPER ── */
-.stepper{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;z-index:5;}
+/* ══ STEPPER ══ */
+.stepper{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;z-index:5;pointer-events:none;}
 .step{width:7px;height:7px;border-radius:50%;background:#D5D5DC;transition:all .35s;}
 .step.done{background:#B8C4E8;}
 .step.cur{background:#116DFF;width:20px;border-radius:4px;}
 
-/* ── DEV NAV ── */
+/* ══ DEV NAV ══ */
 .dev-nav{position:fixed;bottom:20px;right:20px;display:flex;gap:7px;z-index:50;}
 .darr{background:rgba(255,255,255,.9);border:1px solid #E0E0EC;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;backdrop-filter:blur(4px);transition:all .15s;}
 .darr:hover{background:#fff;border-color:#116DFF;color:#116DFF;}
@@ -232,10 +267,10 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 </head>
 <body>
 
-<!-- ══ S1 ══ -->
+<!-- ══ S1 PROMPT ══ -->
 <div class="screen active" id="s1">
   <nav class="s1-nav">
-    <div class="s1-logo">wix <div class="s1-av">N</div></div>
+    <div class="s1-logo">WIX <div class="s1-av">N</div></div>
     <button class="s1-upgrade">Upgrade</button>
   </nav>
   <div class="s1-body">
@@ -249,7 +284,9 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
     <div class="input-card">
       <textarea id="s1-input" placeholder="Describe the site you want to build…" rows="4"></textarea>
       <div class="input-foot">
-        <button class="btn-gen" onclick="startFlow()">Generate <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        <button class="btn-gen" onclick="startFlow()">Generate
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </button>
       </div>
     </div>
     <div class="chips-wrap">
@@ -261,17 +298,17 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
         <span class="chip" onclick="fillEx(this)">Consulting website</span>
         <span class="chip" onclick="fillEx(this)">Community hub</span>
         <span class="chip" onclick="fillEx(this)">Creative portfolio</span>
-        <span class="chip chip-more">↻ More ideas</span>
+        <span class="chip chip-more">↻ More Ideas</span>
       </div>
     </div>
   </div>
   <div class="s1-foot">AI can make mistakes. Double check the results.</div>
 </div>
 
-<!-- ══ SHARED CHROME ══ -->
+<!-- ══ SHARED EDITOR CHROME (s2–s5) ══ -->
 <div id="chrome" style="display:none;position:fixed;top:0;left:0;right:0;z-index:40;">
   <div class="ec">
-    <span class="ec-logo">wix</span>
+    <span class="ec-logo">WIX</span>
     <div class="ec-av">N</div>
     <div class="ec-sep"></div>
     <button class="ec-btn">Goody <span class="ec-caret"></span></button>
@@ -280,6 +317,10 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
     <div class="ec-right">
       <button class="ec-blueprint" id="bp-btn" onclick="toggleBlueprint()">◈ Blueprint</button>
       <div class="ec-sep"></div>
+      <button class="ec-icon" title="Undo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h7a4 4 0 0 1 0 8H6M2 6l3-3M2 6l3 3"/></svg></button>
+      <button class="ec-icon" title="Redo" style="opacity:.3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6H7a4 4 0 0 0 0 8h3M14 6l-3-3M14 6l-3 3"/></svg></button>
+      <button class="ec-icon" title="Save"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 2v4h6V2M5 9h6"/></svg></button>
+      <div class="ec-sep"></div>
       <button class="ec-upgrade">Upgrade</button>
       <button class="ec-preview">Preview</button>
       <button class="ec-publish" id="ec-pub">Publish</button>
@@ -287,125 +328,161 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
   </div>
 </div>
 
-<!-- ══ S2 QUESTIONS ══ -->
+<!-- ══ S2 — QUESTIONS (skeleton workspace) ══ -->
 <div class="screen" id="s2" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-surface">
-      <!-- Templates in background -->
-      <div class="s2-tpl-bg">
-        <div class="s2-tpl art">
-          <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#2C1810;color:#D4A055;">Order</span></div>
-          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Baked with<br>love</div><div class="tpl-sub">Goody · Tel Aviv</div><div class="tpl-btn">Order now →</div></div>
-          <div class="tpl-secs"><div class="tpl-sec">Sourdough</div><div class="tpl-sec">Croissants</div><div class="tpl-sec">Seasonal</div></div>
-        </div>
-        <div class="s2-tpl tm-bg">
-          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;background:linear-gradient(160deg,#0D0D1E,#1A0D3A,#0D1A3A);">
-            <div style="font-size:18px;">✦</div>
-            <div style="font-family:'Wix Madefor Display',sans-serif;font-size:14px;font-weight:700;color:#fff;text-align:center;">Design with Aria</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.5);text-align:center;">Build custom from your brand book</div>
+      <!-- 3 skeleton columns -->
+      <div class="sk-cols">
+        <div class="sk-col">
+          <div class="sk-col-label">Minimalist Artisan</div>
+          <div class="sk-card">
+            <div class="sk-shimmer"></div>
+            <div class="sk-card-inner">
+              <div class="sk-bar" style="width:60%;height:10px;"></div>
+              <div class="sk-bar" style="width:40%;height:8px;"></div>
+              <div style="flex:1;"></div>
+              <div class="sk-bar" style="width:80%;height:8px;"></div>
+              <div class="sk-bar" style="width:55%;height:8px;"></div>
+              <div class="sk-bar" style="width:38%;height:28px;border-radius:8px;"></div>
+            </div>
           </div>
         </div>
-        <div class="s2-tpl nat">
-          <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">About</span></div><span class="tpl-cta-nav" style="background:#3C2A1A;color:#F5E8D0;">Order</span></div>
-          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Fresh Every<br>Morning</div><div class="tpl-sub">Goody Bakery</div><div class="tpl-btn" style="background:#3C2A1A;color:#F5E8D0;">Explore →</div></div>
-          <div class="tpl-secs"><div class="tpl-sec">Morning Box</div><div class="tpl-sec">Pre-Order</div><div class="tpl-sec">Catering</div></div>
+        <div class="sk-col">
+          <div class="sk-col-label">Dynamic Gallery</div>
+          <div class="sk-card" style="background:linear-gradient(160deg,#DDE0EC,#D0D3E4);">
+            <div class="sk-shimmer"></div>
+            <div class="sk-card-inner">
+              <div class="sk-bar" style="width:50%;height:10px;"></div>
+              <div class="sk-bar" style="width:70%;height:8px;"></div>
+              <div style="flex:1;"></div>
+              <div class="sk-bar" style="width:90%;height:8px;"></div>
+              <div class="sk-bar" style="width:60%;height:8px;"></div>
+              <div class="sk-bar" style="width:42%;height:28px;border-radius:8px;"></div>
+            </div>
+          </div>
         </div>
-        <div class="s2-tpl prem">
-          <div class="tpl-nav prem" style="background:#0A0A0A;border-color:#222;"><span class="tpl-logo" style="color:#C8A96E;">Goody</span><div class="tpl-links"><span class="tpl-link" style="color:#888;">Shop</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
-          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Crafted<br>Daily</div><div class="tpl-sub" style="color:rgba(200,169,110,.7);">Premium bakery</div><div class="tpl-btn" style="background:#C8A96E;color:#111;">Discover →</div></div>
-          <div class="tpl-secs"><div class="tpl-sec" style="background:#1A1A1A;color:#C8A96E;">Artisan</div><div class="tpl-sec" style="background:#1A1A1A;color:#C8A96E;">Seasonal</div></div>
+        <div class="sk-col">
+          <div class="sk-col-label">Editorial Split</div>
+          <div class="sk-card" style="background:linear-gradient(160deg,#E0DDE8,#D4D1E0);">
+            <div class="sk-shimmer"></div>
+            <div class="sk-card-inner">
+              <div class="sk-bar" style="width:45%;height:10px;"></div>
+              <div class="sk-bar" style="width:65%;height:8px;"></div>
+              <div style="flex:1;"></div>
+              <div class="sk-bar" style="width:75%;height:8px;"></div>
+              <div class="sk-bar" style="width:50%;height:8px;"></div>
+              <div class="sk-bar" style="width:36%;height:28px;border-radius:8px;"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Blob overlay on top -->
-      <div class="alive alive-overlay">
-        <div class="blob b1"></div><div class="blob b2"></div>
-        <div class="blob b3"></div><div class="blob b4"></div>
       </div>
       <div class="stepper">
         <div class="step done"></div><div class="step cur"></div>
         <div class="step"></div><div class="step"></div><div class="step"></div>
       </div>
     </div>
+    <!-- Right panel -->
     <div class="ap">
       <div class="ap-head">
         <div class="ap-head-av">A</div>
         <div class="ap-head-title">Ask Aria</div>
-        <div class="ap-step">2 of 5</div>
+        <div class="ap-step" id="s2-step-lbl">2 of 5</div>
       </div>
       <div class="ap-msgs" id="s2-msgs">
+        <div class="msg-u">I need a site</div>
         <div class="msg-a">
           <div class="msg-a-av">A</div>
-          <div class="msg-a-text">Let's build your brand book. First — what's your site called?</div>
+          <div class="msg-a-text">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
         </div>
       </div>
-      <div class="ap-composer">
-        <div class="comp-suggs" id="s2-suggs">
-          <span class="comp-sugg" onclick="pickS2(this)">Goody</span>
-          <span class="comp-sugg" onclick="pickS2(this)">Nova</span>
-          <span class="comp-sugg" onclick="pickS2(this)">Bloom</span>
-          <span class="comp-sugg" onclick="pickS2(this)">Studio K</span>
+      <!-- Question card widget -->
+      <div class="q-card" id="s2-qcard">
+        <div class="q-card-head">
+          <div class="q-card-title" id="q-title">What's your site called?</div>
+          <div class="q-card-sub" id="q-sub">This will appear on your site and domain</div>
         </div>
-        <div class="comp-row">
-          <input id="s2-in" type="text" placeholder="Type your site name…" onkeydown="if(event.key==='Enter')sendS2()">
-          <button class="comp-send" onclick="sendS2()"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+        <div class="q-options" id="q-opts">
+          <label class="q-opt" onclick="selectQOpt(this,'Goody')">
+            <input type="radio" name="q1"> <span class="q-opt-label">Goody</span>
+          </label>
+          <label class="q-opt" onclick="selectQOpt(this,'Nova Bakes')">
+            <input type="radio" name="q1"> <span class="q-opt-label">Nova Bakes</span>
+          </label>
+          <label class="q-opt" onclick="selectQOpt(this,'Bloom Bakery')">
+            <input type="radio" name="q1"> <span class="q-opt-label">Bloom Bakery</span>
+          </label>
         </div>
-        <button class="comp-skip" onclick="sendS2(true)">Skip → (Enter)</button>
+        <div class="q-text-row">
+          <input id="q-input" type="text" class="q-text-in" placeholder="Or type your site name…" onkeydown="if(event.key==='Enter')qNext()">
+        </div>
+        <div class="q-actions">
+          <button class="q-skip" onclick="qNext(true)">Skip</button>
+          <button class="q-next" onclick="qNext()">Next</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S3 TEMPLATES ══ -->
+<!-- ══ S3 — TEMPLATE PICKER ══ -->
 <div class="screen" id="s3" style="padding-top:46px;">
   <div class="ed-body">
-    <div class="ed-surface">
-      <div class="s3-wrap">
-        <div class="s3-lbl">Choose how to start your site</div>
-        <div class="tpl-grid">
+    <div class="ed-surface" style="display:flex;flex-direction:column;">
+      <div class="tpl-header" id="s3-header">Choose the design you'd like to generate your full site from</div>
+      <div class="tpl-cols">
 
-          <!-- Artisan Dark -->
-          <div class="tpl art" onclick="pickTpl('artisan','Artisan Dark')">
+        <!-- Tailor Made (center/prominent) -->
+        <div class="tpl-col">
+          <div class="tpl-col-label" style="color:#116DFF;font-weight:700;">✦ Design with Aria</div>
+          <div class="tpl-card tm-card" onclick="pickTailor()">
+            <div class="tm-inner">
+              <div class="tm-icon">✦</div>
+              <div class="tm-title">Tailor Made</div>
+              <div class="tm-sub">Build a fully custom site from your brand book — tailored to you</div>
+              <button class="tm-cta">Tailor Made →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artisan Dark -->
+        <div class="tpl-col">
+          <div class="tpl-col-label">Artisan Dark</div>
+          <div class="tpl-card art" onclick="pickTpl('artisan','Artisan Dark')">
             <div class="tpl-mock">
               <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#2C1810;color:#D4A055;">Order</span></div>
               <div class="tpl-hero"><div class="tpl-h">Baked with<br>love</div><div class="tpl-sub">Goody · Tel Aviv · Est.2019</div><div class="tpl-btn">Order now →</div></div>
               <div class="tpl-secs"><div class="tpl-sec">Sourdough</div><div class="tpl-sec">Croissants</div><div class="tpl-sec">Seasonal</div></div>
             </div>
-            <div class="tpl-foot"><span class="tpl-name">Artisan Dark</span><span class="tpl-tag">Bakery · Café</span></div>
           </div>
+        </div>
 
-          <!-- TAILOR MADE — center -->
-          <div class="tpl tm" onclick="pickTailor()">
-            <div class="tm-body">
-              <div class="tm-icon">✦</div>
-              <div class="tm-title">Design with Aria</div>
-              <div class="tm-sub">Build a fully custom site from your brand book — tailored to you</div>
-              <button class="tm-cta">Taylor Made →</button>
-            </div>
-          </div>
-
-          <!-- Natural Light -->
-          <div class="tpl nat" onclick="pickTpl('natural','Natural Light')">
+        <!-- Natural Light -->
+        <div class="tpl-col">
+          <div class="tpl-col-label">Natural Light</div>
+          <div class="tpl-card nat" onclick="pickTpl('natural','Natural Light')">
             <div class="tpl-mock">
               <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">About</span></div><span class="tpl-cta-nav" style="background:#3C2A1A;color:#F5E8D0;">Order</span></div>
               <div class="tpl-hero"><div class="tpl-h">Fresh Every<br>Morning</div><div class="tpl-sub">Goody Bakery · Seasonal pastries</div><div class="tpl-btn">Explore →</div></div>
               <div class="tpl-secs"><div class="tpl-sec">Morning Box</div><div class="tpl-sec">Pre-Order</div><div class="tpl-sec">Catering</div></div>
             </div>
-            <div class="tpl-foot"><span class="tpl-name">Natural Light</span><span class="tpl-tag">Bakery · Food</span></div>
           </div>
+        </div>
 
-          <!-- Premium Dark -->
-          <div class="tpl prem" onclick="pickTpl('premium','Premium Dark')">
+        <!-- Premium Dark -->
+        <div class="tpl-col">
+          <div class="tpl-col-label">Premium Dark</div>
+          <div class="tpl-card prem" onclick="pickTpl('premium','Premium Dark')">
             <div class="tpl-mock">
-              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Shop</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
+              <div class="tpl-nav" style="background:#0A0A0A;border-color:#222;"><span class="tpl-logo" style="color:#C8A96E;">Goody</span><div class="tpl-links"><span class="tpl-link" style="color:#888;">Shop</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
               <div class="tpl-hero"><div class="tpl-h">Crafted<br>Daily</div><div class="tpl-sub" style="color:rgba(200,169,110,.7);">Goody — Premium bakery</div><div class="tpl-btn">Discover →</div></div>
               <div class="tpl-secs"><div class="tpl-sec">Artisan</div><div class="tpl-sec">Seasonal</div><div class="tpl-sec">Gift</div></div>
             </div>
-            <div class="tpl-foot"><span class="tpl-name">Premium Dark</span><span class="tpl-tag">Bakery · Boutique</span></div>
           </div>
-
         </div>
-        <div class="see-more">↻ See more templates</div>
+
       </div>
+      <div class="see-more">↻ See more templates</div>
       <div class="stepper">
         <div class="step done"></div><div class="step done"></div>
         <div class="step cur"></div><div class="step"></div><div class="step"></div>
@@ -414,61 +491,107 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
     <div class="ap">
       <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
       <div class="ap-msgs">
-        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text" id="s3-msg">I found 3 templates that match <strong>Goody</strong>. Or go fully custom — I'll build everything from your brand book.</div></div>
-        <div style="font-size:11px;color:#AAA;display:flex;align-items:center;gap:5px;margin-top:2px;"><span>✦</span> Templates already have your name and content.</div>
+        <div class="msg-a"><div class="msg-a-av">A</div>
+          <div class="msg-a-text" id="s3-msg">I found 3 templates that match <strong>Goody</strong>. Or go fully custom — I'll build everything from your brand book.</div>
+        </div>
+        <div style="font-size:11px;color:#AAA;display:flex;align-items:center;gap:5px;">
+          <span>✦</span> Templates already have your name and content injected.
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S4a TAILOR MADE ══ -->
+<!-- ══ S4a — TAILOR MADE (mosaic) ══ -->
 <div class="screen" id="s4a" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-surface">
       <div class="mosaic" id="mosaic">
-
-        <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
-
+        <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
         <div class="mloader" id="mloader">
           <div class="ldots"><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div>
           <span>Building your brand book…</span>
         </div>
-
         <!-- Site Brand -->
         <div class="sq" id="sq-brand" style="left:52px;top:58px;width:225px;height:168px;" onclick="sqTap('brand')">
           <div class="sq-head"><span class="sq-ico">🎨</span><button class="sq-exp" onclick="event.stopPropagation();openModal('brand')">⊞</button></div>
           <div class="sq-title">Site Brand</div>
           <div class="sq-data"><strong>Wix Madefor</strong> Display + Text<br><strong>Earthy warm</strong> — amber, sage, cream<br>Tags: Warm · Artisan · Approachable</div>
         </div>
-
         <!-- Visual Profile -->
         <div class="sq" id="sq-visual" style="left:298px;top:46px;width:178px;height:152px;" onclick="sqTap('visual')">
           <div class="sq-head"><span class="sq-ico">✦</span><button class="sq-exp" onclick="event.stopPropagation();openModal('visual')">⊞</button></div>
           <div class="sq-title">Visual Profile</div>
           <div class="sq-data">Mood: <strong>Warm & artisan</strong><br>Photography: Natural light<br>Style: Close-up, textured</div>
         </div>
-
         <!-- About the Business -->
         <div class="sq" id="sq-about" style="left:46px;top:254px;width:196px;height:195px;" onclick="sqTap('about')">
           <div class="sq-head"><span class="sq-ico">🏠</span><button class="sq-exp" onclick="event.stopPropagation();openModal('about')">⊞</button></div>
           <div class="sq-title">About the Business</div>
           <div class="sq-data"><strong>Goody Bakery</strong><br>Sourdough & pastries · Tel Aviv<br>Founded 2019 · 3 locations<br><br>Domain: <strong style="color:#116DFF;">goody-bakery.com</strong> <span style="background:#E6F5EE;color:#1A8A4A;font-size:9px;font-weight:600;padding:1px 5px;border-radius:6px;">✓</span></div>
         </div>
-
         <!-- Site Goals -->
         <div class="sq" id="sq-goals" style="left:264px;top:224px;width:210px;height:138px;" onclick="sqTap('goals')">
           <div class="sq-head"><span class="sq-ico">🎯</span><button class="sq-exp" onclick="event.stopPropagation();openModal('goals')">⊞</button></div>
           <div class="sq-title">Site Goals</div>
           <div class="sq-data"><strong>Primary:</strong> Online pre-orders<br><strong>Secondary:</strong> Brand story, loyalty<br>Audience: Local food lovers, 25–45</div>
         </div>
-
         <!-- Site Apps -->
         <div class="sq" id="sq-apps" style="left:262px;top:386px;width:178px;height:138px;" onclick="sqTap('apps')">
           <div class="sq-head"><span class="sq-ico">⚙️</span><button class="sq-exp" onclick="event.stopPropagation();openModal('apps')">⊞</button></div>
           <div class="sq-title">Site Apps</div>
           <div class="sq-data">✓ Bookings<br>✓ Gallery<br>✓ Reviews<br><span style="color:#AAA;">○ Online Store</span></div>
         </div>
-
+      </div>
+      <!-- Blueprint overlay (hidden by default) -->
+      <div class="blueprint-ws" id="bp-view" style="display:none;">
+        <div class="bp-title">Blue Print</div>
+        <div class="bp-grid">
+          <div class="bp-card">
+            <div class="bp-card-title">Font pack</div>
+            <div class="bp-font-row">
+              <div class="bp-font-box">
+                <div class="bp-font-aa display">Aa</div>
+                <div class="bp-font-name">Wix Madefor Display</div>
+              </div>
+              <div class="bp-font-divider"></div>
+              <div class="bp-font-box">
+                <div class="bp-font-aa script">Aa</div>
+                <div class="bp-font-name">Snell Roundhand</div>
+              </div>
+            </div>
+          </div>
+          <div class="bp-card">
+            <div class="bp-card-title">Color palette</div>
+            <div class="bp-swatches">
+              <div class="bp-swatch" style="background:#E8631A;"></div>
+              <div class="bp-swatch" style="background:#C2D611;"></div>
+              <div class="bp-swatch" style="background:#8B7355;"></div>
+              <div class="bp-swatch" style="background:#7E8C78;"></div>
+              <div class="bp-swatch" style="background:#fff;border:1px solid #E8E8EF;"></div>
+              <div class="bp-swatch" style="background:#F0EDE8;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bp-card-full">
+          <div class="bp-card-title">Visual profile</div>
+          <div class="bp-tags">
+            <span class="bp-tag">Warm</span>
+            <span class="bp-tag">Unpretentious</span>
+            <span class="bp-tag">Modern</span>
+            <span class="bp-tag">Craft-focused</span>
+            <span class="bp-tag">Approachable</span>
+          </div>
+        </div>
+        <div class="bp-card-full">
+          <div class="bp-card-title">Apps</div>
+          <div class="bp-apps-grid">
+            <div class="bp-app"><div class="bp-app-ic">📅</div><div class="bp-app-name">Wix Bookings</div></div>
+            <div class="bp-app"><div class="bp-app-ic">🛎</div><div class="bp-app-name">Wix Services</div></div>
+            <div class="bp-app"><div class="bp-app-ic">🛒</div><div class="bp-app-name">Wix Bookings</div></div>
+            <div class="bp-app"><div class="bp-app-ic">📝</div><div class="bp-app-name">Wix Blog</div></div>
+          </div>
+        </div>
       </div>
       <div class="stepper">
         <div class="step done"></div><div class="step done"></div><div class="step done"></div>
@@ -485,20 +608,20 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
           <input type="text" placeholder="Ask or change anything…" onkeydown="if(event.key==='Enter')goToSite()">
           <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
         </div>
-        <button class="comp-skip" onclick="goToSite()">Generate site → (Enter)</button>
+        <button style="background:none;border:none;font-size:11px;color:#CCC;cursor:pointer;text-align:right;padding:0 2px;font-family:inherit;" onclick="goToSite()">Generate site → (Enter)</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S4b TEMPLATE PATH ══ -->
+<!-- ══ S4b — TEMPLATE PATH ══ -->
 <div class="screen" id="s4b" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-surface">
       <div class="tpl-ws">
         <div class="site-frame" id="s4b-frame"></div>
       </div>
-      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
+      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
       <div class="stepper">
         <div class="step done"></div><div class="step done"></div><div class="step done"></div>
         <div class="step cur"></div><div class="step"></div>
@@ -508,7 +631,7 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
       <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
       <div class="ap-msgs" id="s4b-msgs">
         <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text">Love the <strong id="tpl-ref">Artisan Dark</strong> vibe — already injected your content. Happy with the colors, or want to try something different?</div></div>
-        <div style="display:flex;flex-direction:column;gap:7px;margin-top:4px;">
+        <div class="choice-row">
           <button class="choice-btn" onclick="tplChoice('keep')">✓ Keep it — looks great</button>
           <button class="choice-btn" onclick="tplChoice('change')">🎨 Let's change the colors</button>
         </div>
@@ -523,14 +646,14 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
   </div>
 </div>
 
-<!-- ══ S5 FINAL ══ -->
+<!-- ══ S5 — FINAL ══ -->
 <div class="screen" id="s5" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-surface">
       <div class="tpl-ws">
         <div class="site-frame" id="s5-frame" style="width:350px;"></div>
       </div>
-      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
+      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
       <div class="stepper">
         <div class="step done"></div><div class="step done"></div><div class="step done"></div>
         <div class="step done"></div><div class="step cur"></div>
@@ -572,20 +695,15 @@ body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;back
 <!-- ══ DEV NAV ══ -->
 <div class="dev-nav">
   <div class="darr" onclick="navPrev()">←</div>
-  <div class="darr dcur" id="dcur">1</div>
+  <div class="darr dcur" id="dcur">S1</div>
   <div class="darr" onclick="navNext()">→</div>
 </div>
-
-<style>
-.choice-btn{text-align:left;background:#F8F8FC;border:1.5px solid #E8E8EF;border-radius:10px;padding:9px 12px;font-family:inherit;font-size:12px;cursor:pointer;transition:border-color .15s,background .15s;color:#333;}
-.choice-btn:hover{border-color:#116DFF;background:#F0F5FF;color:#116DFF;}
-</style>
 
 <script>
 // ── STATE ──
 var cur = 's1', path = null, tplName = '', siteName = 'Goody';
 var s2step = 0;
-const ORDER = ['s1','s2','s3','s4a','s5']; // logical flow
+var bpOpen = false;
 
 // ── GOTO ──
 function goTo(id) {
@@ -593,7 +711,7 @@ function goTo(id) {
   document.getElementById(id)?.classList.add('active');
   cur = id;
   document.getElementById('chrome').style.display = id === 's1' ? 'none' : 'block';
-  document.getElementById('dcur').textContent = {s1:'1',s2:'2',s3:'3',s4a:'4',s4b:'4',s5:'5'}[id]||'?';
+  document.getElementById('dcur').textContent = id.toUpperCase();
 }
 
 function navPrev() {
@@ -604,7 +722,7 @@ function navPrev() {
 }
 function navNext() {
   if(cur==='s1') startFlow();
-  else if(cur==='s2') goTo('s3');
+  else if(cur==='s2') { s2step=0; goTo('s3'); }
   else if(cur==='s3') pickTailor();
   else if(cur==='s4a') goToSite();
   else if(cur==='s4b') goToSite();
@@ -616,69 +734,104 @@ function fillEx(el) {
   document.querySelectorAll('.chip').forEach(c=>{c.style.borderColor='';c.style.color='';});
   el.style.borderColor='#116DFF'; el.style.color='#116DFF';
 }
-function startFlow() { goTo('s2'); }
+function startFlow() { s2step=0; goTo('s2'); }
 
-// ── S2 QUESTIONS ──
-const Q = [
-  { q:"Let's build your brand book. First — what's your site called?",
-    suggs:['Goody','Nova','Bloom','Studio K'], ph:"Type your site name…" },
-  { q:"What makes <NAME>'s business unique — or what's your main goal?",
-    suggs:['Online pre-orders','Artisan & local','Seasonal menu','Community'],
-    ph:"Describe what makes it special…" }
+// ── S2 QUESTION WIDGET ──
+const QUESTIONS = [
+  {
+    title: "What's your site called?",
+    sub: "This will appear on your site and domain",
+    opts: ['Goody', 'Nova Bakes', 'Bloom Bakery'],
+    ph: "Or type your site name…"
+  },
+  {
+    title: "What makes your business unique?",
+    sub: "Help Aria understand what sets you apart",
+    opts: ['Artisan craft & local sourcing', 'Online pre-orders & delivery', 'Seasonal menu & community events'],
+    ph: "Or describe what makes it special…"
+  }
 ];
-function pickS2(el){ submitS2(el.textContent); }
-function sendS2(skip) {
-  const v = document.getElementById('s2-in').value.trim();
-  submitS2(skip ? '' : v);
-  document.getElementById('s2-in').value = '';
+
+function renderQuestion(step) {
+  const q = QUESTIONS[step];
+  if(!q) return;
+  document.getElementById('q-title').textContent = q.title;
+  document.getElementById('q-sub').textContent = q.sub;
+  document.getElementById('q-input').value = '';
+  document.getElementById('q-input').placeholder = q.ph;
+  document.getElementById('q-opts').innerHTML = q.opts.map(o =>
+    `<label class="q-opt" onclick="selectQOpt(this,'${o}')">
+      <input type="radio" name="q${step}"> <span class="q-opt-label">${o}</span>
+    </label>`
+  ).join('');
 }
-function submitS2(val) {
+
+function selectQOpt(el, val) {
+  document.querySelectorAll('#q-opts .q-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  document.getElementById('q-input').value = val;
+}
+
+function qNext(skip) {
+  const val = skip ? '' : (document.getElementById('q-input').value.trim() ||
+    document.querySelector('#q-opts .q-opt.selected .q-opt-label')?.textContent || '');
+
   const msgs = document.getElementById('s2-msgs');
   if(val) {
     const b = document.createElement('div'); b.className='msg-u'; b.textContent=val; msgs.appendChild(b);
-    if(s2step===0) { siteName=val; document.getElementById('s3-msg').innerHTML=`I found 3 templates that match <strong>${val}</strong>. Or go fully custom.`; }
+    if(s2step===0) {
+      siteName = val;
+      document.getElementById('s3-msg').innerHTML = `I found 3 templates that match <strong>${val}</strong>. Or go fully custom.`;
+    }
   }
+
   s2step++;
-  if(s2step>=Q.length){
-    addAriaMsg(msgs,`Great! Let me match templates for <strong>${siteName}</strong>…`);
-    msgs.scrollTop=msgs.scrollHeight;
-    setTimeout(()=>goTo('s3'),1100);
+  if(s2step >= QUESTIONS.length) {
+    addAriaMsg(msgs, `Great! Let me match templates for <strong>${siteName}</strong>…`);
+    msgs.scrollTop = msgs.scrollHeight;
+    setTimeout(()=>goTo('s3'), 1100);
     return;
   }
-  const q=Q[s2step];
-  addAriaMsg(msgs, q.q.replace('<NAME>',siteName));
-  document.getElementById('s2-suggs').innerHTML = q.suggs.map(s=>`<span class="comp-sugg" onclick="pickS2(this)">${s}</span>`).join('');
-  document.getElementById('s2-in').placeholder = q.ph;
-  msgs.scrollTop=msgs.scrollHeight;
+
+  addAriaMsg(msgs, QUESTIONS[s2step].title);
+  msgs.scrollTop = msgs.scrollHeight;
+  renderQuestion(s2step);
 }
+
 function addAriaMsg(container, html) {
-  const d=document.createElement('div'); d.className='msg-a';
-  d.innerHTML=`<div class="msg-a-av">A</div><div class="msg-a-text">${html}</div>`;
+  const d = document.createElement('div'); d.className='msg-a';
+  d.innerHTML = `<div class="msg-a-av">A</div><div class="msg-a-text">${html}</div>`;
   container.appendChild(d);
 }
 
-// ── S3 ──
-function pickTailor(){
+// ── S3 TEMPLATE PICKS ──
+function pickTailor() {
   path='tailor'; goTo('s4a'); startMosaic();
   document.getElementById('bp-btn').classList.add('show');
 }
-function pickTpl(id,name){
+function pickTpl(id, name) {
   path='template'; tplName=name;
   document.getElementById('tpl-ref').textContent=name;
-  fillSiteFrame('s4b-frame',id);
-  fillSiteFrame('s5-frame',id);
+  fillSiteFrame('s4b-frame', id);
+  fillSiteFrame('s5-frame', id);
   goTo('s4b');
   document.getElementById('bp-btn').classList.add('show');
+  setTimeout(()=>{
+    const f=document.getElementById('s4b-frame');
+    f.style.opacity='0'; f.style.transform='translateX(40px)';
+    setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; }, 60);
+  }, 50);
 }
 
 // ── SITE FRAME HTML ──
-function siteHtml(id){
-  const C={
+function siteHtml(id) {
+  const C = {
     artisan:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#2C1810,#1A0F08)',h:'Baked with love,<br>every morning',hc:'#fff',sub:'Sourdough & seasonal pastries · Tel Aviv',subc:'rgba(255,255,255,.6)',acc:'#D4A055',sec:'#F5EFE8',secc:'#8B6A50',navCta:'background:#2C1810;color:#D4A055'},
     natural:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#F5E8D0,#EDD5B0)',h:'Fresh every morning',hc:'#3C2A1A',sub:'Goody Bakery · Seasonal pastries',subc:'rgba(60,42,26,.6)',acc:'#3C2A1A',sec:'#EDD5B0',secc:'#8B6A50',navCta:'background:#3C2A1A;color:#F5E8D0'},
     premium:{nav:'#0A0A0A',logo:'#C8A96E',bg:'linear-gradient(180deg,#0A0A0A,#1A1A1A)',h:'Crafted daily',hc:'#fff',sub:'Goody — Premium bakery',subc:'rgba(200,169,110,.65)',acc:'#C8A96E',sec:'#111',secc:'#C8A96E',navCta:'background:#C8A96E;color:#111'}
   };
-  const c=C[id]||C.artisan;
+  const c = C[id] || C.artisan;
   return `<div style="font-family:inherit">
     <div style="height:32px;background:${c.nav};display:flex;align-items:center;padding:0 14px;gap:10px;border-bottom:1px solid rgba(0,0,0,.08)">
       <span style="font-weight:800;font-size:13px;color:${c.logo}">Goody</span>
@@ -698,40 +851,44 @@ function siteHtml(id){
     </div>
   </div>`;
 }
-function fillSiteFrame(id,tpl){ document.getElementById(id).innerHTML=siteHtml(tpl); }
+function fillSiteFrame(id, tpl) { document.getElementById(id).innerHTML = siteHtml(tpl); }
 
 // ── S4a MOSAIC LOADER ──
-const SQS=['sq-brand','sq-visual','sq-about','sq-goals','sq-apps'];
-const DELAYS=[700,1400,2200,3200,4200];
-function startMosaic(){
-  SQS.forEach(id=>{const s=document.getElementById(id);s.classList.remove('show');s.style.opacity='';});
-  const loader=document.getElementById('mloader');
+const SQS = ['sq-brand','sq-visual','sq-about','sq-goals','sq-apps'];
+const DELAYS = [700,1400,2200,3200,4200];
+function startMosaic() {
+  bpOpen = false;
+  document.getElementById('bp-view').style.display = 'none';
+  document.getElementById('mosaic').style.display = 'block';
+  SQS.forEach(id=>{ const s=document.getElementById(id); s.classList.remove('show'); s.style.opacity=''; s.style.transform=''; });
+  const loader = document.getElementById('mloader');
   loader.style.opacity='1'; loader.style.display='flex';
+  document.getElementById('s4a-init').textContent='Building your brand book…';
   SQS.forEach((id,i)=>{
     setTimeout(()=>{
-      const sq=document.getElementById(id);sq.style.opacity='';sq.classList.add('show');
+      const sq=document.getElementById(id); sq.style.opacity=''; sq.classList.add('show');
       if(i===SQS.length-1){
         setTimeout(()=>{
           loader.style.opacity='0';
-          setTimeout(()=>loader.style.display='none',350);
+          setTimeout(()=>loader.style.display='none', 350);
           const m=document.getElementById('s4a-msgs');
           addAriaMsg(m,'Your brand book is ready ✓ Tap any card to explore or edit.');
           m.scrollTop=m.scrollHeight;
         },400);
       }
-    },DELAYS[i]);
+    }, DELAYS[i]);
   });
 }
 
-// ── SQUARE TAP → CHAT ──
-const SQ_Q={
+// ── SQUARE TAP ──
+const SQ_Q = {
   brand:{ico:'🎨',q:"Want to tweak the typography or palette? I can suggest alternatives."},
   visual:{ico:'✦',q:"I picked warm natural photography. Does that feel right for Goody, or more minimal?"},
   about:{ico:'🏠',q:"<strong>goody-bakery.com</strong> is available — want to lock it in now?"},
   goals:{ico:'🎯',q:"Pre-orders is your primary goal. Should I add a Booking app and loyalty program too?"},
   apps:{ico:'⚙️',q:"Bookings + Gallery + Reviews are active. Want to add an online shop?"}
 };
-function sqTap(key){
+function sqTap(key) {
   document.querySelectorAll('.sq').forEach(s=>s.classList.remove('sq-active'));
   document.getElementById('sq-'+key)?.classList.add('sq-active');
   const m=document.getElementById('s4a-msgs');
@@ -740,33 +897,45 @@ function sqTap(key){
   m.scrollTop=m.scrollHeight;
 }
 
+// ── BLUEPRINT TOGGLE ──
+function toggleBlueprint() {
+  if(cur==='s4a') {
+    bpOpen = !bpOpen;
+    document.getElementById('bp-view').style.display = bpOpen ? 'block' : 'none';
+    document.getElementById('mosaic').style.display = bpOpen ? 'none' : 'block';
+  } else if(cur==='s4b'||cur==='s5') {
+    goTo('s4a');
+    startMosaic();
+  }
+}
+
 // ── TRANSITION → SITE ──
-function goToSite(){
-  if(cur==='s4a'){
+function goToSite() {
+  if(cur==='s4a') {
     SQS.forEach((id,i)=>{
       const s=document.getElementById(id);
       s.style.transition=`opacity .4s ease ${i*.07}s, transform .4s ease ${i*.07}s`;
       s.style.opacity='0'; s.style.transform='translateX(-28px)';
     });
     setTimeout(()=>{
-      if(path==='tailor'){ fillSiteFrame('s5-frame','artisan'); }
+      if(path==='tailor') fillSiteFrame('s5-frame','artisan');
       const f=document.getElementById('s5-frame');
-      f.style.opacity='0'; f.style.transform='translateX(40px)';
+      f.style.opacity='0'; f.style.transform='translateX(40px)'; f.style.transition='none';
       goTo('s5');
       document.getElementById('ec-pub').classList.add('live');
-      setTimeout(()=>{f.style.transition='opacity .6s ease, transform .6s ease';f.style.opacity='1';f.style.transform='translateX(0)';},60);
+      setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; },60);
     },550);
   } else {
     const f=document.getElementById('s5-frame');
-    f.style.opacity='0'; f.style.transform='translateX(40px)';
+    f.style.opacity='0'; f.style.transform='translateX(40px)'; f.style.transition='none';
     goTo('s5');
     document.getElementById('ec-pub').classList.add('live');
-    setTimeout(()=>{f.style.transition='opacity .6s ease, transform .6s ease';f.style.opacity='1';f.style.transform='translateX(0)';},60);
+    setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; },60);
   }
 }
 
-// ── TEMPLATE COLOR CHOICE ──
-function tplChoice(c){
+// ── S4b COLOR CHOICE ──
+function tplChoice(c) {
   const m=document.getElementById('s4b-msgs');
   const b=document.createElement('div'); b.className='msg-u';
   b.textContent=c==='keep'?'Keep it — looks great ✓':"Let's change the colors";
@@ -780,14 +949,8 @@ function tplChoice(c){
   m.appendChild(dw); m.scrollTop=m.scrollHeight;
 }
 
-// ── BLUEPRINT TOGGLE ──
-function toggleBlueprint(){
-  if(cur==='s4a') goToSite();
-  else if(cur==='s4b'||cur==='s5') goTo('s4a');
-}
-
 // ── MODALS ──
-const MD={
+const MD = {
   brand:{ico:'🎨',title:'Site Brand',html:`
     <div class="msec"><div class="msec-title">Typography</div>
       <div class="font-prev"><div class="font-prev-big">Goody Bakery</div><div class="font-prev-sm">Wix Madefor Display (Bold) + Wix Madefor Text</div></div></div>
@@ -797,82 +960,58 @@ const MD={
         <div class="cswatch" style="background:#D4A055" title="Warm Gold"></div>
         <div class="cswatch" style="background:#8B6A50" title="Mid Brown"></div>
         <div class="cswatch" style="background:#F5E8D0" title="Cream"></div>
-        <div class="cswatch" style="background:#4A7C6F" title="Sage"></div>
+        <div class="cswatch" style="background:#1A5C38" title="Forest Green"></div>
       </div></div>
-    <div class="msec"><div class="msec-title">Brand Tags</div>
+    <div class="msec"><div class="msec-title">Tags</div>
       <div style="display:flex;gap:7px;flex-wrap:wrap">
-        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Warm</span>
-        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Artisan</span>
-        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Approachable</span>
+        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Warm</span>
+        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Artisan</span>
+        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Approachable</span>
       </div></div>`},
   visual:{ico:'✦',title:'Visual Profile',html:`
-    <div class="msec"><div class="msec-title">Photography Style</div>
-      <p style="font-size:13px;color:#555;line-height:1.6">Natural light, close-up shots of baked goods. Warm tones, overhead and 45° angles. Textures and handmade quality.</p></div>
-    <div class="msec"><div class="msec-title">Mood Board</div>
+    <div class="msec"><div class="msec-title">Mood</div><p style="font-size:13.5px;color:#333">Warm & artisan — natural textures, close-up photography, handcrafted feel</p></div>
+    <div class="msec"><div class="msec-title">Photography style</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#D4A055,#2C1810)"></div>
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#F5E8D0,#D4A055)"></div>
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#4A7C6F,#2C1810)"></div>
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#EDD5B0,#F5E8D0)"></div>
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#D4A055,#8B6A50)"></div>
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#2C1810,#D4A055)"></div>
       </div></div>`},
   about:{ico:'🏠',title:'About the Business',html:`
-    <div class="msec"><div class="msec-title">Business Info</div>
-      <div style="display:flex;flex-direction:column;gap:7px">
-        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Name:</strong> Goody Bakery</div>
-        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Type:</strong> Artisan bakery & café</div>
-        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Location:</strong> Tel Aviv, Israel</div>
-        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Tagline:</strong> Baked with love, every morning</div>
-      </div></div>
+    <div class="msec"><div class="msec-title">Business info</div>
+      <div class="app-row"><span>🏪</span><div><div style="font-size:13px;font-weight:600">Goody Bakery</div><div style="font-size:11px;color:#888">Sourdough & artisan pastries · Tel Aviv</div></div></div>
+    </div>
     <div class="msec"><div class="msec-title">Domain</div>
-      <div class="domain-w">
-        <div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Suggested domain</span></div>
-        <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
-        <button class="btn-domain">Connect domain →</button>
-      </div></div>`},
+      <div style="font-size:13px;color:#116DFF;font-weight:600">goody-bakery.com <span style="background:#E6F5EE;color:#1A8A4A;font-size:10px;font-weight:600;padding:2px 7px;border-radius:7px;margin-left:4px">✓ Available</span></div>
+    </div>`},
   goals:{ico:'🎯',title:'Site Goals',html:`
-    <div class="msec"><div class="msec-title">Primary Goal</div>
-      <div style="background:#EBF0FF;border:1.5px solid #116DFF;border-radius:10px;padding:12px;font-size:13px;color:#116DFF;font-weight:600">🎯 Online pre-orders</div></div>
-    <div class="msec"><div class="msec-title">Secondary Goals</div>
-      <div style="display:flex;flex-direction:column;gap:6px">
-        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Brand storytelling</div>
-        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Customer loyalty</div>
-        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Local community events</div>
-      </div></div>
-    <div class="msec"><div class="msec-title">Target Audience</div>
-      <p style="font-size:13px;color:#555;line-height:1.6">Local food lovers in Tel Aviv, aged 25–45. Appreciate artisan quality, sustainability, and local community.</p></div>`},
-  apps:{ico:'⚙️',title:'Site Apps',html:`
-    <div class="msec"><div class="msec-title">Active Apps</div>
+    <div class="msec"><div class="msec-title">Primary goal</div><p style="font-size:13.5px;font-weight:600;color:#116DFF">Online pre-orders</p></div>
+    <div class="msec"><div class="msec-title">Secondary goals</div>
       <div style="display:flex;flex-direction:column;gap:7px">
-        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>📅</span><span style="font-size:12.5px;font-weight:600;flex:1">Bookings</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
-        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>🖼️</span><span style="font-size:12.5px;font-weight:600;flex:1">Gallery</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
-        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>⭐</span><span style="font-size:12.5px;font-weight:600;flex:1">Reviews</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
-        <div class="app-row" style="background:#F8F8FC;border:1px solid #E8E8EF"><span>🛒</span><span style="font-size:12.5px;color:#888;flex:1">Online Store</span><button style="font-size:11px;font-weight:600;color:#116DFF;background:none;border:none;cursor:pointer">+ Add</button></div>
-      </div></div>`}
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#1A8A4A">✓</span> Brand story & awareness</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#1A8A4A">✓</span> Customer loyalty program</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#AAA">○</span> E-commerce expansion</div>
+      </div></div>
+    <div class="msec"><div class="msec-title">Target audience</div><p style="font-size:13px;color:#555">Local food lovers, 25–45, Tel Aviv area</p></div>`},
+  apps:{ico:'⚙️',title:'Site Apps',html:`
+    <div class="msec"><div class="msec-title">Active apps</div>
+      <div class="app-row"><span>📅</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Bookings</div><div style="font-size:11px;color:#888">Pre-order slots & reservations</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
+      <div class="app-row"><span>🖼️</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Gallery</div><div style="font-size:11px;color:#888">Photo galleries</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
+      <div class="app-row"><span>⭐</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Reviews</div><div style="font-size:11px;color:#888">Customer testimonials</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
+    </div>
+    <div class="msec"><div class="msec-title">Suggested</div>
+      <div class="app-row"><span>🛒</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Stores</div><div style="font-size:11px;color:#888">Sell products online</div></div><span style="color:#116DFF;font-size:12px;font-weight:600;border:1px solid #116DFF;padding:3px 10px;border-radius:10px;cursor:pointer">Add</span></div>
+    </div>`}
 };
-function openModal(key){
-  const d=MD[key]; if(!d)return;
-  document.getElementById('m-ico').textContent=d.ico;
-  document.getElementById('m-title').textContent=d.title;
-  document.getElementById('m-body').innerHTML=d.html;
+function openModal(key) {
+  const m=MD[key]; if(!m) return;
+  document.getElementById('m-ico').textContent=m.ico;
+  document.getElementById('m-title').textContent=m.title;
+  document.getElementById('m-body').innerHTML=m.html;
   document.getElementById('modal-ov').classList.add('open');
 }
-function closeModal(){ document.getElementById('modal-ov').classList.remove('open'); }
+function closeModal() { document.getElementById('modal-ov').classList.remove('open'); }
 
-// ── KEYBOARD ──
-document.addEventListener('keydown',e=>{
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
-  if(e.key==='ArrowRight')navNext();
-  if(e.key==='ArrowLeft')navPrev();
-  if(e.key==='Escape')closeModal();
-});
-
-// ── INIT ──
-// alias so external callers can use goTo(1..5) or goTo('s2') etc.
-const _goToInternal = goTo;
-window.goTo = function(n){
-  if(typeof n==='number'){const m={1:'s1',2:'s2',3:'s3',4:'s4a',5:'s5'};_goToInternal(m[n]||'s1');}
-  else _goToInternal(n);
-};
+// init first question
+renderQuestion(0);
 </script>
 </body>
 </html>
