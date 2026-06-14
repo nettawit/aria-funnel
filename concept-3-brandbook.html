@@ -3,644 +3,876 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept 3 — The Brand Book</title>
+<title>Concept 3 — Aria Brand Book</title>
 <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Wix+Madefor+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Wix Madefor Text', sans-serif; overflow: hidden; height: 100vh; }
-.screen { position: absolute; inset: 0; display: none; flex-direction: column; opacity: 0; transition: opacity 0.3s ease; }
-.screen.active { display: flex; opacity: 1; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;background:#fff;}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;}
+.screen.active{display:flex;}
 
-/* ══ S1 — PROMPT (Wix Aria style) ══ */
-#s1 {
-  background: linear-gradient(160deg, #E8EEFF 0%, #F5F0FF 40%, #FFF0F8 100%);
-  flex-direction: column;
-}
-.s1-top {
-  height: 52px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; flex-shrink: 0;
-}
-.s1-logo { font-family: 'Wix Madefor Display', sans-serif; font-size: 22px; font-weight: 800; color: #0F0F1A; }
-.s1-right { display: flex; align-items: center; gap: 12px; }
-.s1-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg,#6B46FF,#E040FB); display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:600; }
-.s1-upgrade { font-size: 13px; font-weight: 600; color: #6B46FF; background: none; border: none; cursor: pointer; }
-.s1-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 24px 60px; }
-.s1-aria-intro { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; max-width: 560px; width: 100%; }
-.s1-aria-avatar { width: 32px; height: 32px; border-radius: 50%; background: #0F0F1A; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 2px; }
-.s1-aria-text { font-size: 18px; line-height: 1.5; color: #0F0F1A; }
-.s1-aria-text strong { color: #116DFF; font-weight: 600; }
-.s1-aria-text em { color: #116DFF; font-style: normal; font-weight: 400; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
-.s1-input-wrap { width: 100%; max-width: 560px; margin-bottom: 20px; }
-.s1-textarea-box {
-  background: #fff; border: 1.5px solid #E0E0EC; border-radius: 14px;
-  padding: 16px 16px 12px; transition: border-color 0.2s, box-shadow 0.2s;
-}
-.s1-textarea-box:focus-within { border-color: #116DFF; box-shadow: 0 0 0 3px rgba(17,109,255,0.08); }
-.s1-textarea-box textarea {
-  width: 100%; background: transparent; border: none; outline: none; resize: none;
-  font-family: inherit; font-size: 16px; color: #0F0F1A; line-height: 1.5; min-height: 80px;
-}
-.s1-textarea-box textarea::placeholder { color: #BEBEC8; }
-.s1-textarea-foot { display: flex; justify-content: flex-end; padding-top: 10px; border-top: 1px solid #F0F0F5; margin-top: 10px; }
-.s1-gen-btn { background: #116DFF; color: #fff; border: none; border-radius: 10px; padding: 10px 22px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-.s1-gen-btn:hover { background: #0055DD; }
-.s1-examples { max-width: 560px; width: 100%; }
-.s1-examples-label { font-size: 12px; color: #AAA; margin-bottom: 10px; }
-.s1-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.s1-chip { border: 1px solid #E0E0EC; border-radius: 20px; padding: 6px 14px; font-size: 12px; color: #444; cursor: pointer; background: rgba(255,255,255,0.7); transition: all 0.15s; }
-.s1-chip:hover { border-color: #116DFF; color: #116DFF; }
-.s1-chip.more { color: #116DFF; border-color: rgba(17,109,255,0.3); display: flex; align-items: center; gap: 5px; }
-.s1-footer { text-align: center; padding: 16px; font-size: 11px; color: #BEBEC8; flex-shrink: 0; }
+/* ── S1 PROMPT ── */
+#s1{background:linear-gradient(155deg,#EBF0FF 0%,#F2EDFF 45%,#FEF0FF 100%);}
+.s1-nav{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;flex-shrink:0;}
+.s1-logo{font-family:'Wix Madefor Display',sans-serif;font-size:24px;font-weight:800;color:#111;display:flex;align-items:center;gap:10px;}
+.s1-av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;}
+.s1-upgrade{font-size:14px;font-weight:600;color:#116DFF;background:none;border:none;cursor:pointer;}
+.s1-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 36px 60px;}
+.aria-intro{display:flex;align-items:flex-start;gap:13px;margin-bottom:28px;width:100%;max-width:640px;}
+.aria-av-lg{width:36px;height:36px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;margin-top:3px;}
+.aria-msg-text{font-size:20px;line-height:1.5;color:#111;}
+.aria-msg-text .hi{font-weight:700;color:#116DFF;}
+.aria-msg-text em{font-style:normal;color:#116DFF;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px;}
+.input-card{width:100%;max-width:640px;background:#fff;border:1.5px solid #E0E0EC;border-radius:16px;padding:18px 18px 14px;margin-bottom:20px;transition:border-color .2s,box-shadow .2s;}
+.input-card:focus-within{border-color:#116DFF;box-shadow:0 0 0 3px rgba(17,109,255,.08);}
+.input-card textarea{width:100%;background:transparent;border:none;outline:none;resize:none;font-family:inherit;font-size:16px;color:#111;line-height:1.6;min-height:100px;}
+.input-card textarea::placeholder{color:#C0C0CC;}
+.input-foot{display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid #F0F0F6;margin-top:10px;}
+.btn-gen{background:#116DFF;color:#fff;border:none;border-radius:10px;padding:11px 24px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .15s;}
+.btn-gen:hover{background:#0055DD;}
+.chips-wrap{width:100%;max-width:640px;}
+.chips-label{font-size:12px;color:#AAA;margin-bottom:10px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{border:1px solid #E0E0EC;border-radius:20px;padding:6px 14px;font-size:12.5px;color:#555;cursor:pointer;background:rgba(255,255,255,.7);transition:all .15s;}
+.chip:hover{border-color:#116DFF;color:#116DFF;}
+.chip-more{color:#116DFF;border-color:rgba(17,109,255,.25);}
+.s1-foot{text-align:center;padding:14px;font-size:11px;color:#CACAD0;flex-shrink:0;}
 
-/* ══ EDITOR CHROME ══ */
-.editor-chrome {
-  height: 44px; background: #fff; border-bottom: 1px solid #E8E8EF;
-  display: flex; align-items: center; padding: 0 12px; flex-shrink: 0; z-index: 10; gap: 2px;
-}
-.chrome-logo { font-family: 'Wix Madefor Display',sans-serif; font-size: 18px; font-weight: 800; color: #0F0F1A; margin-right: 8px; }
-.chrome-avatar { width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg,#6B46FF,#E040FB); display:flex;align-items:center;justify-content:center; font-size:10px;color:#fff;font-weight:600; flex-shrink:0; }
-.chrome-div { width:1px;height:16px;background:#E8E8EF;margin:0 6px; }
-.chrome-btn { display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;font-size:12px;font-weight:500;color:#555;background:transparent;border:none;cursor:pointer; }
-.chrome-btn:hover { background:#F5F5F8; }
-.chrome-caret { display:inline-block;width:7px;height:7px;border-right:1.5px solid #AAA;border-bottom:1.5px solid #AAA;transform:rotate(45deg) translateY(-2px); }
-.chrome-center { flex:1;display:flex;justify-content:center; }
-.chrome-fit { font-size:12px;color:#777;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;cursor:pointer; }
-.chrome-right { display:flex;align-items:center;gap:4px; }
-.btn-upgrade { color:#6B46FF;font-size:12px;font-weight:600;background:none;border:none;cursor:pointer;padding:4px 8px; }
-.btn-preview { padding:5px 12px;background:none;border:1px solid #D5D5DC;border-radius:7px;font-size:12px;font-weight:500;color:#333;cursor:pointer; }
-.btn-publish { padding:5px 12px;border:none;border-radius:7px;font-size:12px;font-weight:600;color:#fff;cursor:not-allowed;background:#CACAD8; }
-.btn-publish.live { background:#116DFF;cursor:pointer; }
+/* ── EDITOR CHROME ── */
+.ec{height:46px;background:#fff;border-bottom:1px solid #EAEAEF;display:flex;align-items:center;padding:0 14px;gap:0;flex-shrink:0;}
+.ec-logo{font-family:'Wix Madefor Display',sans-serif;font-size:19px;font-weight:800;color:#111;margin-right:4px;}
+.ec-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;}
+.ec-sep{width:1px;height:16px;background:#EAEAEF;margin:0 7px;}
+.ec-btn{display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;font-size:12px;font-weight:500;color:#555;background:transparent;border:none;cursor:pointer;}
+.ec-btn:hover{background:#F5F5F8;}
+.ec-caret{display:inline-block;width:6px;height:6px;border-right:1.5px solid #AAA;border-bottom:1.5px solid #AAA;transform:rotate(45deg) translateY(-2px);}
+.ec-center{flex:1;display:flex;justify-content:center;}
+.ec-fit{font-size:12px;color:#777;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;cursor:pointer;}
+.ec-right{display:flex;align-items:center;gap:4px;}
+.ec-upgrade{color:#6B46FF;font-size:12px;font-weight:600;background:none;border:none;cursor:pointer;padding:4px 8px;}
+.ec-preview{padding:5px 12px;background:none;border:1px solid #D5D5DC;border-radius:7px;font-size:12px;font-weight:500;color:#333;cursor:pointer;}
+.ec-publish{padding:5px 12px;border:none;border-radius:7px;font-size:12px;font-weight:600;color:#fff;background:#CACAD8;cursor:not-allowed;}
+.ec-publish.live{background:#116DFF;cursor:pointer;}
+.ec-blueprint{display:none;align-items:center;gap:6px;padding:5px 10px;border:1px solid rgba(17,109,255,.2);border-radius:7px;background:rgba(17,109,255,.05);cursor:pointer;font-size:12px;font-weight:500;color:#116DFF;transition:all .15s;}
+.ec-blueprint:hover{background:rgba(17,109,255,.1);}
+.ec-blueprint.show{display:flex;}
 
-/* ══ EDITOR LAYOUT ══ */
-.editor-body { flex:1; display:flex; overflow:hidden; position:relative; }
-.editor-surface { flex:1; background:#ECEEF4; position:relative; overflow:hidden; }
+/* ── EDITOR LAYOUT ── */
+.ed-body{flex:1;display:flex;overflow:hidden;position:relative;}
+.ed-surface{flex:1;background:#F2F3F6;position:relative;overflow:hidden;}
 
-/* ══ ARIA PANEL ══ */
-.aria-panel { width:280px; flex-shrink:0; background:#fff; border-left:1px solid #E8E8EF; display:flex; flex-direction:column; }
-.aria-panel-head { padding:12px 14px 10px; border-bottom:1px solid #F2F2F5; font-size:13px; font-weight:600; color:#0F0F1A; }
-.aria-msgs { flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px; }
-.msg-user { align-self:flex-end; background:#F3F0FF; color:#0F0F1A; border-radius:12px 12px 3px 12px; padding:8px 11px; font-size:12px; max-width:85%; line-height:1.5; }
-.msg-aria-t { font-size:12px; color:#444; line-height:1.6; }
-.aria-q { background:#FAFAFA; border:1px solid #EBEBF0; border-radius:11px; padding:11px; margin-top:2px; }
-.aria-q-lbl { font-size:12px; font-weight:600; color:#0F0F1A; margin-bottom:2px; }
-.aria-q-sub { font-size:11px; color:#BBB; margin-bottom:9px; }
-.aria-opts { display:flex; flex-direction:column; gap:5px; }
-.aria-opt { display:flex;align-items:center;gap:7px;padding:7px 10px;border:1.5px solid #E8E8EF;border-radius:8px;font-size:12px;color:#333;cursor:pointer;transition:all 0.15s;background:#fff; }
-.aria-opt:hover { border-color:#116DFF;background:#F0F5FF;color:#116DFF; }
-.aria-opt.sel { border-color:#116DFF;background:#EAF1FF;color:#116DFF; }
-.aria-panel-foot { display:flex;align-items:center;justify-content:space-between;padding:9px 12px 11px;border-top:1px solid #F2F2F5; }
-.btn-skip-sm { background:none;border:none;font-size:12px;color:#BBB;cursor:pointer; }
-.btn-next-sm { background:#116DFF;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer; }
-.btn-next-sm:hover { background:#0055DD; }
+/* ── ARIA PANEL ── */
+.ap{width:300px;flex-shrink:0;background:#fff;border-left:1px solid #EAEAEF;display:flex;flex-direction:column;}
+.ap-head{padding:14px 16px 12px;border-bottom:1px solid #F2F2F5;display:flex;align-items:center;gap:8px;}
+.ap-head-av{width:24px;height:24px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;flex-shrink:0;}
+.ap-head-title{font-size:13px;font-weight:600;color:#111;flex:1;}
+.ap-step{font-size:11px;color:#AAA;}
+.ap-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.msg-a{display:flex;align-items:flex-start;gap:8px;}
+.msg-a-av{width:22px;height:22px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;margin-top:1px;}
+.msg-a-text{font-size:12.5px;color:#333;line-height:1.6;}
+.msg-u{align-self:flex-end;background:#F3F0FF;color:#111;border-radius:12px 12px 3px 12px;padding:8px 12px;font-size:12.5px;max-width:85%;line-height:1.5;}
+.ap-composer{border-top:1px solid #F2F2F5;padding:10px 12px;display:flex;flex-direction:column;gap:7px;}
+.comp-suggs{display:flex;flex-wrap:wrap;gap:5px;}
+.comp-sugg{background:#F5F5FB;border:1px solid #E8E8EF;border-radius:14px;padding:4px 11px;font-size:11.5px;color:#444;cursor:pointer;transition:all .15s;}
+.comp-sugg:hover{border-color:#116DFF;color:#116DFF;background:#F0F5FF;}
+.comp-row{display:flex;align-items:center;gap:8px;background:#F8F8FC;border:1px solid #E8E8EF;border-radius:10px;padding:8px 10px;transition:border-color .2s;}
+.comp-row:focus-within{border-color:#116DFF;}
+.comp-row input{flex:1;background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#111;}
+.comp-row input::placeholder{color:#C0C0CC;}
+.comp-send{width:28px;height:28px;border-radius:7px;background:#116DFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;}
+.comp-send:hover{background:#0055DD;}
+.comp-skip{background:none;border:none;font-size:11px;color:#CCC;cursor:pointer;text-align:right;padding:0 2px;font-family:inherit;}
+.comp-skip:hover{color:#888;}
 
-/* ══ S2 — LOADING TEMPLATES ON SURFACE ══ */
-.loading-surface {
-  position:absolute;inset:0;padding:24px 28px;
-  display:flex;flex-direction:column;gap:12px;overflow:hidden;
-}
-.loading-row {
-  display:flex;gap:12px;
-}
-.loading-card {
-  flex:1;border-radius:12px;overflow:hidden;
-  display:flex;flex-direction:column;
-  animation: card-pulse 2s ease-in-out infinite;
-}
-.loading-card:nth-child(2) { animation-delay:.25s; }
-.loading-card:nth-child(3) { animation-delay:.5s; }
-.loading-card-thumb { flex:1;min-height:0; }
-.loading-card-foot { height:32px;background:rgba(255,255,255,0.6);border-top:1px solid rgba(0,0,0,0.05);display:flex;align-items:center;padding:0 10px;gap:6px; }
-.loading-card-line { height:7px;border-radius:4px;background:rgba(0,0,0,0.1); }
-@keyframes card-pulse {
-  0%,100% { opacity:.55; }
-  50% { opacity:1; }
-}
-.loading-refresh {
-  position:absolute;bottom:18px;left:28px;
-  display:flex;align-items:center;gap:6px;
-  font-size:11px;font-weight:600;color:#116DFF;
-  background:rgba(255,255,255,0.85);
-  border:1px solid rgba(17,109,255,0.2);
-  border-radius:8px;padding:6px 12px;cursor:pointer;
-  backdrop-filter:blur(4px);
-}
-.loading-refresh:hover { background:#fff; }
+/* ── S2 TEMPLATE BACKGROUND ── */
+.s2-tpl-bg{position:absolute;inset:0;display:flex;gap:8px;padding:20px 16px;background:#ECEEF4;}
+.s2-tpl{flex:1;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.1);}
+.alive-overlay{position:absolute;inset:0;pointer-events:none;background:rgba(238,241,255,.22) !important;}
+.alive-overlay .blob{opacity:.28;}
 
-/* ══ S3 — CHOOSE ON SURFACE ══ */
-.choose-surface {
-  position:absolute;inset:0;padding:22px 24px 16px;
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.choose-label {
-  font-size:11px;font-weight:600;color:rgba(0,0,0,0.35);
-  letter-spacing:.06em;text-transform:uppercase;
-  margin-bottom:14px;flex-shrink:0;
-}
-.choose-options {
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:10px;flex:1;min-height:0;
-}
-/* Blank canvas — attractive */
-.choose-blank {
-  border-radius:12px;overflow:hidden;cursor:pointer;
-  position:relative;display:flex;flex-direction:column;
-  background:linear-gradient(140deg,#0D0D1E 0%,#1A0D3A 60%,#0D1A3A 100%);
-  border:2px solid transparent;transition:all 0.2s;
-}
-.choose-blank:hover { border-color:#6B46FF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,70,255,0.2); }
-.choose-blank.sel { border-color:#6B46FF;box-shadow:0 8px 24px rgba(107,70,255,0.25); }
-.choose-blank-inner { flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px; }
-.choose-blank-stars { font-size:22px;opacity:0.8; }
-.choose-blank-title { font-family:'Wix Madefor Display',sans-serif;font-size:13px;font-weight:800;color:#fff;text-align:center;line-height:1.2; }
-.choose-blank-sub { font-size:10px;color:rgba(255,255,255,0.45);text-align:center;line-height:1.4; }
-.choose-blank-tag { margin-top:4px;background:rgba(107,70,255,0.4);border:1px solid rgba(107,70,255,0.5);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:600;color:#C4AAFF; }
-.choose-blank-foot { height:30px;background:rgba(255,255,255,0.04);border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center; }
-.choose-blank-foot span { font-size:10px;font-weight:600;color:rgba(255,255,255,0.3); }
+/* ── S2 ALIVE BLOBS ── */
+.alive{position:absolute;inset:0;background:linear-gradient(135deg,#EEF1FF 0%,#F5EEFF 50%,#FFF0FA 100%);overflow:hidden;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(72px);opacity:.55;}
+.b1{width:380px;height:320px;background:radial-gradient(circle,#C8D4FF,#A8B8FF);top:-60px;left:-80px;animation:m1 9s ease-in-out infinite;}
+.b2{width:300px;height:280px;background:radial-gradient(circle,#E8C8FF,#D0A0FF);top:40%;left:32%;animation:m2 11s ease-in-out infinite;}
+.b3{width:260px;height:240px;background:radial-gradient(circle,#FFD0E8,#FFB8D8);bottom:-40px;right:-40px;animation:m3 13s ease-in-out infinite;}
+.b4{width:200px;height:180px;background:radial-gradient(circle,#C8F0FF,#A0E0FF);bottom:22%;left:10%;animation:m4 8s ease-in-out infinite;}
+@keyframes m1{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 70%;transform:translate(0,0) scale(1);}33%{border-radius:40% 60% 30% 70%/70% 30% 60% 40%;transform:translate(40px,-25px) scale(1.08);}66%{border-radius:70% 30% 55% 45%/40% 70% 30% 60%;transform:translate(-20px,20px) scale(.94);}}
+@keyframes m2{0%,100%{border-radius:50% 50% 60% 40%/60% 40% 50% 50%;transform:translate(0,0) scale(1);}40%{border-radius:65% 35% 45% 55%/45% 65% 35% 55%;transform:translate(-35px,30px) scale(1.06);}70%{border-radius:40% 60% 55% 45%/55% 45% 65% 35%;transform:translate(25px,-15px) scale(.96);}}
+@keyframes m3{0%,100%{border-radius:55% 45% 65% 35%/45% 55% 45% 55%;transform:translate(0,0);}30%{border-radius:35% 65% 45% 55%/65% 35% 55% 45%;transform:translate(-30px,-20px) scale(1.04);}65%{border-radius:60% 40% 35% 65%/50% 60% 40% 60%;transform:translate(20px,25px) scale(.97);}}
+@keyframes m4{0%,100%{border-radius:45% 55% 55% 45%/55% 45% 55% 45%;transform:translate(0,0);}50%{border-radius:60% 40% 40% 60%/40% 60% 60% 40%;transform:translate(30px,-20px) scale(1.05);}}
 
-/* Template cards */
-.choose-tpl {
-  border:2px solid transparent;border-radius:12px;overflow:hidden;cursor:pointer;
-  transition:all 0.2s;background:#fff;
-  box-shadow:0 2px 10px rgba(0,0,0,0.07);
-  display:flex;flex-direction:column;
-}
-.choose-tpl:hover { border-color:#116DFF;box-shadow:0 6px 20px rgba(17,109,255,0.14);transform:translateY(-2px); }
-.choose-tpl.sel { border-color:#116DFF;box-shadow:0 6px 20px rgba(17,109,255,0.18); }
-.tpl-thumb { flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden; }
-.tpl-nav { height:20px;display:flex;align-items:center;padding:0 8px;justify-content:space-between;flex-shrink:0; }
-.tpl-nav-logo { font-size:8px;font-weight:800; }
-.tpl-nav-links { display:flex;gap:6px; }
-.tpl-nav-links span { font-size:7px;opacity:0.45; }
-.tpl-hero { flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px; }
-.tpl-hero-title { font-weight:800;text-align:center;line-height:1.15; }
-.tpl-hero-sub { font-size:7px;opacity:0.45;text-align:center; }
-.tpl-hero-btn { border-radius:4px;padding:3px 8px;font-size:7px;font-weight:700;margin-top:3px; }
-.tpl-bottom { height:22px;display:flex;align-items:center;gap:4px;padding:0 8px;flex-shrink:0; }
-.tpl-pill { height:8px;border-radius:3px;background:rgba(255,255,255,0.15); }
-.tpl-info { padding:7px 9px;border-top:1px solid #F0F0F5;flex-shrink:0; }
-.tpl-info-name { font-size:11px;font-weight:600;color:#0F0F1A; }
-.tpl-info-cat { font-size:10px;color:#AAA; }
-.choose-bottom { flex-shrink:0;padding-top:12px;display:flex;align-items:center;justify-content:space-between; }
-.choose-more-btn { display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#116DFF;background:rgba(255,255,255,0.8);border:1.5px solid rgba(17,109,255,0.2);border-radius:8px;padding:6px 12px;cursor:pointer; }
-.choose-more-btn:hover { background:#fff;border-color:#116DFF; }
+/* ── S3 TEMPLATES ── */
+.s3-wrap{position:absolute;inset:0;padding:22px 24px 18px;display:flex;flex-direction:column;gap:14px;overflow:hidden;}
+.s3-lbl{font-size:11px;font-weight:600;color:#AAA;letter-spacing:.08em;text-transform:uppercase;}
+.tpl-grid{display:flex;gap:10px;flex:1;min-height:0;}
+.tpl{flex:1;border-radius:14px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .2s;background:#fff;display:flex;flex-direction:column;}
+.tpl:hover{border-color:#116DFF;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1);}
+.tpl.tm{flex:1.45;border:2px solid #116DFF;background:linear-gradient(160deg,#0D0D1E 0%,#1A0D3A 60%,#0D1A3A 100%);box-shadow:0 8px 32px rgba(17,109,255,.2);}
+.tpl.tm:hover{border-color:#5590FF;transform:translateY(-3px);box-shadow:0 12px 40px rgba(17,109,255,.3);}
+.tm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:12px;}
+.tm-icon{width:50px;height:50px;border-radius:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:21px;}
+.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:17px;font-weight:700;color:#fff;text-align:center;line-height:1.3;}
+.tm-sub{font-size:11.5px;color:rgba(255,255,255,.5);text-align:center;line-height:1.5;}
+.tm-cta{background:#116DFF;color:#fff;border:none;border-radius:10px;padding:9px 18px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .15s;}
+.tm-cta:hover{background:#3388FF;}
+.tpl-mock{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+.tpl-nav{height:26px;background:#fff;display:flex;align-items:center;padding:0 10px;gap:8px;border-bottom:1px solid #F0F0F5;flex-shrink:0;}
+.tpl-logo{font-weight:800;font-size:10px;color:#111;}
+.tpl-links{display:flex;gap:8px;margin-left:4px;}
+.tpl-link{font-size:8px;color:#666;}
+.tpl-cta-nav{margin-left:auto;font-size:8px;font-weight:600;padding:3px 8px;border-radius:4px;}
+.tpl-hero{flex:1;position:relative;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;}
+.tpl-h{font-size:13px;font-weight:800;line-height:1.3;margin-bottom:4px;}
+.tpl-sub{font-size:8px;margin-bottom:9px;}
+.tpl-btn{display:inline-block;padding:5px 12px;border-radius:5px;font-size:8px;font-weight:700;width:fit-content;}
+.tpl-secs{display:flex;gap:4px;padding:7px;flex-shrink:0;}
+.tpl-sec{flex:1;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;}
+.tpl-foot{padding:6px 10px;border-top:1px solid #F0F0F5;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.tpl-name{font-size:11px;font-weight:600;color:#111;}
+.tpl-tag{font-size:9px;color:#AAA;}
+.see-more{font-size:12px;color:#116DFF;font-weight:500;cursor:pointer;text-align:center;padding:3px 0;flex-shrink:0;}
 
-/* ══ S4 — BRAND BOOK + CHAT ══ */
-#s4 .editor-surface { background:#1A1A28; }
-.bb-surface-inner { position:absolute;inset:0;overflow-y:auto;padding:24px 26px 80px;display:flex;flex-direction:column; }
-.bb-biz-name { font-family:'Wix Madefor Display',sans-serif;font-size:34px;font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin-bottom:20px; }
-.bb-section-row { display:flex;align-items:center;justify-content:space-between;margin-bottom:9px; }
-.bb-sec-label { font-size:10px;font-weight:600;color:rgba(255,255,255,0.35);letter-spacing:.05em;text-transform:uppercase; }
-.bb-sec-num { font-size:10px;font-weight:600;color:rgba(255,255,255,0.15); }
-.bb-grid { display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:28px;position:relative; }
-.bb-card { background:#252535;border-radius:11px;padding:14px;position:relative;overflow:visible; }
-.bb-card-lbl { font-size:9px;font-weight:700;color:rgba(255,255,255,0.28);margin-bottom:11px;letter-spacing:.06em;text-transform:uppercase; }
-.palette-grid { display:grid;grid-template-columns:1fr 1fr;gap:5px; }
-.palette-swatch { height:52px;border-radius:7px;cursor:pointer;transition:transform .15s; }
-.palette-swatch:hover { transform:scale(1.04); }
-.font-pack { display:grid;grid-template-columns:1fr 1fr;gap:7px; }
-.font-item { background:#1C1C2A;border-radius:8px;padding:11px 10px; }
-.font-preview { font-size:38px;line-height:1;color:#fff;margin-bottom:3px; }
-.font-name { font-size:9px;color:rgba(255,255,255,0.28); }
-.vp-tags { display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(255,255,255,0.05); }
-.vp-tag { padding:4px 9px;border-radius:14px;font-size:10px;font-weight:500;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);cursor:pointer; }
-.pages-list { display:flex;flex-direction:column;gap:5px; }
-.page-row { display:flex;align-items:center;gap:7px;padding:7px 9px;background:#1C1C2A;border-radius:7px;cursor:pointer; }
-.page-row:hover { background:#2A2A3A; }
-.page-name { font-size:12px;font-weight:500;color:rgba(255,255,255,0.75);flex:1; }
-.page-type { font-size:9px;color:rgba(255,255,255,0.2); }
-.apps-grid { display:grid;grid-template-columns:1fr 1fr;gap:5px; }
-.app-chip { display:flex;align-items:center;gap:6px;padding:7px 9px;background:#1C1C2A;border-radius:7px;cursor:pointer; }
-.app-chip:hover { background:#2A2A3A; }
-.app-name { font-size:11px;font-weight:500;color:rgba(255,255,255,0.6); }
-.aria-bubble { position:absolute;bottom:-12px;left:14px;background:#6B46FF;color:#fff;border-radius:9px 9px 9px 2px;padding:6px 10px;font-size:10px;line-height:1.4;max-width:220px;box-shadow:0 4px 14px rgba(107,70,255,0.4);z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:4px; }
-.aria-bubble::before { content:'✦';font-size:7px;opacity:.7;margin-right:2px; }
-.ab-btn { display:inline-flex;align-items:center;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.2);border-radius:5px;padding:2px 6px;font-size:9px;cursor:pointer;white-space:nowrap; }
-.ab-btn:hover { background:rgba(255,255,255,0.28); }
-/* S4 panel */
-#s4 .aria-panel { background:#1E1E2C;border-left:1px solid rgba(255,255,255,0.05); }
-#s4 .aria-panel-head { border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.85); }
-.dark-msg { background:#2A2A3C;border-radius:9px;padding:9px 11px;font-size:11px;color:rgba(255,255,255,0.62);line-height:1.6; }
-.dark-msg strong { color:#A78BFF; }
-.dark-msg-user { align-self:flex-end;background:#6B46FF;color:#fff;border-radius:9px 9px 2px 9px;padding:7px 10px;font-size:11px;max-width:85%;line-height:1.5; }
-.dark-input-row { border-top:1px solid rgba(255,255,255,0.05);padding:9px 11px 11px;display:flex;flex-direction:column;gap:7px; }
-.dark-input-row input { width:100%;border:1.5px solid rgba(255,255,255,0.09);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12px;color:#fff;outline:none;background:rgba(255,255,255,0.05); }
-.dark-input-row input:focus { border-color:#6B46FF; }
-.dark-input-row input::placeholder { color:rgba(255,255,255,0.2); }
-.btn-generate-site { width:100%;background:#116DFF;color:#fff;border:none;border-radius:8px;padding:10px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer; }
-.btn-generate-site:hover { background:#0055DD; }
+/* Artisan Dark */
+.art .tpl-hero{background:linear-gradient(180deg,#2C1810,#1A0F08);}
+.art .tpl-h{color:#fff;}
+.art .tpl-sub{color:rgba(255,255,255,.6);}
+.art .tpl-btn{background:#D4A055;color:#111;}
+.art .tpl-sec{background:#F5EFE8;color:#8B6A50;}
+/* Natural Light */
+.nat .tpl-hero{background:linear-gradient(180deg,#F5E8D0,#EDD5B0);}
+.nat .tpl-h{color:#3C2A1A;}
+.nat .tpl-sub{color:rgba(60,42,26,.6);}
+.nat .tpl-btn{background:#3C2A1A;color:#F5E8D0;}
+.nat .tpl-sec{background:#EDD5B0;color:#8B6A50;}
+/* Premium Dark */
+.prem .tpl-nav{background:#0A0A0A;border-color:#222;}
+.prem .tpl-logo{color:#C8A96E;}
+.prem .tpl-link{color:#888;}
+.prem .tpl-hero{background:linear-gradient(180deg,#0A0A0A,#1A1A1A);}
+.prem .tpl-h{color:#fff;}
+.prem .tpl-sub{color:rgba(200,169,110,.65);}
+.prem .tpl-btn{background:#C8A96E;color:#111;}
+.prem .tpl-sec{background:#1A1A1A;color:#C8A96E;}
+.prem .tpl-foot{background:#0A0A0A;border-color:#222;}
+.prem .tpl-name{color:#C8A96E;}
+.prem .tpl-tag{color:#555;}
 
-/* ══ S5 — SITE LIVE ══ */
-#s5 .editor-surface { display:flex;align-items:center;justify-content:center;background:#ECEEF4; }
-.site-canvas { width:70%;max-width:680px;height:86%;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,0.13);display:flex;flex-direction:column;overflow:hidden; }
-.site-nav { display:flex;align-items:center;justify-content:space-between;padding:12px 22px;border-bottom:1px solid #F0F0F0;flex-shrink:0; }
-.site-nav-logo { font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:800;color:#1A1A2E; }
-.site-nav-links { display:flex;gap:18px; }
-.site-nav-links span { font-size:12px;color:#666; }
-.site-nav-cta { background:#1A1A2E;color:#fff;border-radius:7px;padding:6px 14px;font-size:11px;font-weight:600; }
-.site-hero { flex:1;background:linear-gradient(155deg,#1A1A2E 0%,#3D2A00 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:28px; }
-.site-hero-title { font-family:'Wix Madefor Display',sans-serif;font-size:32px;font-weight:800;color:#fff;text-align:center;line-height:1.15; }
-.site-hero-sub { font-size:13px;color:rgba(255,255,255,0.5);text-align:center; }
-.site-hero-btn { background:#E8C97E;color:#1A1A2E;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:700;margin-top:4px; }
-.site-products { display:flex;gap:10px;padding:16px 22px;border-top:1px solid #F5F5F5;flex-shrink:0; }
-.site-product { flex:1;background:#F8F6F2;border-radius:9px;height:70px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#888; }
-/* S5 panel */
-.s5-notice { background:#F0F5FF;border-radius:10px;padding:11px 12px;font-size:12px;line-height:1.5;color:#0F0F1A; }
-.s5-notice strong { color:#116DFF; }
-.s5-domain-card { background:#F7F7FA;border-radius:10px;padding:12px; }
-.s5-domain-title { font-size:12px;font-weight:700;color:#0F0F1A;margin-bottom:4px; }
-.s5-domain-sub { font-size:11px;color:#888;margin-bottom:10px;line-height:1.4; }
-.s5-domain-btn { width:100%;background:#116DFF;color:#fff;border:none;border-radius:8px;padding:9px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:5px; }
-.s5-domain-btn:hover { background:#0055DD; }
-.s5-later-btn { width:100%;background:none;border:none;font-family:inherit;font-size:11px;color:#AAA;cursor:pointer;padding:4px; }
-.s5-blueprint-link { display:flex;align-items:center;gap:6px;font-size:11px;color:#116DFF;cursor:pointer;padding:8px 0;border-top:1px solid #F0F0F5;margin-top:4px; }
-.s5-blueprint-link:hover { opacity:0.7; }
+/* ── S4a MOSAIC ── */
+.mosaic{position:absolute;inset:0;background:#F5F6F8;}
+.blueprint-tab{position:absolute;left:0;top:50%;transform:translateY(-50%);background:#fff;border:1px solid #EAEAEF;border-left:none;border-radius:0 8px 8px 0;padding:8px 10px 8px 6px;display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:600;color:#116DFF;z-index:10;box-shadow:2px 0 8px rgba(0,0,0,.06);transition:all .15s;}
+.blueprint-tab:hover{background:#F0F5FF;}
+.sq{position:absolute;background:#fff;border:1.5px solid #E8E8EF;border-radius:14px;padding:16px;cursor:pointer;transition:border-color .2s,box-shadow .15s;opacity:0;}
+.sq:hover{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.1);}
+.sq.sq-active{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.12);}
+@keyframes sqIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.sq.show{animation:sqIn .5s ease forwards;opacity:1;}
+.sq-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+.sq-ico{font-size:18px;}
+.sq-exp{width:22px;height:22px;border-radius:6px;background:#F5F5FB;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:#888;transition:all .15s;}
+.sq-exp:hover{background:#EBF0FF;color:#116DFF;}
+.sq-title{font-size:12px;font-weight:700;color:#111;margin-bottom:5px;}
+.sq-data{font-size:11px;color:#777;line-height:1.65;}
+.sq-data strong{color:#333;font-weight:600;}
+.mloader{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:1px solid #E8E8EF;border-radius:20px;padding:7px 16px;backdrop-filter:blur(8px);font-size:11.5px;color:#555;z-index:20;transition:opacity .3s;}
+.ldots{display:flex;gap:4px;}
+.ldot{width:6px;height:6px;border-radius:50%;background:#116DFF;animation:ld 1.2s ease-in-out infinite;}
+.ldot:nth-child(2){animation-delay:.2s;}
+.ldot:nth-child(3){animation-delay:.4s;}
+@keyframes ld{0%,80%,100%{opacity:.3;transform:scale(.8);}40%{opacity:1;transform:scale(1.1);}}
 
-/* ══ CONCEPT NAV ══ */
-#concept-nav { position:fixed;bottom:20px;right:20px;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,0.95);border:1px solid rgba(0,0,0,0.1);border-radius:40px;padding:7px 11px;box-shadow:0 4px 18px rgba(0,0,0,0.1);z-index:9999;backdrop-filter:blur(8px); }
-#concept-nav a { text-decoration:none;font-size:12px;font-weight:600;color:#666;padding:4px 8px;border-radius:16px;transition:all .15s;font-family:inherit; }
-#concept-nav a:hover { background:#F0F3FF;color:#2F5BFF; }
-#concept-nav .ndiv { width:1px;height:14px;background:rgba(0,0,0,0.1); }
+/* ── TEMPLATE WORKSPACE ── */
+.tpl-ws{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;background:#F5F6F8;overflow-y:auto;}
+.site-frame{width:320px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff;flex-shrink:0;}
 
-.step-dots { position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:100; }
-.step-dot { width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,0.2);transition:all .2s;cursor:pointer; }
-.step-dot.active { background:#116DFF;width:16px;border-radius:3px; }
+/* ── DOMAIN WIDGET ── */
+.domain-w{border:1.5px solid #D8EEFF;border-radius:12px;background:#F8FBFF;padding:12px 14px;margin-top:4px;}
+.domain-w-head{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
+.domain-w-title{font-size:12px;font-weight:600;color:#111;}
+.domain-url{font-size:12px;color:#555;margin-bottom:10px;}
+.domain-url strong{color:#116DFF;font-family:monospace;}
+.domain-badge{display:inline-block;background:#E6F5EE;color:#1A8A4A;font-size:10px;font-weight:600;padding:2px 7px;border-radius:7px;margin-left:4px;}
+.btn-domain{width:100%;background:#116DFF;color:#fff;border:none;border-radius:8px;padding:9px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:6px;transition:background .15s;}
+.btn-domain:hover{background:#0055DD;}
+.btn-skip{width:100%;background:none;border:none;font-size:11px;color:#BBB;cursor:pointer;font-family:inherit;}
+
+/* ── MODAL ── */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
+.modal-ov.open{opacity:1;pointer-events:all;}
+.modal{background:#fff;border-radius:18px;width:500px;max-height:78vh;overflow:hidden;display:flex;flex-direction:column;transform:scale(.95);transition:transform .25s ease;}
+.modal-ov.open .modal{transform:scale(1);}
+.modal-head{padding:18px 20px 14px;border-bottom:1px solid #F0F0F5;display:flex;align-items:center;gap:10px;}
+.modal-ico{font-size:22px;}
+.modal-title{font-size:15px;font-weight:700;color:#111;flex:1;}
+.modal-close{width:28px;height:28px;border-radius:8px;background:#F5F5F8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:#888;}
+.modal-body{padding:20px;flex:1;overflow-y:auto;}
+.msec{margin-bottom:20px;}
+.msec-title{font-size:11px;font-weight:600;color:#AAA;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.color-row{display:flex;gap:8px;flex-wrap:wrap;}
+.cswatch{width:44px;height:44px;border-radius:10px;cursor:pointer;transition:transform .1s;position:relative;}
+.cswatch:hover{transform:scale(1.08);}
+.font-prev{padding:12px;background:#F8F8FC;border-radius:10px;}
+.font-prev-big{font-size:30px;font-weight:700;color:#111;font-family:'Wix Madefor Display',sans-serif;}
+.font-prev-sm{font-size:12px;color:#888;margin-top:2px;}
+.app-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;}
+
+/* ── STEPPER ── */
+.stepper{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;z-index:5;}
+.step{width:7px;height:7px;border-radius:50%;background:#D5D5DC;transition:all .35s;}
+.step.done{background:#B8C4E8;}
+.step.cur{background:#116DFF;width:20px;border-radius:4px;}
+
+/* ── DEV NAV ── */
+.dev-nav{position:fixed;bottom:20px;right:20px;display:flex;gap:7px;z-index:50;}
+.darr{background:rgba(255,255,255,.9);border:1px solid #E0E0EC;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;backdrop-filter:blur(4px);transition:all .15s;}
+.darr:hover{background:#fff;border-color:#116DFF;color:#116DFF;}
+.dcur{width:auto;padding:0 10px;font-size:11px;color:#888;cursor:default;}
 </style>
 </head>
 <body>
 
-<!-- ══ S1 — PROMPT ══ -->
+<!-- ══ S1 ══ -->
 <div class="screen active" id="s1">
-  <div class="s1-top">
-    <span class="s1-logo">wix</span>
-    <div class="s1-right">
-      <div class="s1-avatar">N</div>
-      <button class="s1-upgrade">Upgrade</button>
-    </div>
-  </div>
+  <nav class="s1-nav">
+    <div class="s1-logo">wix <div class="s1-av">N</div></div>
+    <button class="s1-upgrade">Upgrade</button>
+  </nav>
   <div class="s1-body">
-    <div class="s1-aria-intro">
-      <div class="s1-aria-avatar">A</div>
-      <div class="s1-aria-text">
-        <strong>Hi! I'm Aria, your friendly design assistant.</strong><br>
+    <div class="aria-intro">
+      <div class="aria-av-lg">A</div>
+      <div class="aria-msg-text">
+        <span class="hi">Hi! I'm Aria, your friendly design assistant.</span><br>
         Tell me your site's <em>name</em>, what kind of <em>business it is</em>, and what <em>makes it unique.</em>
       </div>
     </div>
-    <div class="s1-input-wrap">
-      <div class="s1-textarea-box">
-        <textarea placeholder="Describe the site you want to build…" rows="4"></textarea>
-        <div class="s1-textarea-foot">
-          <button class="s1-gen-btn" onclick="goTo(2)">
-            Generate
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 12V2M2 7l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+    <div class="input-card">
+      <textarea id="s1-input" placeholder="Describe the site you want to build…" rows="4"></textarea>
+      <div class="input-foot">
+        <button class="btn-gen" onclick="startFlow()">Generate <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
       </div>
     </div>
-    <div class="s1-examples">
-      <div class="s1-examples-label">Try an example prompt</div>
-      <div class="s1-chips">
-        <span class="s1-chip">Fashion store</span>
-        <span class="s1-chip">Online course</span>
-        <span class="s1-chip">Wellness service</span>
-        <span class="s1-chip">Consulting website</span>
-        <span class="s1-chip">Community hub</span>
-        <span class="s1-chip">Creative portfolio</span>
-        <span class="s1-chip more">↻ More ideas</span>
+    <div class="chips-wrap">
+      <div class="chips-label">Try an example prompt</div>
+      <div class="chips">
+        <span class="chip" onclick="fillEx(this)">Fashion store</span>
+        <span class="chip" onclick="fillEx(this)">Online course</span>
+        <span class="chip" onclick="fillEx(this)">Wellness service</span>
+        <span class="chip" onclick="fillEx(this)">Consulting website</span>
+        <span class="chip" onclick="fillEx(this)">Community hub</span>
+        <span class="chip" onclick="fillEx(this)">Creative portfolio</span>
+        <span class="chip chip-more">↻ More ideas</span>
       </div>
     </div>
   </div>
-  <div class="s1-footer">AI can make mistakes. Double check the results.</div>
+  <div class="s1-foot">AI can make mistakes. Double check the results.</div>
 </div>
 
-<!-- ══ S2 — ONBOARDING + LOADING TEMPLATES ══ -->
-<div class="screen" id="s2">
-  <div class="editor-chrome">
-    <span class="chrome-logo">wix</span>
-    <div class="chrome-avatar">N</div>
-    <div class="chrome-div"></div>
-    <button class="chrome-btn">Goody <span class="chrome-caret"></span></button>
-    <button class="chrome-btn">Brand <span class="chrome-caret"></span></button>
-    <div class="chrome-center"><div class="chrome-fit">Fit (96%) <span class="chrome-caret"></span></div></div>
-    <div class="chrome-right">
-      <button class="btn-upgrade">Upgrade</button>
-      <button class="btn-preview">Preview</button>
-      <button class="btn-publish">Publish</button>
-    </div>
-  </div>
-  <div class="editor-body">
-    <div class="editor-surface">
-      <!-- Loading template skeletons -->
-      <div class="loading-surface">
-        <div class="loading-row" style="flex:1;">
-          <div class="loading-card" style="background:rgba(180,180,195,0.25);">
-            <div class="loading-card-thumb" style="background:rgba(180,180,195,0.3);"></div>
-            <div class="loading-card-foot"><div class="loading-card-line" style="width:40%;"></div><div class="loading-card-line" style="width:28%;"></div></div>
-          </div>
-          <div class="loading-card" style="background:rgba(180,180,195,0.2);">
-            <div class="loading-card-thumb" style="background:rgba(180,180,195,0.25);"></div>
-            <div class="loading-card-foot"><div class="loading-card-line" style="width:44%;"></div><div class="loading-card-line" style="width:30%;"></div></div>
-          </div>
-          <div class="loading-card" style="background:rgba(180,180,195,0.18);">
-            <div class="loading-card-thumb" style="background:rgba(180,180,195,0.22);"></div>
-            <div class="loading-card-foot"><div class="loading-card-line" style="width:36%;"></div><div class="loading-card-line" style="width:24%;"></div></div>
-          </div>
-        </div>
-      </div>
-      <button class="loading-refresh">↻ Refresh options</button>
-    </div>
-    <div class="aria-panel">
-      <div class="aria-panel-head">Ask Aria</div>
-      <div class="aria-msgs">
-        <div class="msg-user">I need a site for my bakery</div>
-        <div class="msg-aria-t">Love it — a few quick questions so I can get this just right.</div>
-        <div class="aria-q">
-          <div class="aria-q-lbl">What's your bakery's vibe?</div>
-          <div class="aria-q-sub">Helps Aria nail your look</div>
-          <div class="aria-opts" id="q1">
-            <div class="aria-opt" onclick="sel(this,'q1')">🌿 Wholesome & natural</div>
-            <div class="aria-opt" onclick="sel(this,'q1')">✨ Premium & elegant</div>
-            <div class="aria-opt" onclick="sel(this,'q1')">🎨 Playful & colorful</div>
-            <div class="aria-opt" onclick="sel(this,'q1')">🏠 Cozy & neighborhood</div>
-          </div>
-        </div>
-      </div>
-      <div class="aria-panel-foot">
-        <button class="btn-skip-sm">Skip</button>
-        <button class="btn-next-sm" onclick="goTo(3)">Next →</button>
-      </div>
+<!-- ══ SHARED CHROME ══ -->
+<div id="chrome" style="display:none;position:fixed;top:0;left:0;right:0;z-index:40;">
+  <div class="ec">
+    <span class="ec-logo">wix</span>
+    <div class="ec-av">N</div>
+    <div class="ec-sep"></div>
+    <button class="ec-btn">Goody <span class="ec-caret"></span></button>
+    <button class="ec-btn">Brand <span class="ec-caret"></span></button>
+    <div class="ec-center"><span class="ec-fit">Fit (96%) <span class="ec-caret"></span></span></div>
+    <div class="ec-right">
+      <button class="ec-blueprint" id="bp-btn" onclick="toggleBlueprint()">◈ Blueprint</button>
+      <div class="ec-sep"></div>
+      <button class="ec-upgrade">Upgrade</button>
+      <button class="ec-preview">Preview</button>
+      <button class="ec-publish" id="ec-pub">Publish</button>
     </div>
   </div>
 </div>
 
-<!-- ══ S3 — CHOOSE: BLANK OR TEMPLATE ══ -->
-<div class="screen" id="s3">
-  <div class="editor-chrome">
-    <span class="chrome-logo">wix</span>
-    <div class="chrome-avatar">N</div>
-    <div class="chrome-div"></div>
-    <button class="chrome-btn">Goody <span class="chrome-caret"></span></button>
-    <button class="chrome-btn">Brand <span class="chrome-caret"></span></button>
-    <div class="chrome-center"><div class="chrome-fit">Fit (96%) <span class="chrome-caret"></span></div></div>
-    <div class="chrome-right">
-      <button class="btn-upgrade">Upgrade</button>
-      <button class="btn-preview">Preview</button>
-      <button class="btn-publish">Publish</button>
-    </div>
-  </div>
-  <div class="editor-body">
-    <div class="editor-surface">
-      <div class="choose-surface">
-        <div class="choose-label">Choose how to start your site</div>
-        <div class="choose-options">
-
-          <!-- Blank canvas -->
-          <div class="choose-blank" id="cho-blank" onclick="selChoose('cho-blank');goTo(4)">
-            <div class="choose-blank-inner">
-              <div class="choose-blank-stars">✦</div>
-              <div class="choose-blank-title">Design with<br>Aria</div>
-              <div class="choose-blank-sub">Build a custom site from scratch, tailored to your brand</div>
-              <div class="choose-blank-tag">Taylor Made</div>
-            </div>
-            <div class="choose-blank-foot"><span>Blank canvas →</span></div>
-          </div>
-
-          <!-- Template 1 -->
-          <div class="choose-tpl" id="cho-t1" onclick="selChoose('cho-t1');goTo(5)">
-            <div class="tpl-thumb" style="background:linear-gradient(155deg,#1A1A2E,#3D2A00);">
-              <div class="tpl-nav" style="color:#fff;"><span class="tpl-nav-logo">Goody</span><div class="tpl-nav-links"><span>Menu</span><span>Story</span></div></div>
-              <div class="tpl-hero"><div class="tpl-hero-title" style="font-size:10px;color:#fff;">Baked with love</div><div class="tpl-hero-sub">Sourdough · Tel Aviv</div><div class="tpl-hero-btn" style="background:#E8C97E;color:#1A1A2E;">Order →</div></div>
-              <div class="tpl-bottom"><div class="tpl-pill" style="width:32px;"></div><div class="tpl-pill" style="width:24px;"></div><div class="tpl-pill" style="width:40px;"></div></div>
-            </div>
-            <div class="tpl-info"><div class="tpl-info-name">Artisan Dark</div><div class="tpl-info-cat">Bakery · Café</div></div>
-          </div>
-
-          <!-- Template 2 -->
-          <div class="choose-tpl" id="cho-t2" onclick="selChoose('cho-t2');goTo(5)">
-            <div class="tpl-thumb" style="background:#F5F0E8;">
-              <div class="tpl-nav" style="color:#1A1A2E;"><span class="tpl-nav-logo" style="color:#1A1A2E;">Goody</span><div class="tpl-nav-links"><span style="color:#666;">Menu</span><span style="color:#666;">About</span></div></div>
-              <div class="tpl-hero"><div class="tpl-hero-title" style="font-size:9px;color:#1A1A2E;">Fresh Every Morning</div><div class="tpl-hero-sub" style="color:#888;">Seasonal pastries</div><div class="tpl-hero-btn" style="background:#1A1A2E;color:#fff;">Explore →</div></div>
-              <div class="tpl-bottom" style="background:rgba(0,0,0,0.04);"><div class="tpl-pill" style="width:32px;background:rgba(0,0,0,0.1);"></div><div class="tpl-pill" style="width:24px;background:rgba(0,0,0,0.1);"></div></div>
-            </div>
-            <div class="tpl-info"><div class="tpl-info-name">Natural Light</div><div class="tpl-info-cat">Bakery · Food</div></div>
-          </div>
-
-          <!-- Template 3 -->
-          <div class="choose-tpl" id="cho-t3" onclick="selChoose('cho-t3');goTo(5)">
-            <div class="tpl-thumb" style="background:#2D1B4E;">
-              <div class="tpl-nav" style="color:#fff;"><span class="tpl-nav-logo">Goody</span><div class="tpl-nav-links"><span>Shop</span><span>Story</span></div></div>
-              <div class="tpl-hero"><div class="tpl-hero-title" style="font-size:9px;color:#fff;">Crafted Daily</div><div class="tpl-hero-sub">Premium · Minimal</div><div class="tpl-hero-btn" style="background:#C8A2E8;color:#2D1B4E;">Discover →</div></div>
-              <div class="tpl-bottom"><div class="tpl-pill" style="width:32px;"></div><div class="tpl-pill" style="width:24px;"></div></div>
-            </div>
-            <div class="tpl-info"><div class="tpl-info-name">Premium Dark</div><div class="tpl-info-cat">Bakery · Boutique</div></div>
-          </div>
-
+<!-- ══ S2 QUESTIONS ══ -->
+<div class="screen" id="s2" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-surface">
+      <!-- Templates in background -->
+      <div class="s2-tpl-bg">
+        <div class="s2-tpl art">
+          <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#2C1810;color:#D4A055;">Order</span></div>
+          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Baked with<br>love</div><div class="tpl-sub">Goody · Tel Aviv</div><div class="tpl-btn">Order now →</div></div>
+          <div class="tpl-secs"><div class="tpl-sec">Sourdough</div><div class="tpl-sec">Croissants</div><div class="tpl-sec">Seasonal</div></div>
         </div>
-        <div class="choose-bottom">
-          <button class="choose-more-btn">↻ See more templates</button>
+        <div class="s2-tpl tm-bg">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;background:linear-gradient(160deg,#0D0D1E,#1A0D3A,#0D1A3A);">
+            <div style="font-size:18px;">✦</div>
+            <div style="font-family:'Wix Madefor Display',sans-serif;font-size:14px;font-weight:700;color:#fff;text-align:center;">Design with Aria</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);text-align:center;">Build custom from your brand book</div>
+          </div>
+        </div>
+        <div class="s2-tpl nat">
+          <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">About</span></div><span class="tpl-cta-nav" style="background:#3C2A1A;color:#F5E8D0;">Order</span></div>
+          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Fresh Every<br>Morning</div><div class="tpl-sub">Goody Bakery</div><div class="tpl-btn" style="background:#3C2A1A;color:#F5E8D0;">Explore →</div></div>
+          <div class="tpl-secs"><div class="tpl-sec">Morning Box</div><div class="tpl-sec">Pre-Order</div><div class="tpl-sec">Catering</div></div>
+        </div>
+        <div class="s2-tpl prem">
+          <div class="tpl-nav prem" style="background:#0A0A0A;border-color:#222;"><span class="tpl-logo" style="color:#C8A96E;">Goody</span><div class="tpl-links"><span class="tpl-link" style="color:#888;">Shop</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
+          <div class="tpl-hero" style="flex:1;"><div class="tpl-h">Crafted<br>Daily</div><div class="tpl-sub" style="color:rgba(200,169,110,.7);">Premium bakery</div><div class="tpl-btn" style="background:#C8A96E;color:#111;">Discover →</div></div>
+          <div class="tpl-secs"><div class="tpl-sec" style="background:#1A1A1A;color:#C8A96E;">Artisan</div><div class="tpl-sec" style="background:#1A1A1A;color:#C8A96E;">Seasonal</div></div>
         </div>
       </div>
+      <!-- Blob overlay on top -->
+      <div class="alive alive-overlay">
+        <div class="blob b1"></div><div class="blob b2"></div>
+        <div class="blob b3"></div><div class="blob b4"></div>
+      </div>
+      <div class="stepper">
+        <div class="step done"></div><div class="step cur"></div>
+        <div class="step"></div><div class="step"></div><div class="step"></div>
+      </div>
     </div>
-    <div class="aria-panel">
-      <div class="aria-panel-head">Ask Aria</div>
-      <div class="aria-msgs">
-        <div class="msg-aria-t">I found 3 templates that match your bakery. Or start from a blank canvas and we'll design together.</div>
-        <div style="background:#F0F5FF;border-radius:9px;padding:9px 10px;font-size:11px;color:#444;line-height:1.5;">
-          💡 Templates are already customized with your brand name and content.
+    <div class="ap">
+      <div class="ap-head">
+        <div class="ap-head-av">A</div>
+        <div class="ap-head-title">Ask Aria</div>
+        <div class="ap-step">2 of 5</div>
+      </div>
+      <div class="ap-msgs" id="s2-msgs">
+        <div class="msg-a">
+          <div class="msg-a-av">A</div>
+          <div class="msg-a-text">Let's build your brand book. First — what's your site called?</div>
         </div>
       </div>
-      <div class="aria-panel-foot">
-        <button class="btn-skip-sm" onclick="goTo(2)">← Back</button>
+      <div class="ap-composer">
+        <div class="comp-suggs" id="s2-suggs">
+          <span class="comp-sugg" onclick="pickS2(this)">Goody</span>
+          <span class="comp-sugg" onclick="pickS2(this)">Nova</span>
+          <span class="comp-sugg" onclick="pickS2(this)">Bloom</span>
+          <span class="comp-sugg" onclick="pickS2(this)">Studio K</span>
+        </div>
+        <div class="comp-row">
+          <input id="s2-in" type="text" placeholder="Type your site name…" onkeydown="if(event.key==='Enter')sendS2()">
+          <button class="comp-send" onclick="sendS2()"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+        </div>
+        <button class="comp-skip" onclick="sendS2(true)">Skip → (Enter)</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S4 — BRAND BOOK + CHAT (Taylor Made) ══ -->
-<div class="screen" id="s4">
-  <div class="editor-chrome">
-    <span class="chrome-logo">wix</span>
-    <div class="chrome-avatar">N</div>
-    <div class="chrome-div"></div>
-    <button class="chrome-btn">Goody <span class="chrome-caret"></span></button>
-    <button class="chrome-btn">Brand <span class="chrome-caret"></span></button>
-    <div class="chrome-center"><div class="chrome-fit">Fit (96%) <span class="chrome-caret"></span></div></div>
-    <div class="chrome-right">
-      <button class="btn-upgrade">Upgrade</button>
-      <button class="btn-preview">Preview</button>
-      <button class="btn-publish">Publish</button>
-    </div>
-  </div>
-  <div class="editor-body">
-    <div class="editor-surface">
-      <div class="bb-surface-inner">
-        <div class="bb-biz-name">Goody Bakery</div>
-        <div class="bb-section-row"><span class="bb-sec-label">Brand</span><span class="bb-sec-num">03</span></div>
-        <div class="bb-grid">
-          <div class="bb-card">
-            <div class="bb-card-lbl">Font pack</div>
-            <div class="font-pack">
-              <div class="font-item"><div class="font-preview" style="font-family:'Wix Madefor Display';">Aa</div><div class="font-name">Wix Madefor Display</div></div>
-              <div class="font-item"><div class="font-preview" style="font-style:italic;">Aa</div><div class="font-name">Wix Madefor Text</div></div>
+<!-- ══ S3 TEMPLATES ══ -->
+<div class="screen" id="s3" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-surface">
+      <div class="s3-wrap">
+        <div class="s3-lbl">Choose how to start your site</div>
+        <div class="tpl-grid">
+
+          <!-- Artisan Dark -->
+          <div class="tpl art" onclick="pickTpl('artisan','Artisan Dark')">
+            <div class="tpl-mock">
+              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#2C1810;color:#D4A055;">Order</span></div>
+              <div class="tpl-hero"><div class="tpl-h">Baked with<br>love</div><div class="tpl-sub">Goody · Tel Aviv · Est.2019</div><div class="tpl-btn">Order now →</div></div>
+              <div class="tpl-secs"><div class="tpl-sec">Sourdough</div><div class="tpl-sec">Croissants</div><div class="tpl-sec">Seasonal</div></div>
             </div>
-            <div class="vp-tags"><span class="vp-tag">Warm</span><span class="vp-tag">Artisan</span><span class="vp-tag">Approachable</span></div>
-            <div class="aria-bubble">Madefor — warm, crafted feel.<span class="ab-btn">✓ Keep</span><span class="ab-btn">Change</span></div>
+            <div class="tpl-foot"><span class="tpl-name">Artisan Dark</span><span class="tpl-tag">Bakery · Café</span></div>
           </div>
-          <div class="bb-card">
-            <div class="bb-card-lbl">Color palette</div>
-            <div class="palette-grid">
-              <div class="palette-swatch" style="background:#C85A1A;"></div>
-              <div class="palette-swatch" style="background:#D4C44A;"></div>
-              <div class="palette-swatch" style="background:#8C7B6B;"></div>
-              <div class="palette-swatch" style="background:#7A8C7E;"></div>
-              <div class="palette-swatch" style="background:#F5F0E8;"></div>
-              <div class="palette-swatch" style="background:#E8E0D0;"></div>
+
+          <!-- TAILOR MADE — center -->
+          <div class="tpl tm" onclick="pickTailor()">
+            <div class="tm-body">
+              <div class="tm-icon">✦</div>
+              <div class="tm-title">Design with Aria</div>
+              <div class="tm-sub">Build a fully custom site from your brand book — tailored to you</div>
+              <button class="tm-cta">Taylor Made →</button>
             </div>
-            <div class="aria-bubble" style="left:auto;right:14px;">Earthy tones for a bakery.<span class="ab-btn">✓ Love it</span><span class="ab-btn">Change</span></div>
           </div>
+
+          <!-- Natural Light -->
+          <div class="tpl nat" onclick="pickTpl('natural','Natural Light')">
+            <div class="tpl-mock">
+              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">About</span></div><span class="tpl-cta-nav" style="background:#3C2A1A;color:#F5E8D0;">Order</span></div>
+              <div class="tpl-hero"><div class="tpl-h">Fresh Every<br>Morning</div><div class="tpl-sub">Goody Bakery · Seasonal pastries</div><div class="tpl-btn">Explore →</div></div>
+              <div class="tpl-secs"><div class="tpl-sec">Morning Box</div><div class="tpl-sec">Pre-Order</div><div class="tpl-sec">Catering</div></div>
+            </div>
+            <div class="tpl-foot"><span class="tpl-name">Natural Light</span><span class="tpl-tag">Bakery · Food</span></div>
+          </div>
+
+          <!-- Premium Dark -->
+          <div class="tpl prem" onclick="pickTpl('premium','Premium Dark')">
+            <div class="tpl-mock">
+              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Shop</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
+              <div class="tpl-hero"><div class="tpl-h">Crafted<br>Daily</div><div class="tpl-sub" style="color:rgba(200,169,110,.7);">Goody — Premium bakery</div><div class="tpl-btn">Discover →</div></div>
+              <div class="tpl-secs"><div class="tpl-sec">Artisan</div><div class="tpl-sec">Seasonal</div><div class="tpl-sec">Gift</div></div>
+            </div>
+            <div class="tpl-foot"><span class="tpl-name">Premium Dark</span><span class="tpl-tag">Bakery · Boutique</span></div>
+          </div>
+
         </div>
-        <div class="bb-section-row" style="margin-top:6px;"><span class="bb-sec-label">Site</span><span class="bb-sec-num">04</span></div>
-        <div class="bb-grid">
-          <div class="bb-card">
-            <div class="bb-card-lbl">Site structure</div>
-            <div class="pages-list">
-              <div class="page-row"><span>🏠</span><span class="page-name">Home</span><span class="page-type">Main</span></div>
-              <div class="page-row"><span>🍞</span><span class="page-name">Menu</span><span class="page-type">Catalog</span></div>
-              <div class="page-row"><span>📖</span><span class="page-name">Our Story</span><span class="page-type">About</span></div>
-              <div class="page-row"><span>📍</span><span class="page-name">Find Us</span><span class="page-type">Contact</span></div>
-            </div>
-            <div class="aria-bubble">4 pages — tight and focused.<span class="ab-btn">Add shop</span><span class="ab-btn">Looks right</span></div>
-          </div>
-          <div class="bb-card">
-            <div class="bb-card-lbl">Apps & goals</div>
-            <div class="apps-grid">
-              <div class="app-chip"><span>📅</span><span class="app-name">Bookings</span></div>
-              <div class="app-chip"><span>📷</span><span class="app-name">Gallery</span></div>
-              <div class="app-chip"><span>📝</span><span class="app-name">Forms</span></div>
-              <div class="app-chip"><span>⭐</span><span class="app-name">Reviews</span></div>
-            </div>
-            <div class="vp-tags" style="margin-top:9px;padding-top:9px;">
-              <span class="vp-tag" style="border-color:rgba(232,200,126,0.3);color:#E8C97E;">📈 Grow orders</span>
-              <span class="vp-tag" style="border-color:rgba(52,211,153,0.3);color:#34D399;">🤝 Loyalty</span>
-            </div>
-            <div class="aria-bubble" style="left:auto;right:14px;">Added Bookings for pre-orders.<span class="ab-btn">✓ Yes</span><span class="ab-btn">Change</span></div>
-          </div>
-        </div>
+        <div class="see-more">↻ See more templates</div>
+      </div>
+      <div class="stepper">
+        <div class="step done"></div><div class="step done"></div>
+        <div class="step cur"></div><div class="step"></div><div class="step"></div>
       </div>
     </div>
-    <div class="aria-panel">
-      <div class="aria-panel-head">Ask Aria</div>
-      <div class="aria-msgs">
-        <div class="dark-msg">Here's your <strong>brand book</strong> — the foundation I'll build from. Everything is editable.</div>
-        <div class="dark-msg">I chose <strong>earthy warm tones</strong> and Wix Madefor. Happy with the direction?</div>
-        <div class="dark-msg-user">Can you make the palette more minimal?</div>
-        <div class="dark-msg">Done — 3 core colors: dark, warm gold, off-white ✓</div>
-      </div>
-      <div class="dark-input-row">
-        <input type="text" placeholder="Change anything…">
-        <button class="btn-generate-site" onclick="goTo(5)">✦ Generate my site →</button>
+    <div class="ap">
+      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text" id="s3-msg">I found 3 templates that match <strong>Goody</strong>. Or go fully custom — I'll build everything from your brand book.</div></div>
+        <div style="font-size:11px;color:#AAA;display:flex;align-items:center;gap:5px;margin-top:2px;"><span>✦</span> Templates already have your name and content.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S5 — SITE LIVE ══ -->
-<div class="screen" id="s5">
-  <div class="editor-chrome">
-    <span class="chrome-logo">wix</span>
-    <div class="chrome-avatar">N</div>
-    <div class="chrome-div"></div>
-    <button class="chrome-btn">Goody <span class="chrome-caret"></span></button>
-    <button class="chrome-btn">Brand <span class="chrome-caret"></span></button>
-    <div class="chrome-center"><div class="chrome-fit">Fit (96%) <span class="chrome-caret"></span></div></div>
-    <div class="chrome-right">
-      <button class="btn-upgrade">Upgrade</button>
-      <button class="btn-preview">Preview</button>
-      <button class="btn-publish live">Publish</button>
-    </div>
-  </div>
-  <div class="editor-body">
-    <div class="editor-surface">
-      <div class="site-canvas">
-        <div class="site-nav">
-          <div class="site-nav-logo">Goody</div>
-          <div class="site-nav-links"><span>Menu</span><span>Our Story</span><span>Find Us</span></div>
-          <div class="site-nav-cta">Order now</div>
+<!-- ══ S4a TAILOR MADE ══ -->
+<div class="screen" id="s4a" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-surface">
+      <div class="mosaic" id="mosaic">
+
+        <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
+
+        <div class="mloader" id="mloader">
+          <div class="ldots"><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div>
+          <span>Building your brand book…</span>
         </div>
-        <div class="site-hero">
-          <div class="site-hero-title">Baked with love,<br>every morning</div>
-          <div class="site-hero-sub">Sourdough & seasonal pastries · Tel Aviv</div>
-          <div class="site-hero-btn">See the menu →</div>
+
+        <!-- Site Brand -->
+        <div class="sq" id="sq-brand" style="left:52px;top:58px;width:225px;height:168px;" onclick="sqTap('brand')">
+          <div class="sq-head"><span class="sq-ico">🎨</span><button class="sq-exp" onclick="event.stopPropagation();openModal('brand')">⊞</button></div>
+          <div class="sq-title">Site Brand</div>
+          <div class="sq-data"><strong>Wix Madefor</strong> Display + Text<br><strong>Earthy warm</strong> — amber, sage, cream<br>Tags: Warm · Artisan · Approachable</div>
         </div>
-        <div class="site-products">
-          <div class="site-product">Sourdough</div>
-          <div class="site-product">Croissants</div>
-          <div class="site-product">Seasonal</div>
-          <div class="site-product">Specials</div>
+
+        <!-- Visual Profile -->
+        <div class="sq" id="sq-visual" style="left:298px;top:46px;width:178px;height:152px;" onclick="sqTap('visual')">
+          <div class="sq-head"><span class="sq-ico">✦</span><button class="sq-exp" onclick="event.stopPropagation();openModal('visual')">⊞</button></div>
+          <div class="sq-title">Visual Profile</div>
+          <div class="sq-data">Mood: <strong>Warm & artisan</strong><br>Photography: Natural light<br>Style: Close-up, textured</div>
         </div>
+
+        <!-- About the Business -->
+        <div class="sq" id="sq-about" style="left:46px;top:254px;width:196px;height:195px;" onclick="sqTap('about')">
+          <div class="sq-head"><span class="sq-ico">🏠</span><button class="sq-exp" onclick="event.stopPropagation();openModal('about')">⊞</button></div>
+          <div class="sq-title">About the Business</div>
+          <div class="sq-data"><strong>Goody Bakery</strong><br>Sourdough & pastries · Tel Aviv<br>Founded 2019 · 3 locations<br><br>Domain: <strong style="color:#116DFF;">goody-bakery.com</strong> <span style="background:#E6F5EE;color:#1A8A4A;font-size:9px;font-weight:600;padding:1px 5px;border-radius:6px;">✓</span></div>
+        </div>
+
+        <!-- Site Goals -->
+        <div class="sq" id="sq-goals" style="left:264px;top:224px;width:210px;height:138px;" onclick="sqTap('goals')">
+          <div class="sq-head"><span class="sq-ico">🎯</span><button class="sq-exp" onclick="event.stopPropagation();openModal('goals')">⊞</button></div>
+          <div class="sq-title">Site Goals</div>
+          <div class="sq-data"><strong>Primary:</strong> Online pre-orders<br><strong>Secondary:</strong> Brand story, loyalty<br>Audience: Local food lovers, 25–45</div>
+        </div>
+
+        <!-- Site Apps -->
+        <div class="sq" id="sq-apps" style="left:262px;top:386px;width:178px;height:138px;" onclick="sqTap('apps')">
+          <div class="sq-head"><span class="sq-ico">⚙️</span><button class="sq-exp" onclick="event.stopPropagation();openModal('apps')">⊞</button></div>
+          <div class="sq-title">Site Apps</div>
+          <div class="sq-data">✓ Bookings<br>✓ Gallery<br>✓ Reviews<br><span style="color:#AAA;">○ Online Store</span></div>
+        </div>
+
+      </div>
+      <div class="stepper">
+        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
+        <div class="step cur"></div><div class="step"></div>
       </div>
     </div>
-    <div class="aria-panel">
-      <div class="aria-panel-head">Ask Aria</div>
-      <div class="aria-msgs">
-        <div class="s5-notice"><strong>Your site is ready 🎉</strong><br>4 pages, Wix Madefor, earthy palette — all from your brand book.</div>
-        <div class="s5-domain-card">
-          <div class="s5-domain-title">🌐 Connect your domain</div>
-          <div class="s5-domain-sub">Make it official — <strong>goody-bakery.com</strong> is available</div>
-          <button class="s5-domain-btn">Connect domain →</button>
-          <button class="s5-later-btn">Skip for now</button>
-        </div>
-        <div class="s5-blueprint-link" onclick="goTo(4)">
-          ↗ View your brand book
-        </div>
+    <div class="ap">
+      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div><div class="ap-step">4 of 5</div></div>
+      <div class="ap-msgs" id="s4a-msgs">
+        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text" id="s4a-init">Building your brand book…</div></div>
       </div>
-      <div class="aria-panel-foot">
-        <span></span>
-        <button class="btn-next-sm">Start customizing →</button>
+      <div class="ap-composer">
+        <div class="comp-row">
+          <input type="text" placeholder="Ask or change anything…" onkeydown="if(event.key==='Enter')goToSite()">
+          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+        </div>
+        <button class="comp-skip" onclick="goToSite()">Generate site → (Enter)</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- dots -->
-<div class="step-dots" id="step-dots">
-  <div class="step-dot active" onclick="goTo(1)"></div>
-  <div class="step-dot" onclick="goTo(2)"></div>
-  <div class="step-dot" onclick="goTo(3)"></div>
-  <div class="step-dot" onclick="goTo(4)"></div>
-  <div class="step-dot" onclick="goTo(5)"></div>
+<!-- ══ S4b TEMPLATE PATH ══ -->
+<div class="screen" id="s4b" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-surface">
+      <div class="tpl-ws">
+        <div class="site-frame" id="s4b-frame"></div>
+      </div>
+      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
+      <div class="stepper">
+        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
+        <div class="step cur"></div><div class="step"></div>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
+      <div class="ap-msgs" id="s4b-msgs">
+        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text">Love the <strong id="tpl-ref">Artisan Dark</strong> vibe — already injected your content. Happy with the colors, or want to try something different?</div></div>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-top:4px;">
+          <button class="choice-btn" onclick="tplChoice('keep')">✓ Keep it — looks great</button>
+          <button class="choice-btn" onclick="tplChoice('change')">🎨 Let's change the colors</button>
+        </div>
+      </div>
+      <div class="ap-composer">
+        <div class="comp-row">
+          <input type="text" placeholder="Ask or change anything…">
+          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- concept nav -->
-<div id="concept-nav">
-  <a href="concepts.html">← All</a>
-  <div class="ndiv"></div>
-  <a href="concept-1-brief.html">1</a>
-  <a href="concept-2-blueprint.html">2</a>
-  <a href="concept-3-brandbook.html" style="background:#2F5BFF;color:#fff;border-radius:20px;">3</a>
-  <a href="concept-4-studio.html">4</a>
+<!-- ══ S5 FINAL ══ -->
+<div class="screen" id="s5" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-surface">
+      <div class="tpl-ws">
+        <div class="site-frame" id="s5-frame" style="width:350px;"></div>
+      </div>
+      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span> Blueprint</div>
+      <div class="stepper">
+        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
+        <div class="step done"></div><div class="step cur"></div>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text">🎉 Your site is ready! Make it official with a domain.</div></div>
+        <div class="domain-w">
+          <div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Your domain</span></div>
+          <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
+          <button class="btn-domain">Connect domain →</button>
+          <button class="btn-skip">Skip for now</button>
+        </div>
+      </div>
+      <div class="ap-composer">
+        <div class="comp-row">
+          <input type="text" placeholder="Ask or change anything…">
+          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ══ MODAL ══ -->
+<div class="modal-ov" id="modal-ov" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-ico" id="m-ico">🎨</span>
+      <span class="modal-title" id="m-title">Site Brand</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="m-body"></div>
+  </div>
+</div>
+
+<!-- ══ DEV NAV ══ -->
+<div class="dev-nav">
+  <div class="darr" onclick="navPrev()">←</div>
+  <div class="darr dcur" id="dcur">1</div>
+  <div class="darr" onclick="navNext()">→</div>
+</div>
+
+<style>
+.choice-btn{text-align:left;background:#F8F8FC;border:1.5px solid #E8E8EF;border-radius:10px;padding:9px 12px;font-family:inherit;font-size:12px;cursor:pointer;transition:border-color .15s,background .15s;color:#333;}
+.choice-btn:hover{border-color:#116DFF;background:#F0F5FF;color:#116DFF;}
+</style>
 
 <script>
-let cur = 1;
-function goTo(n) {
-  document.getElementById('s'+cur).classList.remove('active');
-  cur = n;
-  document.getElementById('s'+n).classList.add('active');
-  document.querySelectorAll('.step-dot').forEach((d,i) => d.classList.toggle('active', i===n-1));
-  document.getElementById('step-dots').style.display = n >= 4 ? 'none' : 'flex';
+// ── STATE ──
+var cur = 's1', path = null, tplName = '', siteName = 'Goody';
+var s2step = 0;
+const ORDER = ['s1','s2','s3','s4a','s5']; // logical flow
+
+// ── GOTO ──
+function goTo(id) {
+  document.querySelector('.screen.active')?.classList.remove('active');
+  document.getElementById(id)?.classList.add('active');
+  cur = id;
+  document.getElementById('chrome').style.display = id === 's1' ? 'none' : 'block';
+  document.getElementById('dcur').textContent = {s1:'1',s2:'2',s3:'3',s4a:'4',s4b:'4',s5:'5'}[id]||'?';
 }
-function sel(el, g) {
-  document.querySelectorAll('#'+g+' .aria-opt').forEach(o => o.classList.remove('sel'));
-  el.classList.add('sel');
+
+function navPrev() {
+  if(cur==='s2') goTo('s1');
+  else if(cur==='s3') goTo('s2');
+  else if(cur==='s4a'||cur==='s4b') goTo('s3');
+  else if(cur==='s5') goTo(path==='tailor'?'s4a':'s4b');
 }
-function selChoose(id) {
-  document.querySelectorAll('.choose-blank,.choose-tpl').forEach(c => c.classList.remove('sel'));
-  document.getElementById(id).classList.add('sel');
+function navNext() {
+  if(cur==='s1') startFlow();
+  else if(cur==='s2') goTo('s3');
+  else if(cur==='s3') pickTailor();
+  else if(cur==='s4a') goToSite();
+  else if(cur==='s4b') goToSite();
 }
-document.addEventListener('keydown', e => {
-  if (e.key==='ArrowRight' && cur<5) goTo(cur+1);
-  if (e.key==='ArrowLeft' && cur>1) goTo(cur-1);
+
+// ── S1 ──
+function fillEx(el) {
+  document.getElementById('s1-input').value = el.textContent + ' website';
+  document.querySelectorAll('.chip').forEach(c=>{c.style.borderColor='';c.style.color='';});
+  el.style.borderColor='#116DFF'; el.style.color='#116DFF';
+}
+function startFlow() { goTo('s2'); }
+
+// ── S2 QUESTIONS ──
+const Q = [
+  { q:"Let's build your brand book. First — what's your site called?",
+    suggs:['Goody','Nova','Bloom','Studio K'], ph:"Type your site name…" },
+  { q:"What makes <NAME>'s business unique — or what's your main goal?",
+    suggs:['Online pre-orders','Artisan & local','Seasonal menu','Community'],
+    ph:"Describe what makes it special…" }
+];
+function pickS2(el){ submitS2(el.textContent); }
+function sendS2(skip) {
+  const v = document.getElementById('s2-in').value.trim();
+  submitS2(skip ? '' : v);
+  document.getElementById('s2-in').value = '';
+}
+function submitS2(val) {
+  const msgs = document.getElementById('s2-msgs');
+  if(val) {
+    const b = document.createElement('div'); b.className='msg-u'; b.textContent=val; msgs.appendChild(b);
+    if(s2step===0) { siteName=val; document.getElementById('s3-msg').innerHTML=`I found 3 templates that match <strong>${val}</strong>. Or go fully custom.`; }
+  }
+  s2step++;
+  if(s2step>=Q.length){
+    addAriaMsg(msgs,`Great! Let me match templates for <strong>${siteName}</strong>…`);
+    msgs.scrollTop=msgs.scrollHeight;
+    setTimeout(()=>goTo('s3'),1100);
+    return;
+  }
+  const q=Q[s2step];
+  addAriaMsg(msgs, q.q.replace('<NAME>',siteName));
+  document.getElementById('s2-suggs').innerHTML = q.suggs.map(s=>`<span class="comp-sugg" onclick="pickS2(this)">${s}</span>`).join('');
+  document.getElementById('s2-in').placeholder = q.ph;
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function addAriaMsg(container, html) {
+  const d=document.createElement('div'); d.className='msg-a';
+  d.innerHTML=`<div class="msg-a-av">A</div><div class="msg-a-text">${html}</div>`;
+  container.appendChild(d);
+}
+
+// ── S3 ──
+function pickTailor(){
+  path='tailor'; goTo('s4a'); startMosaic();
+  document.getElementById('bp-btn').classList.add('show');
+}
+function pickTpl(id,name){
+  path='template'; tplName=name;
+  document.getElementById('tpl-ref').textContent=name;
+  fillSiteFrame('s4b-frame',id);
+  fillSiteFrame('s5-frame',id);
+  goTo('s4b');
+  document.getElementById('bp-btn').classList.add('show');
+}
+
+// ── SITE FRAME HTML ──
+function siteHtml(id){
+  const C={
+    artisan:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#2C1810,#1A0F08)',h:'Baked with love,<br>every morning',hc:'#fff',sub:'Sourdough & seasonal pastries · Tel Aviv',subc:'rgba(255,255,255,.6)',acc:'#D4A055',sec:'#F5EFE8',secc:'#8B6A50',navCta:'background:#2C1810;color:#D4A055'},
+    natural:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#F5E8D0,#EDD5B0)',h:'Fresh every morning',hc:'#3C2A1A',sub:'Goody Bakery · Seasonal pastries',subc:'rgba(60,42,26,.6)',acc:'#3C2A1A',sec:'#EDD5B0',secc:'#8B6A50',navCta:'background:#3C2A1A;color:#F5E8D0'},
+    premium:{nav:'#0A0A0A',logo:'#C8A96E',bg:'linear-gradient(180deg,#0A0A0A,#1A1A1A)',h:'Crafted daily',hc:'#fff',sub:'Goody — Premium bakery',subc:'rgba(200,169,110,.65)',acc:'#C8A96E',sec:'#111',secc:'#C8A96E',navCta:'background:#C8A96E;color:#111'}
+  };
+  const c=C[id]||C.artisan;
+  return `<div style="font-family:inherit">
+    <div style="height:32px;background:${c.nav};display:flex;align-items:center;padding:0 14px;gap:10px;border-bottom:1px solid rgba(0,0,0,.08)">
+      <span style="font-weight:800;font-size:13px;color:${c.logo}">Goody</span>
+      <span style="font-size:9px;color:#888">Menu</span><span style="font-size:9px;color:#888">Our Story</span>
+      <span style="margin-left:auto;font-size:9px;font-weight:600;padding:3px 9px;border-radius:4px;${c.navCta}">Order now</span>
+    </div>
+    <div style="height:240px;background:${c.bg};display:flex;flex-direction:column;justify-content:flex-end;padding:18px 16px">
+      <div style="font-weight:800;font-size:19px;color:${c.hc};line-height:1.25;margin-bottom:6px">${c.h}</div>
+      <div style="font-size:10px;color:${c.subc};margin-bottom:14px">${c.sub}</div>
+      <div style="background:${c.acc};color:${id==='natural'?'#F5E8D0':'#111'};font-size:11px;font-weight:600;padding:8px 18px;border-radius:7px;display:inline-block;width:fit-content">See the menu →</div>
+    </div>
+    <div style="display:flex;gap:1px;background:#F0F0F5">
+      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Sourdough</div>
+      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Croissants</div>
+      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Seasonal</div>
+      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Specials</div>
+    </div>
+  </div>`;
+}
+function fillSiteFrame(id,tpl){ document.getElementById(id).innerHTML=siteHtml(tpl); }
+
+// ── S4a MOSAIC LOADER ──
+const SQS=['sq-brand','sq-visual','sq-about','sq-goals','sq-apps'];
+const DELAYS=[700,1400,2200,3200,4200];
+function startMosaic(){
+  SQS.forEach(id=>{const s=document.getElementById(id);s.classList.remove('show');s.style.opacity='';});
+  const loader=document.getElementById('mloader');
+  loader.style.opacity='1'; loader.style.display='flex';
+  SQS.forEach((id,i)=>{
+    setTimeout(()=>{
+      const sq=document.getElementById(id);sq.style.opacity='';sq.classList.add('show');
+      if(i===SQS.length-1){
+        setTimeout(()=>{
+          loader.style.opacity='0';
+          setTimeout(()=>loader.style.display='none',350);
+          const m=document.getElementById('s4a-msgs');
+          addAriaMsg(m,'Your brand book is ready ✓ Tap any card to explore or edit.');
+          m.scrollTop=m.scrollHeight;
+        },400);
+      }
+    },DELAYS[i]);
+  });
+}
+
+// ── SQUARE TAP → CHAT ──
+const SQ_Q={
+  brand:{ico:'🎨',q:"Want to tweak the typography or palette? I can suggest alternatives."},
+  visual:{ico:'✦',q:"I picked warm natural photography. Does that feel right for Goody, or more minimal?"},
+  about:{ico:'🏠',q:"<strong>goody-bakery.com</strong> is available — want to lock it in now?"},
+  goals:{ico:'🎯',q:"Pre-orders is your primary goal. Should I add a Booking app and loyalty program too?"},
+  apps:{ico:'⚙️',q:"Bookings + Gallery + Reviews are active. Want to add an online shop?"}
+};
+function sqTap(key){
+  document.querySelectorAll('.sq').forEach(s=>s.classList.remove('sq-active'));
+  document.getElementById('sq-'+key)?.classList.add('sq-active');
+  const m=document.getElementById('s4a-msgs');
+  const info=SQ_Q[key];
+  addAriaMsg(m,`${info.ico} ${info.q}`);
+  m.scrollTop=m.scrollHeight;
+}
+
+// ── TRANSITION → SITE ──
+function goToSite(){
+  if(cur==='s4a'){
+    SQS.forEach((id,i)=>{
+      const s=document.getElementById(id);
+      s.style.transition=`opacity .4s ease ${i*.07}s, transform .4s ease ${i*.07}s`;
+      s.style.opacity='0'; s.style.transform='translateX(-28px)';
+    });
+    setTimeout(()=>{
+      if(path==='tailor'){ fillSiteFrame('s5-frame','artisan'); }
+      const f=document.getElementById('s5-frame');
+      f.style.opacity='0'; f.style.transform='translateX(40px)';
+      goTo('s5');
+      document.getElementById('ec-pub').classList.add('live');
+      setTimeout(()=>{f.style.transition='opacity .6s ease, transform .6s ease';f.style.opacity='1';f.style.transform='translateX(0)';},60);
+    },550);
+  } else {
+    const f=document.getElementById('s5-frame');
+    f.style.opacity='0'; f.style.transform='translateX(40px)';
+    goTo('s5');
+    document.getElementById('ec-pub').classList.add('live');
+    setTimeout(()=>{f.style.transition='opacity .6s ease, transform .6s ease';f.style.opacity='1';f.style.transform='translateX(0)';},60);
+  }
+}
+
+// ── TEMPLATE COLOR CHOICE ──
+function tplChoice(c){
+  const m=document.getElementById('s4b-msgs');
+  const b=document.createElement('div'); b.className='msg-u';
+  b.textContent=c==='keep'?'Keep it — looks great ✓':"Let's change the colors";
+  m.appendChild(b);
+  addAriaMsg(m,c==='keep'?"Perfect — now let's make it live.":"Got it — updated the palette! Now let's add a domain.");
+  const dw=document.createElement('div'); dw.className='domain-w';
+  dw.innerHTML=`<div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Your domain</span></div>
+    <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
+    <button class="btn-domain" onclick="goToSite()">Connect domain →</button>
+    <button class="btn-skip" onclick="goToSite()">Skip for now</button>`;
+  m.appendChild(dw); m.scrollTop=m.scrollHeight;
+}
+
+// ── BLUEPRINT TOGGLE ──
+function toggleBlueprint(){
+  if(cur==='s4a') goToSite();
+  else if(cur==='s4b'||cur==='s5') goTo('s4a');
+}
+
+// ── MODALS ──
+const MD={
+  brand:{ico:'🎨',title:'Site Brand',html:`
+    <div class="msec"><div class="msec-title">Typography</div>
+      <div class="font-prev"><div class="font-prev-big">Goody Bakery</div><div class="font-prev-sm">Wix Madefor Display (Bold) + Wix Madefor Text</div></div></div>
+    <div class="msec"><div class="msec-title">Color Palette</div>
+      <div class="color-row">
+        <div class="cswatch" style="background:#2C1810" title="Dark Brown"></div>
+        <div class="cswatch" style="background:#D4A055" title="Warm Gold"></div>
+        <div class="cswatch" style="background:#8B6A50" title="Mid Brown"></div>
+        <div class="cswatch" style="background:#F5E8D0" title="Cream"></div>
+        <div class="cswatch" style="background:#4A7C6F" title="Sage"></div>
+      </div></div>
+    <div class="msec"><div class="msec-title">Brand Tags</div>
+      <div style="display:flex;gap:7px;flex-wrap:wrap">
+        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Warm</span>
+        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Artisan</span>
+        <span style="background:#F0F0F8;border-radius:12px;padding:4px 12px;font-size:12px;color:#555">Approachable</span>
+      </div></div>`},
+  visual:{ico:'✦',title:'Visual Profile',html:`
+    <div class="msec"><div class="msec-title">Photography Style</div>
+      <p style="font-size:13px;color:#555;line-height:1.6">Natural light, close-up shots of baked goods. Warm tones, overhead and 45° angles. Textures and handmade quality.</p></div>
+    <div class="msec"><div class="msec-title">Mood Board</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#D4A055,#2C1810)"></div>
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#F5E8D0,#D4A055)"></div>
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#4A7C6F,#2C1810)"></div>
+        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#EDD5B0,#F5E8D0)"></div>
+      </div></div>`},
+  about:{ico:'🏠',title:'About the Business',html:`
+    <div class="msec"><div class="msec-title">Business Info</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Name:</strong> Goody Bakery</div>
+        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Type:</strong> Artisan bakery & café</div>
+        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Location:</strong> Tel Aviv, Israel</div>
+        <div style="background:#F8F8FC;border-radius:8px;padding:10px 12px;font-size:12.5px"><strong>Tagline:</strong> Baked with love, every morning</div>
+      </div></div>
+    <div class="msec"><div class="msec-title">Domain</div>
+      <div class="domain-w">
+        <div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Suggested domain</span></div>
+        <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
+        <button class="btn-domain">Connect domain →</button>
+      </div></div>`},
+  goals:{ico:'🎯',title:'Site Goals',html:`
+    <div class="msec"><div class="msec-title">Primary Goal</div>
+      <div style="background:#EBF0FF;border:1.5px solid #116DFF;border-radius:10px;padding:12px;font-size:13px;color:#116DFF;font-weight:600">🎯 Online pre-orders</div></div>
+    <div class="msec"><div class="msec-title">Secondary Goals</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Brand storytelling</div>
+        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Customer loyalty</div>
+        <div style="background:#F8F8FC;border-radius:8px;padding:9px 12px;font-size:12.5px">Local community events</div>
+      </div></div>
+    <div class="msec"><div class="msec-title">Target Audience</div>
+      <p style="font-size:13px;color:#555;line-height:1.6">Local food lovers in Tel Aviv, aged 25–45. Appreciate artisan quality, sustainability, and local community.</p></div>`},
+  apps:{ico:'⚙️',title:'Site Apps',html:`
+    <div class="msec"><div class="msec-title">Active Apps</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>📅</span><span style="font-size:12.5px;font-weight:600;flex:1">Bookings</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
+        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>🖼️</span><span style="font-size:12.5px;font-weight:600;flex:1">Gallery</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
+        <div class="app-row" style="background:#F0F8F0;border:1px solid #B8E0C0"><span>⭐</span><span style="font-size:12.5px;font-weight:600;flex:1">Reviews</span><span style="color:#1A8A4A;font-size:11px;font-weight:600">Active</span></div>
+        <div class="app-row" style="background:#F8F8FC;border:1px solid #E8E8EF"><span>🛒</span><span style="font-size:12.5px;color:#888;flex:1">Online Store</span><button style="font-size:11px;font-weight:600;color:#116DFF;background:none;border:none;cursor:pointer">+ Add</button></div>
+      </div></div>`}
+};
+function openModal(key){
+  const d=MD[key]; if(!d)return;
+  document.getElementById('m-ico').textContent=d.ico;
+  document.getElementById('m-title').textContent=d.title;
+  document.getElementById('m-body').innerHTML=d.html;
+  document.getElementById('modal-ov').classList.add('open');
+}
+function closeModal(){ document.getElementById('modal-ov').classList.remove('open'); }
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='ArrowRight')navNext();
+  if(e.key==='ArrowLeft')navPrev();
+  if(e.key==='Escape')closeModal();
 });
+
+// ── INIT ──
+// alias so external callers can use goTo(1..5) or goTo('s2') etc.
+const _goToInternal = goTo;
+window.goTo = function(n){
+  if(typeof n==='number'){const m={1:'s1',2:'s2',3:'s3',4:'s4a',5:'s5'};_goToInternal(m[n]||'s1');}
+  else _goToInternal(n);
+};
 </script>
 </body>
 </html>
