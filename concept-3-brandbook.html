@@ -8,34 +8,21 @@
 <style>
 /* ── RESET & BASE ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;background:#fff;
-     font-size:14px;color:#151414;line-height:18px;}
+body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;background:#fff;font-size:14px;color:#151414;line-height:18px;}
 button{font-family:inherit;cursor:pointer;}
 textarea,input{font-family:inherit;}
 
 /* ── DESIGN TOKENS ── */
 :root{
-  --blue:   #2F5DFF;
-  --blue-h: #1C3FE5;
-  --blue-lt:#EAEFFF;
-  --blue-md:#D5DFFF;
-  --grey-1: #151414;
-  --grey-2: #383838;
-  --grey-3: #525150;
-  --grey-4: #767574;
-  --grey-5: #A8A6A5;
-  --grey-55:#DEDEDE;
-  --grey-6: #E8E7E7;
-  --grey-7: #F0EFEF;
-  --grey-75:#F8F6F6;
-  --green:  #4B916D;
-  --rad-btn:8px;
-  --rad-card:12px;
-  --rad-modal:24px;
+  --blue:#2F5DFF; --blue-h:#1C3FE5; --blue-lt:#EAEFFF; --blue-md:#D5DFFF;
+  --grey-1:#151414; --grey-2:#383838; --grey-3:#525150; --grey-4:#767574;
+  --grey-5:#A8A6A5; --grey-55:#DEDEDE; --grey-6:#E8E7E7; --grey-7:#F0EFEF; --grey-75:#F8F6F6;
+  --green:#4B916D;
+  --rad-btn:8px; --rad-card:12px; --rad-modal:24px;
   --sh-raised:0 1px 4px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.08);
-  --sh-card:  0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.06);
-  --sh-modal: 0 8px 32px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.12);
-  --sh-input: inset 0 1px 3px rgba(0,0,0,.10),inset 0 0 0 1px #E8E7E7;
+  --sh-card:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.06);
+  --sh-modal:0 8px 32px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.12);
+  --sh-input:inset 0 1px 3px rgba(0,0,0,.10),inset 0 0 0 1px #E8E7E7;
 }
 
 /* ── SCREENS ── */
@@ -46,144 +33,49 @@ textarea,input{font-family:inherit;}
    S1 — FULL-SCREEN OPEN PROMPT
 ════════════════════════════════════ */
 #s1{background:#EAEAF5;}
-
-.s1-body{
-  flex:1;display:flex;flex-direction:column;
-  padding:56px 80px 84px;position:relative;overflow:hidden;
-}
-
-/* Aria avatar orb */
-.s1-orb{
-  width:44px;height:44px;border-radius:50%;
-  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%,#000);
-  box-shadow:0 2px 12px rgba(0,0,0,.25);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:20px;flex-shrink:0;
-}
+.s1-body{flex:1;display:flex;flex-direction:column;padding:56px 80px 84px;position:relative;overflow:hidden;}
+.s1-orb{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%,#000);box-shadow:0 2px 12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;flex-shrink:0;}
 .s1-orb-face{display:flex;gap:5px;align-items:center;}
 .s1-orb-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
-
-/* Gradient headline */
-.s1-headline{
-  font-family:'Wix Madefor Display',sans-serif;
-  font-size:42px;font-weight:700;line-height:1.2;
-  letter-spacing:-0.5px;margin-bottom:28px;
-}
+.s1-headline{font-family:'Wix Madefor Display',sans-serif;font-size:42px;font-weight:700;line-height:1.2;letter-spacing:-0.5px;margin-bottom:28px;}
 .s1-line{display:block;}
-.s1-l1{background:linear-gradient(90deg,#1A1ADE 0%,#4A5CE8 40%,#8FA0F0 70%,#BCC9FA 100%);
-        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.s1-l2{background:linear-gradient(90deg,#2030CF 0%,#5060E0 45%,#9AAAF5 75%,#C8D2FF 100%);
-        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* Inline avatar in text */
-.s1-av-inline{
-  display:inline-flex;width:32px;height:32px;border-radius:50%;
-  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);
-  vertical-align:middle;margin:0 5px 3px;align-items:center;justify-content:center;flex-shrink:0;
-}
+.s1-l1{background:linear-gradient(90deg,#1A1ADE 0%,#4A5CE8 40%,#8FA0F0 70%,#BCC9FA 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s1-l2{background:linear-gradient(90deg,#2030CF 0%,#5060E0 45%,#9AAAF5 75%,#C8D2FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s1-av-inline{display:inline-flex;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);vertical-align:middle;margin:0 5px 3px;align-items:center;justify-content:center;flex-shrink:0;}
 .s1-av-inline span{display:flex;gap:4px;}
 .s1-av-inline span i{display:block;width:4px;height:4px;border-radius:50%;background:#fff;}
-
-/* Textarea */
-.s1-textarea{
-  font-size:16px;font-weight:400;color:var(--grey-1);line-height:1.6;
-  border:none;outline:none;background:transparent;resize:none;
-  width:100%;flex:1;
-  caret-color:var(--blue);
-}
+.s1-textarea{font-size:16px;font-weight:400;color:var(--grey-1);line-height:1.6;border:none;outline:none;background:transparent;resize:none;width:100%;flex:1;caret-color:var(--blue);}
 .s1-textarea::placeholder{color:#BABACE;font-weight:400;}
-
-/* Bottom toolbar */
-.s1-bar{
-  position:absolute;bottom:0;left:0;right:0;height:60px;
-  background:#fff;border-top:1px solid var(--grey-6);
-  display:flex;align-items:center;padding:0 20px;gap:4px;
-}
-.s1-bar-btn{
-  display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;
-  border-radius:var(--rad-btn);border:none;background:none;
-  font-size:14px;font-weight:500;color:var(--grey-3);
-  transition:background .15s;
-}
+.s1-bar{position:absolute;bottom:0;left:0;right:0;height:60px;background:#fff;border-top:1px solid var(--grey-6);display:flex;align-items:center;padding:0 20px;gap:4px;}
+.s1-bar-btn{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:var(--rad-btn);border:none;background:none;font-size:14px;font-weight:500;color:var(--grey-3);transition:background .15s;}
 .s1-bar-btn:hover{background:var(--grey-7);}
 .s1-bar-sep{width:1px;height:18px;background:var(--grey-6);margin:0 3px;}
-.s1-gen{
-  margin-left:auto;display:flex;align-items:center;gap:8px;
-  height:38px;padding:0 20px;border:none;border-radius:var(--rad-btn);
-  background:var(--blue);color:#fff;
-  font-size:14px;font-weight:600;
-  box-shadow:0 1px 3px rgba(47,93,255,.3),0 3px 10px rgba(47,93,255,.2);
-  transition:background .15s;
-}
+.s1-gen{margin-left:auto;display:flex;align-items:center;gap:8px;height:38px;padding:0 20px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 1px 3px rgba(47,93,255,.3),0 3px 10px rgba(47,93,255,.2);transition:background .15s;}
 .s1-gen:hover{background:var(--blue-h);}
 
 /* ════════════════════════════════════
    EDITOR CHROME
 ════════════════════════════════════ */
-.ec{
-  height:46px;background:#fff;border-bottom:1px solid var(--grey-6);
-  display:flex;align-items:center;padding:0 12px;gap:0;flex-shrink:0;
-  box-shadow:0 1px 0 var(--grey-6);
-}
-.ec-logo{
-  font-family:'Wix Madefor Display',sans-serif;
-  font-size:18px;font-weight:800;color:#000;
-  letter-spacing:-0.3px;margin-right:4px;
-}
-.ec-av{
-  width:22px;height:22px;border-radius:50%;
-  background:linear-gradient(135deg,#8B5CF6,#D946EF);
-  display:flex;align-items:center;justify-content:center;
-  font-size:9px;color:#fff;font-weight:700;flex-shrink:0;
-}
+.ec{height:46px;background:#fff;border-bottom:1px solid var(--grey-6);display:flex;align-items:center;padding:0 12px;flex-shrink:0;box-shadow:0 1px 0 var(--grey-6);}
+.ec-logo{font-family:'Wix Madefor Display',sans-serif;font-size:18px;font-weight:800;color:#000;letter-spacing:-0.3px;margin-right:4px;}
+.ec-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#8B5CF6,#D946EF);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;}
 .ec-sep{width:1px;height:16px;background:var(--grey-6);margin:0 6px;}
-.ec-menu{
-  display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;
-  font-size:13px;font-weight:500;color:var(--grey-3);
-  background:none;border:none;transition:background .15s;
-}
+.ec-menu{display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;font-size:13px;font-weight:500;color:var(--grey-3);background:none;border:none;transition:background .15s;}
 .ec-menu:hover{background:var(--grey-7);}
-.ec-caret{
-  display:inline-block;width:5px;height:5px;margin-left:3px;
-  border-right:1.5px solid var(--grey-4);border-bottom:1.5px solid var(--grey-4);
-  transform:rotate(45deg) translateY(-1px);
-}
+.ec-caret{display:inline-block;width:5px;height:5px;margin-left:3px;border-right:1.5px solid var(--grey-4);border-bottom:1.5px solid var(--grey-4);transform:rotate(45deg) translateY(-1px);}
 .ec-center{flex:1;display:flex;justify-content:center;}
-.ec-fit{
-  font-size:13px;color:var(--grey-4);
-  display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;
-  cursor:pointer;background:none;border:none;
-}
+.ec-fit{font-size:13px;color:var(--grey-4);display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;cursor:pointer;background:none;border:none;}
 .ec-fit:hover{background:var(--grey-7);}
-/* blueprint badge */
-.ec-bp{
-  display:none;align-items:center;gap:5px;height:26px;padding:0 10px;
-  border:1px solid rgba(47,93,255,.25);border-radius:6px;
-  background:rgba(47,93,255,.04);cursor:pointer;
-  font-size:12px;font-weight:600;color:var(--blue);
-  transition:background .15s;
-}
+.ec-bp{display:none;align-items:center;gap:5px;height:26px;padding:0 10px;border:1px solid rgba(47,93,255,.25);border-radius:6px;background:rgba(47,93,255,.04);cursor:pointer;font-size:12px;font-weight:600;color:var(--blue);transition:background .15s;}
 .ec-bp:hover{background:rgba(47,93,255,.08);}
 .ec-bp.on{display:flex;}
 .ec-right{display:flex;align-items:center;gap:3px;}
-.ec-upgrade{
-  color:#6B46FF;font-size:13px;font-weight:600;
-  background:none;border:none;padding:4px 8px;
-}
-.ec-icon{
-  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
-  border-radius:6px;cursor:pointer;border:none;background:none;color:var(--grey-4);
-}
+.ec-upgrade{color:#6B46FF;font-size:13px;font-weight:600;background:none;border:none;padding:4px 8px;}
+.ec-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;border:none;background:none;color:var(--grey-4);}
 .ec-icon:hover{background:var(--grey-7);}
-.ec-preview{
-  height:26px;padding:0 12px;background:none;border:1px solid var(--grey-55);
-  border-radius:6px;font-size:12px;font-weight:500;color:var(--grey-2);
-}
+.ec-preview{height:26px;padding:0 12px;background:none;border:1px solid var(--grey-55);border-radius:6px;font-size:12px;font-weight:500;color:var(--grey-2);}
 .ec-preview:hover{background:var(--grey-7);}
-.ec-publish{
-  height:26px;padding:0 14px;border:none;border-radius:6px;
-  font-size:12px;font-weight:600;color:#fff;background:#C8C8D0;cursor:default;
-}
+.ec-publish{height:26px;padding:0 14px;border:none;border-radius:6px;font-size:12px;font-weight:600;color:#fff;background:#C8C8D0;cursor:default;}
 .ec-publish.live{background:var(--blue);cursor:pointer;box-shadow:0 1px 4px rgba(47,93,255,.3);}
 
 /* ════════════════════════════════════
@@ -195,217 +87,207 @@ textarea,input{font-family:inherit;}
 /* ════════════════════════════════════
    ARIA PANEL (right)
 ════════════════════════════════════ */
-.ap{
-  width:360px;flex-shrink:0;background:#fff;border-left:1px solid var(--grey-6);
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.ap-hdr{
-  display:flex;align-items:center;padding:14px 16px 12px;
-  border-bottom:1px solid var(--grey-7);flex-shrink:0;
-}
+.ap{width:360px;flex-shrink:0;background:#fff;border-left:1px solid var(--grey-6);display:flex;flex-direction:column;overflow:hidden;}
+.ap-hdr{display:flex;align-items:center;padding:14px 16px 12px;border-bottom:1px solid var(--grey-7);flex-shrink:0;}
 .ap-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:var(--grey-1);flex:1;letter-spacing:-0.3px;}
-.ap-hdr-btn{
-  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
-  border-radius:6px;border:none;background:none;color:var(--grey-4);font-size:15px;
-}
+.ap-hdr-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:none;background:none;color:var(--grey-4);font-size:15px;}
 .ap-hdr-btn:hover{background:var(--grey-7);}
-
-/* Chat messages */
 .ap-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:0;}
-.msg-u{
-  align-self:flex-end;background:var(--grey-75);color:var(--grey-1);
-  border-radius:12px 12px 3px 12px;padding:9px 13px;
-  font-size:14px;max-width:85%;line-height:1.5;
-}
+.msg-u{align-self:flex-end;background:var(--grey-75);color:var(--grey-1);border-radius:12px 12px 3px 12px;padding:9px 13px;font-size:14px;max-width:85%;line-height:1.5;}
 .msg-a{font-size:14px;color:var(--grey-2);line-height:1.6;max-width:95%;}
 
 /* ════════════════════════════════════
    QUESTION CARD
 ════════════════════════════════════ */
-.q-card{
-  background:#fff;border:1px solid var(--grey-6);border-radius:var(--rad-card);
-  margin:0 12px 12px;box-shadow:var(--sh-raised);
-  overflow:hidden;flex-shrink:0;position:relative;
-}
-.q-close{
-  position:absolute;top:10px;right:10px;width:22px;height:22px;
-  border-radius:6px;border:none;background:none;
-  font-size:16px;color:var(--grey-5);line-height:1;
-  display:flex;align-items:center;justify-content:center;
-}
+.q-card{background:#fff;border:1px solid var(--grey-6);border-radius:var(--rad-card);margin:0 12px 12px;box-shadow:var(--sh-raised);overflow:hidden;flex-shrink:0;position:relative;}
+.q-close{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:6px;border:none;background:none;font-size:16px;color:var(--grey-5);line-height:1;display:flex;align-items:center;justify-content:center;}
 .q-close:hover{background:var(--grey-7);color:var(--grey-3);}
 .q-hdr{padding:14px 36px 10px 14px;}
 .q-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:3px;}
 .q-sub{font-size:12px;color:var(--grey-4);line-height:1.4;}
 .q-opts{display:flex;flex-direction:column;}
-.q-opt{
-  display:flex;align-items:center;gap:10px;padding:10px 14px;
-  cursor:pointer;transition:background .1s;border-top:1px solid var(--grey-7);
-}
+.q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;border-top:1px solid var(--grey-7);}
 .q-opt:hover{background:#F8F8FF;}
 .q-opt input[type=radio]{width:15px;height:15px;accent-color:var(--blue);flex-shrink:0;}
 .q-opt input[type=checkbox]{width:15px;height:15px;accent-color:var(--blue);flex-shrink:0;}
 .q-opt-lbl{font-size:14px;color:var(--grey-2);line-height:1.4;}
 .q-opt-sub{font-size:12px;color:var(--grey-4);margin-top:1px;}
 .q-text-row{padding:8px 14px;border-top:1px solid var(--grey-7);}
-.q-input{
-  width:100%;height:38px;padding:0 10px;
-  background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);
-  font-size:14px;color:var(--grey-1);outline:none;
-  box-shadow:var(--sh-input);
-  transition:border-color .15s,box-shadow .15s;
-}
-.q-input:focus{
-  border-color:var(--blue);
-  box-shadow:inset 0 1px 3px rgba(0,0,0,.08),0 0 0 3px rgba(47,93,255,.15);
-}
+.q-input{width:100%;height:38px;padding:0 10px;background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);font-size:14px;color:var(--grey-1);outline:none;box-shadow:var(--sh-input);transition:border-color .15s,box-shadow .15s;}
+.q-input:focus{border-color:var(--blue);box-shadow:inset 0 1px 3px rgba(0,0,0,.08),0 0 0 3px rgba(47,93,255,.15);}
 .q-input::placeholder{color:var(--grey-5);}
 .q-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 12px;}
 .q-skip{background:none;border:none;font-size:14px;color:var(--blue);font-weight:600;}
 .q-skip:hover{text-decoration:underline;}
-.q-next{
-  height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);
-  background:var(--blue);color:#fff;font-size:14px;font-weight:600;
-  box-shadow:0 1px 3px rgba(47,93,255,.3);
-  transition:background .15s;
-}
+.q-next{height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 1px 3px rgba(47,93,255,.3);transition:background .15s;}
 .q-next:hover{background:var(--blue-h);}
-/* "Skip & Generate" link style */
 .q-skipgen{font-size:12px;color:var(--blue);font-weight:500;background:none;border:none;}
 .q-skipgen:hover{text-decoration:underline;}
 
 /* ════════════════════════════════════
+   DOTS WIZARD
+════════════════════════════════════ */
+.dots-wizard{
+  position:absolute;bottom:18px;left:0;right:0;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  pointer-events:none;z-index:10;
+}
+.dot{
+  height:7px;border-radius:4px;background:var(--grey-55);
+  transition:all .3s ease;
+}
+.dot.done{background:#ACBEFF;width:7px;}
+.dot.cur{background:var(--blue);width:22px;}
+.dot.todo{background:var(--grey-55);width:7px;}
+
+/* ════════════════════════════════════
    S2/S3 — SKELETON COLUMNS
 ════════════════════════════════════ */
-.sk-wrap{position:absolute;inset:0;display:flex;flex-direction:column;padding:32px 24px 52px;}
-.sk-cols{flex:1;display:flex;gap:12px;min-height:0;}
-.sk-col{flex:1;display:flex;flex-direction:column;gap:7px;}
+.sk-wrap{position:absolute;inset:0;display:flex;flex-direction:column;padding:18px 20px 44px;}
+.sk-cols{flex:1;display:flex;gap:10px;min-height:0;}
+.sk-col{flex:1;display:flex;flex-direction:column;gap:6px;}
 .sk-label{font-size:11px;font-weight:500;color:#B0B0BE;letter-spacing:.01em;}
+
+/* Animated skeleton card */
 .sk-card{
-  flex:1;border-radius:16px;
-  background:linear-gradient(180deg,#fff 55%,rgba(200,215,255,.18) 100%);
+  flex:1;border-radius:16px;position:relative;overflow:hidden;
   border:1px solid var(--grey-6);
+  background:linear-gradient(180deg,#ffffff 0%,#f6f8ff 55%,#eef4f2 100%);
   box-shadow:var(--sh-card);
+}
+.sk-card::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(110deg,
+    transparent 20%,
+    rgba(255,255,255,.7) 40%,
+    rgba(210,225,255,.4) 50%,
+    transparent 65%
+  );
+  background-size:200% 100%;
+  animation:sk-sweep 2s ease-in-out infinite;
+}
+@keyframes sk-sweep{
+  0%{background-position:200% 0;}
+  100%{background-position:-200% 0;}
+}
+
+/* Top accent line on skeleton */
+.sk-card-accent{
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--blue-md),rgba(170,200,255,.3));
+  border-radius:16px 16px 0 0;
 }
 
 /* ════════════════════════════════════
    S4 — TEMPLATE PICKER (revealed)
 ════════════════════════════════════ */
 .tpl-wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;}
-.tpl-header{
-  padding:20px 24px 0;
-  font-size:16px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;flex-shrink:0;
-}
+.tpl-header{padding:20px 24px 0;font-size:16px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;flex-shrink:0;}
 .tpl-cols{flex:1;display:flex;gap:12px;padding:14px 24px 44px;min-height:0;}
 .tpl-col{flex:1;display:flex;flex-direction:column;gap:7px;}
 .tpl-col-lbl{font-size:11px;font-weight:500;color:var(--grey-4);letter-spacing:.01em;}
 .tpl-col-lbl.ai{color:var(--blue);font-weight:600;}
-.tpl-card{
-  flex:1;border-radius:16px;overflow:hidden;cursor:pointer;
-  border:2px solid transparent;background:#fff;
-  box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;
-}
+.tpl-card{flex:1;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#fff;box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;}
 .tpl-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
-
-/* Tailor Made — frosted */
 .tpl-card.tm{position:relative;border:2px solid rgba(47,93,255,.25);}
 .tm-bg{position:absolute;inset:0;background:linear-gradient(155deg,#E8EEFF 0%,#EDF0FF 40%,#F4EDFF 70%,#FFF0F8 100%);filter:blur(14px);transform:scale(1.15);}
 .tm-glass{position:absolute;inset:0;background:rgba(255,255,255,.75);backdrop-filter:blur(18px);}
-.tm-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;gap:12px;text-align:center;}
-.tm-spark{font-size:20px;color:var(--blue);}
-.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:#1A1A3A;line-height:1.3;}
-.tm-sub{font-size:13px;color:var(--grey-4);line-height:1.5;max-width:180px;}
-.tm-btn{
-  height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);
-  background:var(--blue);color:#fff;font-size:14px;font-weight:600;
-  box-shadow:0 2px 8px rgba(47,93,255,.28);margin-top:4px;
-  transition:background .15s,opacity .2s;
-}
+.tm-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;gap:14px;text-align:center;}
+.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:#1A1A3A;line-height:1.4;}
+.tm-btn{height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 2px 8px rgba(47,93,255,.28);transition:background .15s;}
 .tm-btn:hover{background:var(--blue-h);}
 
 /* Template mockups */
 .mock{height:100%;display:flex;flex-direction:column;overflow:hidden;}
 .m-nav{height:22px;display:flex;align-items:center;padding:0 8px;gap:6px;flex-shrink:0;}
 .m-logo{font-size:9px;font-weight:800;}
-.m-links{display:flex;gap:6px;margin-left:3px;}
+.m-links{display:flex;gap:6px;margin-left:auto;}
 .m-link{font-size:7px;}
-.m-hero{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;position:relative;overflow:hidden;}
+.m-hero{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;position:relative;overflow:hidden;min-height:0;}
 .m-h{font-size:13px;font-weight:800;line-height:1.25;margin-bottom:4px;}
 .m-p{font-size:7px;margin-bottom:9px;opacity:.7;}
 .m-btns{display:flex;gap:5px;}
 .m-cta{font-size:7px;font-weight:700;padding:4px 10px;border-radius:4px;border:none;}
 .m-cta2{font-size:7px;font-weight:600;padding:4px 10px;border-radius:4px;border:none;background:rgba(255,255,255,.18);color:#fff;}
-.m-gallery{display:flex;gap:3px;padding:6px;background:#fff;flex-shrink:0;}
-.m-gitem{flex:1;height:28px;border-radius:4px;overflow:hidden;background:#ddd;}
+.m-gallery{display:flex;gap:3px;padding:5px;flex-shrink:0;}
+.m-gitem{flex:1;height:28px;border-radius:4px;}
 /* mono */
 .mono .m-nav{background:#111;border-bottom:1px solid #222;}
 .mono .m-logo{color:#fff;}
 .mono .m-link{color:#888;}
-.mono .m-hero{background:linear-gradient(180deg,#181818,#0A0A0A);}
-.mono .m-h{color:#fff;}
-.mono .m-p{color:rgba(255,255,255,.55);}
+.mono .m-hero{background:linear-gradient(175deg,#1A1A1A,#0A0A0A);}
+.mono .m-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='180'><ellipse cx='140' cy='120' rx='80' ry='60' fill='%23222'/><ellipse cx='60' cy='80' rx='40' ry='35' fill='%231A1A1A'/></svg>");background-size:cover;opacity:.8;}
+.mono .m-h{color:#fff;position:relative;}
+.mono .m-p{color:rgba(255,255,255,.55);position:relative;}
+.mono .m-btns{position:relative;}
 .mono .m-cta{background:#fff;color:#111;}
 .mono .m-gallery{background:#111;}
-.mono .m-gitem{background:#2a2a2a;}
+.mono .m-gitem:nth-child(1){background:#2a2a2a;}
+.mono .m-gitem:nth-child(2){background:#222;}
+.mono .m-gitem:nth-child(3){background:#1a1a1a;}
 /* warm */
 .warm .m-nav{background:#fff;border-bottom:1px solid #F0EDE8;}
 .warm .m-logo{color:#2C1A0A;}
 .warm .m-link{color:#777;}
-.warm .m-hero{background:linear-gradient(180deg,#4A3520,#2A1808);}
-.warm .m-h{color:#fff;}
-.warm .m-p{color:rgba(255,255,255,.6);}
+.warm .m-hero{background:linear-gradient(175deg,#3D2810,#1E0F06);}
+.warm .m-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='200'><ellipse cx='160' cy='140' rx='90' ry='65' fill='%232A1808' opacity='0.7'/><ellipse cx='50' cy='100' rx='35' ry='50' fill='%23381A08' opacity='0.5'/><ellipse cx='120' cy='160' rx='25' ry='18' fill='%23503020' opacity='0.6'/></svg>");background-size:cover;}
+.warm .m-h{color:#F5D9A0;position:relative;}
+.warm .m-p{color:rgba(255,255,255,.6);position:relative;}
+.warm .m-btns{position:relative;}
 .warm .m-cta{background:#D4A24A;color:#111;}
 .warm .m-gallery{background:#F8F4EE;}
 .warm .m-gitem:nth-child(1){background:#C8A87A;}
-.warm .m-gitem:nth-child(2){background:#A8784A;}
+.warm .m-gitem:nth-child(2){background:#A87840;}
 .warm .m-gitem:nth-child(3){background:#D4B88A;}
-
 .see-more-link{font-size:13px;color:var(--blue);font-weight:500;padding:4px 24px 6px;flex-shrink:0;cursor:pointer;background:none;border:none;}
 
 /* ════════════════════════════════════
-   BLUEPRINT LAYOUT (S5–S8)
+   BLUEPRINT CANVAS (S5–S8 + toggled on S9)
 ════════════════════════════════════ */
 .bp-canvas{position:absolute;inset:0;overflow-y:auto;padding:0 20px 80px;background:#EEEEF2;}
 .bp-hdr{padding:20px 4px 16px;display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
-.bp-title-row{display:flex;align-items:center;justify-content:space-between;}
 .bp-title{font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:700;color:var(--grey-1);letter-spacing:-0.5px;}
 .bp-domain-row{display:flex;align-items:center;gap:8px;}
 .bp-domain-ic{color:var(--grey-4);font-size:15px;}
 .bp-domain-url{font-size:14px;font-weight:500;color:var(--grey-2);}
-.bp-get{
-  height:30px;padding:0 14px;border:none;border-radius:6px;
-  background:var(--blue);color:#fff;font-size:13px;font-weight:600;
-  box-shadow:0 1px 4px rgba(47,93,255,.3);
-}
+.bp-get{height:30px;padding:0 14px;border:none;border-radius:6px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;box-shadow:0 1px 4px rgba(47,93,255,.3);}
 .bp-already{font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;}
 .bp-already:hover{text-decoration:underline;}
 
 /* Blueprint grid */
 .bp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
-.bp-card{
-  background:#fff;border-radius:var(--rad-card);
-  border:1px solid var(--grey-6);padding:16px;
-  box-shadow:var(--sh-card);
-}
-.bp-card.tall{grid-row:span 2;}
-.bp-card.wide{grid-column:span 2;}
+.bp-card{background:#fff;border-radius:var(--rad-card);border:1px solid var(--grey-6);padding:16px;box-shadow:var(--sh-card);}
 .bp-card-lbl{font-size:10px;font-weight:600;color:var(--grey-4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
 
+/* Blueprint skeleton animation */
+.bp-card.loading{
+  border-color:rgba(47,93,255,.18);
+  background:linear-gradient(180deg,#fff 0%,#f4f6ff 50%,#eef4f2 100%);
+  position:relative;overflow:hidden;min-height:80px;
+}
+.bp-card.loading::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(110deg,
+    transparent 15%,
+    rgba(255,255,255,.75) 35%,
+    rgba(200,220,255,.45) 50%,
+    transparent 65%
+  );
+  background-size:200% 100%;
+  animation:sk-sweep 2.2s ease-in-out infinite;
+}
 /* About the site */
 .bp-about-name{font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:700;color:var(--grey-1);letter-spacing:-0.3px;margin-bottom:10px;}
 .bp-about-body{font-size:13px;color:var(--grey-4);line-height:1.6;}
-
 /* Site Info */
-.bp-info-row{display:flex;flex-direction:column;gap:0;}
 .bp-info-item{padding:10px 0;border-bottom:1px solid var(--grey-7);}
 .bp-info-item:last-child{border-bottom:none;}
 .bp-info-key{font-size:13px;color:var(--grey-5);margin-bottom:2px;}
 .bp-info-val{font-size:14px;font-weight:500;color:var(--grey-1);}
-
 /* Color palette */
 .bp-swatches{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .bp-sw{border-radius:8px;height:72px;border:1px solid rgba(0,0,0,.04);}
-
 /* Font pack */
 .bp-fonts{display:flex;align-items:center;gap:14px;}
 .bp-font-box{flex:1;background:var(--grey-75);border:1px solid var(--grey-6);border-radius:8px;padding:12px;text-align:center;}
@@ -414,244 +296,208 @@ textarea,input{font-family:inherit;}
 .bp-font-big.serif{font-family:Georgia,serif;font-style:italic;font-weight:400;}
 .bp-font-name{font-size:11px;color:var(--grey-4);margin-top:5px;}
 .bp-font-div{width:1px;height:40px;background:var(--grey-6);}
-
 /* Visual profile */
 .bp-tags{display:flex;flex-wrap:wrap;gap:7px;}
 .bp-tag{background:var(--grey-1);color:#fff;font-size:13px;font-weight:500;padding:5px 12px;border-radius:16px;}
-
 /* Site Apps */
-.bp-apps{display:flex;flex-direction:column;gap:0;min-height:80px;}
+.bp-apps{display:flex;flex-direction:column;gap:0;min-height:60px;}
 .bp-app{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--grey-7);}
 .bp-app:last-child{border-bottom:none;}
 .bp-app-ic{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .bp-app-name{font-size:14px;font-weight:600;color:var(--grey-1);}
-.bp-app-desc{font-size:12px;color:var(--grey-4);margin-top:1px;}
-
 /* Site Structures */
-.bp-struct-list{display:flex;flex-direction:column;gap:0;margin-bottom:10px;}
 .bp-struct-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--grey-7);}
 .bp-struct-row:last-child{border-bottom:none;}
 .bp-struct-name{font-size:13px;color:var(--grey-2);}
-.bp-struct-count{font-size:12px;color:var(--grey-5);}
 .bp-struct-chevron{font-size:10px;color:var(--grey-5);}
-.bp-preview-thumb{border-radius:6px;overflow:hidden;border:1px solid var(--grey-6);}
-
-/* Skeleton cards for blueprint loading */
-.bp-card.loading{border-color:rgba(47,93,255,.2);background:linear-gradient(180deg,#fff 40%,rgba(220,228,255,.2) 100%);}
-@keyframes shimmer{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
-.bp-card.loading::after{content:'';display:block;height:8px;border-radius:4px;background:var(--grey-6);margin-top:8px;animation:shimmer 1.8s ease infinite;}
 
 /* ════════════════════════════════════
-   CHAT COMPOSER (bottom of panel)
+   CHAT COMPOSER
 ════════════════════════════════════ */
-.ap-composer{
-  border-top:1px solid var(--grey-7);padding:10px 12px;flex-shrink:0;
-}
-.comp-wrap{
-  display:flex;align-items:center;gap:8px;
-  background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);
-  padding:0 8px 0 12px;height:38px;
-  box-shadow:var(--sh-input);transition:border-color .15s;
-}
+.ap-composer{border-top:1px solid var(--grey-7);padding:10px 12px;flex-shrink:0;}
+.comp-wrap{display:flex;align-items:center;gap:8px;background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);padding:0 8px 0 12px;height:38px;box-shadow:var(--sh-input);transition:border-color .15s;}
 .comp-wrap:focus-within{border-color:var(--blue);}
 .comp-in{flex:1;background:none;border:none;outline:none;font-size:14px;color:var(--grey-1);}
 .comp-in::placeholder{color:var(--grey-5);}
 .comp-plus{font-size:17px;color:var(--grey-4);background:none;border:none;padding:2px;}
 .comp-mic{color:var(--grey-4);background:none;border:none;font-size:14px;}
-.comp-send{
-  width:28px;height:28px;border-radius:6px;
-  background:var(--blue);border:none;color:#fff;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:background .15s;
-}
+.comp-send{width:28px;height:28px;border-radius:6px;background:var(--blue);border:none;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;}
 .comp-send:hover{background:var(--blue-h);}
 
 /* ════════════════════════════════════
-   ARIA FLOATING AVATAR (bottom-right)
+   ARIA FLOATING AVATAR
 ════════════════════════════════════ */
-.aria-float{
-  width:38px;height:38px;border-radius:50%;
-  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);
-  box-shadow:0 2px 10px rgba(0,0,0,.3);
-  display:flex;align-items:center;justify-content:center;
-  align-self:flex-end;margin:0 12px 12px 0;flex-shrink:0;cursor:pointer;
-}
+.aria-float{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);box-shadow:0 2px 10px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;align-self:flex-end;margin:0 12px 12px 0;flex-shrink:0;cursor:pointer;}
 .aria-float-eyes{display:flex;gap:5px;}
 .aria-float-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
 
 /* ════════════════════════════════════
-   S9 — LOADING STATE
+   S8 — LOADING STATE
 ════════════════════════════════════ */
-.loading-canvas{
-  position:absolute;inset:0;
-  background:linear-gradient(145deg,#F0EDFC 0%,#EAF0FD 35%,#EEF5FA 65%,#F5F8EC 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:40px;
-}
-.loading-illo{position:relative;width:220px;height:180px;margin-bottom:28px;}
-/* Floating UI widgets */
-.illo-widget{position:absolute;background:#fff;border-radius:8px;box-shadow:var(--sh-raised);padding:6px 10px;font-size:11px;font-weight:500;color:var(--grey-2);white-space:nowrap;}
-.illo-img{position:absolute;top:20px;left:0;width:90px;height:75px;border-radius:8px;background:linear-gradient(135deg,#4B8BF5,#8A5CF5);overflow:hidden;box-shadow:var(--sh-raised);display:flex;align-items:flex-end;padding:6px;}
-.illo-img-lbl{background:rgba(255,255,255,.9);font-size:9px;font-weight:600;color:#333;padding:2px 6px;border-radius:4px;}
-.illo-aabtn{top:10px;left:80px;display:flex;align-items:center;gap:5px;}
-.illo-aa{font-size:13px;font-weight:700;color:var(--grey-1);}
-.illo-btn{background:var(--blue);color:#fff;font-size:9px;font-weight:600;padding:4px 10px;border-radius:5px;}
-.illo-orb{position:absolute;bottom:30px;left:100px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111);box-shadow:0 3px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;}
+.loading-canvas{position:absolute;inset:0;background:linear-gradient(145deg,#F0EDFC 0%,#EAF0FD 35%,#EEF5FA 65%,#F5F8EC 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;}
+.loading-illo{position:relative;width:240px;height:190px;margin-bottom:28px;}
+.illo-img{position:absolute;top:20px;left:0;width:95px;height:78px;border-radius:10px;background:linear-gradient(135deg,#4B8BF5,#8A5CF5);overflow:hidden;box-shadow:var(--sh-raised);display:flex;align-items:flex-end;padding:7px;}
+.illo-img-lbl{background:rgba(255,255,255,.92);font-size:9px;font-weight:600;color:#333;padding:2px 6px;border-radius:4px;}
+.illo-chip{position:absolute;top:8px;left:88px;background:#fff;border-radius:8px;box-shadow:var(--sh-raised);padding:6px 10px;display:flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--grey-2);}
+.illo-chip-aa{font-size:13px;font-weight:700;color:var(--grey-1);}
+.illo-chip-btn{background:var(--blue);color:#fff;font-size:9px;font-weight:600;padding:3px 9px;border-radius:5px;}
+.illo-orb{position:absolute;bottom:32px;left:100px;width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111);box-shadow:0 3px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;}
 .illo-orb-eyes{display:flex;gap:5px;}
 .illo-orb-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
-.illo-cursor{position:absolute;bottom:10px;right:30px;font-size:22px;}
-.illo-addlbl{top:95px;left:130px;font-size:9px;font-weight:600;color:var(--blue);}
-
+.illo-add{position:absolute;bottom:22px;left:148px;font-size:10px;font-weight:600;color:var(--blue);}
+.illo-cursor{position:absolute;bottom:8px;right:28px;font-size:20px;color:var(--grey-1);}
+.illo-swatches{position:absolute;bottom:4px;left:80px;display:flex;gap:3px;}
+.illo-sw{width:20px;height:8px;border-radius:3px;}
 .loading-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:700;color:var(--grey-1);text-align:center;letter-spacing:-0.3px;margin-bottom:10px;}
 .loading-sub{font-size:14px;color:var(--grey-4);text-align:center;line-height:1.6;max-width:400px;}
-
-/* Planning card in Aria panel */
 .planning-card{margin:16px;border-radius:var(--rad-card);border:1px solid var(--grey-6);padding:14px 16px;display:flex;align-items:center;gap:12px;}
 .planning-icon{font-size:18px;color:var(--blue);}
 .planning-text{flex:1;}
 .planning-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:2px;}
 .planning-sub{font-size:12px;color:var(--grey-4);}
-.spin{animation:spin 1s linear infinite;display:inline-block;}
 @keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 1s linear infinite;display:inline-block;}
 
 /* ════════════════════════════════════
-   S10 UPSELL MODAL
+   UPSELL MODAL
 ════════════════════════════════════ */
-.modal-backdrop{
-  position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity .2s;
-}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
 .modal-backdrop.open{opacity:1;pointer-events:all;}
-.modal{
-  background:#fff;border-radius:var(--rad-modal);width:520px;
-  overflow:hidden;transform:scale(.94);transition:transform .25s;
-  box-shadow:var(--sh-modal);
-}
+.modal{background:#fff;border-radius:var(--rad-modal);width:520px;overflow:hidden;transform:scale(.94);transition:transform .25s;box-shadow:var(--sh-modal);}
 .modal-backdrop.open .modal{transform:scale(1);}
-
-.upsell-modal{
-  background:linear-gradient(155deg,#EEF3FF 0%,#E8F0FF 60%,#EDF4FF 100%);
-  border-radius:var(--rad-modal);overflow:hidden;position:relative;padding:32px 32px 28px;
-  text-align:center;
-}
-.upsell-close{
-  position:absolute;top:14px;right:14px;width:28px;height:28px;
-  border-radius:6px;background:rgba(255,255,255,.7);border:none;
-  font-size:16px;color:var(--grey-3);display:flex;align-items:center;justify-content:center;
-}
+.upsell-modal{background:linear-gradient(155deg,#EEF3FF 0%,#E8F0FF 60%,#EDF4FF 100%);border-radius:var(--rad-modal);overflow:hidden;position:relative;padding:36px 36px 28px;text-align:center;}
+.upsell-close{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.7);border:none;font-size:16px;color:var(--grey-3);display:flex;align-items:center;justify-content:center;}
 .upsell-close:hover{background:rgba(255,255,255,.95);}
+.upsell-illo{font-size:48px;margin-bottom:10px;}
 .upsell-title{font-family:'Wix Madefor Display',sans-serif;font-size:26px;font-weight:800;color:#0F1E6A;line-height:1.2;margin-bottom:12px;letter-spacing:-0.3px;}
 .upsell-sub{font-size:14px;color:var(--grey-3);line-height:1.6;margin-bottom:24px;}
-.upsell-cta{
-  display:inline-flex;align-items:center;height:46px;padding:0 28px;
-  background:#0F2CCF;color:#fff;border:none;border-radius:23px;
-  font-size:16px;font-weight:700;cursor:pointer;
-  box-shadow:0 4px 16px rgba(15,44,207,.35);margin-bottom:20px;
-  transition:background .15s;
-}
-.upsell-cta:hover{background:#0F2CCF;}
-.upsell-illo{font-size:52px;margin-bottom:4px;}
+.upsell-cta{display:inline-flex;align-items:center;height:46px;padding:0 28px;background:#0F2CCF;color:#fff;border:none;border-radius:23px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(15,44,207,.35);margin-bottom:20px;transition:background .15s;}
+.upsell-cta:hover{background:#0A22B0;}
 .upsell-legal{font-size:11px;color:var(--grey-5);line-height:1.4;max-width:380px;margin:0 auto;}
 
 /* ════════════════════════════════════
-   S11 — GENERATED SITE
+   S9 — GENERATED SITE CANVAS
 ════════════════════════════════════ */
-.site-canvas{
-  position:absolute;inset:0;display:flex;align-items:flex-start;
-  justify-content:center;padding:32px 20px;background:#EEEEF2;overflow-y:auto;
-}
-.site-frame{
-  width:340px;border-radius:12px;overflow:hidden;
-  box-shadow:0 16px 48px rgba(0,0,0,.18);background:#fff;flex-shrink:0;
-  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;
-}
-.site-frame.in{opacity:1;transform:none;}
+.site-canvas{position:absolute;inset:0;display:flex;flex-direction:column;background:#EEEEF2;}
+.site-topbar{height:32px;background:#F4F4F6;border-bottom:1px solid var(--grey-6);display:flex;align-items:center;padding:0 16px;gap:8px;flex-shrink:0;}
+.site-topbar-dots{display:flex;gap:4px;}
+.site-topbar-dot{width:9px;height:9px;border-radius:50%;}
+.site-topbar-page{font-size:12px;color:var(--grey-4);display:flex;align-items:center;gap:4px;margin-left:4px;}
+.site-topbar-domain{flex:1;text-align:center;}
+.site-topbar-domain span{font-size:12px;color:var(--blue);background:rgba(47,93,255,.06);border:1px solid rgba(47,93,255,.15);border-radius:5px;padding:2px 10px;}
+.site-topbar-views{display:flex;gap:4px;margin-left:auto;}
+.site-topbar-view{width:24px;height:18px;background:none;border:1px solid var(--grey-55);border-radius:3px;font-size:9px;color:var(--grey-4);}
 
-/* Generated warm studio */
-.gen-topbar{height:16px;background:#F0EDE8;display:flex;align-items:center;gap:4px;padding:0 8px;}
-.gen-dot{width:5px;height:5px;border-radius:50%;background:var(--grey-55);}
-.gen-hero{
-  position:relative;height:220px;
-  background:linear-gradient(175deg,#3D2910 0%,#1E1008 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
-}
-.gen-hero-img{position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="340" height="220"><rect fill="%23422810" width="340" height="220"/><ellipse cx="200" cy="160" rx="120" ry="60" fill="%232A1808" opacity="0.6"/></svg>');background-size:cover;}
-.gen-nav{
-  position:absolute;top:0;left:0;right:0;height:26px;
-  background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
-  display:flex;align-items:center;padding:0 12px;gap:8px;
-}
-.gen-nav-logo{font-size:10px;font-weight:800;color:#E8D0A8;letter-spacing:.03em;}
-.gen-nav-links{display:flex;gap:8px;margin-left:auto;}
-.gen-nav-link{font-size:7px;color:rgba(255,255,255,.7);}
-.gen-h{font-size:26px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:5px;position:relative;}
-.gen-h em{font-style:normal;font-family:Georgia,serif;}
-.gen-p{font-size:9px;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:12px;position:relative;max-width:240px;}
-.gen-btns{display:flex;gap:6px;position:relative;}
-.gen-btn1{font-size:8px;font-weight:700;padding:6px 14px;border-radius:5px;background:#111;color:#fff;border:none;}
-.gen-btn2{font-size:8px;font-weight:600;padding:6px 14px;border-radius:5px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);}
-.gen-gallery-lbl{font-size:9px;font-weight:700;color:var(--grey-4);padding:8px 10px 4px;letter-spacing:.04em;text-transform:uppercase;}
-.gen-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 6px 8px;}
-.gen-gitem{height:55px;border-radius:5px;background:#D4B880;}
-.gen-gitem:nth-child(2){background:#A87840;}
-.gen-gitem:nth-child(3){background:#C89A60;}
+.site-scroll{flex:1;overflow-y:auto;padding:0;}
+.gen-site{min-height:100%;background:#fff;}
 
-/* Domain panel in Aria (S8+) */
+/* Generated site — matching references */
+.gs-nav{
+  height:42px;background:#fff;border-bottom:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;padding:0 32px;gap:12px;flex-shrink:0;
+}
+.gs-nav-logo{font-size:12px;font-weight:800;color:#2C1A0A;letter-spacing:.05em;}
+.gs-nav-links{display:flex;gap:14px;margin-left:auto;}
+.gs-nav-link{font-size:10px;color:#666;}
+
+.gs-hero{
+  position:relative;height:440px;overflow:hidden;
+  background:#1E0F06;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:32px 40px;
+}
+/* Ceramic scene background */
+.gs-hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 55% at 65% 70%, #3D2010 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 80% 85%, #2A1408 0%, transparent 50%),
+    radial-gradient(ellipse 30% 35% at 30% 60%, #4A2812 0%, transparent 55%),
+    linear-gradient(175deg,#2A1408 0%,#140A04 100%);
+}
+/* Ceramic vase shapes */
+.gs-hero-bg::before{
+  content:'';position:absolute;bottom:0;right:15%;width:80px;height:130px;
+  background:radial-gradient(ellipse 70% 100% at 50% 80%,#6B4020 0%,#3A1E0A 70%,transparent 100%);
+  border-radius:50% 50% 0 0 / 60% 60% 0 0;
+  opacity:.85;
+}
+.gs-hero-bg::after{
+  content:'';position:absolute;bottom:0;right:28%;width:55px;height:95px;
+  background:radial-gradient(ellipse 70% 100% at 50% 80%,#7A5030 0%,#3A1E0A 75%,transparent 100%);
+  border-radius:50% 50% 0 0 / 55% 55% 0 0;
+  opacity:.75;
+}
+/* Table surface */
+.gs-table{
+  position:absolute;bottom:0;left:0;right:0;height:80px;
+  background:linear-gradient(180deg,rgba(60,28,8,.4),rgba(30,15,4,.8));
+}
+
+.gs-hero-content{position:relative;z-index:2;max-width:520px;}
+.gs-h1{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:52px;font-weight:700;color:#fff;
+  line-height:1.1;letter-spacing:-0.5px;margin-bottom:14px;
+}
+.gs-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:22px;max-width:360px;}
+.gs-btns{display:flex;gap:10px;}
+.gs-btn1{height:38px;padding:0 20px;border:none;border-radius:5px;background:#1A1008;color:#fff;font-size:13px;font-weight:600;}
+.gs-btn2{height:38px;padding:0 20px;border:1px solid rgba(255,255,255,.3);border-radius:5px;background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-weight:600;}
+
+.gs-gallery-lbl{font-size:10px;font-weight:700;color:var(--grey-4);padding:18px 32px 8px;letter-spacing:.08em;text-transform:uppercase;}
+.gs-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 16px 24px;}
+.gs-gitem{border-radius:8px;overflow:hidden;aspect-ratio:4/3;position:relative;}
+.gs-gitem-img{width:100%;height:100%;object-fit:cover;}
+/* Ceramic product photo approximations */
+.gs-gi1{background:linear-gradient(160deg,#C8956A 0%,#A8704A 50%,#8A5530 100%);}
+.gs-gi1::after{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:40%;height:50%;border-radius:50% 50% 40% 40%;background:rgba(80,40,16,.3);}
+.gs-gi2{background:linear-gradient(160deg,#B07845 0%,#8A5A2A 50%,#6A4018 100%);}
+.gs-gi2::after{content:'';position:absolute;top:25%;left:40%;width:45%;height:55%;border-radius:50% 50% 40% 40%;background:rgba(60,30,8,.35);transform:rotate(-5deg);}
+.gs-gi3{background:linear-gradient(160deg,#D4A870 0%,#B88545 50%,#9A6825 100%);}
+.gs-gi3::after{content:'';position:absolute;top:20%;left:45%;width:38%;height:52%;border-radius:50% 50% 42% 42%;background:rgba(70,35,10,.3);}
+
+/* Gallery section label */
+.gs-gallery-title{font-size:18px;font-weight:700;color:var(--grey-1);padding:0 32px 6px;}
+.gs-gallery-sub{font-size:13px;color:var(--grey-4);padding:0 32px 16px;line-height:1.5;}
+
+/* Site preview fade-in */
+.gen-site{opacity:0;transition:opacity .8s ease;}
+.gen-site.in{opacity:1;}
+
+/* ════════════════════════════════════
+   DOMAIN PANEL
+════════════════════════════════════ */
 .domain-panel{padding:14px 16px;display:flex;flex-direction:column;gap:0;}
-.domain-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:4px;}
-.domain-sub{font-size:13px;color:var(--grey-3);line-height:1.5;margin-bottom:14px;}
-.domain-badge{display:inline-flex;align-items:center;gap:4px;background:#F0FAF5;border:1px solid #BDE2A7;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:600;color:#11664F;margin-bottom:6px;}
-.domain-option{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 12px;border-radius:8px;background:var(--grey-75);
-  border:1px solid var(--grey-6);margin-bottom:6px;
-}
+.domain-badge{display:inline-flex;align-items:center;gap:4px;background:#F0FAF5;border:1px solid #BDE2A7;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:600;color:#11664F;margin-bottom:8px;}
+.domain-option{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:var(--grey-75);border:1px solid var(--grey-6);margin-bottom:6px;}
 .domain-option.exact{border-color:rgba(47,93,255,.3);background:var(--blue-lt);}
 .domain-url-text{font-size:14px;font-weight:500;color:var(--grey-1);}
-.domain-price{font-size:13px;color:var(--grey-4);}
-.domain-price s{color:var(--grey-5);}
-.domain-price span{color:var(--green);font-weight:600;}
-.domain-get{
-  height:30px;padding:0 14px;border:none;border-radius:6px;
-  background:var(--grey-1);color:#fff;font-size:12px;font-weight:600;
-}
-.domain-link{font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;padding:4px 0;text-align:left;display:block;}
+.domain-price s{color:var(--grey-5);font-size:13px;}
+.domain-price span{color:var(--green);font-weight:600;font-size:13px;}
+.domain-link{font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;padding:4px 0;text-align:left;display:block;cursor:pointer;}
 .domain-link:hover{text-decoration:underline;}
-.domain-later{font-size:13px;color:var(--grey-4);background:none;border:none;padding:6px 0;cursor:pointer;}
+.domain-later{font-size:13px;color:var(--grey-4);background:none;border:none;padding:6px 0;cursor:pointer;display:block;}
 
 /* ════════════════════════════════════
    DEV NAV
 ════════════════════════════════════ */
 .dev-nav{position:fixed;bottom:16px;right:16px;display:flex;align-items:center;gap:6px;z-index:300;}
-.dev-arr{
-  width:30px;height:30px;background:rgba(255,255,255,.92);
-  border:1px solid var(--grey-6);border-radius:7px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;cursor:pointer;backdrop-filter:blur(4px);
-  box-shadow:var(--sh-raised);transition:all .15s;
-}
+.dev-arr{width:30px;height:30px;background:rgba(255,255,255,.92);border:1px solid var(--grey-6);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;backdrop-filter:blur(4px);box-shadow:var(--sh-raised);transition:all .15s;}
 .dev-arr:hover{border-color:var(--blue);color:var(--blue);}
 .dev-lbl{font-size:11px;color:var(--grey-5);padding:0 6px;pointer-events:none;}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     S1 — FULL-SCREEN OPEN PROMPT
-══════════════════════════════════════ -->
+<!-- ══ S1 — FULL-SCREEN OPEN PROMPT ══ -->
 <div class="screen active" id="s1">
   <div class="s1-body">
-    <div class="s1-orb">
-      <div class="s1-orb-face"><div class="s1-orb-eye"></div><div class="s1-orb-eye"></div></div>
-    </div>
+    <div class="s1-orb"><div class="s1-orb-face"><div class="s1-orb-eye"></div><div class="s1-orb-eye"></div></div></div>
     <div class="s1-headline">
-      <span class="s1-line s1-l1">Hi! I'm Aria,
-        <span class="s1-av-inline"><span><i></i><i></i></span></span>
-        your friendly design assistant.</span>
+      <span class="s1-line s1-l1">Hi! I'm Aria, <span class="s1-av-inline"><span><i></i><i></i></span></span> your friendly design assistant.</span>
       <span class="s1-line s1-l2">Tell me your site's name, what kind of business<br>it is, and what makes it unique.</span>
     </div>
-    <textarea class="s1-textarea" id="s1-input" placeholder="Describe the site you want to build…" rows="4"></textarea>
+    <textarea class="s1-textarea" placeholder="Describe the site you want to build…" rows="4"></textarea>
   </div>
   <div class="s1-bar">
     <button class="s1-bar-btn">
@@ -668,26 +514,34 @@ textarea,input{font-family:inherit;}
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg>
     </button>
   </div>
+  <!-- Dots wizard -->
+  <div class="dots-wizard" id="dots-s1"></div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S2 — SKELETON + Q1 (site name)
-═══════════════════════════════════════════ -->
+<!-- ══ S2 — SKELETON + Q1 ══ -->
 <div class="screen" id="s2" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas">
       <div class="sk-wrap">
         <div class="sk-cols">
-          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
-          <div class="sk-col"><div class="sk-label">Tailor made</div><div class="sk-card"></div></div>
-          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
+          <div class="sk-col">
+            <div class="sk-label">Template option</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
+          <div class="sk-col">
+            <div class="sk-label">Tailor made</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
+          <div class="sk-col">
+            <div class="sk-label">Template option</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
         </div>
       </div>
+      <div class="dots-wizard" id="dots-s2"></div>
     </div>
     <div class="ap">
-      <div class="ap-hdr">
-        <div class="ap-title">Ask Aria</div>
-      </div>
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">Bakery site</div>
         <div class="msg-a">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
@@ -703,9 +557,7 @@ textarea,input{font-family:inherit;}
           <label class="q-opt"><input type="radio" name="s2q"><div><div class="q-opt-lbl">Urban Bloom</div></div></label>
           <label class="q-opt"><input type="radio" name="s2q"><div><div class="q-opt-lbl">Peak Performance</div></div></label>
         </div>
-        <div class="q-text-row">
-          <input type="text" class="q-input" placeholder="Or enter your own name">
-        </div>
+        <div class="q-text-row"><input type="text" class="q-input" placeholder="Or enter your own name"></div>
         <div class="q-footer">
           <button class="q-skip" onclick="goTo('s3')">Skip</button>
           <button class="q-next" onclick="goTo('s3')">Next</button>
@@ -715,24 +567,30 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S3 — SKELETON + Q2 (business type)
-═══════════════════════════════════════════ -->
+<!-- ══ S3 — SKELETON + Q2 ══ -->
 <div class="screen" id="s3" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas">
       <div class="sk-wrap">
         <div class="sk-cols">
-          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
-          <div class="sk-col"><div class="sk-label">Tailor made</div><div class="sk-card"></div></div>
-          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
+          <div class="sk-col">
+            <div class="sk-label">Template option</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
+          <div class="sk-col">
+            <div class="sk-label">Tailor made</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
+          <div class="sk-col">
+            <div class="sk-label">Template option</div>
+            <div class="sk-card"><div class="sk-card-accent"></div></div>
+          </div>
         </div>
       </div>
+      <div class="dots-wizard" id="dots-s3"></div>
     </div>
     <div class="ap">
-      <div class="ap-hdr">
-        <div class="ap-title">Ask Aria</div>
-      </div>
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">Bakery site</div>
         <div class="msg-a">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
@@ -748,9 +606,7 @@ textarea,input{font-family:inherit;}
           <label class="q-opt"><input type="radio" name="s3q"><div><div class="q-opt-lbl">Boutique venture capital firm</div></div></label>
           <label class="q-opt"><input type="radio" name="s3q"><div><div class="q-opt-lbl">Digital-first small business support</div></div></label>
         </div>
-        <div class="q-text-row">
-          <input type="text" class="q-input" placeholder="Or describe your business…">
-        </div>
+        <div class="q-text-row"><input type="text" class="q-input" placeholder="Or describe your business…"></div>
         <div class="q-footer">
           <button class="q-skip" onclick="goTo('s4')">Skip</button>
           <button class="q-next" onclick="goTo('s4')">Next</button>
@@ -760,40 +616,27 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S4 — TEMPLATE PICKER (revealed)
-═══════════════════════════════════════════ -->
+<!-- ══ S4 — TEMPLATE PICKER ══ -->
 <div class="screen" id="s4" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas">
       <div class="tpl-wrap">
         <div class="tpl-header">Choose the design you'd like to generate your full site from</div>
         <div class="tpl-cols">
-
-          <!-- Left: Monochrome studio -->
           <div class="tpl-col">
             <div class="tpl-col-lbl">Monochrome studio</div>
-            <div class="tpl-card" onclick="pickTpl('mono')">
+            <div class="tpl-card" onclick="goTo('s5')">
               <div class="mock mono">
                 <div class="m-nav"><span class="m-logo">Clay and calm</span><div class="m-links"><span class="m-link">Menu</span><span class="m-link">Rooms</span><span class="m-link">Shop</span><span class="m-link">Offer</span></div></div>
                 <div class="m-hero">
                   <div class="m-h">Welcome to<br>our studio</div>
                   <div class="m-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
-                  <div class="m-btns">
-                    <button class="m-cta">Discover our products</button>
-                    <button class="m-cta2">Learn about us</button>
-                  </div>
+                  <div class="m-btns"><button class="m-cta">Discover our products</button><button class="m-cta2">Learn about us</button></div>
                 </div>
-                <div class="m-gallery">
-                  <div class="m-gitem" style="background:#1A1A1A;"></div>
-                  <div class="m-gitem" style="background:#2A2A2A;"></div>
-                  <div class="m-gitem" style="background:#222;"></div>
-                </div>
+                <div class="m-gallery"><div class="m-gitem"></div><div class="m-gitem"></div><div class="m-gitem"></div></div>
               </div>
             </div>
           </div>
-
-          <!-- Center: AI Tailor Made -->
           <div class="tpl-col">
             <div class="tpl-col-lbl ai">AI Tailor Made</div>
             <div class="tpl-card tm" onclick="goTo('s5')">
@@ -805,33 +648,24 @@ textarea,input{font-family:inherit;}
               </div>
             </div>
           </div>
-
-          <!-- Right: Warm studio -->
           <div class="tpl-col">
             <div class="tpl-col-lbl">Warm studio</div>
-            <div class="tpl-card" onclick="pickTpl('warm')">
+            <div class="tpl-card" onclick="goTo('s5')">
               <div class="mock warm">
                 <div class="m-nav"><span class="m-logo">Clay and calm</span><div class="m-links"><span class="m-link">Menu</span><span class="m-link">Rooms</span><span class="m-link">Shop</span><span class="m-link">Offer</span></div></div>
                 <div class="m-hero">
-                  <div class="m-h" style="color:#F5D9A0;">Welcome to<br>our studio</div>
+                  <div class="m-h">Welcome to<br>our studio</div>
                   <div class="m-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
-                  <div class="m-btns">
-                    <button class="m-cta">Discover our products</button>
-                    <button class="m-cta2">Learn about us</button>
-                  </div>
+                  <div class="m-btns"><button class="m-cta">Discover our products</button><button class="m-cta2">Learn about us</button></div>
                 </div>
-                <div class="m-gallery">
-                  <div class="m-gitem"></div>
-                  <div class="m-gitem"></div>
-                  <div class="m-gitem"></div>
-                </div>
+                <div class="m-gallery"><div class="m-gitem"></div><div class="m-gitem"></div><div class="m-gitem"></div></div>
               </div>
             </div>
           </div>
-
         </div>
         <button class="see-more-link">Generate more options</button>
       </div>
+      <div class="dots-wizard" id="dots-s4"></div>
     </div>
     <div class="ap">
       <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
@@ -841,9 +675,7 @@ textarea,input{font-family:inherit;}
       </div>
       <div class="q-card">
         <button class="q-close" onclick="goTo('s5')">×</button>
-        <div class="q-hdr">
-          <div class="q-title">Choose the design you'd like</div>
-        </div>
+        <div class="q-hdr"><div class="q-title">Choose the design you'd like</div></div>
         <div class="q-opts">
           <label class="q-opt"><input type="radio" name="s4q"><div class="q-opt-lbl">Monochrome studio</div></label>
           <label class="q-opt"><input type="radio" name="s4q"><div class="q-opt-lbl">Warm studio</div></label>
@@ -858,17 +690,13 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S5 — BLUEPRINT LOADING (skeleton grid)
-═══════════════════════════════════════════ -->
+<!-- ══ S5 — BLUEPRINT LOADING ══ -->
 <div class="screen" id="s5" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas" style="position:relative;">
       <div class="bp-canvas">
         <div class="bp-hdr">
-          <div class="bp-title-row">
-            <div class="bp-title">Your Site Blueprint</div>
-          </div>
+          <div class="bp-title">Your Site Blueprint</div>
           <div class="bp-domain-row">
             <span class="bp-domain-ic">🌐</span>
             <span class="bp-domain-url">Clayandcalm.com</span>
@@ -877,31 +705,25 @@ textarea,input{font-family:inherit;}
           </div>
         </div>
         <div class="bp-grid">
-          <!-- About the site (tall) -->
-          <div class="bp-card loading" style="grid-row:span 2;">
+          <div class="bp-card loading" style="grid-row:span 2;min-height:260px;">
             <div class="bp-about-name">Clay &amp; Clam</div>
-            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders. A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily,</div>
+            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders.</div>
           </div>
-          <!-- Site Info (skeleton) -->
-          <div class="bp-card loading"></div>
-          <!-- Color palette (skeleton) -->
-          <div class="bp-card loading" style="grid-row:span 2;"></div>
-          <!-- Font pack (skeleton) -->
-          <div class="bp-card loading"></div>
-          <!-- Site Apps (skeleton) -->
-          <div class="bp-card loading"></div>
-          <!-- Site Structures (skeleton) -->
-          <div class="bp-card loading"></div>
-          <!-- Visual profile (skeleton) -->
-          <div class="bp-card loading"></div>
+          <div class="bp-card loading" style="min-height:120px;"></div>
+          <div class="bp-card loading" style="grid-row:span 2;min-height:260px;"></div>
+          <div class="bp-card loading" style="min-height:100px;"></div>
+          <div class="bp-card loading" style="min-height:100px;"></div>
+          <div class="bp-card loading" style="min-height:100px;"></div>
+          <div class="bp-card loading" style="min-height:80px;"></div>
         </div>
       </div>
+      <div class="dots-wizard" id="dots-s5"></div>
     </div>
     <div class="ap">
       <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">Generate with Aria</div>
-        <div class="msg-a">I've put together a brand identity and set of goals for Lumina Luxe Salon that reflect your modern, eco-friendly vibe.<br><br>For your brand, I've selected a sophisticated palette of creams, soft olive greens, and warm charcoal. This combination feels organic and premium, perfectly matching your commitment to sustainable luxury and setting you apart from more clinical-looking salons.<br><br>Our main goals will be to Offer services, Promote your business, and Connect with clients through a seamless and inviting online experience.<br><br>What do you think? Should we move on with these, or would you like to make any changes?</div>
+        <div class="msg-a">I've put together a brand identity and set of goals for Lumina Luxe Salon that reflect your modern, eco-friendly vibe.<br><br>For your brand, I've selected a sophisticated palette of creams, soft olive greens, and warm charcoal. This combination feels organic and premium, perfectly matching your commitment to sustainable luxury.<br><br>What do you think? Should we move on with these, or would you like to make any changes?</div>
       </div>
       <div class="q-card">
         <button class="q-close" onclick="goTo('s6')">×</button>
@@ -910,20 +732,8 @@ textarea,input{font-family:inherit;}
           <div class="q-sub">These apps are recommended for your business</div>
         </div>
         <div class="q-opts">
-          <label class="q-opt">
-            <input type="checkbox" checked>
-            <div>
-              <div class="q-opt-lbl">Wix Bookings</div>
-              <div class="q-opt-sub">Let clients schedule appointments on your site</div>
-            </div>
-          </label>
-          <label class="q-opt">
-            <input type="checkbox" checked>
-            <div>
-              <div class="q-opt-lbl">Wix Stores</div>
-              <div class="q-opt-sub">Sell your products or find new products to sell</div>
-            </div>
-          </label>
+          <label class="q-opt"><input type="checkbox" checked><div><div class="q-opt-lbl">Wix Bookings</div><div class="q-opt-sub">Let clients schedule appointments on your site</div></div></label>
+          <label class="q-opt"><input type="checkbox" checked><div><div class="q-opt-lbl">Wix Stores</div><div class="q-opt-sub">Sell your products or find new products to sell</div></div></label>
         </div>
         <div class="q-footer" style="justify-content:flex-end;gap:10px;">
           <button class="q-skip" onclick="goTo('s6')">more apps</button>
@@ -934,17 +744,13 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S6 — BLUEPRINT REVEALED (with apps)
-═══════════════════════════════════════════ -->
+<!-- ══ S6 — BLUEPRINT REVEALED ══ -->
 <div class="screen" id="s6" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas" style="position:relative;">
       <div class="bp-canvas">
         <div class="bp-hdr">
-          <div class="bp-title-row">
-            <div class="bp-title">Your Site Blueprint</div>
-          </div>
+          <div class="bp-title">Your Site Blueprint</div>
           <div class="bp-domain-row">
             <span class="bp-domain-ic">🌐</span>
             <span class="bp-domain-url">Clayandcalm.com</span>
@@ -953,31 +759,17 @@ textarea,input{font-family:inherit;}
           </div>
         </div>
         <div class="bp-grid">
-          <!-- About the site -->
           <div class="bp-card" style="grid-row:span 2;">
             <div class="bp-card-lbl">About the site</div>
             <div class="bp-about-name">Clay &amp; Clam</div>
             <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders. A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily,</div>
           </div>
-          <!-- Site Info -->
           <div class="bp-card">
             <div class="bp-card-lbl">Site Info</div>
-            <div class="bp-info-row">
-              <div class="bp-info-item">
-                <div class="bp-info-key">Business type</div>
-                <div class="bp-info-val">Bakery &amp; online ordering</div>
-              </div>
-              <div class="bp-info-item">
-                <div class="bp-info-key">Primary goal</div>
-                <div class="bp-info-val">Locals, weekend regulars, gift orders, small caterers</div>
-              </div>
-              <div class="bp-info-item">
-                <div class="bp-info-key">Audience</div>
-                <div class="bp-info-val">All breads naturally leavened, no commercial yeast</div>
-              </div>
-            </div>
+            <div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Bakery &amp; online ordering</div></div>
+            <div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Locals, weekend regulars, gift orders, small caterers</div></div>
+            <div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">All breads naturally leavened, no commercial yeast</div></div>
           </div>
-          <!-- Color palette (tall) -->
           <div class="bp-card" style="grid-row:span 2;">
             <div class="bp-card-lbl">Color palette</div>
             <div class="bp-swatches">
@@ -988,76 +780,47 @@ textarea,input{font-family:inherit;}
               <div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div>
             </div>
           </div>
-          <!-- Font pack -->
           <div class="bp-card">
             <div class="bp-card-lbl">Font pack</div>
             <div class="bp-fonts">
-              <div class="bp-font-box">
-                <div class="bp-font-big disp">Aa</div>
-                <div class="bp-font-name">Wix Madefor Display</div>
-              </div>
+              <div class="bp-font-box"><div class="bp-font-big disp">Aa</div><div class="bp-font-name">Wix Madefor Display</div></div>
               <div class="bp-font-div"></div>
-              <div class="bp-font-box">
-                <div class="bp-font-big serif">Aa</div>
-                <div class="bp-font-name">Snell Roundhand</div>
-              </div>
+              <div class="bp-font-box"><div class="bp-font-big serif">Aa</div><div class="bp-font-name">Snell Roundhand</div></div>
             </div>
           </div>
-          <!-- Site Apps -->
           <div class="bp-card">
             <div class="bp-card-lbl">Site Apps</div>
             <div class="bp-apps">
-              <div class="bp-app">
-                <div class="bp-app-ic" style="background:#EEF0FF;">🛒</div>
-                <div>
-                  <div class="bp-app-name">Wix Stores</div>
-                </div>
-              </div>
-              <div class="bp-app">
-                <div class="bp-app-ic" style="background:#EEF0FF;">📅</div>
-                <div>
-                  <div class="bp-app-name">Wix Bookings</div>
-                </div>
-              </div>
+              <div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">🛒</div><div><div class="bp-app-name">Wix Stores</div></div></div>
+              <div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">📅</div><div><div class="bp-app-name">Wix Bookings</div></div></div>
             </div>
           </div>
-          <!-- Site Structures -->
           <div class="bp-card">
             <div class="bp-card-lbl">Site Structures</div>
-            <div class="bp-struct-list">
-              <div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span><div style="display:flex;align-items:center;gap:6px;"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='30'><rect fill='%23F5EDE8' width='50' height='30' rx='3'/><rect fill='%23D4A060' x='5' y='5' width='40' height='12' rx='2'/><rect fill='%23C89060' x='5' y='19' width='18' height='7' rx='1'/></svg>" alt="" style="width:50px;height:30px;border-radius:4px;border:1px solid var(--grey-6);"></div></div>
-              <div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div>
-              <div class="bp-struct-row"><span class="bp-struct-name">Events</span></div>
-              <div class="bp-struct-row"><span class="bp-struct-name">Schedule</span></div>
-              <div class="bp-struct-row"><span class="bp-struct-name">Event Details</span></div>
-              <div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div>
-            </div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='32'><rect fill='%23F5EDE8' width='52' height='32' rx='3'/><rect fill='%23D4A060' x='4' y='4' width='44' height='14' rx='2'/><rect fill='%23B87A38' x='4' y='20' width='20' height='8' rx='1'/><rect fill='%23C89048' x='28' y='20' width='20' height='8' rx='1'/></svg>" alt="" style="width:52px;height:32px;border-radius:4px;border:1px solid var(--grey-6);"></div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Events</span></div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Schedule</span></div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Event Details</span></div>
+            <div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div>
           </div>
-          <!-- Visual profile -->
-          <div class="bp-card" style="grid-column:span 1;">
+          <div class="bp-card">
             <div class="bp-card-lbl">Visual profile</div>
-            <div class="bp-tags">
-              <span class="bp-tag">Warm</span>
-              <span class="bp-tag">Unpretentious</span>
-              <span class="bp-tag">Modern</span>
-              <span class="bp-tag">Craft-focused</span>
-              <span class="bp-tag">Approachable</span>
-            </div>
+            <div class="bp-tags"><span class="bp-tag">Warm</span><span class="bp-tag">Unpretentious</span><span class="bp-tag">Modern</span><span class="bp-tag">Craft-focused</span><span class="bp-tag">Approachable</span></div>
           </div>
         </div>
       </div>
+      <div class="dots-wizard" id="dots-s6"></div>
     </div>
     <div class="ap">
       <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">Instal Wix bookings. Wix Stores</div>
-        <div class="msg-a">Great choice! Wix Bookings and Wix Stores are now installed.<br><br>Your salon is coming together! The next important step is securing a professional domain. A custom domain (like luminauxesalon.com) builds immediate trust with your clients, makes your brand more memorable, and helps you rank better in search results so new customers can find you more easily.<br><br>Before we move on to securing your professional domain, do you have any changes you'd like to make? You can adjust your apps or site details by letting me know.</div>
+        <div class="msg-a">Great choice! Wix Bookings and Wix Stores are now installed.<br><br>Your salon is coming together! The next important step is securing a professional domain.<br><br>Before we move on, do you have any changes you'd like to make?</div>
       </div>
       <div class="q-card">
         <button class="q-close" onclick="goTo('s7')">×</button>
-        <div class="q-hdr">
-          <div class="q-title">Do you have any change?</div>
-        </div>
+        <div class="q-hdr"><div class="q-title">Do you have any change?</div></div>
         <div class="q-opts">
           <label class="q-opt"><input type="radio" name="s6q"><div class="q-opt-lbl">No, it's prefect</div></label>
           <label class="q-opt"><input type="radio" name="s6q"><div class="q-opt-lbl">Shuffle colors and fonts</div></label>
@@ -1072,81 +835,47 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S7 — BLUEPRINT + DOMAIN PANEL
-═══════════════════════════════════════════ -->
+<!-- ══ S7 — BLUEPRINT + DOMAIN ══ -->
 <div class="screen" id="s7" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas" style="position:relative;">
       <div class="bp-canvas">
         <div class="bp-hdr">
-          <div class="bp-title-row">
-            <div class="bp-title">Your Site Blueprint</div>
-          </div>
-          <div class="bp-domain-row">
-            <span class="bp-domain-ic">🌐</span>
-            <span class="bp-domain-url">Clayandcalm.com</span>
-            <button class="bp-get">Get it</button>
-            <button class="bp-already">Already have a domain</button>
-          </div>
+          <div class="bp-title">Your Site Blueprint</div>
+          <div class="bp-domain-row"><span class="bp-domain-ic">🌐</span><span class="bp-domain-url">Clayandcalm.com</span><button class="bp-get">Get it</button><button class="bp-already">Already have a domain</button></div>
         </div>
         <div class="bp-grid">
           <div class="bp-card" style="grid-row:span 2;">
             <div class="bp-card-lbl">About the site</div>
             <div class="bp-about-name">Clay &amp; Clam</div>
-            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders.</div>
+            <div class="bp-about-body">A neighborhood bakery focused on naturally leavened breads and pastries made fresh daily.</div>
           </div>
-          <div class="bp-card">
-            <div class="bp-card-lbl">Site Info</div>
-            <div class="bp-info-row">
-              <div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Bakery &amp; online ordering</div></div>
-              <div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Locals, weekend regulars, gift orders, small caterers</div></div>
-              <div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">All breads naturally leavened, no commercial yeast</div></div>
-            </div>
-          </div>
-          <div class="bp-card" style="grid-row:span 2;">
-            <div class="bp-card-lbl">Color palette</div>
-            <div class="bp-swatches">
-              <div class="bp-sw" style="background:#E8A0B0;"></div>
-              <div class="bp-sw" style="background:#C2D630;"></div>
-              <div class="bp-sw" style="background:#9B8060;"></div>
-              <div class="bp-sw" style="background:#8A9088;"></div>
-              <div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div>
-            </div>
-          </div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Info</div><div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Bakery &amp; online ordering</div></div><div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Locals, weekend regulars, gift orders</div></div><div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">All breads naturally leavened</div></div></div>
+          <div class="bp-card" style="grid-row:span 2;"><div class="bp-card-lbl">Color palette</div><div class="bp-swatches"><div class="bp-sw" style="background:#E8A0B0;"></div><div class="bp-sw" style="background:#C2D630;"></div><div class="bp-sw" style="background:#9B8060;"></div><div class="bp-sw" style="background:#8A9088;"></div><div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div></div></div>
           <div class="bp-card"><div class="bp-card-lbl">Font pack</div><div class="bp-fonts"><div class="bp-font-box"><div class="bp-font-big disp">Aa</div><div class="bp-font-name">Wix Madefor Display</div></div><div class="bp-font-div"></div><div class="bp-font-box"><div class="bp-font-big serif">Aa</div><div class="bp-font-name">Snell Roundhand</div></div></div></div>
           <div class="bp-card"><div class="bp-card-lbl">Site Apps</div><div class="bp-apps"><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">🛒</div><div><div class="bp-app-name">Wix Stores</div></div></div><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">📅</div><div><div class="bp-app-name">Wix Bookings</div></div></div></div></div>
-          <div class="bp-card"><div class="bp-card-lbl">Site Structures</div><div class="bp-struct-list"><div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Events</span></div><div class="bp-struct-row"><span class="bp-struct-name">Schedule</span></div><div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Structures</div><div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Events</span></div><div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div></div>
           <div class="bp-card"><div class="bp-card-lbl">Visual profile</div><div class="bp-tags"><span class="bp-tag">Warm</span><span class="bp-tag">Unpretentious</span><span class="bp-tag">Modern</span><span class="bp-tag">Craft-focused</span><span class="bp-tag">Approachable</span></div></div>
         </div>
       </div>
+      <div class="dots-wizard" id="dots-s7"></div>
     </div>
     <div class="ap">
       <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">No, it's prefect</div>
-        <div class="msg-a" style="font-weight:600;color:var(--grey-1);margin-bottom:2px;">What would you like to do next?</div>
-        <div class="msg-a"><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
+        <div class="msg-a"><strong>What would you like to do next?</strong><br><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
       </div>
-      <div class="domain-panel" style="flex:0 0 auto;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <div class="domain-panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
           <div class="domain-badge">✓ Exact match</div>
           <button class="bp-get" onclick="goTo('s8')">Get It</button>
         </div>
         <div class="domain-option exact">
-          <div>
-            <div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);font-size:14px;">✓</span><span class="domain-url-text">crumbake.com is available!</span></div>
-            <div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div>
-          </div>
+          <div><div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);">✓</span><span class="domain-url-text">crumbake.com is available!</span></div><div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div></div>
         </div>
-        <div class="domain-option" style="margin-top:6px;">
-          <span class="domain-url-text">crumbake.shop</span>
-          <div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div>
-        </div>
-        <div class="domain-option">
-          <span class="domain-url-text">crumbake.shop</span>
-          <div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div>
-        </div>
+        <div class="domain-option" style="margin-top:6px;"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
+        <div class="domain-option"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
         <button class="domain-link">🔍 Search for a different domain</button>
         <button class="domain-link">🔗 Connect a domain I own</button>
         <button class="domain-later" onclick="goTo('s8')">I'll do it later</button>
@@ -1156,50 +885,34 @@ textarea,input{font-family:inherit;}
           <button class="comp-plus">+</button>
           <input class="comp-in" type="text" placeholder="Ask me anything">
           <button class="comp-mic">🎤</button>
-          <button class="comp-send" onclick="goTo('s8')">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
+          <button class="comp-send" onclick="goTo('s8')"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S8 — LOADING STATE
-═══════════════════════════════════════════ -->
+<!-- ══ S8 — LOADING STATE ══ -->
 <div class="screen" id="s8" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas">
       <div class="loading-canvas">
         <div class="loading-illo">
-          <!-- Image widget -->
-          <div class="illo-img">
-            <span class="illo-img-lbl">Image</span>
-          </div>
-          <!-- AaBb + Button widget -->
-          <div class="illo-widget illo-aabtn" style="top:14px;left:82px;">
-            <span class="illo-aa">AaBb</span>
-            <span class="illo-btn">Button</span>
-          </div>
-          <!-- Aria orb -->
-          <div class="illo-orb">
-            <div class="illo-orb-eyes"><div class="illo-orb-eye"></div><div class="illo-orb-eye"></div></div>
-          </div>
-          <!-- + Add label -->
-          <div class="illo-widget" style="bottom:28px;left:148px;background:none;border:none;box-shadow:none;font-size:11px;color:var(--blue);font-weight:600;">+ Add</div>
-          <!-- Cursor arrow -->
+          <div class="illo-img"><span class="illo-img-lbl">Image</span></div>
+          <div class="illo-chip"><span class="illo-chip-aa">AaBb</span><span class="illo-chip-btn">Button</span></div>
+          <div class="illo-orb"><div class="illo-orb-eyes"><div class="illo-orb-eye"></div><div class="illo-orb-eye"></div></div></div>
+          <div class="illo-add">+ Add</div>
           <div class="illo-cursor">▶</div>
-          <!-- Color swatches decorative -->
-          <div style="position:absolute;bottom:0;left:80px;display:flex;gap:4px;">
-            <div style="width:22px;height:10px;border-radius:3px;background:#F5A0B0;"></div>
-            <div style="width:22px;height:10px;border-radius:3px;background:#A090F5;"></div>
-            <div style="width:22px;height:10px;border-radius:3px;background:#F5D070;"></div>
+          <div class="illo-swatches">
+            <div class="illo-sw" style="background:#E8A0B0;"></div>
+            <div class="illo-sw" style="background:#A090F5;"></div>
+            <div class="illo-sw" style="background:#F5D070;"></div>
           </div>
         </div>
         <div class="loading-title">Harmony is about creating<br>in any way you wish</div>
         <div class="loading-sub">You can prompt Aria to save time and effort, then grab control to drag and drop. Freely switch back and forth between your own hands and Aria's AI without breaking your flow.</div>
       </div>
+      <div class="dots-wizard" id="dots-s8"></div>
     </div>
     <div class="ap">
       <div class="ap-hdr">
@@ -1209,7 +922,7 @@ textarea,input{font-family:inherit;}
         <button class="ap-hdr-btn" onclick="goTo('s9')">×</button>
       </div>
       <div class="planning-card">
-        <div class="planning-icon"><span class="spin">✦</span></div>
+        <div style="color:var(--blue);"><span class="spin" style="font-size:16px;">✦</span></div>
         <div class="planning-text">
           <div class="planning-title">Planning your site</div>
           <div class="planning-sub">It might take a few minutes…</div>
@@ -1222,17 +935,13 @@ textarea,input{font-family:inherit;}
           <button class="comp-plus">+</button>
           <input class="comp-in" type="text" placeholder="Ask me anything">
           <button class="comp-mic">🎤</button>
-          <button class="comp-send" onclick="goTo('s9')">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
+          <button class="comp-send" onclick="goTo('s9')"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
         </div>
       </div>
-      <div class="aria-float" onclick="goTo('s9')">
-        <div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div>
-      </div>
+      <div class="aria-float" onclick="goTo('s9')"><div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div></div>
     </div>
   </div>
-  <!-- Upsell modal trigger -->
+  <!-- Upsell modal -->
   <div id="upsell-ov" class="modal-backdrop" onclick="if(event.target===this)closeUpsell()">
     <div class="modal">
       <div class="upsell-modal">
@@ -1247,41 +956,87 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════
-     S9 — GENERATED SITE
-═══════════════════════════════════════════ -->
+<!-- ══ S9 — GENERATED SITE ══ -->
 <div class="screen" id="s9" style="padding-top:46px;">
   <div class="ed-body">
-    <div class="ed-canvas">
-      <div class="site-canvas">
-        <div class="site-frame" id="gen-frame">
-          <div class="gen-topbar"><div class="gen-dot"></div><div class="gen-dot"></div><div class="gen-dot"></div></div>
-          <div class="gen-hero">
-            <div class="gen-hero-img"></div>
-            <div class="gen-nav">
-              <span class="gen-nav-logo">Clay and calm</span>
-              <div class="gen-nav-links">
-                <span class="gen-nav-link">Menu</span>
-                <span class="gen-nav-link">Rooms</span>
-                <span class="gen-nav-link">Shop</span>
-                <span class="gen-nav-link">Offer</span>
+    <div class="ed-canvas" id="s9-canvas" style="position:relative;">
+
+      <!-- Site view (default) -->
+      <div class="site-canvas" id="site-view">
+        <!-- Mini browser top bar -->
+        <div class="site-topbar">
+          <div class="site-topbar-dots">
+            <div class="site-topbar-dot" style="background:#FF5F57;"></div>
+            <div class="site-topbar-dot" style="background:#FEBC2E;"></div>
+            <div class="site-topbar-dot" style="background:#28C840;"></div>
+          </div>
+          <div class="site-topbar-page">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h2M9 6h2M5 1v2M5 9v2"/></svg>
+            Page: <strong>Home</strong> ↓
+          </div>
+          <div class="site-topbar-domain">
+            <span>✓ crumbs.com <span style="color:var(--blue);background:none;border:none;font-weight:600;font-size:11px;">Make It Yours</span></span>
+          </div>
+          <div class="site-topbar-views">
+            <button class="site-topbar-view">🖥</button>
+            <button class="site-topbar-view">📱</button>
+          </div>
+        </div>
+        <div class="site-scroll">
+          <div class="gen-site" id="gen-site">
+            <div class="gs-nav">
+              <span class="gs-nav-logo">Clay and calm</span>
+              <div class="gs-nav-links">
+                <span class="gs-nav-link">Menu</span>
+                <span class="gs-nav-link">Rooms</span>
+                <span class="gs-nav-link">Shop</span>
+                <span class="gs-nav-link">Offer</span>
               </div>
             </div>
-            <div class="gen-h">Welcome to<br><em>our studio</em></div>
-            <div class="gen-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
-            <div class="gen-btns">
-              <button class="gen-btn1">Discover our products</button>
-              <button class="gen-btn2">Learn about us</button>
+            <div class="gs-hero">
+              <div class="gs-hero-bg"></div>
+              <div class="gs-table"></div>
+              <div class="gs-hero-content">
+                <div class="gs-h1">Welcome to<br>our studio</div>
+                <div class="gs-sub">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
+                <div class="gs-btns">
+                  <button class="gs-btn1">Discover our products</button>
+                  <button class="gs-btn2">Learn about us</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="gen-gallery-lbl">Product gallery</div>
-          <div class="gen-gallery">
-            <div class="gen-gitem"></div>
-            <div class="gen-gitem"></div>
-            <div class="gen-gitem"></div>
+            <div class="gs-gallery-lbl">Product gallery</div>
+            <div class="gs-gallery">
+              <div class="gs-gitem gs-gi1"></div>
+              <div class="gs-gitem gs-gi2"></div>
+              <div class="gs-gitem gs-gi3"></div>
+            </div>
+            <div style="padding:16px 32px 8px;"><div class="gs-gallery-title">A glimpse into our practice</div><div class="gs-gallery-sub">Handcrafted with intention. Each piece is shaped, fired, and finished in our studio.</div></div>
+            <div class="gs-gallery" style="padding:0 16px 32px;">
+              <div class="gs-gitem" style="background:linear-gradient(160deg,#D4A870,#B07040);"></div>
+              <div class="gs-gitem" style="background:linear-gradient(160deg,#C89058,#986030);"></div>
+              <div class="gs-gitem" style="background:linear-gradient(160deg,#E0B888,#B87848);"></div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Blueprint view (toggled via "Site Blueprint" in topbar) -->
+      <div class="bp-canvas" id="bp-view-s9" style="display:none;">
+        <div class="bp-hdr">
+          <div class="bp-title">Your Site Blueprint</div>
+          <div class="bp-domain-row"><span class="bp-domain-ic">🌐</span><span class="bp-domain-url">Clayandcalm.com</span><button class="bp-get">Get it</button></div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-card" style="grid-row:span 2;"><div class="bp-card-lbl">About the site</div><div class="bp-about-name">Clay &amp; Clam</div><div class="bp-about-body">A neighborhood bakery focused on naturally leavened breads and pastries made fresh daily.</div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Info</div><div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Bakery &amp; online ordering</div></div><div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Locals, weekend regulars, gift orders</div></div><div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">All breads naturally leavened</div></div></div>
+          <div class="bp-card" style="grid-row:span 2;"><div class="bp-card-lbl">Color palette</div><div class="bp-swatches"><div class="bp-sw" style="background:#E8A0B0;"></div><div class="bp-sw" style="background:#C2D630;"></div><div class="bp-sw" style="background:#9B8060;"></div><div class="bp-sw" style="background:#8A9088;"></div><div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Font pack</div><div class="bp-fonts"><div class="bp-font-box"><div class="bp-font-big disp">Aa</div><div class="bp-font-name">Wix Madefor Display</div></div><div class="bp-font-div"></div><div class="bp-font-box"><div class="bp-font-big serif">Aa</div><div class="bp-font-name">Snell Roundhand</div></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Apps</div><div class="bp-apps"><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">🛒</div><div><div class="bp-app-name">Wix Stores</div></div></div><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">📅</div><div><div class="bp-app-name">Wix Bookings</div></div></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Visual profile</div><div class="bp-tags"><span class="bp-tag">Warm</span><span class="bp-tag">Unpretentious</span><span class="bp-tag">Modern</span><span class="bp-tag">Craft-focused</span><span class="bp-tag">Approachable</span></div></div>
+        </div>
+      </div>
+
     </div>
     <div class="ap">
       <div class="ap-hdr">
@@ -1291,8 +1046,7 @@ textarea,input{font-family:inherit;}
         <button class="ap-hdr-btn">×</button>
       </div>
       <div class="ap-msgs">
-        <div class="msg-a" style="font-weight:600;color:var(--grey-1);">What would you like to do next?</div>
-        <div class="msg-a"><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
+        <div class="msg-a"><strong>What would you like to do next?</strong><br><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
       </div>
       <div class="domain-panel">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
@@ -1300,10 +1054,7 @@ textarea,input{font-family:inherit;}
           <button class="bp-get">Get It</button>
         </div>
         <div class="domain-option exact">
-          <div>
-            <div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);">✓</span><span class="domain-url-text">crumbake.com is available!</span></div>
-            <div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div>
-          </div>
+          <div><div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);">✓</span><span class="domain-url-text">crumbake.com is available!</span></div><div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div></div>
         </div>
         <div class="domain-option" style="margin-top:6px;"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
         <div class="domain-option"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
@@ -1317,14 +1068,10 @@ textarea,input{font-family:inherit;}
           <button class="comp-plus">+</button>
           <input class="comp-in" type="text" placeholder="Ask me anything">
           <button class="comp-mic">🎤</button>
-          <button class="comp-send">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
+          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
         </div>
       </div>
-      <div class="aria-float">
-        <div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div>
-      </div>
+      <div class="aria-float"><div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div></div>
     </div>
   </div>
 </div>
@@ -1340,25 +1087,19 @@ textarea,input{font-family:inherit;}
     <div class="ec-center">
       <button class="ec-fit">Fit (96%) <span class="ec-caret"></span></button>
     </div>
-    <button class="ec-bp on" id="ec-bp-btn">
+    <button class="ec-bp on" id="ec-bp-btn" onclick="toggleBlueprint()" style="display:none;">
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
       Site Blueprint
     </button>
     <div class="ec-right">
       <div class="ec-sep"></div>
-      <button class="ec-icon">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6h7a4 4 0 0 1 0 8H6M2 6l3-3M2 6l3 3"/></svg>
-      </button>
-      <button class="ec-icon" style="opacity:.3">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 6H7a4 4 0 0 0 0 8h3M14 6l-3-3M14 6l-3 3"/></svg>
-      </button>
-      <button class="ec-icon">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v8M5 5l3-3 3 3M3 13h10"/></svg>
-      </button>
+      <button class="ec-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6h7a4 4 0 0 1 0 8H6M2 6l3-3M2 6l3 3"/></svg></button>
+      <button class="ec-icon" style="opacity:.3"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 6H7a4 4 0 0 0 0 8h3M14 6l-3-3M14 6l-3 3"/></svg></button>
+      <button class="ec-icon"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v8M5 5l3-3 3 3M3 13h10"/></svg></button>
       <div class="ec-sep"></div>
       <button class="ec-upgrade">Upgrade</button>
       <button class="ec-preview">Preview</button>
-      <button class="ec-publish live" id="pub-btn">Publish</button>
+      <button class="ec-publish" id="pub-btn">Publish</button>
     </div>
   </div>
 </div>
@@ -1372,12 +1113,31 @@ textarea,input{font-family:inherit;}
 
 <script>
 const SCREENS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
-const LABELS  = ['S1: Open','S2: Skeleton Q1','S3: Skeleton Q2','S4: Templates','S5: BP Loading','S6: BP Revealed','S7: BP + Domain','S8: Loading','S9: Generated'];
+const LABELS  = ['S1: Open prompt','S2: Skeleton Q1','S3: Skeleton Q2','S4: Templates','S5: BP Loading','S6: BP Revealed','S7: BP + Domain','S8: Loading','S9: Generated'];
+// Step index for dots (0-based, -1 = no dots)
+const DOT_STEP = [0, 1, 2, 3, 4, 4, 4, 4, -1];
+const TOTAL_DOTS = 5;
+
 let cur = 0;
+let bpVisible = false; // for S9 blueprint toggle
+
+function renderDots(containerId, active) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (active < 0) { el.innerHTML = ''; return; }
+  let html = '';
+  for (let i = 0; i < TOTAL_DOTS; i++) {
+    if (i < active) html += '<div class="dot done"></div>';
+    else if (i === active) html += '<div class="dot cur"></div>';
+    else html += '<div class="dot todo"></div>';
+  }
+  el.innerHTML = html;
+}
 
 function goTo(id) {
   const idx = SCREENS.indexOf(id);
   if (idx < 0) return;
+
   SCREENS.forEach(s => {
     const el = document.getElementById(s);
     if (el) el.classList.remove('active');
@@ -1387,27 +1147,34 @@ function goTo(id) {
   cur = idx;
   document.getElementById('dev-lbl').textContent = LABELS[idx] || id;
 
-  // Chrome visibility
+  // Chrome
   const chrome = document.getElementById('chrome');
   chrome.style.display = id === 's1' ? 'none' : 'block';
 
-  // Show blueprint badge from S5+
+  // Blueprint badge visibility (show from S5 onward)
   const bp = document.getElementById('ec-bp-btn');
   if (bp) bp.style.display = (idx >= 4) ? 'flex' : 'none';
 
-  // Publish button live state from S9
+  // Publish live on S9
   const pub = document.getElementById('pub-btn');
   if (pub) pub.classList.toggle('live', idx >= 8);
 
-  // Animate generated frame
+  // Render dots
+  renderDots('dots-' + id, DOT_STEP[idx]);
+
+  // S9: reset to site view
   if (id === 's9') {
+    bpVisible = false;
+    document.getElementById('site-view').style.display = 'flex';
+    document.getElementById('bp-view-s9').style.display = 'none';
+    // Animate site in
     setTimeout(() => {
-      const f = document.getElementById('gen-frame');
-      if (f) f.classList.add('in');
-    }, 200);
+      const gs = document.getElementById('gen-site');
+      if (gs) gs.classList.add('in');
+    }, 150);
   }
 
-  // Show upsell modal on S8 entry
+  // S8: show upsell after delay
   if (id === 's8') {
     setTimeout(() => {
       const ov = document.getElementById('upsell-ov');
@@ -1426,18 +1193,21 @@ function closeUpsell() {
   if (ov) ov.classList.remove('open');
 }
 
-function pickTpl(skin) {
-  goTo('s5');
+// Blueprint toggle — works on any screen but primarily used on S9
+function toggleBlueprint() {
+  const screenId = SCREENS[cur];
+  if (screenId === 's9') {
+    bpVisible = !bpVisible;
+    document.getElementById('site-view').style.display = bpVisible ? 'none' : 'flex';
+    document.getElementById('bp-view-s9').style.display = bpVisible ? 'block' : 'none';
+    // Update badge style
+    const btn = document.getElementById('ec-bp-btn');
+    if (btn) btn.style.background = bpVisible ? 'rgba(47,93,255,.12)' : '';
+  }
 }
 
 // Init
 goTo('s1');
-
-// Handle blueprint badge "Site Blueprint" display on s5+
-document.addEventListener('DOMContentLoaded', () => {
-  const bp = document.getElementById('ec-bp-btn');
-  if (bp) bp.style.display = 'none';
-});
 </script>
 </body>
 </html>
