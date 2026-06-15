@@ -2,1016 +2,1442 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concept 3 — Aria Brand Book</title>
-<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Wix+Madefor+Display:wght@700;800&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harmony Funnel — Aria Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Wix+Madefor+Display:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;background:#fff;}
+/* ── RESET & BASE ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Wix Madefor Text',sans-serif;overflow:hidden;height:100vh;background:#fff;
+     font-size:14px;color:#151414;line-height:18px;}
+button{font-family:inherit;cursor:pointer;}
+textarea,input{font-family:inherit;}
+
+/* ── DESIGN TOKENS ── */
+:root{
+  --blue:   #2F5DFF;
+  --blue-h: #1C3FE5;
+  --blue-lt:#EAEFFF;
+  --blue-md:#D5DFFF;
+  --grey-1: #151414;
+  --grey-2: #383838;
+  --grey-3: #525150;
+  --grey-4: #767574;
+  --grey-5: #A8A6A5;
+  --grey-55:#DEDEDE;
+  --grey-6: #E8E7E7;
+  --grey-7: #F0EFEF;
+  --grey-75:#F8F6F6;
+  --green:  #4B916D;
+  --rad-btn:8px;
+  --rad-card:12px;
+  --rad-modal:24px;
+  --sh-raised:0 1px 4px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.08);
+  --sh-card:  0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.06);
+  --sh-modal: 0 8px 32px rgba(0,0,0,.18),0 2px 8px rgba(0,0,0,.12);
+  --sh-input: inset 0 1px 3px rgba(0,0,0,.10),inset 0 0 0 1px #E8E7E7;
+}
+
+/* ── SCREENS ── */
 .screen{position:absolute;inset:0;display:none;flex-direction:column;}
 .screen.active{display:flex;}
 
-/* ══ S1 PROMPT ══ */
-#s1{background:linear-gradient(155deg,#EBF0FF 0%,#F2EDFF 45%,#FEF0FF 100%);}
-.s1-nav{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;flex-shrink:0;}
-.s1-logo{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:800;color:#111;display:flex;align-items:center;gap:10px;letter-spacing:-.3px;}
-.s1-av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-weight:700;}
-.s1-upgrade{font-size:14px;font-weight:600;color:#116DFF;background:none;border:none;cursor:pointer;}
-.s1-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 36px 60px;}
-.aria-intro{display:flex;align-items:flex-start;gap:13px;margin-bottom:28px;width:100%;max-width:640px;}
-.aria-av-lg{width:36px;height:36px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;margin-top:3px;}
-.aria-msg-text{font-size:20px;line-height:1.5;color:#111;}
-.aria-msg-text .hi{font-weight:700;color:#116DFF;}
-.aria-msg-text em{font-style:normal;color:#116DFF;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px;}
-.input-card{width:100%;max-width:640px;background:#fff;border:1.5px solid #E0E0EC;border-radius:16px;padding:18px 18px 14px;margin-bottom:20px;transition:border-color .2s,box-shadow .2s;}
-.input-card:focus-within{border-color:#116DFF;box-shadow:0 0 0 3px rgba(17,109,255,.08);}
-.input-card textarea{width:100%;background:transparent;border:none;outline:none;resize:none;font-family:inherit;font-size:16px;color:#111;line-height:1.6;min-height:100px;}
-.input-card textarea::placeholder{color:#C0C0CC;}
-.input-foot{display:flex;justify-content:flex-end;padding-top:12px;border-top:1px solid #F0F0F6;margin-top:10px;}
-.btn-gen{background:#116DFF;color:#fff;border:none;border-radius:10px;padding:11px 24px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;transition:background .15s;}
-.btn-gen:hover{background:#0055DD;}
-.chips-wrap{width:100%;max-width:640px;}
-.chips-label{font-size:12px;color:#AAA;margin-bottom:10px;}
-.chips{display:flex;flex-wrap:wrap;gap:8px;}
-.chip{border:1px solid #E0E0EC;border-radius:20px;padding:6px 14px;font-size:12.5px;color:#555;cursor:pointer;background:rgba(255,255,255,.7);transition:all .15s;}
-.chip:hover{border-color:#116DFF;color:#116DFF;}
-.chip-more{color:#116DFF;border-color:rgba(17,109,255,.25);}
-.s1-foot{text-align:center;padding:14px;font-size:11px;color:#CACAD0;flex-shrink:0;}
+/* ════════════════════════════════════
+   S1 — FULL-SCREEN OPEN PROMPT
+════════════════════════════════════ */
+#s1{background:#EAEAF5;}
 
-/* ══ EDITOR CHROME ══ */
-.ec{height:46px;background:#fff;border-bottom:1px solid #EAEAEF;display:flex;align-items:center;padding:0 14px;gap:0;flex-shrink:0;}
-.ec-logo{font-family:'Wix Madefor Display',sans-serif;font-size:19px;font-weight:800;color:#111;margin-right:4px;letter-spacing:-.3px;}
-.ec-av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7C5CFF,#E040FB);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;}
-.ec-sep{width:1px;height:16px;background:#EAEAEF;margin:0 7px;}
-.ec-btn{display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;font-size:12px;font-weight:500;color:#555;background:transparent;border:none;cursor:pointer;}
-.ec-btn:hover{background:#F5F5F8;}
-.ec-caret{display:inline-block;width:6px;height:6px;border-right:1.5px solid #AAA;border-bottom:1.5px solid #AAA;transform:rotate(45deg) translateY(-2px);margin-left:1px;}
+.s1-body{
+  flex:1;display:flex;flex-direction:column;
+  padding:56px 80px 84px;position:relative;overflow:hidden;
+}
+
+/* Aria avatar orb */
+.s1-orb{
+  width:44px;height:44px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%,#000);
+  box-shadow:0 2px 12px rgba(0,0,0,.25);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;flex-shrink:0;
+}
+.s1-orb-face{display:flex;gap:5px;align-items:center;}
+.s1-orb-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
+
+/* Gradient headline */
+.s1-headline{
+  font-family:'Wix Madefor Display',sans-serif;
+  font-size:42px;font-weight:700;line-height:1.2;
+  letter-spacing:-0.5px;margin-bottom:28px;
+}
+.s1-line{display:block;}
+.s1-l1{background:linear-gradient(90deg,#1A1ADE 0%,#4A5CE8 40%,#8FA0F0 70%,#BCC9FA 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.s1-l2{background:linear-gradient(90deg,#2030CF 0%,#5060E0 45%,#9AAAF5 75%,#C8D2FF 100%);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* Inline avatar in text */
+.s1-av-inline{
+  display:inline-flex;width:32px;height:32px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);
+  vertical-align:middle;margin:0 5px 3px;align-items:center;justify-content:center;flex-shrink:0;
+}
+.s1-av-inline span{display:flex;gap:4px;}
+.s1-av-inline span i{display:block;width:4px;height:4px;border-radius:50%;background:#fff;}
+
+/* Textarea */
+.s1-textarea{
+  font-size:16px;font-weight:400;color:var(--grey-1);line-height:1.6;
+  border:none;outline:none;background:transparent;resize:none;
+  width:100%;flex:1;
+  caret-color:var(--blue);
+}
+.s1-textarea::placeholder{color:#BABACE;font-weight:400;}
+
+/* Bottom toolbar */
+.s1-bar{
+  position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:#fff;border-top:1px solid var(--grey-6);
+  display:flex;align-items:center;padding:0 20px;gap:4px;
+}
+.s1-bar-btn{
+  display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;
+  border-radius:var(--rad-btn);border:none;background:none;
+  font-size:14px;font-weight:500;color:var(--grey-3);
+  transition:background .15s;
+}
+.s1-bar-btn:hover{background:var(--grey-7);}
+.s1-bar-sep{width:1px;height:18px;background:var(--grey-6);margin:0 3px;}
+.s1-gen{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  height:38px;padding:0 20px;border:none;border-radius:var(--rad-btn);
+  background:var(--blue);color:#fff;
+  font-size:14px;font-weight:600;
+  box-shadow:0 1px 3px rgba(47,93,255,.3),0 3px 10px rgba(47,93,255,.2);
+  transition:background .15s;
+}
+.s1-gen:hover{background:var(--blue-h);}
+
+/* ════════════════════════════════════
+   EDITOR CHROME
+════════════════════════════════════ */
+.ec{
+  height:46px;background:#fff;border-bottom:1px solid var(--grey-6);
+  display:flex;align-items:center;padding:0 12px;gap:0;flex-shrink:0;
+  box-shadow:0 1px 0 var(--grey-6);
+}
+.ec-logo{
+  font-family:'Wix Madefor Display',sans-serif;
+  font-size:18px;font-weight:800;color:#000;
+  letter-spacing:-0.3px;margin-right:4px;
+}
+.ec-av{
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,#8B5CF6,#D946EF);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:#fff;font-weight:700;flex-shrink:0;
+}
+.ec-sep{width:1px;height:16px;background:var(--grey-6);margin:0 6px;}
+.ec-menu{
+  display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;
+  font-size:13px;font-weight:500;color:var(--grey-3);
+  background:none;border:none;transition:background .15s;
+}
+.ec-menu:hover{background:var(--grey-7);}
+.ec-caret{
+  display:inline-block;width:5px;height:5px;margin-left:3px;
+  border-right:1.5px solid var(--grey-4);border-bottom:1.5px solid var(--grey-4);
+  transform:rotate(45deg) translateY(-1px);
+}
 .ec-center{flex:1;display:flex;justify-content:center;}
-.ec-fit{font-size:12px;color:#777;display:flex;align-items:center;gap:3px;padding:4px 8px;border-radius:5px;cursor:pointer;}
-.ec-right{display:flex;align-items:center;gap:4px;}
-.ec-upgrade{color:#6B46FF;font-size:12px;font-weight:600;background:none;border:none;cursor:pointer;padding:4px 8px;}
-.ec-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;color:#888;}
-.ec-icon:hover{background:#F5F5F8;}
-.ec-icon svg{width:15px;height:15px;}
-.ec-preview{padding:5px 12px;background:none;border:1px solid #D5D5DC;border-radius:7px;font-size:12px;font-weight:500;color:#333;cursor:pointer;}
-.ec-publish{padding:5px 14px;border:none;border-radius:7px;font-size:12px;font-weight:600;color:#fff;background:#CACAD8;cursor:not-allowed;}
-.ec-publish.live{background:#116DFF;cursor:pointer;}
-.ec-blueprint{display:none;align-items:center;gap:6px;padding:5px 10px;border:1px solid rgba(17,109,255,.25);border-radius:7px;background:rgba(17,109,255,.05);cursor:pointer;font-size:12px;font-weight:500;color:#116DFF;transition:all .15s;}
-.ec-blueprint:hover{background:rgba(17,109,255,.1);}
-.ec-blueprint.show{display:flex;}
+.ec-fit{
+  font-size:13px;color:var(--grey-4);
+  display:flex;align-items:center;gap:2px;padding:4px 8px;border-radius:6px;
+  cursor:pointer;background:none;border:none;
+}
+.ec-fit:hover{background:var(--grey-7);}
+/* blueprint badge */
+.ec-bp{
+  display:none;align-items:center;gap:5px;height:26px;padding:0 10px;
+  border:1px solid rgba(47,93,255,.25);border-radius:6px;
+  background:rgba(47,93,255,.04);cursor:pointer;
+  font-size:12px;font-weight:600;color:var(--blue);
+  transition:background .15s;
+}
+.ec-bp:hover{background:rgba(47,93,255,.08);}
+.ec-bp.on{display:flex;}
+.ec-right{display:flex;align-items:center;gap:3px;}
+.ec-upgrade{
+  color:#6B46FF;font-size:13px;font-weight:600;
+  background:none;border:none;padding:4px 8px;
+}
+.ec-icon{
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  border-radius:6px;cursor:pointer;border:none;background:none;color:var(--grey-4);
+}
+.ec-icon:hover{background:var(--grey-7);}
+.ec-preview{
+  height:26px;padding:0 12px;background:none;border:1px solid var(--grey-55);
+  border-radius:6px;font-size:12px;font-weight:500;color:var(--grey-2);
+}
+.ec-preview:hover{background:var(--grey-7);}
+.ec-publish{
+  height:26px;padding:0 14px;border:none;border-radius:6px;
+  font-size:12px;font-weight:600;color:#fff;background:#C8C8D0;cursor:default;
+}
+.ec-publish.live{background:var(--blue);cursor:pointer;box-shadow:0 1px 4px rgba(47,93,255,.3);}
 
-/* ══ EDITOR LAYOUT ══ */
+/* ════════════════════════════════════
+   EDITOR BODY LAYOUT
+════════════════════════════════════ */
 .ed-body{flex:1;display:flex;overflow:hidden;position:relative;}
-.ed-surface{flex:1;background:#F2F3F6;position:relative;overflow:hidden;}
+.ed-canvas{flex:1;background:#EEEEF2;position:relative;overflow:hidden;}
 
-/* ══ ARIA PANEL ══ */
-.ap{width:320px;flex-shrink:0;background:#fff;border-left:1px solid #EAEAEF;display:flex;flex-direction:column;}
-.ap-head{padding:14px 16px 12px;border-bottom:1px solid #F2F2F5;display:flex;align-items:center;gap:8px;}
-.ap-head-av{width:24px;height:24px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700;flex-shrink:0;}
-.ap-head-title{font-size:13px;font-weight:600;color:#111;flex:1;}
-.ap-step{font-size:11px;color:#AAA;}
-.ap-msgs{flex:1;overflow-y:auto;padding:14px 14px 10px;display:flex;flex-direction:column;gap:10px;min-height:0;}
-.msg-a{display:flex;align-items:flex-start;gap:8px;}
-.msg-a-av{width:22px;height:22px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;flex-shrink:0;margin-top:1px;}
-.msg-a-text{font-size:12.5px;color:#333;line-height:1.6;}
-.msg-u{align-self:flex-end;background:#F3F0FF;color:#111;border-radius:12px 12px 3px 12px;padding:8px 12px;font-size:12.5px;max-width:85%;line-height:1.5;}
-.ap-composer{border-top:1px solid #F2F2F5;padding:10px 12px;display:flex;flex-direction:column;gap:7px;}
-.comp-row{display:flex;align-items:center;gap:8px;background:#F8F8FC;border:1px solid #E8E8EF;border-radius:10px;padding:8px 10px;transition:border-color .2s;}
-.comp-row:focus-within{border-color:#116DFF;}
-.comp-row input{flex:1;background:transparent;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#111;}
-.comp-row input::placeholder{color:#C0C0CC;}
-.comp-send{width:28px;height:28px;border-radius:7px;background:#116DFF;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;}
-.comp-send:hover{background:#0055DD;}
+/* ════════════════════════════════════
+   ARIA PANEL (right)
+════════════════════════════════════ */
+.ap{
+  width:360px;flex-shrink:0;background:#fff;border-left:1px solid var(--grey-6);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.ap-hdr{
+  display:flex;align-items:center;padding:14px 16px 12px;
+  border-bottom:1px solid var(--grey-7);flex-shrink:0;
+}
+.ap-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:var(--grey-1);flex:1;letter-spacing:-0.3px;}
+.ap-hdr-btn{
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  border-radius:6px;border:none;background:none;color:var(--grey-4);font-size:15px;
+}
+.ap-hdr-btn:hover{background:var(--grey-7);}
 
-/* ══ QUESTION WIDGET CARD ══ */
-.q-card{background:#fff;border:1px solid #E8E8EF;border-radius:14px;margin:0 10px 12px;box-shadow:0 4px 20px rgba(0,0,0,.08);overflow:hidden;flex-shrink:0;}
-.q-card-head{padding:14px 14px 10px;}
-.q-card-title{font-size:13px;font-weight:700;color:#111;margin-bottom:3px;}
-.q-card-sub{font-size:11px;color:#888;line-height:1.4;}
-.q-options{display:flex;flex-direction:column;gap:1px;}
-.q-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;transition:background .1s;border-top:1px solid #F2F2F5;}
-.q-opt:hover{background:#F8F9FF;}
-.q-opt input[type=radio]{width:15px;height:15px;accent-color:#116DFF;flex-shrink:0;cursor:pointer;}
-.q-opt-label{font-size:12px;color:#333;}
-.q-opt.selected{background:#F0F5FF;}
-.q-opt.selected .q-opt-label{color:#116DFF;font-weight:600;}
-.q-text-row{padding:8px 14px;border-top:1px solid #F2F2F5;}
-.q-text-in{width:100%;background:#F8F8FC;border:1px solid #E8E8EF;border-radius:8px;padding:8px 10px;font-family:inherit;font-size:12px;color:#111;outline:none;transition:border-color .15s;}
-.q-text-in:focus{border-color:#116DFF;}
-.q-text-in::placeholder{color:#C0C0CC;}
-.q-actions{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 12px;border-top:1px solid #F2F2F5;}
-.q-skip{background:none;border:none;font-size:12px;color:#116DFF;font-weight:600;cursor:pointer;font-family:inherit;}
+/* Chat messages */
+.ap-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.msg-u{
+  align-self:flex-end;background:var(--grey-75);color:var(--grey-1);
+  border-radius:12px 12px 3px 12px;padding:9px 13px;
+  font-size:14px;max-width:85%;line-height:1.5;
+}
+.msg-a{font-size:14px;color:var(--grey-2);line-height:1.6;max-width:95%;}
+
+/* ════════════════════════════════════
+   QUESTION CARD
+════════════════════════════════════ */
+.q-card{
+  background:#fff;border:1px solid var(--grey-6);border-radius:var(--rad-card);
+  margin:0 12px 12px;box-shadow:var(--sh-raised);
+  overflow:hidden;flex-shrink:0;position:relative;
+}
+.q-close{
+  position:absolute;top:10px;right:10px;width:22px;height:22px;
+  border-radius:6px;border:none;background:none;
+  font-size:16px;color:var(--grey-5);line-height:1;
+  display:flex;align-items:center;justify-content:center;
+}
+.q-close:hover{background:var(--grey-7);color:var(--grey-3);}
+.q-hdr{padding:14px 36px 10px 14px;}
+.q-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:3px;}
+.q-sub{font-size:12px;color:var(--grey-4);line-height:1.4;}
+.q-opts{display:flex;flex-direction:column;}
+.q-opt{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  cursor:pointer;transition:background .1s;border-top:1px solid var(--grey-7);
+}
+.q-opt:hover{background:#F8F8FF;}
+.q-opt input[type=radio]{width:15px;height:15px;accent-color:var(--blue);flex-shrink:0;}
+.q-opt input[type=checkbox]{width:15px;height:15px;accent-color:var(--blue);flex-shrink:0;}
+.q-opt-lbl{font-size:14px;color:var(--grey-2);line-height:1.4;}
+.q-opt-sub{font-size:12px;color:var(--grey-4);margin-top:1px;}
+.q-text-row{padding:8px 14px;border-top:1px solid var(--grey-7);}
+.q-input{
+  width:100%;height:38px;padding:0 10px;
+  background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);
+  font-size:14px;color:var(--grey-1);outline:none;
+  box-shadow:var(--sh-input);
+  transition:border-color .15s,box-shadow .15s;
+}
+.q-input:focus{
+  border-color:var(--blue);
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.08),0 0 0 3px rgba(47,93,255,.15);
+}
+.q-input::placeholder{color:var(--grey-5);}
+.q-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 12px;}
+.q-skip{background:none;border:none;font-size:14px;color:var(--blue);font-weight:600;}
 .q-skip:hover{text-decoration:underline;}
-.q-next{background:#116DFF;color:#fff;border:none;border-radius:8px;padding:8px 20px;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:background .15s;}
-.q-next:hover{background:#0055DD;}
+.q-next{
+  height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);
+  background:var(--blue);color:#fff;font-size:14px;font-weight:600;
+  box-shadow:0 1px 3px rgba(47,93,255,.3);
+  transition:background .15s;
+}
+.q-next:hover{background:var(--blue-h);}
+/* "Skip & Generate" link style */
+.q-skipgen{font-size:12px;color:var(--blue);font-weight:500;background:none;border:none;}
+.q-skipgen:hover{text-decoration:underline;}
 
-/* ══ S2 SKELETON ══ */
-.sk-cols{position:absolute;inset:0;display:flex;gap:12px;padding:38px 28px 60px;}
-.sk-col{flex:1;display:flex;flex-direction:column;gap:8px;}
-.sk-col-label{font-size:10.5px;font-weight:600;color:#AAAAB8;letter-spacing:.02em;}
-.sk-card{flex:1;border-radius:16px;background:linear-gradient(160deg,#E4E6EE,#D8DAE8);position:relative;overflow:hidden;}
-.sk-shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.35) 50%,transparent 100%);animation:shimmer 2s ease-in-out infinite;}
-@keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
-.sk-card-inner{padding:14px;height:100%;display:flex;flex-direction:column;gap:10px;}
-.sk-bar{border-radius:6px;background:rgba(255,255,255,.5);}
+/* ════════════════════════════════════
+   S2/S3 — SKELETON COLUMNS
+════════════════════════════════════ */
+.sk-wrap{position:absolute;inset:0;display:flex;flex-direction:column;padding:32px 24px 52px;}
+.sk-cols{flex:1;display:flex;gap:12px;min-height:0;}
+.sk-col{flex:1;display:flex;flex-direction:column;gap:7px;}
+.sk-label{font-size:11px;font-weight:500;color:#B0B0BE;letter-spacing:.01em;}
+.sk-card{
+  flex:1;border-radius:16px;
+  background:linear-gradient(180deg,#fff 55%,rgba(200,215,255,.18) 100%);
+  border:1px solid var(--grey-6);
+  box-shadow:var(--sh-card);
+}
 
-/* ══ S3 TEMPLATE GRID ══ */
-.tpl-header{padding:24px 28px 0;font-size:15px;font-weight:700;color:#111;flex-shrink:0;}
-.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 28px 50px;min-height:0;}
-.tpl-col{flex:1;display:flex;flex-direction:column;gap:8px;}
-.tpl-col-label{font-size:10.5px;font-weight:600;color:#888;letter-spacing:.02em;}
-.tpl-card{flex:1;border-radius:16px;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:all .2s;position:relative;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08);}
-.tpl-card:hover{border-color:#116DFF;box-shadow:0 8px 28px rgba(17,109,255,.15);}
-.tpl-card.selected{border-color:#116DFF;box-shadow:0 0 0 3px rgba(17,109,255,.12);}
-.tpl-card.tm-card{background:linear-gradient(160deg,#0D0D1E 0%,#1A0D3A 60%,#0D1A3A 100%);border:2px solid #116DFF;box-shadow:0 8px 32px rgba(17,109,255,.2);}
-.tpl-card.tm-card:hover{border-color:#5590FF;box-shadow:0 12px 40px rgba(17,109,255,.3);}
-.tm-inner{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 18px;gap:12px;height:100%;}
-.tm-icon{width:50px;height:50px;border-radius:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;}
-.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:18px;font-weight:700;color:#fff;text-align:center;line-height:1.3;}
-.tm-sub{font-size:11.5px;color:rgba(255,255,255,.5);text-align:center;line-height:1.5;max-width:160px;}
-.tm-cta{background:#116DFF;color:#fff;border:none;border-radius:10px;padding:9px 18px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .15s;}
-.tm-cta:hover{background:#3388FF;}
-/* template mini mockup */
-.tpl-mock{height:100%;display:flex;flex-direction:column;overflow:hidden;}
-.tpl-nav{height:26px;background:#fff;display:flex;align-items:center;padding:0 10px;gap:8px;border-bottom:1px solid #F0F0F5;flex-shrink:0;}
-.tpl-logo{font-weight:800;font-size:10px;}
-.tpl-links{display:flex;gap:8px;margin-left:4px;}
-.tpl-link{font-size:8px;color:#666;}
-.tpl-cta-nav{margin-left:auto;font-size:8px;font-weight:600;padding:3px 8px;border-radius:4px;}
-.tpl-hero{flex:1;position:relative;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;}
-.tpl-h{font-size:14px;font-weight:800;line-height:1.3;margin-bottom:5px;}
-.tpl-sub{font-size:8px;margin-bottom:10px;}
-.tpl-btn{display:inline-block;padding:5px 12px;border-radius:5px;font-size:8px;font-weight:700;width:fit-content;}
-.tpl-secs{display:flex;gap:4px;padding:8px;flex-shrink:0;}
-.tpl-sec{flex:1;height:38px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;}
-/* artisan */
-.art .tpl-nav{background:#fff;}.art .tpl-logo{color:#2C1810;}
-.art .tpl-hero{background:linear-gradient(180deg,#2C1810,#1A0F08);}
-.art .tpl-h{color:#fff;}.art .tpl-sub{color:rgba(255,255,255,.6);}
-.art .tpl-btn{background:#D4A055;color:#111;}
-.art .tpl-sec{background:#F5EFE8;color:#8B6A50;}
-/* natural */
-.nat .tpl-logo{color:#3C2A1A;}
-.nat .tpl-hero{background:linear-gradient(180deg,#F5E8D0,#EDD5B0);}
-.nat .tpl-h{color:#3C2A1A;}.nat .tpl-sub{color:rgba(60,42,26,.6);}
-.nat .tpl-btn{background:#3C2A1A;color:#F5E8D0;}
-.nat .tpl-sec{background:#EDD5B0;color:#8B6A50;}
-/* premium */
-.prem .tpl-nav{background:#0A0A0A;border-color:#222;}.prem .tpl-logo{color:#C8A96E;}
-.prem .tpl-link{color:#888;}
-.prem .tpl-hero{background:linear-gradient(180deg,#0A0A0A,#1A1A1A);}
-.prem .tpl-h{color:#fff;}.prem .tpl-sub{color:rgba(200,169,110,.65);}
-.prem .tpl-btn{background:#C8A96E;color:#111;}
-.prem .tpl-sec{background:#1A1A1A;color:#C8A96E;}
-.see-more{font-size:12px;color:#116DFF;font-weight:500;cursor:pointer;text-align:center;padding:4px 0;flex-shrink:0;padding-bottom:6px;}
+/* ════════════════════════════════════
+   S4 — TEMPLATE PICKER (revealed)
+════════════════════════════════════ */
+.tpl-wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;}
+.tpl-header{
+  padding:20px 24px 0;
+  font-size:16px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;flex-shrink:0;
+}
+.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 24px 44px;min-height:0;}
+.tpl-col{flex:1;display:flex;flex-direction:column;gap:7px;}
+.tpl-col-lbl{font-size:11px;font-weight:500;color:var(--grey-4);letter-spacing:.01em;}
+.tpl-col-lbl.ai{color:var(--blue);font-weight:600;}
+.tpl-card{
+  flex:1;border-radius:16px;overflow:hidden;cursor:pointer;
+  border:2px solid transparent;background:#fff;
+  box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;
+}
+.tpl-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
 
-/* ══ S4a MOSAIC ══ */
-.mosaic{position:absolute;inset:0;background:#F5F6F8;}
-.blueprint-tab{position:absolute;left:0;top:50%;transform:translateY(-50%);background:#fff;border:1px solid #EAEAEF;border-left:none;border-radius:0 8px 8px 0;padding:10px 10px 10px 6px;display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:600;color:#116DFF;z-index:10;box-shadow:2px 0 8px rgba(0,0,0,.06);transition:all .15s;writing-mode:horizontal-tb;}
-.blueprint-tab:hover{background:#F0F5FF;padding-left:10px;}
-.sq{position:absolute;background:#fff;border:1.5px solid #E8E8EF;border-radius:14px;padding:16px;cursor:pointer;transition:border-color .2s,box-shadow .15s;opacity:0;}
-.sq:hover{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.1);}
-.sq.sq-active{border-color:#116DFF;box-shadow:0 4px 16px rgba(17,109,255,.12);}
-@keyframes sqIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-.sq.show{animation:sqIn .5s ease forwards;opacity:1;}
-.sq-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
-.sq-ico{font-size:18px;}
-.sq-exp{width:22px;height:22px;border-radius:6px;background:#F5F5FB;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:#888;transition:all .15s;}
-.sq-exp:hover{background:#EBF0FF;color:#116DFF;}
-.sq-title{font-size:12px;font-weight:700;color:#111;margin-bottom:5px;}
-.sq-data{font-size:11px;color:#777;line-height:1.65;}
-.sq-data strong{color:#333;font-weight:600;}
-.mloader{position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.92);border:1px solid #E8E8EF;border-radius:20px;padding:7px 16px;backdrop-filter:blur(8px);font-size:11.5px;color:#555;z-index:20;transition:opacity .3s;}
-.ldots{display:flex;gap:4px;}
-.ldot{width:6px;height:6px;border-radius:50%;background:#116DFF;animation:ld 1.2s ease-in-out infinite;}
-.ldot:nth-child(2){animation-delay:.2s;}
-.ldot:nth-child(3){animation-delay:.4s;}
-@keyframes ld{0%,80%,100%{opacity:.3;transform:scale(.8);}40%{opacity:1;transform:scale(1.1);}}
+/* Tailor Made — frosted */
+.tpl-card.tm{position:relative;border:2px solid rgba(47,93,255,.25);}
+.tm-bg{position:absolute;inset:0;background:linear-gradient(155deg,#E8EEFF 0%,#EDF0FF 40%,#F4EDFF 70%,#FFF0F8 100%);filter:blur(14px);transform:scale(1.15);}
+.tm-glass{position:absolute;inset:0;background:rgba(255,255,255,.75);backdrop-filter:blur(18px);}
+.tm-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;gap:12px;text-align:center;}
+.tm-spark{font-size:20px;color:var(--blue);}
+.tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:#1A1A3A;line-height:1.3;}
+.tm-sub{font-size:13px;color:var(--grey-4);line-height:1.5;max-width:180px;}
+.tm-btn{
+  height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);
+  background:var(--blue);color:#fff;font-size:14px;font-weight:600;
+  box-shadow:0 2px 8px rgba(47,93,255,.28);margin-top:4px;
+  transition:background .15s,opacity .2s;
+}
+.tm-btn:hover{background:var(--blue-h);}
 
-/* ══ BLUEPRINT VIEW ══ */
-.blueprint-ws{position:absolute;inset:0;background:#F5F6F8;overflow-y:auto;padding:28px;}
-.bp-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:800;color:#111;margin-bottom:20px;letter-spacing:-.3px;}
-.bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-.bp-card{background:#fff;border-radius:14px;padding:18px;border:1px solid #EAEAEF;}
-.bp-card-full{background:#fff;border-radius:14px;padding:18px;border:1px solid #EAEAEF;margin-bottom:14px;}
-.bp-card-title{font-size:11px;font-weight:700;color:#AAA;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
-.bp-font-row{display:flex;gap:14px;align-items:center;}
-.bp-font-box{flex:1;background:#F8F8FC;border:1px solid #EAEAEF;border-radius:10px;padding:12px;text-align:center;}
-.bp-font-aa{font-size:32px;font-weight:700;color:#111;line-height:1;}
-.bp-font-aa.display{font-family:'Wix Madefor Display',sans-serif;font-weight:800;}
-.bp-font-aa.script{font-family:Georgia,serif;font-style:italic;}
-.bp-font-name{font-size:10px;color:#888;margin-top:4px;}
-.bp-font-divider{width:1px;height:40px;background:#EAEAEF;}
+/* Template mockups */
+.mock{height:100%;display:flex;flex-direction:column;overflow:hidden;}
+.m-nav{height:22px;display:flex;align-items:center;padding:0 8px;gap:6px;flex-shrink:0;}
+.m-logo{font-size:9px;font-weight:800;}
+.m-links{display:flex;gap:6px;margin-left:3px;}
+.m-link{font-size:7px;}
+.m-hero{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;position:relative;overflow:hidden;}
+.m-h{font-size:13px;font-weight:800;line-height:1.25;margin-bottom:4px;}
+.m-p{font-size:7px;margin-bottom:9px;opacity:.7;}
+.m-btns{display:flex;gap:5px;}
+.m-cta{font-size:7px;font-weight:700;padding:4px 10px;border-radius:4px;border:none;}
+.m-cta2{font-size:7px;font-weight:600;padding:4px 10px;border-radius:4px;border:none;background:rgba(255,255,255,.18);color:#fff;}
+.m-gallery{display:flex;gap:3px;padding:6px;background:#fff;flex-shrink:0;}
+.m-gitem{flex:1;height:28px;border-radius:4px;overflow:hidden;background:#ddd;}
+/* mono */
+.mono .m-nav{background:#111;border-bottom:1px solid #222;}
+.mono .m-logo{color:#fff;}
+.mono .m-link{color:#888;}
+.mono .m-hero{background:linear-gradient(180deg,#181818,#0A0A0A);}
+.mono .m-h{color:#fff;}
+.mono .m-p{color:rgba(255,255,255,.55);}
+.mono .m-cta{background:#fff;color:#111;}
+.mono .m-gallery{background:#111;}
+.mono .m-gitem{background:#2a2a2a;}
+/* warm */
+.warm .m-nav{background:#fff;border-bottom:1px solid #F0EDE8;}
+.warm .m-logo{color:#2C1A0A;}
+.warm .m-link{color:#777;}
+.warm .m-hero{background:linear-gradient(180deg,#4A3520,#2A1808);}
+.warm .m-h{color:#fff;}
+.warm .m-p{color:rgba(255,255,255,.6);}
+.warm .m-cta{background:#D4A24A;color:#111;}
+.warm .m-gallery{background:#F8F4EE;}
+.warm .m-gitem:nth-child(1){background:#C8A87A;}
+.warm .m-gitem:nth-child(2){background:#A8784A;}
+.warm .m-gitem:nth-child(3){background:#D4B88A;}
+
+.see-more-link{font-size:13px;color:var(--blue);font-weight:500;padding:4px 24px 6px;flex-shrink:0;cursor:pointer;background:none;border:none;}
+
+/* ════════════════════════════════════
+   BLUEPRINT LAYOUT (S5–S8)
+════════════════════════════════════ */
+.bp-canvas{position:absolute;inset:0;overflow-y:auto;padding:0 20px 80px;background:#EEEEF2;}
+.bp-hdr{padding:20px 4px 16px;display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
+.bp-title-row{display:flex;align-items:center;justify-content:space-between;}
+.bp-title{font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:700;color:var(--grey-1);letter-spacing:-0.5px;}
+.bp-domain-row{display:flex;align-items:center;gap:8px;}
+.bp-domain-ic{color:var(--grey-4);font-size:15px;}
+.bp-domain-url{font-size:14px;font-weight:500;color:var(--grey-2);}
+.bp-get{
+  height:30px;padding:0 14px;border:none;border-radius:6px;
+  background:var(--blue);color:#fff;font-size:13px;font-weight:600;
+  box-shadow:0 1px 4px rgba(47,93,255,.3);
+}
+.bp-already{font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;}
+.bp-already:hover{text-decoration:underline;}
+
+/* Blueprint grid */
+.bp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.bp-card{
+  background:#fff;border-radius:var(--rad-card);
+  border:1px solid var(--grey-6);padding:16px;
+  box-shadow:var(--sh-card);
+}
+.bp-card.tall{grid-row:span 2;}
+.bp-card.wide{grid-column:span 2;}
+.bp-card-lbl{font-size:10px;font-weight:600;color:var(--grey-4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
+
+/* About the site */
+.bp-about-name{font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:700;color:var(--grey-1);letter-spacing:-0.3px;margin-bottom:10px;}
+.bp-about-body{font-size:13px;color:var(--grey-4);line-height:1.6;}
+
+/* Site Info */
+.bp-info-row{display:flex;flex-direction:column;gap:0;}
+.bp-info-item{padding:10px 0;border-bottom:1px solid var(--grey-7);}
+.bp-info-item:last-child{border-bottom:none;}
+.bp-info-key{font-size:13px;color:var(--grey-5);margin-bottom:2px;}
+.bp-info-val{font-size:14px;font-weight:500;color:var(--grey-1);}
+
+/* Color palette */
 .bp-swatches{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.bp-swatch{border-radius:10px;aspect-ratio:1.6;border:1px solid rgba(0,0,0,.05);}
-.bp-tags{display:flex;flex-wrap:wrap;gap:7px;}
-.bp-tag{background:#1A1A2E;color:#fff;font-size:12px;font-weight:600;padding:6px 13px;border-radius:16px;}
-.bp-apps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.bp-app{background:#fff;border:1px solid #EAEAEF;border-radius:12px;padding:14px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;}
-.bp-app-ic{width:36px;height:36px;border-radius:10px;background:#F0F2F8;display:flex;align-items:center;justify-content:center;font-size:16px;}
-.bp-app-name{font-size:10px;font-weight:600;color:#333;line-height:1.3;}
+.bp-sw{border-radius:8px;height:72px;border:1px solid rgba(0,0,0,.04);}
 
-/* ══ TEMPLATE WORKSPACE (S4b/S5) ══ */
-.tpl-ws{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:40px;background:#F5F6F8;overflow-y:auto;}
-.site-frame{width:320px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);background:#fff;flex-shrink:0;opacity:0;transform:translateX(40px);transition:opacity .6s ease,transform .6s ease;}
+/* Font pack */
+.bp-fonts{display:flex;align-items:center;gap:14px;}
+.bp-font-box{flex:1;background:var(--grey-75);border:1px solid var(--grey-6);border-radius:8px;padding:12px;text-align:center;}
+.bp-font-big{font-size:32px;font-weight:700;color:var(--grey-1);line-height:1;}
+.bp-font-big.disp{font-family:'Wix Madefor Display',sans-serif;font-weight:700;}
+.bp-font-big.serif{font-family:Georgia,serif;font-style:italic;font-weight:400;}
+.bp-font-name{font-size:11px;color:var(--grey-4);margin-top:5px;}
+.bp-font-div{width:1px;height:40px;background:var(--grey-6);}
+
+/* Visual profile */
+.bp-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.bp-tag{background:var(--grey-1);color:#fff;font-size:13px;font-weight:500;padding:5px 12px;border-radius:16px;}
+
+/* Site Apps */
+.bp-apps{display:flex;flex-direction:column;gap:0;min-height:80px;}
+.bp-app{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--grey-7);}
+.bp-app:last-child{border-bottom:none;}
+.bp-app-ic{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.bp-app-name{font-size:14px;font-weight:600;color:var(--grey-1);}
+.bp-app-desc{font-size:12px;color:var(--grey-4);margin-top:1px;}
+
+/* Site Structures */
+.bp-struct-list{display:flex;flex-direction:column;gap:0;margin-bottom:10px;}
+.bp-struct-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--grey-7);}
+.bp-struct-row:last-child{border-bottom:none;}
+.bp-struct-name{font-size:13px;color:var(--grey-2);}
+.bp-struct-count{font-size:12px;color:var(--grey-5);}
+.bp-struct-chevron{font-size:10px;color:var(--grey-5);}
+.bp-preview-thumb{border-radius:6px;overflow:hidden;border:1px solid var(--grey-6);}
+
+/* Skeleton cards for blueprint loading */
+.bp-card.loading{border-color:rgba(47,93,255,.2);background:linear-gradient(180deg,#fff 40%,rgba(220,228,255,.2) 100%);}
+@keyframes shimmer{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+.bp-card.loading::after{content:'';display:block;height:8px;border-radius:4px;background:var(--grey-6);margin-top:8px;animation:shimmer 1.8s ease infinite;}
+
+/* ════════════════════════════════════
+   CHAT COMPOSER (bottom of panel)
+════════════════════════════════════ */
+.ap-composer{
+  border-top:1px solid var(--grey-7);padding:10px 12px;flex-shrink:0;
+}
+.comp-wrap{
+  display:flex;align-items:center;gap:8px;
+  background:var(--grey-75);border:1px solid var(--grey-6);border-radius:var(--rad-btn);
+  padding:0 8px 0 12px;height:38px;
+  box-shadow:var(--sh-input);transition:border-color .15s;
+}
+.comp-wrap:focus-within{border-color:var(--blue);}
+.comp-in{flex:1;background:none;border:none;outline:none;font-size:14px;color:var(--grey-1);}
+.comp-in::placeholder{color:var(--grey-5);}
+.comp-plus{font-size:17px;color:var(--grey-4);background:none;border:none;padding:2px;}
+.comp-mic{color:var(--grey-4);background:none;border:none;font-size:14px;}
+.comp-send{
+  width:28px;height:28px;border-radius:6px;
+  background:var(--blue);border:none;color:#fff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:background .15s;
+}
+.comp-send:hover{background:var(--blue-h);}
+
+/* ════════════════════════════════════
+   ARIA FLOATING AVATAR (bottom-right)
+════════════════════════════════════ */
+.aria-float{
+  width:38px;height:38px;border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);
+  box-shadow:0 2px 10px rgba(0,0,0,.3);
+  display:flex;align-items:center;justify-content:center;
+  align-self:flex-end;margin:0 12px 12px 0;flex-shrink:0;cursor:pointer;
+}
+.aria-float-eyes{display:flex;gap:5px;}
+.aria-float-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
+
+/* ════════════════════════════════════
+   S9 — LOADING STATE
+════════════════════════════════════ */
+.loading-canvas{
+  position:absolute;inset:0;
+  background:linear-gradient(145deg,#F0EDFC 0%,#EAF0FD 35%,#EEF5FA 65%,#F5F8EC 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px;
+}
+.loading-illo{position:relative;width:220px;height:180px;margin-bottom:28px;}
+/* Floating UI widgets */
+.illo-widget{position:absolute;background:#fff;border-radius:8px;box-shadow:var(--sh-raised);padding:6px 10px;font-size:11px;font-weight:500;color:var(--grey-2);white-space:nowrap;}
+.illo-img{position:absolute;top:20px;left:0;width:90px;height:75px;border-radius:8px;background:linear-gradient(135deg,#4B8BF5,#8A5CF5);overflow:hidden;box-shadow:var(--sh-raised);display:flex;align-items:flex-end;padding:6px;}
+.illo-img-lbl{background:rgba(255,255,255,.9);font-size:9px;font-weight:600;color:#333;padding:2px 6px;border-radius:4px;}
+.illo-aabtn{top:10px;left:80px;display:flex;align-items:center;gap:5px;}
+.illo-aa{font-size:13px;font-weight:700;color:var(--grey-1);}
+.illo-btn{background:var(--blue);color:#fff;font-size:9px;font-weight:600;padding:4px 10px;border-radius:5px;}
+.illo-orb{position:absolute;bottom:30px;left:100px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111);box-shadow:0 3px 14px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;}
+.illo-orb-eyes{display:flex;gap:5px;}
+.illo-orb-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
+.illo-cursor{position:absolute;bottom:10px;right:30px;font-size:22px;}
+.illo-addlbl{top:95px;left:130px;font-size:9px;font-weight:600;color:var(--blue);}
+
+.loading-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:700;color:var(--grey-1);text-align:center;letter-spacing:-0.3px;margin-bottom:10px;}
+.loading-sub{font-size:14px;color:var(--grey-4);text-align:center;line-height:1.6;max-width:400px;}
+
+/* Planning card in Aria panel */
+.planning-card{margin:16px;border-radius:var(--rad-card);border:1px solid var(--grey-6);padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.planning-icon{font-size:18px;color:var(--blue);}
+.planning-text{flex:1;}
+.planning-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:2px;}
+.planning-sub{font-size:12px;color:var(--grey-4);}
+.spin{animation:spin 1s linear infinite;display:inline-block;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ════════════════════════════════════
+   S10 UPSELL MODAL
+════════════════════════════════════ */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.modal-backdrop.open{opacity:1;pointer-events:all;}
+.modal{
+  background:#fff;border-radius:var(--rad-modal);width:520px;
+  overflow:hidden;transform:scale(.94);transition:transform .25s;
+  box-shadow:var(--sh-modal);
+}
+.modal-backdrop.open .modal{transform:scale(1);}
+
+.upsell-modal{
+  background:linear-gradient(155deg,#EEF3FF 0%,#E8F0FF 60%,#EDF4FF 100%);
+  border-radius:var(--rad-modal);overflow:hidden;position:relative;padding:32px 32px 28px;
+  text-align:center;
+}
+.upsell-close{
+  position:absolute;top:14px;right:14px;width:28px;height:28px;
+  border-radius:6px;background:rgba(255,255,255,.7);border:none;
+  font-size:16px;color:var(--grey-3);display:flex;align-items:center;justify-content:center;
+}
+.upsell-close:hover{background:rgba(255,255,255,.95);}
+.upsell-title{font-family:'Wix Madefor Display',sans-serif;font-size:26px;font-weight:800;color:#0F1E6A;line-height:1.2;margin-bottom:12px;letter-spacing:-0.3px;}
+.upsell-sub{font-size:14px;color:var(--grey-3);line-height:1.6;margin-bottom:24px;}
+.upsell-cta{
+  display:inline-flex;align-items:center;height:46px;padding:0 28px;
+  background:#0F2CCF;color:#fff;border:none;border-radius:23px;
+  font-size:16px;font-weight:700;cursor:pointer;
+  box-shadow:0 4px 16px rgba(15,44,207,.35);margin-bottom:20px;
+  transition:background .15s;
+}
+.upsell-cta:hover{background:#0F2CCF;}
+.upsell-illo{font-size:52px;margin-bottom:4px;}
+.upsell-legal{font-size:11px;color:var(--grey-5);line-height:1.4;max-width:380px;margin:0 auto;}
+
+/* ════════════════════════════════════
+   S11 — GENERATED SITE
+════════════════════════════════════ */
+.site-canvas{
+  position:absolute;inset:0;display:flex;align-items:flex-start;
+  justify-content:center;padding:32px 20px;background:#EEEEF2;overflow-y:auto;
+}
+.site-frame{
+  width:340px;border-radius:12px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.18);background:#fff;flex-shrink:0;
+  opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;
+}
 .site-frame.in{opacity:1;transform:none;}
 
-/* ══ DOMAIN WIDGET ══ */
-.domain-w{border:1.5px solid #D8EEFF;border-radius:12px;background:#F8FBFF;padding:12px 14px;margin-top:4px;}
-.domain-w-head{display:flex;align-items:center;gap:6px;margin-bottom:7px;}
-.domain-w-title{font-size:12px;font-weight:600;color:#111;}
-.domain-url{font-size:12px;color:#555;margin-bottom:10px;}
-.domain-url strong{color:#116DFF;font-family:monospace;}
-.domain-badge{display:inline-block;background:#E6F5EE;color:#1A8A4A;font-size:10px;font-weight:600;padding:2px 7px;border-radius:7px;margin-left:4px;}
-.btn-domain{width:100%;background:#116DFF;color:#fff;border:none;border-radius:8px;padding:9px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:6px;transition:background .15s;}
-.btn-domain:hover{background:#0055DD;}
-.btn-skip{width:100%;background:none;border:none;font-size:11px;color:#BBB;cursor:pointer;font-family:inherit;}
+/* Generated warm studio */
+.gen-topbar{height:16px;background:#F0EDE8;display:flex;align-items:center;gap:4px;padding:0 8px;}
+.gen-dot{width:5px;height:5px;border-radius:50%;background:var(--grey-55);}
+.gen-hero{
+  position:relative;height:220px;
+  background:linear-gradient(175deg,#3D2910 0%,#1E1008 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+}
+.gen-hero-img{position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="340" height="220"><rect fill="%23422810" width="340" height="220"/><ellipse cx="200" cy="160" rx="120" ry="60" fill="%232A1808" opacity="0.6"/></svg>');background-size:cover;}
+.gen-nav{
+  position:absolute;top:0;left:0;right:0;height:26px;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
+  display:flex;align-items:center;padding:0 12px;gap:8px;
+}
+.gen-nav-logo{font-size:10px;font-weight:800;color:#E8D0A8;letter-spacing:.03em;}
+.gen-nav-links{display:flex;gap:8px;margin-left:auto;}
+.gen-nav-link{font-size:7px;color:rgba(255,255,255,.7);}
+.gen-h{font-size:26px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:5px;position:relative;}
+.gen-h em{font-style:normal;font-family:Georgia,serif;}
+.gen-p{font-size:9px;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:12px;position:relative;max-width:240px;}
+.gen-btns{display:flex;gap:6px;position:relative;}
+.gen-btn1{font-size:8px;font-weight:700;padding:6px 14px;border-radius:5px;background:#111;color:#fff;border:none;}
+.gen-btn2{font-size:8px;font-weight:600;padding:6px 14px;border-radius:5px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);}
+.gen-gallery-lbl{font-size:9px;font-weight:700;color:var(--grey-4);padding:8px 10px 4px;letter-spacing:.04em;text-transform:uppercase;}
+.gen-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 6px 8px;}
+.gen-gitem{height:55px;border-radius:5px;background:#D4B880;}
+.gen-gitem:nth-child(2){background:#A87840;}
+.gen-gitem:nth-child(3){background:#C89A60;}
 
-/* ══ CHOICE BTNS ══ */
-.choice-row{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
-.choice-btn{text-align:left;background:#F8F8FC;border:1.5px solid #E8E8EF;border-radius:10px;padding:9px 12px;font-family:inherit;font-size:12px;cursor:pointer;transition:border-color .15s,background .15s;color:#333;}
-.choice-btn:hover{border-color:#116DFF;background:#F0F5FF;color:#116DFF;}
+/* Domain panel in Aria (S8+) */
+.domain-panel{padding:14px 16px;display:flex;flex-direction:column;gap:0;}
+.domain-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:4px;}
+.domain-sub{font-size:13px;color:var(--grey-3);line-height:1.5;margin-bottom:14px;}
+.domain-badge{display:inline-flex;align-items:center;gap:4px;background:#F0FAF5;border:1px solid #BDE2A7;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:600;color:#11664F;margin-bottom:6px;}
+.domain-option{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 12px;border-radius:8px;background:var(--grey-75);
+  border:1px solid var(--grey-6);margin-bottom:6px;
+}
+.domain-option.exact{border-color:rgba(47,93,255,.3);background:var(--blue-lt);}
+.domain-url-text{font-size:14px;font-weight:500;color:var(--grey-1);}
+.domain-price{font-size:13px;color:var(--grey-4);}
+.domain-price s{color:var(--grey-5);}
+.domain-price span{color:var(--green);font-weight:600;}
+.domain-get{
+  height:30px;padding:0 14px;border:none;border-radius:6px;
+  background:var(--grey-1);color:#fff;font-size:12px;font-weight:600;
+}
+.domain-link{font-size:13px;color:var(--blue);font-weight:500;background:none;border:none;padding:4px 0;text-align:left;display:block;}
+.domain-link:hover{text-decoration:underline;}
+.domain-later{font-size:13px;color:var(--grey-4);background:none;border:none;padding:6px 0;cursor:pointer;}
 
-/* ══ MODAL ══ */
-.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s;}
-.modal-ov.open{opacity:1;pointer-events:all;}
-.modal{background:#fff;border-radius:18px;width:500px;max-height:78vh;overflow:hidden;display:flex;flex-direction:column;transform:scale(.95);transition:transform .25s ease;}
-.modal-ov.open .modal{transform:scale(1);}
-.modal-head{padding:18px 20px 14px;border-bottom:1px solid #F0F0F5;display:flex;align-items:center;gap:10px;}
-.modal-ico{font-size:22px;}
-.modal-title{font-size:15px;font-weight:700;color:#111;flex:1;}
-.modal-close{width:28px;height:28px;border-radius:8px;background:#F5F5F8;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:#888;}
-.modal-body{padding:20px;flex:1;overflow-y:auto;}
-.msec{margin-bottom:20px;}
-.msec-title{font-size:11px;font-weight:600;color:#AAA;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
-.color-row{display:flex;gap:8px;flex-wrap:wrap;}
-.cswatch{width:44px;height:44px;border-radius:10px;cursor:pointer;transition:transform .1s;}
-.cswatch:hover{transform:scale(1.08);}
-.font-prev{padding:12px;background:#F8F8FC;border-radius:10px;}
-.font-prev-big{font-size:30px;font-weight:700;color:#111;font-family:'Wix Madefor Display',sans-serif;}
-.font-prev-sm{font-size:12px;color:#888;margin-top:2px;}
-.app-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:6px;background:#F8F8FC;}
-
-/* ══ STEPPER ══ */
-.stepper{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;z-index:5;pointer-events:none;}
-.step{width:7px;height:7px;border-radius:50%;background:#D5D5DC;transition:all .35s;}
-.step.done{background:#B8C4E8;}
-.step.cur{background:#116DFF;width:20px;border-radius:4px;}
-
-/* ══ DEV NAV ══ */
-.dev-nav{position:fixed;bottom:20px;right:20px;display:flex;gap:7px;z-index:50;}
-.darr{background:rgba(255,255,255,.9);border:1px solid #E0E0EC;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;backdrop-filter:blur(4px);transition:all .15s;}
-.darr:hover{background:#fff;border-color:#116DFF;color:#116DFF;}
-.dcur{width:auto;padding:0 10px;font-size:11px;color:#888;cursor:default;}
+/* ════════════════════════════════════
+   DEV NAV
+════════════════════════════════════ */
+.dev-nav{position:fixed;bottom:16px;right:16px;display:flex;align-items:center;gap:6px;z-index:300;}
+.dev-arr{
+  width:30px;height:30px;background:rgba(255,255,255,.92);
+  border:1px solid var(--grey-6);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;cursor:pointer;backdrop-filter:blur(4px);
+  box-shadow:var(--sh-raised);transition:all .15s;
+}
+.dev-arr:hover{border-color:var(--blue);color:var(--blue);}
+.dev-lbl{font-size:11px;color:var(--grey-5);padding:0 6px;pointer-events:none;}
 </style>
 </head>
 <body>
 
-<!-- ══ S1 PROMPT ══ -->
+<!-- ══════════════════════════════════════
+     S1 — FULL-SCREEN OPEN PROMPT
+══════════════════════════════════════ -->
 <div class="screen active" id="s1">
-  <nav class="s1-nav">
-    <div class="s1-logo">WIX <div class="s1-av">N</div></div>
-    <button class="s1-upgrade">Upgrade</button>
-  </nav>
   <div class="s1-body">
-    <div class="aria-intro">
-      <div class="aria-av-lg">A</div>
-      <div class="aria-msg-text">
-        <span class="hi">Hi! I'm Aria, your friendly design assistant.</span><br>
-        Tell me your site's <em>name</em>, what kind of <em>business it is</em>, and what <em>makes it unique.</em>
-      </div>
+    <div class="s1-orb">
+      <div class="s1-orb-face"><div class="s1-orb-eye"></div><div class="s1-orb-eye"></div></div>
     </div>
-    <div class="input-card">
-      <textarea id="s1-input" placeholder="Describe the site you want to build…" rows="4"></textarea>
-      <div class="input-foot">
-        <button class="btn-gen" onclick="startFlow()">Generate
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </button>
-      </div>
+    <div class="s1-headline">
+      <span class="s1-line s1-l1">Hi! I'm Aria,
+        <span class="s1-av-inline"><span><i></i><i></i></span></span>
+        your friendly design assistant.</span>
+      <span class="s1-line s1-l2">Tell me your site's name, what kind of business<br>it is, and what makes it unique.</span>
     </div>
-    <div class="chips-wrap">
-      <div class="chips-label">Try an example prompt</div>
-      <div class="chips">
-        <span class="chip" onclick="fillEx(this)">Fashion store</span>
-        <span class="chip" onclick="fillEx(this)">Online course</span>
-        <span class="chip" onclick="fillEx(this)">Wellness service</span>
-        <span class="chip" onclick="fillEx(this)">Consulting website</span>
-        <span class="chip" onclick="fillEx(this)">Community hub</span>
-        <span class="chip" onclick="fillEx(this)">Creative portfolio</span>
-        <span class="chip chip-more">↻ More Ideas</span>
-      </div>
-    </div>
+    <textarea class="s1-textarea" id="s1-input" placeholder="Describe the site you want to build…" rows="4"></textarea>
   </div>
-  <div class="s1-foot">AI can make mistakes. Double check the results.</div>
-</div>
-
-<!-- ══ SHARED EDITOR CHROME (s2–s5) ══ -->
-<div id="chrome" style="display:none;position:fixed;top:0;left:0;right:0;z-index:40;">
-  <div class="ec">
-    <span class="ec-logo">WIX</span>
-    <div class="ec-av">N</div>
-    <div class="ec-sep"></div>
-    <button class="ec-btn">Goody <span class="ec-caret"></span></button>
-    <button class="ec-btn">Brand <span class="ec-caret"></span></button>
-    <div class="ec-center"><span class="ec-fit">Fit (96%) <span class="ec-caret"></span></span></div>
-    <div class="ec-right">
-      <button class="ec-blueprint" id="bp-btn" onclick="toggleBlueprint()">◈ Blueprint</button>
-      <div class="ec-sep"></div>
-      <button class="ec-icon" title="Undo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h7a4 4 0 0 1 0 8H6M2 6l3-3M2 6l3 3"/></svg></button>
-      <button class="ec-icon" title="Redo" style="opacity:.3"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 6H7a4 4 0 0 0 0 8h3M14 6l-3-3M14 6l-3 3"/></svg></button>
-      <button class="ec-icon" title="Save"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 2v4h6V2M5 9h6"/></svg></button>
-      <div class="ec-sep"></div>
-      <button class="ec-upgrade">Upgrade</button>
-      <button class="ec-preview">Preview</button>
-      <button class="ec-publish" id="ec-pub">Publish</button>
-    </div>
+  <div class="s1-bar">
+    <button class="s1-bar-btn">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 3v12M3 9h12"/></svg>
+      Add
+    </button>
+    <div class="s1-bar-sep"></div>
+    <button class="s1-bar-btn">
+      <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M6 8h6M6 11h4"/></svg>
+      Create from URL
+    </button>
+    <button class="s1-gen" onclick="goTo('s2')">
+      Generate now
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg>
+    </button>
   </div>
 </div>
 
-<!-- ══ S2 — QUESTIONS (skeleton workspace) ══ -->
+<!-- ═══════════════════════════════════════════
+     S2 — SKELETON + Q1 (site name)
+═══════════════════════════════════════════ -->
 <div class="screen" id="s2" style="padding-top:46px;">
   <div class="ed-body">
-    <div class="ed-surface">
-      <!-- 3 skeleton columns -->
-      <div class="sk-cols">
-        <div class="sk-col">
-          <div class="sk-col-label">Minimalist Artisan</div>
-          <div class="sk-card">
-            <div class="sk-shimmer"></div>
-            <div class="sk-card-inner">
-              <div class="sk-bar" style="width:60%;height:10px;"></div>
-              <div class="sk-bar" style="width:40%;height:8px;"></div>
-              <div style="flex:1;"></div>
-              <div class="sk-bar" style="width:80%;height:8px;"></div>
-              <div class="sk-bar" style="width:55%;height:8px;"></div>
-              <div class="sk-bar" style="width:38%;height:28px;border-radius:8px;"></div>
-            </div>
-          </div>
+    <div class="ed-canvas">
+      <div class="sk-wrap">
+        <div class="sk-cols">
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
+          <div class="sk-col"><div class="sk-label">Tailor made</div><div class="sk-card"></div></div>
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
         </div>
-        <div class="sk-col">
-          <div class="sk-col-label">Dynamic Gallery</div>
-          <div class="sk-card" style="background:linear-gradient(160deg,#DDE0EC,#D0D3E4);">
-            <div class="sk-shimmer"></div>
-            <div class="sk-card-inner">
-              <div class="sk-bar" style="width:50%;height:10px;"></div>
-              <div class="sk-bar" style="width:70%;height:8px;"></div>
-              <div style="flex:1;"></div>
-              <div class="sk-bar" style="width:90%;height:8px;"></div>
-              <div class="sk-bar" style="width:60%;height:8px;"></div>
-              <div class="sk-bar" style="width:42%;height:28px;border-radius:8px;"></div>
-            </div>
-          </div>
-        </div>
-        <div class="sk-col">
-          <div class="sk-col-label">Editorial Split</div>
-          <div class="sk-card" style="background:linear-gradient(160deg,#E0DDE8,#D4D1E0);">
-            <div class="sk-shimmer"></div>
-            <div class="sk-card-inner">
-              <div class="sk-bar" style="width:45%;height:10px;"></div>
-              <div class="sk-bar" style="width:65%;height:8px;"></div>
-              <div style="flex:1;"></div>
-              <div class="sk-bar" style="width:75%;height:8px;"></div>
-              <div class="sk-bar" style="width:50%;height:8px;"></div>
-              <div class="sk-bar" style="width:36%;height:28px;border-radius:8px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="stepper">
-        <div class="step done"></div><div class="step cur"></div>
-        <div class="step"></div><div class="step"></div><div class="step"></div>
       </div>
     </div>
-    <!-- Right panel -->
     <div class="ap">
-      <div class="ap-head">
-        <div class="ap-head-av">A</div>
-        <div class="ap-head-title">Ask Aria</div>
-        <div class="ap-step" id="s2-step-lbl">2 of 5</div>
+      <div class="ap-hdr">
+        <div class="ap-title">Ask Aria</div>
       </div>
-      <div class="ap-msgs" id="s2-msgs">
-        <div class="msg-u">I need a site</div>
-        <div class="msg-a">
-          <div class="msg-a-av">A</div>
-          <div class="msg-a-text">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
-        </div>
+      <div class="ap-msgs">
+        <div class="msg-u">Bakery site</div>
+        <div class="msg-a">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
       </div>
-      <!-- Question card widget -->
-      <div class="q-card" id="s2-qcard">
-        <div class="q-card-head">
-          <div class="q-card-title" id="q-title">What's your site called?</div>
-          <div class="q-card-sub" id="q-sub">This will appear on your site and domain</div>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s3')">×</button>
+        <div class="q-hdr">
+          <div class="q-title">What's your site called?</div>
+          <div class="q-sub">Pick a name below or type your own</div>
         </div>
-        <div class="q-options" id="q-opts">
-          <label class="q-opt" onclick="selectQOpt(this,'Goody')">
-            <input type="radio" name="q1"> <span class="q-opt-label">Goody</span>
-          </label>
-          <label class="q-opt" onclick="selectQOpt(this,'Nova Bakes')">
-            <input type="radio" name="q1"> <span class="q-opt-label">Nova Bakes</span>
-          </label>
-          <label class="q-opt" onclick="selectQOpt(this,'Bloom Bakery')">
-            <input type="radio" name="q1"> <span class="q-opt-label">Bloom Bakery</span>
-          </label>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="s2q"><div><div class="q-opt-lbl">Clay &amp; Clam</div></div></label>
+          <label class="q-opt"><input type="radio" name="s2q"><div><div class="q-opt-lbl">Urban Bloom</div></div></label>
+          <label class="q-opt"><input type="radio" name="s2q"><div><div class="q-opt-lbl">Peak Performance</div></div></label>
         </div>
         <div class="q-text-row">
-          <input id="q-input" type="text" class="q-text-in" placeholder="Or type your site name…" onkeydown="if(event.key==='Enter')qNext()">
+          <input type="text" class="q-input" placeholder="Or enter your own name">
         </div>
-        <div class="q-actions">
-          <button class="q-skip" onclick="qNext(true)">Skip</button>
-          <button class="q-next" onclick="qNext()">Next</button>
+        <div class="q-footer">
+          <button class="q-skip" onclick="goTo('s3')">Skip</button>
+          <button class="q-next" onclick="goTo('s3')">Next</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S3 — TEMPLATE PICKER ══ -->
+<!-- ═══════════════════════════════════════════
+     S3 — SKELETON + Q2 (business type)
+═══════════════════════════════════════════ -->
 <div class="screen" id="s3" style="padding-top:46px;">
   <div class="ed-body">
-    <div class="ed-surface" style="display:flex;flex-direction:column;">
-      <div class="tpl-header" id="s3-header">Choose the design you'd like to generate your full site from</div>
-      <div class="tpl-cols">
-
-        <!-- Tailor Made (center/prominent) -->
-        <div class="tpl-col">
-          <div class="tpl-col-label" style="color:#116DFF;font-weight:700;">✦ Design with Aria</div>
-          <div class="tpl-card tm-card" onclick="pickTailor()">
-            <div class="tm-inner">
-              <div class="tm-icon">✦</div>
-              <div class="tm-title">Tailor Made</div>
-              <div class="tm-sub">Build a fully custom site from your brand book — tailored to you</div>
-              <button class="tm-cta">Tailor Made →</button>
-            </div>
-          </div>
+    <div class="ed-canvas">
+      <div class="sk-wrap">
+        <div class="sk-cols">
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
+          <div class="sk-col"><div class="sk-label">Tailor made</div><div class="sk-card"></div></div>
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"></div></div>
         </div>
-
-        <!-- Artisan Dark -->
-        <div class="tpl-col">
-          <div class="tpl-col-label">Artisan Dark</div>
-          <div class="tpl-card art" onclick="pickTpl('artisan','Artisan Dark')">
-            <div class="tpl-mock">
-              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">Story</span></div><span class="tpl-cta-nav" style="background:#2C1810;color:#D4A055;">Order</span></div>
-              <div class="tpl-hero"><div class="tpl-h">Baked with<br>love</div><div class="tpl-sub">Goody · Tel Aviv · Est.2019</div><div class="tpl-btn">Order now →</div></div>
-              <div class="tpl-secs"><div class="tpl-sec">Sourdough</div><div class="tpl-sec">Croissants</div><div class="tpl-sec">Seasonal</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Natural Light -->
-        <div class="tpl-col">
-          <div class="tpl-col-label">Natural Light</div>
-          <div class="tpl-card nat" onclick="pickTpl('natural','Natural Light')">
-            <div class="tpl-mock">
-              <div class="tpl-nav"><span class="tpl-logo">Goody</span><div class="tpl-links"><span class="tpl-link">Menu</span><span class="tpl-link">About</span></div><span class="tpl-cta-nav" style="background:#3C2A1A;color:#F5E8D0;">Order</span></div>
-              <div class="tpl-hero"><div class="tpl-h">Fresh Every<br>Morning</div><div class="tpl-sub">Goody Bakery · Seasonal pastries</div><div class="tpl-btn">Explore →</div></div>
-              <div class="tpl-secs"><div class="tpl-sec">Morning Box</div><div class="tpl-sec">Pre-Order</div><div class="tpl-sec">Catering</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Premium Dark -->
-        <div class="tpl-col">
-          <div class="tpl-col-label">Premium Dark</div>
-          <div class="tpl-card prem" onclick="pickTpl('premium','Premium Dark')">
-            <div class="tpl-mock">
-              <div class="tpl-nav" style="background:#0A0A0A;border-color:#222;"><span class="tpl-logo" style="color:#C8A96E;">Goody</span><div class="tpl-links"><span class="tpl-link" style="color:#888;">Shop</span></div><span class="tpl-cta-nav" style="background:#C8A96E;color:#111;">Discover</span></div>
-              <div class="tpl-hero"><div class="tpl-h">Crafted<br>Daily</div><div class="tpl-sub" style="color:rgba(200,169,110,.7);">Goody — Premium bakery</div><div class="tpl-btn">Discover →</div></div>
-              <div class="tpl-secs"><div class="tpl-sec">Artisan</div><div class="tpl-sec">Seasonal</div><div class="tpl-sec">Gift</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="see-more">↻ See more templates</div>
-      <div class="stepper">
-        <div class="step done"></div><div class="step done"></div>
-        <div class="step cur"></div><div class="step"></div><div class="step"></div>
       </div>
     </div>
     <div class="ap">
-      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
+      <div class="ap-hdr">
+        <div class="ap-title">Ask Aria</div>
+      </div>
       <div class="ap-msgs">
-        <div class="msg-a"><div class="msg-a-av">A</div>
-          <div class="msg-a-text" id="s3-msg">I found 3 templates that match <strong>Goody</strong>. Or go fully custom — I'll build everything from your brand book.</div>
+        <div class="msg-u">Bakery site</div>
+        <div class="msg-a">I'm excited to help you build your site!<br>To get started, let's find the perfect name, industry, and what makes you unique.</div>
+      </div>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s4')">×</button>
+        <div class="q-hdr">
+          <div class="q-title">What does your business do?</div>
+          <div class="q-sub">Help Aria understand what makes you unique</div>
         </div>
-        <div style="font-size:11px;color:#AAA;display:flex;align-items:center;gap:5px;">
-          <span>✦</span> Templates already have your name and content injected.
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="s3q"><div><div class="q-opt-lbl">Consulting for tech startups</div></div></label>
+          <label class="q-opt"><input type="radio" name="s3q"><div><div class="q-opt-lbl">Boutique venture capital firm</div></div></label>
+          <label class="q-opt"><input type="radio" name="s3q"><div><div class="q-opt-lbl">Digital-first small business support</div></div></label>
+        </div>
+        <div class="q-text-row">
+          <input type="text" class="q-input" placeholder="Or describe your business…">
+        </div>
+        <div class="q-footer">
+          <button class="q-skip" onclick="goTo('s4')">Skip</button>
+          <button class="q-next" onclick="goTo('s4')">Next</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ S4a — TAILOR MADE (mosaic) ══ -->
-<div class="screen" id="s4a" style="padding-top:46px;">
+<!-- ═══════════════════════════════════════════
+     S4 — TEMPLATE PICKER (revealed)
+═══════════════════════════════════════════ -->
+<div class="screen" id="s4" style="padding-top:46px;">
   <div class="ed-body">
-    <div class="ed-surface">
-      <div class="mosaic" id="mosaic">
-        <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
-        <div class="mloader" id="mloader">
-          <div class="ldots"><div class="ldot"></div><div class="ldot"></div><div class="ldot"></div></div>
-          <span>Building your brand book…</span>
+    <div class="ed-canvas">
+      <div class="tpl-wrap">
+        <div class="tpl-header">Choose the design you'd like to generate your full site from</div>
+        <div class="tpl-cols">
+
+          <!-- Left: Monochrome studio -->
+          <div class="tpl-col">
+            <div class="tpl-col-lbl">Monochrome studio</div>
+            <div class="tpl-card" onclick="pickTpl('mono')">
+              <div class="mock mono">
+                <div class="m-nav"><span class="m-logo">Clay and calm</span><div class="m-links"><span class="m-link">Menu</span><span class="m-link">Rooms</span><span class="m-link">Shop</span><span class="m-link">Offer</span></div></div>
+                <div class="m-hero">
+                  <div class="m-h">Welcome to<br>our studio</div>
+                  <div class="m-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
+                  <div class="m-btns">
+                    <button class="m-cta">Discover our products</button>
+                    <button class="m-cta2">Learn about us</button>
+                  </div>
+                </div>
+                <div class="m-gallery">
+                  <div class="m-gitem" style="background:#1A1A1A;"></div>
+                  <div class="m-gitem" style="background:#2A2A2A;"></div>
+                  <div class="m-gitem" style="background:#222;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center: AI Tailor Made -->
+          <div class="tpl-col">
+            <div class="tpl-col-lbl ai">AI Tailor Made</div>
+            <div class="tpl-card tm" onclick="goTo('s5')">
+              <div class="tm-bg"></div>
+              <div class="tm-glass"></div>
+              <div class="tm-inner">
+                <div class="tm-title">Let's build together<br>a custom made site<br>that fits your intent properly</div>
+                <button class="tm-btn" onclick="event.stopPropagation();goTo('s5')">Generate with Aria</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Warm studio -->
+          <div class="tpl-col">
+            <div class="tpl-col-lbl">Warm studio</div>
+            <div class="tpl-card" onclick="pickTpl('warm')">
+              <div class="mock warm">
+                <div class="m-nav"><span class="m-logo">Clay and calm</span><div class="m-links"><span class="m-link">Menu</span><span class="m-link">Rooms</span><span class="m-link">Shop</span><span class="m-link">Offer</span></div></div>
+                <div class="m-hero">
+                  <div class="m-h" style="color:#F5D9A0;">Welcome to<br>our studio</div>
+                  <div class="m-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
+                  <div class="m-btns">
+                    <button class="m-cta">Discover our products</button>
+                    <button class="m-cta2">Learn about us</button>
+                  </div>
+                </div>
+                <div class="m-gallery">
+                  <div class="m-gitem"></div>
+                  <div class="m-gitem"></div>
+                  <div class="m-gitem"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <!-- Site Brand -->
-        <div class="sq" id="sq-brand" style="left:52px;top:58px;width:225px;height:168px;" onclick="sqTap('brand')">
-          <div class="sq-head"><span class="sq-ico">🎨</span><button class="sq-exp" onclick="event.stopPropagation();openModal('brand')">⊞</button></div>
-          <div class="sq-title">Site Brand</div>
-          <div class="sq-data"><strong>Wix Madefor</strong> Display + Text<br><strong>Earthy warm</strong> — amber, sage, cream<br>Tags: Warm · Artisan · Approachable</div>
+        <button class="see-more-link">Generate more options</button>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">Bakery site</div>
+        <div class="msg-a">Great, so here is 3 options to start with pre-generated templates or tailor made ai we will do together -</div>
+      </div>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s5')">×</button>
+        <div class="q-hdr">
+          <div class="q-title">Choose the design you'd like</div>
         </div>
-        <!-- Visual Profile -->
-        <div class="sq" id="sq-visual" style="left:298px;top:46px;width:178px;height:152px;" onclick="sqTap('visual')">
-          <div class="sq-head"><span class="sq-ico">✦</span><button class="sq-exp" onclick="event.stopPropagation();openModal('visual')">⊞</button></div>
-          <div class="sq-title">Visual Profile</div>
-          <div class="sq-data">Mood: <strong>Warm & artisan</strong><br>Photography: Natural light<br>Style: Close-up, textured</div>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="s4q"><div class="q-opt-lbl">Monochrome studio</div></label>
+          <label class="q-opt"><input type="radio" name="s4q"><div class="q-opt-lbl">Warm studio</div></label>
+          <label class="q-opt"><input type="radio" name="s4q"><div class="q-opt-lbl">AI Tailor Made</div></label>
         </div>
-        <!-- About the Business -->
-        <div class="sq" id="sq-about" style="left:46px;top:254px;width:196px;height:195px;" onclick="sqTap('about')">
-          <div class="sq-head"><span class="sq-ico">🏠</span><button class="sq-exp" onclick="event.stopPropagation();openModal('about')">⊞</button></div>
-          <div class="sq-title">About the Business</div>
-          <div class="sq-data"><strong>Goody Bakery</strong><br>Sourdough & pastries · Tel Aviv<br>Founded 2019 · 3 locations<br><br>Domain: <strong style="color:#116DFF;">goody-bakery.com</strong> <span style="background:#E6F5EE;color:#1A8A4A;font-size:9px;font-weight:600;padding:1px 5px;border-radius:6px;">✓</span></div>
-        </div>
-        <!-- Site Goals -->
-        <div class="sq" id="sq-goals" style="left:264px;top:224px;width:210px;height:138px;" onclick="sqTap('goals')">
-          <div class="sq-head"><span class="sq-ico">🎯</span><button class="sq-exp" onclick="event.stopPropagation();openModal('goals')">⊞</button></div>
-          <div class="sq-title">Site Goals</div>
-          <div class="sq-data"><strong>Primary:</strong> Online pre-orders<br><strong>Secondary:</strong> Brand story, loyalty<br>Audience: Local food lovers, 25–45</div>
-        </div>
-        <!-- Site Apps -->
-        <div class="sq" id="sq-apps" style="left:262px;top:386px;width:178px;height:138px;" onclick="sqTap('apps')">
-          <div class="sq-head"><span class="sq-ico">⚙️</span><button class="sq-exp" onclick="event.stopPropagation();openModal('apps')">⊞</button></div>
-          <div class="sq-title">Site Apps</div>
-          <div class="sq-data">✓ Bookings<br>✓ Gallery<br>✓ Reviews<br><span style="color:#AAA;">○ Online Store</span></div>
+        <div class="q-footer">
+          <button class="q-skipgen" onclick="goTo('s5')">Skip &amp; Generate</button>
+          <button class="q-next" onclick="goTo('s5')">Next</button>
         </div>
       </div>
-      <!-- Blueprint overlay (hidden by default) -->
-      <div class="blueprint-ws" id="bp-view" style="display:none;">
-        <div class="bp-title">Blue Print</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     S5 — BLUEPRINT LOADING (skeleton grid)
+═══════════════════════════════════════════ -->
+<div class="screen" id="s5" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <div class="bp-canvas">
+        <div class="bp-hdr">
+          <div class="bp-title-row">
+            <div class="bp-title">Your Site Blueprint</div>
+          </div>
+          <div class="bp-domain-row">
+            <span class="bp-domain-ic">🌐</span>
+            <span class="bp-domain-url">Clayandcalm.com</span>
+            <button class="bp-get">Get it</button>
+            <button class="bp-already">Already have a domain</button>
+          </div>
+        </div>
         <div class="bp-grid">
+          <!-- About the site (tall) -->
+          <div class="bp-card loading" style="grid-row:span 2;">
+            <div class="bp-about-name">Clay &amp; Clam</div>
+            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders. A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily,</div>
+          </div>
+          <!-- Site Info (skeleton) -->
+          <div class="bp-card loading"></div>
+          <!-- Color palette (skeleton) -->
+          <div class="bp-card loading" style="grid-row:span 2;"></div>
+          <!-- Font pack (skeleton) -->
+          <div class="bp-card loading"></div>
+          <!-- Site Apps (skeleton) -->
+          <div class="bp-card loading"></div>
+          <!-- Site Structures (skeleton) -->
+          <div class="bp-card loading"></div>
+          <!-- Visual profile (skeleton) -->
+          <div class="bp-card loading"></div>
+        </div>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">Generate with Aria</div>
+        <div class="msg-a">I've put together a brand identity and set of goals for Lumina Luxe Salon that reflect your modern, eco-friendly vibe.<br><br>For your brand, I've selected a sophisticated palette of creams, soft olive greens, and warm charcoal. This combination feels organic and premium, perfectly matching your commitment to sustainable luxury and setting you apart from more clinical-looking salons.<br><br>Our main goals will be to Offer services, Promote your business, and Connect with clients through a seamless and inviting online experience.<br><br>What do you think? Should we move on with these, or would you like to make any changes?</div>
+      </div>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s6')">×</button>
+        <div class="q-hdr">
+          <div class="q-title">Apps for Clay &amp; Calm</div>
+          <div class="q-sub">These apps are recommended for your business</div>
+        </div>
+        <div class="q-opts">
+          <label class="q-opt">
+            <input type="checkbox" checked>
+            <div>
+              <div class="q-opt-lbl">Wix Bookings</div>
+              <div class="q-opt-sub">Let clients schedule appointments on your site</div>
+            </div>
+          </label>
+          <label class="q-opt">
+            <input type="checkbox" checked>
+            <div>
+              <div class="q-opt-lbl">Wix Stores</div>
+              <div class="q-opt-sub">Sell your products or find new products to sell</div>
+            </div>
+          </label>
+        </div>
+        <div class="q-footer" style="justify-content:flex-end;gap:10px;">
+          <button class="q-skip" onclick="goTo('s6')">more apps</button>
+          <button class="q-next" onclick="goTo('s6')">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     S6 — BLUEPRINT REVEALED (with apps)
+═══════════════════════════════════════════ -->
+<div class="screen" id="s6" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <div class="bp-canvas">
+        <div class="bp-hdr">
+          <div class="bp-title-row">
+            <div class="bp-title">Your Site Blueprint</div>
+          </div>
+          <div class="bp-domain-row">
+            <span class="bp-domain-ic">🌐</span>
+            <span class="bp-domain-url">Clayandcalm.com</span>
+            <button class="bp-get">Get it</button>
+            <button class="bp-already">Already have a domain</button>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <!-- About the site -->
+          <div class="bp-card" style="grid-row:span 2;">
+            <div class="bp-card-lbl">About the site</div>
+            <div class="bp-about-name">Clay &amp; Clam</div>
+            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders. A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily,</div>
+          </div>
+          <!-- Site Info -->
           <div class="bp-card">
-            <div class="bp-card-title">Font pack</div>
-            <div class="bp-font-row">
+            <div class="bp-card-lbl">Site Info</div>
+            <div class="bp-info-row">
+              <div class="bp-info-item">
+                <div class="bp-info-key">Business type</div>
+                <div class="bp-info-val">Bakery &amp; online ordering</div>
+              </div>
+              <div class="bp-info-item">
+                <div class="bp-info-key">Primary goal</div>
+                <div class="bp-info-val">Locals, weekend regulars, gift orders, small caterers</div>
+              </div>
+              <div class="bp-info-item">
+                <div class="bp-info-key">Audience</div>
+                <div class="bp-info-val">All breads naturally leavened, no commercial yeast</div>
+              </div>
+            </div>
+          </div>
+          <!-- Color palette (tall) -->
+          <div class="bp-card" style="grid-row:span 2;">
+            <div class="bp-card-lbl">Color palette</div>
+            <div class="bp-swatches">
+              <div class="bp-sw" style="background:#E8A0B0;"></div>
+              <div class="bp-sw" style="background:#C2D630;"></div>
+              <div class="bp-sw" style="background:#9B8060;"></div>
+              <div class="bp-sw" style="background:#8A9088;"></div>
+              <div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div>
+            </div>
+          </div>
+          <!-- Font pack -->
+          <div class="bp-card">
+            <div class="bp-card-lbl">Font pack</div>
+            <div class="bp-fonts">
               <div class="bp-font-box">
-                <div class="bp-font-aa display">Aa</div>
+                <div class="bp-font-big disp">Aa</div>
                 <div class="bp-font-name">Wix Madefor Display</div>
               </div>
-              <div class="bp-font-divider"></div>
+              <div class="bp-font-div"></div>
               <div class="bp-font-box">
-                <div class="bp-font-aa script">Aa</div>
+                <div class="bp-font-big serif">Aa</div>
                 <div class="bp-font-name">Snell Roundhand</div>
               </div>
             </div>
           </div>
+          <!-- Site Apps -->
           <div class="bp-card">
-            <div class="bp-card-title">Color palette</div>
-            <div class="bp-swatches">
-              <div class="bp-swatch" style="background:#E8631A;"></div>
-              <div class="bp-swatch" style="background:#C2D611;"></div>
-              <div class="bp-swatch" style="background:#8B7355;"></div>
-              <div class="bp-swatch" style="background:#7E8C78;"></div>
-              <div class="bp-swatch" style="background:#fff;border:1px solid #E8E8EF;"></div>
-              <div class="bp-swatch" style="background:#F0EDE8;"></div>
+            <div class="bp-card-lbl">Site Apps</div>
+            <div class="bp-apps">
+              <div class="bp-app">
+                <div class="bp-app-ic" style="background:#EEF0FF;">🛒</div>
+                <div>
+                  <div class="bp-app-name">Wix Stores</div>
+                </div>
+              </div>
+              <div class="bp-app">
+                <div class="bp-app-ic" style="background:#EEF0FF;">📅</div>
+                <div>
+                  <div class="bp-app-name">Wix Bookings</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Site Structures -->
+          <div class="bp-card">
+            <div class="bp-card-lbl">Site Structures</div>
+            <div class="bp-struct-list">
+              <div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span><div style="display:flex;align-items:center;gap:6px;"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='30'><rect fill='%23F5EDE8' width='50' height='30' rx='3'/><rect fill='%23D4A060' x='5' y='5' width='40' height='12' rx='2'/><rect fill='%23C89060' x='5' y='19' width='18' height='7' rx='1'/></svg>" alt="" style="width:50px;height:30px;border-radius:4px;border:1px solid var(--grey-6);"></div></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Events</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Schedule</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Event Details</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div>
+            </div>
+          </div>
+          <!-- Visual profile -->
+          <div class="bp-card" style="grid-column:span 1;">
+            <div class="bp-card-lbl">Visual profile</div>
+            <div class="bp-tags">
+              <span class="bp-tag">Warm</span>
+              <span class="bp-tag">Unpretentious</span>
+              <span class="bp-tag">Modern</span>
+              <span class="bp-tag">Craft-focused</span>
+              <span class="bp-tag">Approachable</span>
             </div>
           </div>
         </div>
-        <div class="bp-card-full">
-          <div class="bp-card-title">Visual profile</div>
-          <div class="bp-tags">
-            <span class="bp-tag">Warm</span>
-            <span class="bp-tag">Unpretentious</span>
-            <span class="bp-tag">Modern</span>
-            <span class="bp-tag">Craft-focused</span>
-            <span class="bp-tag">Approachable</span>
-          </div>
-        </div>
-        <div class="bp-card-full">
-          <div class="bp-card-title">Apps</div>
-          <div class="bp-apps-grid">
-            <div class="bp-app"><div class="bp-app-ic">📅</div><div class="bp-app-name">Wix Bookings</div></div>
-            <div class="bp-app"><div class="bp-app-ic">🛎</div><div class="bp-app-name">Wix Services</div></div>
-            <div class="bp-app"><div class="bp-app-ic">🛒</div><div class="bp-app-name">Wix Bookings</div></div>
-            <div class="bp-app"><div class="bp-app-ic">📝</div><div class="bp-app-name">Wix Blog</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="stepper">
-        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
-        <div class="step cur"></div><div class="step"></div>
       </div>
     </div>
     <div class="ap">
-      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div><div class="ap-step">4 of 5</div></div>
-      <div class="ap-msgs" id="s4a-msgs">
-        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text" id="s4a-init">Building your brand book…</div></div>
-      </div>
-      <div class="ap-composer">
-        <div class="comp-row">
-          <input type="text" placeholder="Ask or change anything…" onkeydown="if(event.key==='Enter')goToSite()">
-          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
-        </div>
-        <button style="background:none;border:none;font-size:11px;color:#CCC;cursor:pointer;text-align:right;padding:0 2px;font-family:inherit;" onclick="goToSite()">Generate site → (Enter)</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ S4b — TEMPLATE PATH ══ -->
-<div class="screen" id="s4b" style="padding-top:46px;">
-  <div class="ed-body">
-    <div class="ed-surface">
-      <div class="tpl-ws">
-        <div class="site-frame" id="s4b-frame"></div>
-      </div>
-      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
-      <div class="stepper">
-        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
-        <div class="step cur"></div><div class="step"></div>
-      </div>
-    </div>
-    <div class="ap">
-      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
-      <div class="ap-msgs" id="s4b-msgs">
-        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text">Love the <strong id="tpl-ref">Artisan Dark</strong> vibe — already injected your content. Happy with the colors, or want to try something different?</div></div>
-        <div class="choice-row">
-          <button class="choice-btn" onclick="tplChoice('keep')">✓ Keep it — looks great</button>
-          <button class="choice-btn" onclick="tplChoice('change')">🎨 Let's change the colors</button>
-        </div>
-      </div>
-      <div class="ap-composer">
-        <div class="comp-row">
-          <input type="text" placeholder="Ask or change anything…">
-          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ S5 — FINAL ══ -->
-<div class="screen" id="s5" style="padding-top:46px;">
-  <div class="ed-body">
-    <div class="ed-surface">
-      <div class="tpl-ws">
-        <div class="site-frame" id="s5-frame" style="width:350px;"></div>
-      </div>
-      <div class="blueprint-tab" onclick="toggleBlueprint()"><span style="font-size:13px;">◈</span>&nbsp;Blueprint</div>
-      <div class="stepper">
-        <div class="step done"></div><div class="step done"></div><div class="step done"></div>
-        <div class="step done"></div><div class="step cur"></div>
-      </div>
-    </div>
-    <div class="ap">
-      <div class="ap-head"><div class="ap-head-av">A</div><div class="ap-head-title">Ask Aria</div></div>
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
-        <div class="msg-a"><div class="msg-a-av">A</div><div class="msg-a-text">🎉 Your site is ready! Make it official with a domain.</div></div>
-        <div class="domain-w">
-          <div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Your domain</span></div>
-          <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
-          <button class="btn-domain">Connect domain →</button>
-          <button class="btn-skip">Skip for now</button>
-        </div>
+        <div class="msg-u">Instal Wix bookings. Wix Stores</div>
+        <div class="msg-a">Great choice! Wix Bookings and Wix Stores are now installed.<br><br>Your salon is coming together! The next important step is securing a professional domain. A custom domain (like luminauxesalon.com) builds immediate trust with your clients, makes your brand more memorable, and helps you rank better in search results so new customers can find you more easily.<br><br>Before we move on to securing your professional domain, do you have any changes you'd like to make? You can adjust your apps or site details by letting me know.</div>
       </div>
-      <div class="ap-composer">
-        <div class="comp-row">
-          <input type="text" placeholder="Ask or change anything…">
-          <button class="comp-send"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 3l5 5-5 5"/></svg></button>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s7')">×</button>
+        <div class="q-hdr">
+          <div class="q-title">Do you have any change?</div>
+        </div>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="s6q"><div class="q-opt-lbl">No, it's prefect</div></label>
+          <label class="q-opt"><input type="radio" name="s6q"><div class="q-opt-lbl">Shuffle colors and fonts</div></label>
+          <label class="q-opt"><input type="radio" name="s6q"><div class="q-opt-lbl">Let's talk on changes</div></label>
+        </div>
+        <div class="q-footer">
+          <button class="q-skipgen" onclick="goTo('s7')">Skip &amp; Generate</button>
+          <button class="q-next" onclick="goTo('s7')">Next</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══ MODAL ══ -->
-<div class="modal-ov" id="modal-ov" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-head">
-      <span class="modal-ico" id="m-ico">🎨</span>
-      <span class="modal-title" id="m-title">Site Brand</span>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+<!-- ═══════════════════════════════════════════
+     S7 — BLUEPRINT + DOMAIN PANEL
+═══════════════════════════════════════════ -->
+<div class="screen" id="s7" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <div class="bp-canvas">
+        <div class="bp-hdr">
+          <div class="bp-title-row">
+            <div class="bp-title">Your Site Blueprint</div>
+          </div>
+          <div class="bp-domain-row">
+            <span class="bp-domain-ic">🌐</span>
+            <span class="bp-domain-url">Clayandcalm.com</span>
+            <button class="bp-get">Get it</button>
+            <button class="bp-already">Already have a domain</button>
+          </div>
+        </div>
+        <div class="bp-grid">
+          <div class="bp-card" style="grid-row:span 2;">
+            <div class="bp-card-lbl">About the site</div>
+            <div class="bp-about-name">Clay &amp; Clam</div>
+            <div class="bp-about-body">A neighborhood bakery. A bakery focused on naturally leavened breads and pastries made fresh daily, built to serve the neighborhood and take advance orders.</div>
+          </div>
+          <div class="bp-card">
+            <div class="bp-card-lbl">Site Info</div>
+            <div class="bp-info-row">
+              <div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Bakery &amp; online ordering</div></div>
+              <div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Locals, weekend regulars, gift orders, small caterers</div></div>
+              <div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">All breads naturally leavened, no commercial yeast</div></div>
+            </div>
+          </div>
+          <div class="bp-card" style="grid-row:span 2;">
+            <div class="bp-card-lbl">Color palette</div>
+            <div class="bp-swatches">
+              <div class="bp-sw" style="background:#E8A0B0;"></div>
+              <div class="bp-sw" style="background:#C2D630;"></div>
+              <div class="bp-sw" style="background:#9B8060;"></div>
+              <div class="bp-sw" style="background:#8A9088;"></div>
+              <div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div>
+            </div>
+          </div>
+          <div class="bp-card"><div class="bp-card-lbl">Font pack</div><div class="bp-fonts"><div class="bp-font-box"><div class="bp-font-big disp">Aa</div><div class="bp-font-name">Wix Madefor Display</div></div><div class="bp-font-div"></div><div class="bp-font-box"><div class="bp-font-big serif">Aa</div><div class="bp-font-name">Snell Roundhand</div></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Apps</div><div class="bp-apps"><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">🛒</div><div><div class="bp-app-name">Wix Stores</div></div></div><div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">📅</div><div><div class="bp-app-name">Wix Bookings</div></div></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Site Structures</div><div class="bp-struct-list"><div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div><div class="bp-struct-row"><span class="bp-struct-name">Events</span></div><div class="bp-struct-row"><span class="bp-struct-name">Schedule</span></div><div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span><span class="bp-struct-chevron">›</span></div></div></div>
+          <div class="bp-card"><div class="bp-card-lbl">Visual profile</div><div class="bp-tags"><span class="bp-tag">Warm</span><span class="bp-tag">Unpretentious</span><span class="bp-tag">Modern</span><span class="bp-tag">Craft-focused</span><span class="bp-tag">Approachable</span></div></div>
+        </div>
+      </div>
     </div>
-    <div class="modal-body" id="m-body"></div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">No, it's prefect</div>
+        <div class="msg-a" style="font-weight:600;color:var(--grey-1);margin-bottom:2px;">What would you like to do next?</div>
+        <div class="msg-a"><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
+      </div>
+      <div class="domain-panel" style="flex:0 0 auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div class="domain-badge">✓ Exact match</div>
+          <button class="bp-get" onclick="goTo('s8')">Get It</button>
+        </div>
+        <div class="domain-option exact">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);font-size:14px;">✓</span><span class="domain-url-text">crumbake.com is available!</span></div>
+            <div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div>
+          </div>
+        </div>
+        <div class="domain-option" style="margin-top:6px;">
+          <span class="domain-url-text">crumbake.shop</span>
+          <div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div>
+        </div>
+        <div class="domain-option">
+          <span class="domain-url-text">crumbake.shop</span>
+          <div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div>
+        </div>
+        <button class="domain-link">🔍 Search for a different domain</button>
+        <button class="domain-link">🔗 Connect a domain I own</button>
+        <button class="domain-later" onclick="goTo('s8')">I'll do it later</button>
+      </div>
+      <div class="ap-composer">
+        <div class="comp-wrap">
+          <button class="comp-plus">+</button>
+          <input class="comp-in" type="text" placeholder="Ask me anything">
+          <button class="comp-mic">🎤</button>
+          <button class="comp-send" onclick="goTo('s8')">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     S8 — LOADING STATE
+═══════════════════════════════════════════ -->
+<div class="screen" id="s8" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas">
+      <div class="loading-canvas">
+        <div class="loading-illo">
+          <!-- Image widget -->
+          <div class="illo-img">
+            <span class="illo-img-lbl">Image</span>
+          </div>
+          <!-- AaBb + Button widget -->
+          <div class="illo-widget illo-aabtn" style="top:14px;left:82px;">
+            <span class="illo-aa">AaBb</span>
+            <span class="illo-btn">Button</span>
+          </div>
+          <!-- Aria orb -->
+          <div class="illo-orb">
+            <div class="illo-orb-eyes"><div class="illo-orb-eye"></div><div class="illo-orb-eye"></div></div>
+          </div>
+          <!-- + Add label -->
+          <div class="illo-widget" style="bottom:28px;left:148px;background:none;border:none;box-shadow:none;font-size:11px;color:var(--blue);font-weight:600;">+ Add</div>
+          <!-- Cursor arrow -->
+          <div class="illo-cursor">▶</div>
+          <!-- Color swatches decorative -->
+          <div style="position:absolute;bottom:0;left:80px;display:flex;gap:4px;">
+            <div style="width:22px;height:10px;border-radius:3px;background:#F5A0B0;"></div>
+            <div style="width:22px;height:10px;border-radius:3px;background:#A090F5;"></div>
+            <div style="width:22px;height:10px;border-radius:3px;background:#F5D070;"></div>
+          </div>
+        </div>
+        <div class="loading-title">Harmony is about creating<br>in any way you wish</div>
+        <div class="loading-sub">You can prompt Aria to save time and effort, then grab control to drag and drop. Freely switch back and forth between your own hands and Aria's AI without breaking your flow.</div>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr">
+        <div class="ap-title">Ask Aria</div>
+        <button class="ap-hdr-btn">💬</button>
+        <button class="ap-hdr-btn">⟳</button>
+        <button class="ap-hdr-btn" onclick="goTo('s9')">×</button>
+      </div>
+      <div class="planning-card">
+        <div class="planning-icon"><span class="spin">✦</span></div>
+        <div class="planning-text">
+          <div class="planning-title">Planning your site</div>
+          <div class="planning-sub">It might take a few minutes…</div>
+        </div>
+        <svg class="spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      </div>
+      <div style="flex:1;"></div>
+      <div class="ap-composer">
+        <div class="comp-wrap">
+          <button class="comp-plus">+</button>
+          <input class="comp-in" type="text" placeholder="Ask me anything">
+          <button class="comp-mic">🎤</button>
+          <button class="comp-send" onclick="goTo('s9')">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="aria-float" onclick="goTo('s9')">
+        <div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div>
+      </div>
+    </div>
+  </div>
+  <!-- Upsell modal trigger -->
+  <div id="upsell-ov" class="modal-backdrop" onclick="if(event.target===this)closeUpsell()">
+    <div class="modal">
+      <div class="upsell-modal">
+        <button class="upsell-close" onclick="closeUpsell()">×</button>
+        <div class="upsell-illo">🏷️</div>
+        <div class="upsell-title">Limited Time Offer: 50% OFF premium plans</div>
+        <div class="upsell-sub">Get a free custom domain for 1 year, accept payments and drive traffic to your website.</div>
+        <button class="upsell-cta" onclick="closeUpsell()">Get 50% Off</button>
+        <div class="upsell-legal">Valid only for the initial term of yearly or multi-year subscriptions. Valid only for select plans.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     S9 — GENERATED SITE
+═══════════════════════════════════════════ -->
+<div class="screen" id="s9" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas">
+      <div class="site-canvas">
+        <div class="site-frame" id="gen-frame">
+          <div class="gen-topbar"><div class="gen-dot"></div><div class="gen-dot"></div><div class="gen-dot"></div></div>
+          <div class="gen-hero">
+            <div class="gen-hero-img"></div>
+            <div class="gen-nav">
+              <span class="gen-nav-logo">Clay and calm</span>
+              <div class="gen-nav-links">
+                <span class="gen-nav-link">Menu</span>
+                <span class="gen-nav-link">Rooms</span>
+                <span class="gen-nav-link">Shop</span>
+                <span class="gen-nav-link">Offer</span>
+              </div>
+            </div>
+            <div class="gen-h">Welcome to<br><em>our studio</em></div>
+            <div class="gen-p">Hand-thrown ceramics, small-batch classes, and a quiet room in the heart of the city.</div>
+            <div class="gen-btns">
+              <button class="gen-btn1">Discover our products</button>
+              <button class="gen-btn2">Learn about us</button>
+            </div>
+          </div>
+          <div class="gen-gallery-lbl">Product gallery</div>
+          <div class="gen-gallery">
+            <div class="gen-gitem"></div>
+            <div class="gen-gitem"></div>
+            <div class="gen-gitem"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr">
+        <div class="ap-title">Ask Aria</div>
+        <button class="ap-hdr-btn">💬</button>
+        <button class="ap-hdr-btn">⟳</button>
+        <button class="ap-hdr-btn">×</button>
+      </div>
+      <div class="ap-msgs">
+        <div class="msg-a" style="font-weight:600;color:var(--grey-1);">What would you like to do next?</div>
+        <div class="msg-a"><strong>Connect a Domain</strong> — make your site look more professional and memorable.</div>
+      </div>
+      <div class="domain-panel">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+          <div class="domain-badge">✓ Exact match</div>
+          <button class="bp-get">Get It</button>
+        </div>
+        <div class="domain-option exact">
+          <div>
+            <div style="display:flex;align-items:center;gap:6px;"><span style="color:var(--blue);">✓</span><span class="domain-url-text">crumbake.com is available!</span></div>
+            <div style="font-size:12px;color:var(--green);margin-top:2px;">Free for 1 year &nbsp; <s style="color:var(--grey-5);">$49.99/yr</s> <strong style="color:var(--green);">$0.00/yr</strong></div>
+          </div>
+        </div>
+        <div class="domain-option" style="margin-top:6px;"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
+        <div class="domain-option"><span class="domain-url-text">crumbake.shop</span><div class="domain-price"><s>$49.99/yr</s> <span>$0.00/yr</span></div></div>
+        <button class="domain-link">🔍 Search for a different domain</button>
+        <button class="domain-link">🔗 Connect a domain I own</button>
+        <button class="domain-later">I'll do it later</button>
+      </div>
+      <div style="flex:1;"></div>
+      <div class="ap-composer">
+        <div class="comp-wrap">
+          <button class="comp-plus">+</button>
+          <input class="comp-in" type="text" placeholder="Ask me anything">
+          <button class="comp-mic">🎤</button>
+          <button class="comp-send">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="aria-float">
+        <div class="aria-float-eyes"><div class="aria-float-eye"></div><div class="aria-float-eye"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SHARED EDITOR CHROME (overlay) ══ -->
+<div id="chrome" style="display:none;position:fixed;top:0;left:0;right:0;z-index:100;">
+  <div class="ec">
+    <span class="ec-logo">WIX</span>
+    <div class="ec-av">N</div>
+    <div class="ec-sep"></div>
+    <button class="ec-menu">Goody <span class="ec-caret"></span></button>
+    <button class="ec-menu">Brand <span class="ec-caret"></span></button>
+    <div class="ec-center">
+      <button class="ec-fit">Fit (96%) <span class="ec-caret"></span></button>
+    </div>
+    <button class="ec-bp on" id="ec-bp-btn">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+      Site Blueprint
+    </button>
+    <div class="ec-right">
+      <div class="ec-sep"></div>
+      <button class="ec-icon">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6h7a4 4 0 0 1 0 8H6M2 6l3-3M2 6l3 3"/></svg>
+      </button>
+      <button class="ec-icon" style="opacity:.3">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14 6H7a4 4 0 0 0 0 8h3M14 6l-3-3M14 6l-3 3"/></svg>
+      </button>
+      <button class="ec-icon">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v8M5 5l3-3 3 3M3 13h10"/></svg>
+      </button>
+      <div class="ec-sep"></div>
+      <button class="ec-upgrade">Upgrade</button>
+      <button class="ec-preview">Preview</button>
+      <button class="ec-publish live" id="pub-btn">Publish</button>
+    </div>
   </div>
 </div>
 
 <!-- ══ DEV NAV ══ -->
 <div class="dev-nav">
-  <div class="darr" onclick="navPrev()">←</div>
-  <div class="darr dcur" id="dcur">S1</div>
-  <div class="darr" onclick="navNext()">→</div>
+  <button class="dev-arr" onclick="navStep(-1)">←</button>
+  <span class="dev-lbl" id="dev-lbl">S1</span>
+  <button class="dev-arr" onclick="navStep(1)">→</button>
 </div>
 
 <script>
-// ── STATE ──
-var cur = 's1', path = null, tplName = '', siteName = 'Goody';
-var s2step = 0;
-var bpOpen = false;
+const SCREENS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+const LABELS  = ['S1: Open','S2: Skeleton Q1','S3: Skeleton Q2','S4: Templates','S5: BP Loading','S6: BP Revealed','S7: BP + Domain','S8: Loading','S9: Generated'];
+let cur = 0;
 
-// ── GOTO ──
 function goTo(id) {
-  document.querySelector('.screen.active')?.classList.remove('active');
-  document.getElementById(id)?.classList.add('active');
-  cur = id;
-  document.getElementById('chrome').style.display = id === 's1' ? 'none' : 'block';
-  document.getElementById('dcur').textContent = id.toUpperCase();
-}
-
-function navPrev() {
-  if(cur==='s2') goTo('s1');
-  else if(cur==='s3') goTo('s2');
-  else if(cur==='s4a'||cur==='s4b') goTo('s3');
-  else if(cur==='s5') goTo(path==='tailor'?'s4a':'s4b');
-}
-function navNext() {
-  if(cur==='s1') startFlow();
-  else if(cur==='s2') { s2step=0; goTo('s3'); }
-  else if(cur==='s3') pickTailor();
-  else if(cur==='s4a') goToSite();
-  else if(cur==='s4b') goToSite();
-}
-
-// ── S1 ──
-function fillEx(el) {
-  document.getElementById('s1-input').value = el.textContent + ' website';
-  document.querySelectorAll('.chip').forEach(c=>{c.style.borderColor='';c.style.color='';});
-  el.style.borderColor='#116DFF'; el.style.color='#116DFF';
-}
-function startFlow() { s2step=0; goTo('s2'); }
-
-// ── S2 QUESTION WIDGET ──
-const QUESTIONS = [
-  {
-    title: "What's your site called?",
-    sub: "This will appear on your site and domain",
-    opts: ['Goody', 'Nova Bakes', 'Bloom Bakery'],
-    ph: "Or type your site name…"
-  },
-  {
-    title: "What makes your business unique?",
-    sub: "Help Aria understand what sets you apart",
-    opts: ['Artisan craft & local sourcing', 'Online pre-orders & delivery', 'Seasonal menu & community events'],
-    ph: "Or describe what makes it special…"
-  }
-];
-
-function renderQuestion(step) {
-  const q = QUESTIONS[step];
-  if(!q) return;
-  document.getElementById('q-title').textContent = q.title;
-  document.getElementById('q-sub').textContent = q.sub;
-  document.getElementById('q-input').value = '';
-  document.getElementById('q-input').placeholder = q.ph;
-  document.getElementById('q-opts').innerHTML = q.opts.map(o =>
-    `<label class="q-opt" onclick="selectQOpt(this,'${o}')">
-      <input type="radio" name="q${step}"> <span class="q-opt-label">${o}</span>
-    </label>`
-  ).join('');
-}
-
-function selectQOpt(el, val) {
-  document.querySelectorAll('#q-opts .q-opt').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
-  el.querySelector('input').checked = true;
-  document.getElementById('q-input').value = val;
-}
-
-function qNext(skip) {
-  const val = skip ? '' : (document.getElementById('q-input').value.trim() ||
-    document.querySelector('#q-opts .q-opt.selected .q-opt-label')?.textContent || '');
-
-  const msgs = document.getElementById('s2-msgs');
-  if(val) {
-    const b = document.createElement('div'); b.className='msg-u'; b.textContent=val; msgs.appendChild(b);
-    if(s2step===0) {
-      siteName = val;
-      document.getElementById('s3-msg').innerHTML = `I found 3 templates that match <strong>${val}</strong>. Or go fully custom.`;
-    }
-  }
-
-  s2step++;
-  if(s2step >= QUESTIONS.length) {
-    addAriaMsg(msgs, `Great! Let me match templates for <strong>${siteName}</strong>…`);
-    msgs.scrollTop = msgs.scrollHeight;
-    setTimeout(()=>goTo('s3'), 1100);
-    return;
-  }
-
-  addAriaMsg(msgs, QUESTIONS[s2step].title);
-  msgs.scrollTop = msgs.scrollHeight;
-  renderQuestion(s2step);
-}
-
-function addAriaMsg(container, html) {
-  const d = document.createElement('div'); d.className='msg-a';
-  d.innerHTML = `<div class="msg-a-av">A</div><div class="msg-a-text">${html}</div>`;
-  container.appendChild(d);
-}
-
-// ── S3 TEMPLATE PICKS ──
-function pickTailor() {
-  path='tailor'; goTo('s4a'); startMosaic();
-  document.getElementById('bp-btn').classList.add('show');
-}
-function pickTpl(id, name) {
-  path='template'; tplName=name;
-  document.getElementById('tpl-ref').textContent=name;
-  fillSiteFrame('s4b-frame', id);
-  fillSiteFrame('s5-frame', id);
-  goTo('s4b');
-  document.getElementById('bp-btn').classList.add('show');
-  setTimeout(()=>{
-    const f=document.getElementById('s4b-frame');
-    f.style.opacity='0'; f.style.transform='translateX(40px)';
-    setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; }, 60);
-  }, 50);
-}
-
-// ── SITE FRAME HTML ──
-function siteHtml(id) {
-  const C = {
-    artisan:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#2C1810,#1A0F08)',h:'Baked with love,<br>every morning',hc:'#fff',sub:'Sourdough & seasonal pastries · Tel Aviv',subc:'rgba(255,255,255,.6)',acc:'#D4A055',sec:'#F5EFE8',secc:'#8B6A50',navCta:'background:#2C1810;color:#D4A055'},
-    natural:{nav:'#fff',logo:'#111',bg:'linear-gradient(180deg,#F5E8D0,#EDD5B0)',h:'Fresh every morning',hc:'#3C2A1A',sub:'Goody Bakery · Seasonal pastries',subc:'rgba(60,42,26,.6)',acc:'#3C2A1A',sec:'#EDD5B0',secc:'#8B6A50',navCta:'background:#3C2A1A;color:#F5E8D0'},
-    premium:{nav:'#0A0A0A',logo:'#C8A96E',bg:'linear-gradient(180deg,#0A0A0A,#1A1A1A)',h:'Crafted daily',hc:'#fff',sub:'Goody — Premium bakery',subc:'rgba(200,169,110,.65)',acc:'#C8A96E',sec:'#111',secc:'#C8A96E',navCta:'background:#C8A96E;color:#111'}
-  };
-  const c = C[id] || C.artisan;
-  return `<div style="font-family:inherit">
-    <div style="height:32px;background:${c.nav};display:flex;align-items:center;padding:0 14px;gap:10px;border-bottom:1px solid rgba(0,0,0,.08)">
-      <span style="font-weight:800;font-size:13px;color:${c.logo}">Goody</span>
-      <span style="font-size:9px;color:#888">Menu</span><span style="font-size:9px;color:#888">Our Story</span>
-      <span style="margin-left:auto;font-size:9px;font-weight:600;padding:3px 9px;border-radius:4px;${c.navCta}">Order now</span>
-    </div>
-    <div style="height:240px;background:${c.bg};display:flex;flex-direction:column;justify-content:flex-end;padding:18px 16px">
-      <div style="font-weight:800;font-size:19px;color:${c.hc};line-height:1.25;margin-bottom:6px">${c.h}</div>
-      <div style="font-size:10px;color:${c.subc};margin-bottom:14px">${c.sub}</div>
-      <div style="background:${c.acc};color:${id==='natural'?'#F5E8D0':'#111'};font-size:11px;font-weight:600;padding:8px 18px;border-radius:7px;display:inline-block;width:fit-content">See the menu →</div>
-    </div>
-    <div style="display:flex;gap:1px;background:#F0F0F5">
-      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Sourdough</div>
-      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Croissants</div>
-      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Seasonal</div>
-      <div style="flex:1;padding:10px 6px;background:${c.sec};text-align:center;font-size:9px;color:${c.secc}">Specials</div>
-    </div>
-  </div>`;
-}
-function fillSiteFrame(id, tpl) { document.getElementById(id).innerHTML = siteHtml(tpl); }
-
-// ── S4a MOSAIC LOADER ──
-const SQS = ['sq-brand','sq-visual','sq-about','sq-goals','sq-apps'];
-const DELAYS = [700,1400,2200,3200,4200];
-function startMosaic() {
-  bpOpen = false;
-  document.getElementById('bp-view').style.display = 'none';
-  document.getElementById('mosaic').style.display = 'block';
-  SQS.forEach(id=>{ const s=document.getElementById(id); s.classList.remove('show'); s.style.opacity=''; s.style.transform=''; });
-  const loader = document.getElementById('mloader');
-  loader.style.opacity='1'; loader.style.display='flex';
-  document.getElementById('s4a-init').textContent='Building your brand book…';
-  SQS.forEach((id,i)=>{
-    setTimeout(()=>{
-      const sq=document.getElementById(id); sq.style.opacity=''; sq.classList.add('show');
-      if(i===SQS.length-1){
-        setTimeout(()=>{
-          loader.style.opacity='0';
-          setTimeout(()=>loader.style.display='none', 350);
-          const m=document.getElementById('s4a-msgs');
-          addAriaMsg(m,'Your brand book is ready ✓ Tap any card to explore or edit.');
-          m.scrollTop=m.scrollHeight;
-        },400);
-      }
-    }, DELAYS[i]);
+  const idx = SCREENS.indexOf(id);
+  if (idx < 0) return;
+  SCREENS.forEach(s => {
+    const el = document.getElementById(s);
+    if (el) el.classList.remove('active');
   });
-}
+  const el = document.getElementById(id);
+  if (el) el.classList.add('active');
+  cur = idx;
+  document.getElementById('dev-lbl').textContent = LABELS[idx] || id;
 
-// ── SQUARE TAP ──
-const SQ_Q = {
-  brand:{ico:'🎨',q:"Want to tweak the typography or palette? I can suggest alternatives."},
-  visual:{ico:'✦',q:"I picked warm natural photography. Does that feel right for Goody, or more minimal?"},
-  about:{ico:'🏠',q:"<strong>goody-bakery.com</strong> is available — want to lock it in now?"},
-  goals:{ico:'🎯',q:"Pre-orders is your primary goal. Should I add a Booking app and loyalty program too?"},
-  apps:{ico:'⚙️',q:"Bookings + Gallery + Reviews are active. Want to add an online shop?"}
-};
-function sqTap(key) {
-  document.querySelectorAll('.sq').forEach(s=>s.classList.remove('sq-active'));
-  document.getElementById('sq-'+key)?.classList.add('sq-active');
-  const m=document.getElementById('s4a-msgs');
-  const info=SQ_Q[key];
-  addAriaMsg(m,`${info.ico} ${info.q}`);
-  m.scrollTop=m.scrollHeight;
-}
+  // Chrome visibility
+  const chrome = document.getElementById('chrome');
+  chrome.style.display = id === 's1' ? 'none' : 'block';
 
-// ── BLUEPRINT TOGGLE ──
-function toggleBlueprint() {
-  if(cur==='s4a') {
-    bpOpen = !bpOpen;
-    document.getElementById('bp-view').style.display = bpOpen ? 'block' : 'none';
-    document.getElementById('mosaic').style.display = bpOpen ? 'none' : 'block';
-  } else if(cur==='s4b'||cur==='s5') {
-    goTo('s4a');
-    startMosaic();
+  // Show blueprint badge from S5+
+  const bp = document.getElementById('ec-bp-btn');
+  if (bp) bp.style.display = (idx >= 4) ? 'flex' : 'none';
+
+  // Publish button live state from S9
+  const pub = document.getElementById('pub-btn');
+  if (pub) pub.classList.toggle('live', idx >= 8);
+
+  // Animate generated frame
+  if (id === 's9') {
+    setTimeout(() => {
+      const f = document.getElementById('gen-frame');
+      if (f) f.classList.add('in');
+    }, 200);
+  }
+
+  // Show upsell modal on S8 entry
+  if (id === 's8') {
+    setTimeout(() => {
+      const ov = document.getElementById('upsell-ov');
+      if (ov) ov.classList.add('open');
+    }, 1200);
   }
 }
 
-// ── TRANSITION → SITE ──
-function goToSite() {
-  if(cur==='s4a') {
-    SQS.forEach((id,i)=>{
-      const s=document.getElementById(id);
-      s.style.transition=`opacity .4s ease ${i*.07}s, transform .4s ease ${i*.07}s`;
-      s.style.opacity='0'; s.style.transform='translateX(-28px)';
-    });
-    setTimeout(()=>{
-      if(path==='tailor') fillSiteFrame('s5-frame','artisan');
-      const f=document.getElementById('s5-frame');
-      f.style.opacity='0'; f.style.transform='translateX(40px)'; f.style.transition='none';
-      goTo('s5');
-      document.getElementById('ec-pub').classList.add('live');
-      setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; },60);
-    },550);
-  } else {
-    const f=document.getElementById('s5-frame');
-    f.style.opacity='0'; f.style.transform='translateX(40px)'; f.style.transition='none';
-    goTo('s5');
-    document.getElementById('ec-pub').classList.add('live');
-    setTimeout(()=>{ f.style.transition='opacity .6s ease, transform .6s ease'; f.style.opacity='1'; f.style.transform='none'; },60);
-  }
+function navStep(d) {
+  const next = Math.max(0, Math.min(SCREENS.length - 1, cur + d));
+  goTo(SCREENS[next]);
 }
 
-// ── S4b COLOR CHOICE ──
-function tplChoice(c) {
-  const m=document.getElementById('s4b-msgs');
-  const b=document.createElement('div'); b.className='msg-u';
-  b.textContent=c==='keep'?'Keep it — looks great ✓':"Let's change the colors";
-  m.appendChild(b);
-  addAriaMsg(m,c==='keep'?"Perfect — now let's make it live.":"Got it — updated the palette! Now let's add a domain.");
-  const dw=document.createElement('div'); dw.className='domain-w';
-  dw.innerHTML=`<div class="domain-w-head"><span>🌐</span><span class="domain-w-title">Your domain</span></div>
-    <div class="domain-url"><strong>goody-bakery.com</strong><span class="domain-badge">Available</span></div>
-    <button class="btn-domain" onclick="goToSite()">Connect domain →</button>
-    <button class="btn-skip" onclick="goToSite()">Skip for now</button>`;
-  m.appendChild(dw); m.scrollTop=m.scrollHeight;
+function closeUpsell() {
+  const ov = document.getElementById('upsell-ov');
+  if (ov) ov.classList.remove('open');
 }
 
-// ── MODALS ──
-const MD = {
-  brand:{ico:'🎨',title:'Site Brand',html:`
-    <div class="msec"><div class="msec-title">Typography</div>
-      <div class="font-prev"><div class="font-prev-big">Goody Bakery</div><div class="font-prev-sm">Wix Madefor Display (Bold) + Wix Madefor Text</div></div></div>
-    <div class="msec"><div class="msec-title">Color Palette</div>
-      <div class="color-row">
-        <div class="cswatch" style="background:#2C1810" title="Dark Brown"></div>
-        <div class="cswatch" style="background:#D4A055" title="Warm Gold"></div>
-        <div class="cswatch" style="background:#8B6A50" title="Mid Brown"></div>
-        <div class="cswatch" style="background:#F5E8D0" title="Cream"></div>
-        <div class="cswatch" style="background:#1A5C38" title="Forest Green"></div>
-      </div></div>
-    <div class="msec"><div class="msec-title">Tags</div>
-      <div style="display:flex;gap:7px;flex-wrap:wrap">
-        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Warm</span>
-        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Artisan</span>
-        <span style="background:#F0F0F8;color:#444;font-size:12px;padding:5px 12px;border-radius:14px">Approachable</span>
-      </div></div>`},
-  visual:{ico:'✦',title:'Visual Profile',html:`
-    <div class="msec"><div class="msec-title">Mood</div><p style="font-size:13.5px;color:#333">Warm & artisan — natural textures, close-up photography, handcrafted feel</p></div>
-    <div class="msec"><div class="msec-title">Photography style</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#D4A055,#8B6A50)"></div>
-        <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#2C1810,#D4A055)"></div>
-      </div></div>`},
-  about:{ico:'🏠',title:'About the Business',html:`
-    <div class="msec"><div class="msec-title">Business info</div>
-      <div class="app-row"><span>🏪</span><div><div style="font-size:13px;font-weight:600">Goody Bakery</div><div style="font-size:11px;color:#888">Sourdough & artisan pastries · Tel Aviv</div></div></div>
-    </div>
-    <div class="msec"><div class="msec-title">Domain</div>
-      <div style="font-size:13px;color:#116DFF;font-weight:600">goody-bakery.com <span style="background:#E6F5EE;color:#1A8A4A;font-size:10px;font-weight:600;padding:2px 7px;border-radius:7px;margin-left:4px">✓ Available</span></div>
-    </div>`},
-  goals:{ico:'🎯',title:'Site Goals',html:`
-    <div class="msec"><div class="msec-title">Primary goal</div><p style="font-size:13.5px;font-weight:600;color:#116DFF">Online pre-orders</p></div>
-    <div class="msec"><div class="msec-title">Secondary goals</div>
-      <div style="display:flex;flex-direction:column;gap:7px">
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#1A8A4A">✓</span> Brand story & awareness</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#1A8A4A">✓</span> Customer loyalty program</div>
-        <div style="display:flex;align-items:center;gap:8px;font-size:13px"><span style="color:#AAA">○</span> E-commerce expansion</div>
-      </div></div>
-    <div class="msec"><div class="msec-title">Target audience</div><p style="font-size:13px;color:#555">Local food lovers, 25–45, Tel Aviv area</p></div>`},
-  apps:{ico:'⚙️',title:'Site Apps',html:`
-    <div class="msec"><div class="msec-title">Active apps</div>
-      <div class="app-row"><span>📅</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Bookings</div><div style="font-size:11px;color:#888">Pre-order slots & reservations</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
-      <div class="app-row"><span>🖼️</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Gallery</div><div style="font-size:11px;color:#888">Photo galleries</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
-      <div class="app-row"><span>⭐</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Reviews</div><div style="font-size:11px;color:#888">Customer testimonials</div></div><span style="color:#1A8A4A;font-size:12px;font-weight:600">Active</span></div>
-    </div>
-    <div class="msec"><div class="msec-title">Suggested</div>
-      <div class="app-row"><span>🛒</span><div style="flex:1"><div style="font-size:13px;font-weight:600">Wix Stores</div><div style="font-size:11px;color:#888">Sell products online</div></div><span style="color:#116DFF;font-size:12px;font-weight:600;border:1px solid #116DFF;padding:3px 10px;border-radius:10px;cursor:pointer">Add</span></div>
-    </div>`}
-};
-function openModal(key) {
-  const m=MD[key]; if(!m) return;
-  document.getElementById('m-ico').textContent=m.ico;
-  document.getElementById('m-title').textContent=m.title;
-  document.getElementById('m-body').innerHTML=m.html;
-  document.getElementById('modal-ov').classList.add('open');
+function pickTpl(skin) {
+  goTo('s5');
 }
-function closeModal() { document.getElementById('modal-ov').classList.remove('open'); }
 
-// init first question
-renderQuestion(0);
+// Init
+goTo('s1');
+
+// Handle blueprint badge "Site Blueprint" display on s5+
+document.addEventListener('DOMContentLoaded', () => {
+  const bp = document.getElementById('ec-bp-btn');
+  if (bp) bp.style.display = 'none';
+});
 </script>
 </body>
 </html>
