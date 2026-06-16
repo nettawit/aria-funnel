@@ -1328,16 +1328,24 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
       {/* Input + Continue inline row */}
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <div style={{ flex: 1 }}>{urlField}</div>
-        <button onClick={scan} disabled={isBusy} className="hbtn" style={{ height: 38, padding: '0 18px', background: isBusy ? '#b0c4ff' : '#2f5dff', color: '#fff', border: 0, borderRadius: 8, fontSize: 14, fontWeight: 600, cursor: isBusy ? 'default' : 'pointer', fontFamily: 'inherit', transition: 'background 120ms', whiteSpace: 'nowrap', flexShrink: 0 }}>
-          {isBusy ? 'Scanning…' : 'Continue'}
-        </button>
+        {isBusy ? (
+          <div style={{ width: 38, height: 38, borderRadius: 8, background: '#2F5DFF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ animation: 'spin 0.9s linear infinite' }}>
+              <path d="M10 3a7 7 0 0 1 6.928 6H14.5l3 3.5 3-3.5H18a8.5 8.5 0 1 0-1.07 4.25" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        ) : (
+          <button onClick={scan} className="hbtn" style={{ height: 38, padding: '0 18px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 8, fontSize: 14, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            Continue
+          </button>
+        )}
       </div>
       {isBusy && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ width: '100%', height: 3, background: '#EEEEF6', borderRadius: 3, overflow: 'hidden' }}>
             <div style={{ width: '65%', height: '100%', background: '#2F5DFF', borderRadius: 3, transition: 'width 2s ease' }} />
           </div>
-          <div style={{ fontSize: 12, color: '#767574' }}>Scanning {host}…</div>
+          <div style={{ fontSize: 12, color: '#767574' }}>Analyzing "{host}"</div>
         </div>
       )}
       {isErr && (
@@ -1641,7 +1649,7 @@ const FG_ASSETS = {
 const DEV_PRESETS = [
   { label: 'Regular site', host: 'example.com' },
   { label: 'Shopify store', host: 'mystore.myshopify.com', badge: 'Shopify', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
-  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'Woohoo', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
+  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'Woohoo', badgeColor: '#7B3FC4', badgeBg: '#F3EEFF' },
 ];
 
 const ERR_PRESETS = [

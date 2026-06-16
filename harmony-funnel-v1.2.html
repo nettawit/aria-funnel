@@ -45,6 +45,7 @@
       from { opacity: 0; transform: translateX(-50%) translateY(8px); }
       to   { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes card-enter {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -70,7 +71,7 @@
   <script>
     window.START_STEP = 'figma'; // open on the Figma entry screen
     window.DISABLE_GENERATE = true; // Harmony Creation v1.2 — Generate is inert in this version
-    fetch('round-15.jsx?v=20260616i')
+    fetch('round-15.jsx?v=20260616j')
       .then(r => r.text())
       .then(src => {
         const compiled = Babel.transform(src, { presets: ['react'] }).code;
