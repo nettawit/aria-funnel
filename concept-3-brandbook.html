@@ -221,74 +221,125 @@ textarea,input{font-family:inherit;}
   border-radius:16px 16px 0 0;
 }
 
+/* Blueprint reveal animation */
+.bp-reveal{opacity:0;transition:opacity .55s ease;}
+.bp-reveal.shown{opacity:1;}
+
 /* ════════════════════════════════════
    S4 — TEMPLATE PICKER (revealed)
 ════════════════════════════════════ */
 .tpl-wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;}
 .tpl-header{padding:20px 24px 0;font-size:16px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;flex-shrink:0;}
-.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 24px 44px;min-height:0;}
+.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 24px 10px;min-height:0;}
 .tpl-col{flex:1;display:flex;flex-direction:column;gap:7px;}
 .tpl-col-lbl{font-size:11px;font-weight:500;color:var(--grey-4);letter-spacing:.01em;}
 .tpl-col-lbl.ai{color:var(--blue);font-weight:600;}
-.tpl-card{flex:1;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#fff;box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;}
+.tpl-card{flex:1;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#fff;box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;position:relative;}
 .tpl-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
-.tpl-card.tm{position:relative;border:2px solid rgba(47,93,255,.25);}
-.tm-bg{position:absolute;inset:0;background:linear-gradient(155deg,#E8EEFF 0%,#EDF0FF 40%,#F4EDFF 70%,#FFF0F8 100%);filter:blur(14px);transform:scale(1.15);}
-.tm-glass{position:absolute;inset:0;background:rgba(255,255,255,.75);backdrop-filter:blur(18px);}
-.tm-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;gap:14px;text-align:center;}
+
+/* Hover overlay with action buttons */
+.tpl-hover-ov{
+  position:absolute;inset:0;border-radius:14px;
+  background:rgba(10,12,24,.52);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  opacity:0;transition:opacity .2s;pointer-events:none;z-index:20;
+}
+.tpl-card:hover .tpl-hover-ov{opacity:1;pointer-events:all;}
+.tpl-hbtn{
+  width:200px;height:42px;
+  border:none;border-radius:var(--rad-btn);
+  font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:filter .15s;
+}
+.tpl-hbtn:hover{filter:brightness(.9);}
+.tpl-hbtn-primary{background:var(--blue);color:#fff;box-shadow:0 2px 12px rgba(47,93,255,.45);}
+.tpl-hbtn-secondary{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.48);backdrop-filter:blur(6px);}
+
+/* AI Tailor Made card */
+.tpl-card.tm{border:2px solid rgba(47,93,255,.25);}
+@keyframes tm-bg-shift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes tm-orb-float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-8px) scale(1.05);}}
+@keyframes tm-dot-pulse{0%,80%,100%{transform:scale(.75);opacity:.35;}40%{transform:scale(1.1);opacity:1;}}
+.tm-alive-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(-40deg,#E6EBFF,#F0E8FF,#FFF0F8,#E8F5EE,#EDF0FF,#FFF8E8);
+  background-size:500% 500%;
+  animation:tm-bg-shift 7s ease infinite;
+}
+.tm-glass{position:absolute;inset:0;background:rgba(255,255,255,.62);backdrop-filter:blur(14px);}
+.tm-inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;gap:16px;text-align:center;}
+.tm-orb-wrap{animation:tm-orb-float 3.5s ease-in-out infinite;}
+.tm-orb{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);box-shadow:0 4px 16px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;}
+.tm-orb-eyes{display:flex;gap:6px;}
+.tm-orb-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
 .tm-title{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:700;color:#1A1A3A;line-height:1.4;}
+.tm-dots{display:flex;gap:5px;margin-top:2px;}
+.tm-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:tm-dot-pulse 1.5s ease-in-out infinite;}
+.tm-dot:nth-child(2){animation-delay:.18s;}
+.tm-dot:nth-child(3){animation-delay:.36s;}
 .tm-btn{height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 2px 8px rgba(47,93,255,.28);transition:background .15s;}
 .tm-btn:hover{background:var(--blue-h);}
 
-/* Template mockups */
-.mock{height:100%;display:flex;flex-direction:column;overflow:hidden;}
-.m-nav{height:22px;display:flex;align-items:center;padding:0 8px;gap:6px;flex-shrink:0;}
-.m-logo{font-size:9px;font-weight:800;}
-.m-links{display:flex;gap:6px;margin-left:auto;}
-.m-link{font-size:7px;}
-.m-hero{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;position:relative;overflow:hidden;min-height:0;}
-.m-h{font-size:13px;font-weight:800;line-height:1.25;margin-bottom:4px;}
-.m-p{font-size:7px;margin-bottom:9px;opacity:.7;}
-.m-btns{display:flex;gap:5px;}
-.m-cta{font-size:7px;font-weight:700;padding:4px 10px;border-radius:4px;border:none;}
-.m-cta2{font-size:7px;font-weight:600;padding:4px 10px;border-radius:4px;border:none;background:rgba(255,255,255,.18);color:#fff;}
-.m-gallery{display:flex;gap:3px;padding:5px;flex-shrink:0;}
-.m-gitem{flex:1;height:28px;border-radius:4px;}
-/* mono */
-.mono .m-nav{background:#111;border-bottom:1px solid #222;}
-.mono .m-logo{color:#fff;}
-.mono .m-link{color:#888;}
-.mono .m-hero{background:linear-gradient(175deg,#1A1A1A,#0A0A0A);}
-.mono .m-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='180'><ellipse cx='140' cy='120' rx='80' ry='60' fill='%23222'/><ellipse cx='60' cy='80' rx='40' ry='35' fill='%231A1A1A'/></svg>");background-size:cover;opacity:.8;}
-.mono .m-h{color:#fff;position:relative;}
-.mono .m-p{color:rgba(255,255,255,.55);position:relative;}
-.mono .m-btns{position:relative;}
-.mono .m-cta{background:#fff;color:#111;}
-.mono .m-gallery{background:#111;}
-.mono .m-gitem:nth-child(1){background:#2a2a2a;}
-.mono .m-gitem:nth-child(2){background:#222;}
-.mono .m-gitem:nth-child(3){background:#1a1a1a;}
-/* warm */
-.warm .m-nav{background:#fff;border-bottom:1px solid #F0EDE8;}
-.warm .m-logo{color:#2C1A0A;}
-.warm .m-link{color:#777;}
-.warm .m-hero{background:linear-gradient(175deg,#3D2810,#1E0F06);}
-.warm .m-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='200'><ellipse cx='160' cy='140' rx='90' ry='65' fill='%232A1808' opacity='0.7'/><ellipse cx='50' cy='100' rx='35' ry='50' fill='%23381A08' opacity='0.5'/><ellipse cx='120' cy='160' rx='25' ry='18' fill='%23503020' opacity='0.6'/></svg>");background-size:cover;}
-.warm .m-h{color:#F5D9A0;position:relative;}
-.warm .m-p{color:rgba(255,255,255,.6);position:relative;}
-.warm .m-btns{position:relative;}
-.warm .m-cta{background:#D4A24A;color:#111;}
-.warm .m-gallery{background:#F8F4EE;}
-.warm .m-gitem:nth-child(1){background:#C8A87A;}
-.warm .m-gitem:nth-child(2){background:#A87840;}
-.warm .m-gitem:nth-child(3){background:#D4B88A;}
-.see-more-link{font-size:13px;color:var(--blue);font-weight:500;padding:4px 24px 6px;flex-shrink:0;cursor:pointer;background:none;border:none;}
+/* see-more below left column */
+.see-more-link{font-size:13px;color:var(--blue);font-weight:500;padding:4px 0 6px;flex-shrink:0;cursor:pointer;background:none;border:none;display:flex;align-items:center;gap:5px;}
+
+/* ── CSS site mockup: Warm Studio ── */
+.s4m{height:100%;display:flex;flex-direction:column;overflow:hidden;font-family:'Wix Madefor Text',sans-serif;}
+/* Warm palette */
+.s4m-w{background:#F8F4EE;}
+.s4m-nav{height:34px;display:flex;align-items:center;padding:0 12px;flex-shrink:0;gap:8px;}
+.s4m-w .s4m-nav{background:#fff;border-bottom:1px solid #EAE5DC;}
+.s4m-logo-serif{font-family:Georgia,serif;font-size:10px;font-weight:700;color:#2A1A0A;letter-spacing:.03em;}
+.s4m-nav-links{display:flex;gap:8px;margin-left:auto;}
+.s4m-nav-link{font-size:7px;color:#777;}
+.s4m-nav-auth{font-size:7px;color:#aaa;margin-left:8px;}
+/* Hero area */
+.s4m-w-hero{position:relative;overflow:hidden;flex-shrink:0;height:260px;background:#F8F4EE;display:flex;align-items:center;justify-content:center;}
+.s4m-w-circle{position:absolute;width:190px;height:190px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#C83030,#8B1515 65%,#6A0E0E);top:50%;left:50%;transform:translate(-50%,-55%);}
+.s4m-w-bowl1{position:absolute;bottom:10px;left:12px;width:55px;height:45px;border-radius:50% 50% 40% 40%;background:linear-gradient(160deg,#C8956A,#A87050);box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.s4m-w-bowl2{position:absolute;bottom:8px;left:58px;width:38px;height:68px;border-radius:50% 50% 35% 35%;background:linear-gradient(160deg,#8A7060,#5A4030);box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.s4m-w-bowl3{position:absolute;bottom:12px;right:10px;width:48px;height:42px;border-radius:50% 50% 45% 45%;background:linear-gradient(160deg,#D4A870,#B07040);box-shadow:0 2px 6px rgba(0,0,0,.15);}
+.s4m-w-hl{position:relative;z-index:2;font-family:Georgia,serif;font-size:18px;font-weight:700;color:#2A1A0A;text-align:center;line-height:1.05;letter-spacing:.03em;margin-top:-60px;}
+.s4m-w-sub{position:relative;z-index:2;font-size:7px;color:#888;text-align:center;margin-top:5px;max-width:160px;line-height:1.4;font-style:italic;}
+.s4m-w-cta{position:relative;z-index:2;margin-top:8px;display:inline-block;height:20px;padding:0 12px;background:#C83030;color:#fff;font-size:7px;font-weight:700;letter-spacing:.06em;border:none;border-radius:2px;cursor:pointer;}
+.s4m-w-hero-inner{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+/* Gallery + about */
+.s4m-w-gallery{display:flex;gap:3px;padding:0;flex-shrink:0;}
+.s4m-w-gi{flex:1;height:80px;}
+.s4m-w-gi1{background:linear-gradient(160deg,#C8956A,#A8704A 60%,#8A5530);}
+.s4m-w-gi2{background:linear-gradient(165deg,#B07845,#8A5A2A 55%,#6A4018);}
+.s4m-w-about{padding:10px 12px;flex-shrink:0;}
+.s4m-w-about-lbl{font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C83030;margin-bottom:4px;}
+.s4m-w-about-text{font-size:7.5px;color:#666;line-height:1.55;}
+.s4m-w-banner{background:#F5E8D8;padding:7px 12px;font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8B5A30;flex-shrink:0;}
+
+/* ── CSS site mockup: Bold Studio ── */
+.s4m-b-nav{background:#fff;border-bottom:1px solid #E8E4D8;}
+.s4m-b-logo{font-size:10px;font-weight:700;color:#2C1A0A;letter-spacing:.01em;}
+.s4m-b-hero{flex-shrink:0;height:260px;background:#2C3A20;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 14px;}
+.s4m-b-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 65% 80%,#3A4A28,transparent),radial-gradient(ellipse 50% 70% at 80% 90%,#1E2C14,transparent),linear-gradient(170deg,#2C3A20,#161E0E);}
+.s4m-b-content{position:relative;z-index:1;}
+.s4m-b-hl{font-size:19px;font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.2px;margin-bottom:6px;}
+.s4m-b-sub{font-size:7.5px;color:rgba(255,255,255,.55);line-height:1.5;margin-bottom:10px;max-width:170px;}
+.s4m-b-btns{display:flex;gap:5px;}
+.s4m-b-btn1{height:20px;padding:0 10px;background:#C8A850;color:#1A1208;font-size:7px;font-weight:700;border:none;border-radius:2px;}
+.s4m-b-btn2{height:20px;padding:0 10px;background:rgba(255,255,255,.12);color:#fff;font-size:7px;font-weight:600;border:1px solid rgba(255,255,255,.3);border-radius:2px;}
+.s4m-b-gallery-lbl{font-size:7px;font-weight:700;color:#8A7060;padding:8px 12px 4px;letter-spacing:.09em;text-transform:uppercase;flex-shrink:0;}
+.s4m-b-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;padding:0 12px 8px;flex-shrink:0;}
+.s4m-b-gi{height:54px;border-radius:3px;}
+.s4m-b-gi1{background:linear-gradient(160deg,#C8956A,#A8704A 55%);}
+.s4m-b-gi2{background:linear-gradient(165deg,#D4B070,#B08040 50%);}
+.s4m-b-gi3{background:linear-gradient(160deg,#8A6848,#6A4828 55%);}
+.s4m-b-prods{padding:0 12px 8px;display:flex;flex-direction:column;gap:0;flex-shrink:0;}
+.s4m-b-prod{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #EAE5DC;font-size:7.5px;}
+.s4m-b-prod-name{color:#2C1A0A;font-weight:500;}
+.s4m-b-prod-price{color:#8A7060;}
 
 /* ════════════════════════════════════
    BLUEPRINT CANVAS (S5–S8 + toggled on S9)
 ════════════════════════════════════ */
 .bp-canvas{position:absolute;inset:0;overflow-y:auto;padding:0 20px 80px;background:#EEEEF2;}
-.bp-hdr{padding:20px 4px 16px;display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
+.bp-hdr{padding:20px 4px 16px;display:flex;flex-direction:row;align-items:center;gap:20px;flex-shrink:0;flex-wrap:wrap;}
 .bp-title{font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:700;color:var(--grey-1);letter-spacing:-0.5px;}
 .bp-domain-row{display:flex;align-items:center;gap:8px;}
 .bp-domain-ic{color:var(--grey-4);font-size:15px;}
@@ -915,31 +966,117 @@ textarea,input{font-family:inherit;}
       <div class="tpl-wrap">
         <div class="tpl-header">Choose the design you'd like to generate your full site from</div>
         <div class="tpl-cols">
+
+          <!-- Left: Warm Studio -->
           <div class="tpl-col">
             <div class="tpl-col-lbl">Warm studio</div>
             <div class="tpl-card" onclick="goTo('s5')" style="padding:0;overflow:hidden;">
-              <img src="template-1.png" alt="Warm studio template" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+              <!-- CSS-rendered Clay and Calm warm studio mockup -->
+              <div class="s4m s4m-w">
+                <div class="s4m-nav">
+                  <span class="s4m-logo-serif">Clay and Calm</span>
+                  <div class="s4m-nav-links">
+                    <span class="s4m-nav-link">SHOP</span>
+                    <span class="s4m-nav-link">ABOUT</span>
+                    <span class="s4m-nav-link">CLASSES</span>
+                  </div>
+                  <span class="s4m-nav-auth">Login</span>
+                </div>
+                <div class="s4m-w-hero">
+                  <div class="s4m-w-circle"></div>
+                  <div class="s4m-w-bowl1"></div>
+                  <div class="s4m-w-bowl2"></div>
+                  <div class="s4m-w-bowl3"></div>
+                  <div class="s4m-w-hero-inner">
+                    <div class="s4m-w-hl">CRAFTED<br>WITH CARE</div>
+                    <div class="s4m-w-sub">explore a world of handcrafted pottery &amp; ceramics by Clay and Calm</div>
+                    <button class="s4m-w-cta">SHOP NOW</button>
+                  </div>
+                </div>
+                <div class="s4m-w-gallery">
+                  <div class="s4m-w-gi s4m-w-gi1"></div>
+                  <div class="s4m-w-gi s4m-w-gi2"></div>
+                </div>
+                <div class="s4m-w-about">
+                  <div class="s4m-w-about-lbl">About</div>
+                  <div class="s4m-w-about-text">Clay and Calm is a ceramics studio rooted in slow making. Hand-thrown pottery, small-batch workshops, and a calm space to disconnect.</div>
+                </div>
+                <div class="s4m-w-banner">Featured Creations</div>
+              </div>
+              <div class="tpl-hover-ov">
+                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
+                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
+              </div>
             </div>
+            <button class="see-more-link" onclick="event.stopPropagation()">↻ Generate more options</button>
           </div>
+
+          <!-- Middle: AI Tailor Made -->
           <div class="tpl-col">
             <div class="tpl-col-lbl ai">AI Tailor Made</div>
             <div class="tpl-card tm" onclick="goTo('s5')">
-              <div class="tm-bg"></div>
+              <div class="tm-alive-bg"></div>
               <div class="tm-glass"></div>
               <div class="tm-inner">
-                <div class="tm-title">Let's build together<br>a custom made site<br>that fits your intent properly</div>
+                <div class="tm-orb-wrap">
+                  <div class="tm-orb"><div class="tm-orb-eyes"><div class="tm-orb-eye"></div><div class="tm-orb-eye"></div></div></div>
+                </div>
+                <div class="tm-title">Let's build together<br>a custom site that<br>fits you perfectly</div>
+                <div class="tm-dots"><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div></div>
                 <button class="tm-btn" onclick="event.stopPropagation();goTo('s5')">Generate with Aria</button>
+              </div>
+              <div class="tpl-hover-ov">
+                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
+                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
               </div>
             </div>
           </div>
+
+          <!-- Right: Bold Studio -->
           <div class="tpl-col">
             <div class="tpl-col-lbl">Bold studio</div>
             <div class="tpl-card" onclick="goTo('s5')" style="padding:0;overflow:hidden;">
-              <img src="template-2.png" alt="Bold studio template" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+              <!-- CSS-rendered Clay and Calm bold studio mockup -->
+              <div class="s4m" style="background:#F5F2EB;">
+                <div class="s4m-nav s4m-b-nav">
+                  <span class="s4m-b-logo">Clay and calm</span>
+                  <div class="s4m-nav-links">
+                    <span class="s4m-nav-link">About</span>
+                    <span class="s4m-nav-link">Shop</span>
+                    <span class="s4m-nav-link">Classes</span>
+                  </div>
+                </div>
+                <div class="s4m-b-hero">
+                  <div class="s4m-b-hero-bg"></div>
+                  <div class="s4m-b-content">
+                    <div class="s4m-b-hl">Welcome to<br>our studio</div>
+                    <div class="s4m-b-sub">Hand-thrown ceramics and workshops for curious hands — Clay and Calm, in the heart of the city</div>
+                    <div class="s4m-b-btns">
+                      <button class="s4m-b-btn1">Shop Now</button>
+                      <button class="s4m-b-btn2">Book a Class</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="s4m-b-gallery-lbl">Product gallery</div>
+                <div class="s4m-b-gallery">
+                  <div class="s4m-b-gi s4m-b-gi1"></div>
+                  <div class="s4m-b-gi s4m-b-gi2"></div>
+                  <div class="s4m-b-gi s4m-b-gi3"></div>
+                </div>
+                <div class="s4m-b-prods">
+                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Stoneware Mug</span><span class="s4m-b-prod-price">$48</span></div>
+                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Thrown Vase</span><span class="s4m-b-prod-price">$85</span></div>
+                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Pottery Class</span><span class="s4m-b-prod-price">$65</span></div>
+                </div>
+              </div>
+              <div class="tpl-hover-ov">
+                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
+                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
+              </div>
             </div>
           </div>
+
         </div>
-        <button class="see-more-link">Generate more options</button>
       </div>
       <div class="dots-wizard" id="dots-s4"></div>
     </div>
@@ -981,16 +1118,66 @@ textarea,input{font-family:inherit;}
           </div>
         </div>
         <div class="bp-grid">
-          <div class="bp-card loading" style="grid-row:span 2;min-height:260px;">
-            <div class="bp-about-name">Clay and Calm</div>
-            <div class="bp-about-body">A ceramics studio rooted in slow making. We offer hand-thrown pottery, small-batch workshops, and a calm space to disconnect and create — right in the heart of the city.</div>
+          <div class="bp-card loading" style="grid-row:span 2;">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">About the site</div>
+              <div class="bp-about-name">Clay and Calm</div>
+              <div class="bp-about-body">A ceramics studio rooted in slow making. We offer hand-thrown pottery, small-batch workshops, and a calm space to disconnect and create — right in the heart of the city. Every piece is shaped by hand and fired in our studio kiln. We ship worldwide and host weekly drop-in sessions.</div>
+            </div>
           </div>
-          <div class="bp-card loading" style="min-height:120px;"></div>
-          <div class="bp-card loading" style="grid-row:span 2;min-height:260px;"></div>
-          <div class="bp-card loading" style="min-height:100px;"></div>
-          <div class="bp-card loading" style="min-height:100px;"></div>
-          <div class="bp-card loading" style="min-height:100px;"></div>
-          <div class="bp-card loading" style="min-height:80px;"></div>
+          <div class="bp-card loading">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Site Info</div>
+              <div class="bp-info-item"><div class="bp-info-key">Business type</div><div class="bp-info-val">Ceramics studio &amp; workshop space</div></div>
+              <div class="bp-info-item"><div class="bp-info-key">Primary goal</div><div class="bp-info-val">Sell pottery online, book workshop classes</div></div>
+              <div class="bp-info-item"><div class="bp-info-key">Audience</div><div class="bp-info-val">Design-conscious locals, gift buyers, craft lovers</div></div>
+            </div>
+          </div>
+          <div class="bp-card loading" style="grid-row:span 2;">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Color palette</div>
+              <div class="bp-swatches">
+                <div class="bp-sw" style="background:#E8A0B0;"></div>
+                <div class="bp-sw" style="background:#C2D630;"></div>
+                <div class="bp-sw" style="background:#9B8060;"></div>
+                <div class="bp-sw" style="background:#8A9088;"></div>
+                <div class="bp-sw" style="grid-column:span 2;height:72px;background:#E5DDD3;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bp-card loading">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Font pack</div>
+              <div class="bp-fonts">
+                <div class="bp-font-box"><div class="bp-font-big disp">Aa</div><div class="bp-font-name">Wix Madefor Display</div></div>
+                <div class="bp-font-div"></div>
+                <div class="bp-font-box"><div class="bp-font-big serif">Aa</div><div class="bp-font-name">Snell Roundhand</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="bp-card loading">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Site Apps</div>
+              <div class="bp-apps">
+                <div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">🛒</div><div><div class="bp-app-name">Wix Stores</div></div></div>
+                <div class="bp-app"><div class="bp-app-ic" style="background:#EEF0FF;">📅</div><div><div class="bp-app-name">Wix Bookings</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="bp-card loading">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Site Structures</div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Main pages (7)</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Event Pages (3)</span></div>
+              <div class="bp-struct-row"><span class="bp-struct-name">Members Area (2)</span></div>
+            </div>
+          </div>
+          <div class="bp-card loading">
+            <div class="bp-reveal">
+              <div class="bp-card-lbl">Visual profile</div>
+              <div class="bp-tags"><span class="bp-tag">Warm</span><span class="bp-tag">Unpretentious</span><span class="bp-tag">Modern</span><span class="bp-tag">Craft-focused</span></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="dots-wizard" id="dots-s5"></div>
@@ -1722,6 +1909,18 @@ function goTo(id) {
   // Publish live on S9
   const pub = document.getElementById('pub-btn');
   if (pub) pub.classList.toggle('live', idx >= 8);
+
+  // S5 skeleton → reveal animation
+  if (id === 's5') {
+    const cards = document.querySelectorAll('#s5 .bp-card');
+    cards.forEach(c => { c.classList.add('loading'); c.querySelectorAll('.bp-reveal').forEach(r => r.classList.remove('shown')); });
+    cards.forEach((card, i) => {
+      setTimeout(() => {
+        card.classList.remove('loading');
+        card.querySelectorAll('.bp-reveal').forEach(r => r.classList.add('shown'));
+      }, 900 + i * 260);
+    });
+  }
 
   // Render dots
   renderDots('dots-' + id, DOT_STEP[idx]);

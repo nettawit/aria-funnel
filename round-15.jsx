@@ -237,15 +237,25 @@ function CloseBtn({ onRemove, transparent }) {
 
 function isUrl(name) { return /^https?:\/\/|^www\.|\.com|\.io|\.co|\.net|\.org/.test(name); }
 
-function AttachmentChip({ name, onRemove }) {
+/* ---- attachment types — colored left edge per type; label lives in group headers & hover tooltip ---- */
+const TYPE_BADGE = {
+  asset: { label: 'Asset', fg: '#C05B2A' },
+  ref:   { label: 'Reference', fg: '#6040D0' },
+  file:  { label: 'Info', fg: '#1A6CC0' },
+  site:  { label: 'Site', fg: '#44455A' },
+};
+const typeEdge = (type) => type ? { border: '1px solid #E8E7E7', borderLeft: `3px solid ${TYPE_BADGE[type].fg}` } : { border: '1px solid #E8E7E7' };
+
+function AttachmentChip({ name, onRemove, type }) {
   const [hovered, setHovered] = hs(false);
   const hoverProps = onRemove ? { onMouseEnter: () => setHovered(true), onMouseLeave: () => setHovered(false) } : {};
+  const tip = type ? TYPE_BADGE[type].label : undefined;
 
   /* URL variant — globe icon */
   if (isUrl(name)) {
     const display = name.replace(/^https?:\/\//, '').replace(/\/$/, '');
     return (
-      <span {...hoverProps} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
+      <span {...hoverProps} title={tip} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', ...typeEdge(type), borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 4, paddingLeft: 6, paddingRight: onRemove ? 16 : 10 }}>
           <GlobeIcon />
           <span style={{ fontSize: 12, fontWeight: 500, color: '#151414', whiteSpace: 'nowrap', maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis' }}>{display}</span>
@@ -255,10 +265,10 @@ function AttachmentChip({ name, onRemove }) {
     );
   }
 
-  /* Image variant — Figma node 23:884 — 48×48 thumbnail */
+  /* Image variant — 48×48 thumbnail with type edge */
   if (isImage(name)) {
     return (
-      <span {...hoverProps} style={{ position: 'relative', display: 'inline-flex', width: 48, height: 48, borderRadius: 8, border: '1px solid rgba(19,23,32,0.1)', overflow: 'hidden', flexShrink: 0 }}>
+      <span {...hoverProps} title={tip} style={{ position: 'relative', display: 'inline-flex', width: 48, height: 48, borderRadius: 8, ...(type ? typeEdge(type) : { border: '1px solid rgba(19,23,32,0.1)' }), overflow: 'hidden', flexShrink: 0, boxSizing: 'border-box', background: '#fff' }}>
         <img src={imgSrc(name)} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         {onRemove && hovered && <CloseBtn onRemove={onRemove} transparent={true} />}
       </span>
@@ -267,7 +277,7 @@ function AttachmentChip({ name, onRemove }) {
 
   /* File variant — Figma node 23:840 */
   return (
-    <span {...hoverProps} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
+    <span {...hoverProps} title={tip} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', ...typeEdge(type), borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 4, paddingLeft: 6, paddingRight: onRemove ? 16 : 10 }}>
         <FileIcon name={name} />
         <span style={{ fontSize: 12, fontWeight: 500, color: '#151414', whiteSpace: 'nowrap', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis' }}>{name}</span>
@@ -307,7 +317,7 @@ function SiteChip({ site, onRemove }) {
   const [hovered, setHovered] = hs(false);
   const [favErr, setFavErr] = hs(false);
   return (
-    <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
+    <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} title="Site" style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', ...typeEdge('site'), borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 4, paddingLeft: 6, paddingRight: onRemove ? 16 : 10 }}>
         {favErr ? <GlobeIcon /> : <img src={`https://www.google.com/s2/favicons?domain=${site.host}&sz=64`} alt="" width={20} height={20} onError={() => setFavErr(true)} style={{ borderRadius: 4, display: 'block', flexShrink: 0 }} />}
         <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.25 }}>
@@ -454,6 +464,8 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   const [assetFiles, setAssetFiles] = hs([]);
   const [refs, setRefs] = hs([]);
   const [importedSite, setImportedSite] = hs(null); // null | { host, isShopify, mode: 'both' | 'design' }
+  const [fileTypes, setFileTypes] = hs({}); // name -> 'asset' | 'file' | 'ref'
+  const recordTypes = (names, type) => setFileTypes(prev => { const m = { ...prev }; names.forEach(n => { if (!m[n]) m[n] = type; }); return m; });
   const [ov, setOv] = hs(null); // overlay/modal id
   const [refHover, setRefHover] = hs(false);
   const [scanPct, setScanPct] = hs(60);
@@ -512,7 +524,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
       const invalid = files.filter(f => !ALLOWED_EXTS.includes((f.name.split('.').pop() || '').toUpperCase()));
       if (valid.length) {
         const names = valid.map(f => f.name);
-        setAsset(true); setAssetFiles(prev => { const newOnes = names.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; });
+        setAsset(true); recordTypes(names, 'asset'); setAssetFiles(prev => { const newOnes = names.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; });
         if (screen === 'empty') setScreen('text');
       }
       if (invalid.length) {
@@ -589,9 +601,10 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   };
 
   const closeOverlay = () => setOv(null);
-  const confirmAsset = (names) => {
+  const confirmAsset = (names, type = 'asset') => {
     setAsset(true);
     const arr = Array.isArray(names) ? names : ['logo.png'];
+    recordTypes(arr, type);
     setAssetFiles(prev => { const newOnes = arr.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; });
     setAssetCount(prev => prev + arr.length);
     if (screen === 'empty') setScreen('text');
@@ -603,7 +616,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
     setOv(null);
   };
   const confirmVisualRef = ({ files = [], url = null }) => {
-    if (files.length) { setAsset(true); setAssetFiles(prev => { const newOnes = files.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; }); }
+    if (files.length) { setAsset(true); recordTypes(files, 'ref'); setAssetFiles(prev => { const newOnes = files.filter(n => !prev.includes(n)); return [...prev, ...newOnes]; }); }
     if (url && !refs.includes(url)) setRefs(prev => [...prev, url]);
     if (files.length || url) { if (screen === 'empty') setScreen('text'); }
     setOv(null);
@@ -666,29 +679,48 @@ function HomeFlow({ start = 'empty', onGenerate }) {
               onDrop={handleDrop}
               style={{ background: dragOver ? '#F0F4FF' : ready ? '#F4F6FF' : 'rgba(255,255,255,0.5)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', minHeight: 360, borderRadius: 16, border: dragOver ? '2px dashed #2F5DFF' : `1px solid ${ready ? '#B8C5FF' : 'rgba(255,255,255,0.7)'}`, boxShadow: ready ? '0 4px 32px rgba(80,100,220,0.14)' : '0 2px 12px rgba(100,100,180,0.07)', transition: 'background 0.3s ease, border-color 0.2s ease, box-shadow 0.6s ease', position: 'relative', zIndex: ov === 'dropdown' ? 30 : 1, display: 'flex', flexDirection: 'column', animation: 'card-enter 420ms ease-out' }}>
               {dragOver && <div style={{ position: 'absolute', inset: 0, borderRadius: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, pointerEvents: 'none' }}><div style={{ background: 'rgba(47,93,255,0.06)', borderRadius: 16, padding: '12px 24px', fontSize: 14, fontWeight: 600, color: '#2F5DFF' }}>Drop files or URLs here</div></div>}
-              {/* attachment chips */}
-              {(asset || refs.length > 0 || importedSite) &&
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, padding: '16px 28px 6px' }}>
-                  {asset && (assetFiles.length ? assetFiles : ['logo.png']).slice(0, 9).map((nm, i) =>
-                    <AttachmentChip key={i} name={nm} onRemove={() => { const removed = nm; const removedIndex = i; const next = (assetFiles.length ? assetFiles : ['logo.png']).filter((_, idx) => idx !== removedIndex); setAssetFiles(next); if (!next.length) setAsset(false); showUndo(removed, () => { setAssetFiles(prev => { const arr = [...prev]; arr.splice(removedIndex, 0, removed); return arr; }); setAsset(true); }); }} />
-                  )}
-                  {asset && assetFiles.length > 9 && (
-                    <FolderChip
-                      files={assetFiles.slice(9)}
-                      onRemoveFile={(idx) => {
-                        const realIdx = 9 + idx;
-                        const removed = assetFiles[realIdx];
-                        const next = assetFiles.filter((_, i) => i !== realIdx);
-                        setAssetFiles(next);
-                        if (!next.length) setAsset(false);
-                        showUndo(removed, () => { setAssetFiles(prev => { const arr = [...prev]; arr.splice(realIdx, 0, removed); return arr; }); setAsset(true); });
-                      }}
-                    />
-                  )}
-                  {refs.map((r, i) => <AttachmentChip key={i} name={r} onRemove={() => { const removed = r; const idx = i; setRefs(prev => prev.filter((_, j) => j !== idx)); showUndo(removed, () => setRefs(prev => { const arr = [...prev]; arr.splice(idx, 0, removed); return arr; })); }} />)}
-                  {importedSite && <SiteChip site={importedSite} onRemove={() => { const s = importedSite; setImportedSite(null); showUndo(s.host, () => setImportedSite(s)); }} />}
-                </div>
-              }
+              {/* attachment chips — grouped by type, colored edge per type */}
+              {(asset || refs.length > 0 || importedSite) && (() => {
+                const allFiles = assetFiles.length ? assetFiles : (asset ? ['logo.png'] : []);
+                const removeFile = (nm) => {
+                  const removedIndex = allFiles.indexOf(nm);
+                  const next = allFiles.filter((_, idx) => idx !== removedIndex);
+                  setAssetFiles(next); if (!next.length) setAsset(false);
+                  showUndo(nm, () => { setAssetFiles(prev => { const arr = [...prev]; arr.splice(removedIndex, 0, nm); return arr; }); setAsset(true); });
+                };
+                const removeRef = (r) => {
+                  const idx = refs.indexOf(r);
+                  setRefs(prev => prev.filter((_, j) => j !== idx));
+                  showUndo(r, () => setRefs(prev => { const arr = [...prev]; arr.splice(idx, 0, r); return arr; }));
+                };
+                const groups = [
+                  { type: 'asset', label: 'Assets', items: allFiles.filter(n => (fileTypes[n] || 'asset') === 'asset') },
+                  { type: 'ref', label: 'References', items: [...allFiles.filter(n => fileTypes[n] === 'ref'), ...refs] },
+                  { type: 'file', label: 'Info', items: allFiles.filter(n => fileTypes[n] === 'file') },
+                ].filter(g => g.items.length);
+                return (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', gap: 18, padding: '14px 28px 6px' }}>
+                    {groups.map(g => (
+                      <div key={g.type} style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, color: '#9A9AB0', textTransform: 'uppercase', letterSpacing: '0.07em' }}>{g.label}</span>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                          {g.items.map((nm, i) =>
+                            <AttachmentChip key={i} name={nm} type={g.type} onRemove={() => refs.includes(nm) ? removeRef(nm) : removeFile(nm)} />
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    {importedSite && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, color: '#9A9AB0', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Site</span>
+                        <div style={{ display: 'flex' }}>
+                          <SiteChip site={importedSite} onRemove={() => { const s = importedSite; setImportedSite(null); showUndo(s.host, () => setImportedSite(s)); }} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
 
               {/* Undo toast */}
 
@@ -851,7 +883,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
 
         {/* modals */}
         {ov === 'assets' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} />}
-        {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={confirmAsset} title="Add info" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
+        {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={(names) => confirmAsset(names, 'file')} title="Add info" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
         {ov === 'extract' && <ExtractModal onClose={closeOverlay} onAdd={confirmAsset} />}
         {ov === 'url' && <UrlModal onClose={closeOverlay} onAdd={confirmVisualRef} onBack={() => setOv('dropdown')} />}
         {ov === 'import-url' && <ImportFlow onClose={closeOverlay} onImport={(site) => {setImportedSite(site);if (screen === 'empty') setScreen('text');setOv(null);}} />}
