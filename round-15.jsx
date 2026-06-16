@@ -1720,11 +1720,14 @@ function FigmaEntryScreen({ onGenerate }) {
             {/* Attachment chip — shown ABOVE textarea when site is imported */}
             {importedSite && (
               <div style={{ display: 'inline-flex', alignItems: 'center', height: 48, background: '#fff', border: '1px solid #DFE5EB', borderRadius: 8, overflow: 'hidden', fontFamily: 'inherit', alignSelf: 'flex-start', flexShrink: 0, maxWidth: '100%' }}>
-                <img
-                  src={`https://image.thum.io/get/width/96/crop/136/${importedSite.host}`}
-                  style={{ width: 48, height: 32, objectFit: 'cover', objectPosition: 'top', flexShrink: 0, display: 'block', margin: '0 0 0 8px', borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)' }}
-                  onError={e => { e.target.style.display='none'; }}
-                />
+                {/* Screenshot thumbnail — fixed size container so it never collapses */}
+                <div style={{ width: 48, height: 32, flexShrink: 0, borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)', overflow: 'hidden', background: '#ECF0F3', margin: '0 0 0 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img
+                    src={`https://image.thum.io/get/width/96/crop/136/https://${importedSite.host}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+                    onError={e => { e.target.style.opacity = '0'; }}
+                  />
+                </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '0 0 0 10px', minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
@@ -1940,11 +1943,13 @@ function HarmonyV11Screen({ onGenerate }) {
           {/* Attachment chip — shown ABOVE textarea when site is imported */}
           {importedSite && (
             <div style={{ display: 'inline-flex', alignItems: 'center', height: 48, background: '#fff', border: '1px solid #DFE5EB', borderRadius: 8, overflow: 'hidden', fontFamily: 'inherit', alignSelf: 'flex-start', flexShrink: 0, maxWidth: '100%', marginBottom: 4 }}>
-              <img
-                src={`https://image.thum.io/get/width/96/crop/136/${importedSite.host}`}
-                style={{ width: 48, height: 32, objectFit: 'cover', objectPosition: 'top', flexShrink: 0, display: 'block', margin: '0 0 0 8px', borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)' }}
-                onError={e => { e.target.style.display='none'; }}
-              />
+              <div style={{ width: 48, height: 32, flexShrink: 0, borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)', overflow: 'hidden', background: '#ECF0F3', margin: '0 0 0 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img
+                  src={`https://image.thum.io/get/width/96/crop/136/https://${importedSite.host}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+                  onError={e => { e.target.style.opacity = '0'; }}
+                />
+              </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '0 0 0 10px', minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
