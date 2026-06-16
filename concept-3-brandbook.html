@@ -227,11 +227,11 @@ textarea,input{font-family:inherit;}
 ════════════════════════════════════ */
 .tpl-wrap{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;}
 .tpl-header{padding:20px 24px 0;font-size:16px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;flex-shrink:0;}
-.tpl-cols{flex:1;display:flex;gap:12px;padding:14px 24px 10px;min-height:0;}
+.tpl-cols{display:flex;gap:12px;padding:14px 24px 10px;align-items:flex-start;}
 .tpl-col{flex:1;display:flex;flex-direction:column;gap:7px;}
 .tpl-col-lbl{font-size:11px;font-weight:500;color:var(--grey-4);letter-spacing:.01em;}
 .tpl-col-lbl.ai{color:var(--blue);font-weight:600;}
-.tpl-card{flex:1;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#fff;box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;position:relative;}
+.tpl-card{height:360px;border-radius:16px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:#fff;box-shadow:var(--sh-card);transition:border-color .2s,box-shadow .2s;position:relative;}
 .tpl-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
 
 /* Hover overlay with action buttons */
@@ -277,8 +277,56 @@ textarea,input{font-family:inherit;}
 .tm-btn{height:38px;padding:0 22px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 2px 8px rgba(47,93,255,.28);transition:background .15s;}
 .tm-btn:hover{background:var(--blue-h);}
 
-/* see-more below left column */
-.see-more-link{font-size:13px;color:var(--blue);font-weight:500;padding:4px 0 6px;flex-shrink:0;cursor:pointer;background:none;border:none;display:flex;align-items:center;gap:5px;}
+/* Generate more — floating on canvas */
+.see-more-link{
+  position:absolute;bottom:52px;left:50%;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:6px;
+  height:34px;padding:0 18px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border:1px solid rgba(200,205,235,.9);border-radius:20px;
+  font-size:13px;font-weight:500;color:var(--blue);
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  transition:background .15s,box-shadow .15s;
+}
+.see-more-link:hover{background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.12);}
+
+/* Template slot toggling */
+.tpl-v{display:none;flex:1;flex-direction:column;gap:7px;}
+.tpl-v.active{display:flex;}
+
+/* ── CSS mockup: Minimal Studio ── */
+.s4m-min-nav{background:#fff;border-bottom:1px solid #E8E8E8;}
+.s4m-min-logo{font-size:9px;font-weight:300;letter-spacing:.16em;text-transform:uppercase;color:#1A1A1A;}
+.s4m-min-hero{background:#fff;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 14px 14px;min-height:0;}
+.s4m-min-tag{font-size:6.5px;letter-spacing:.15em;text-transform:uppercase;color:#ABABAB;margin-bottom:5px;}
+.s4m-min-hl{font-size:21px;font-weight:300;color:#1A1A1A;line-height:1.0;letter-spacing:-.3px;}
+.s4m-min-line{width:28px;height:1px;background:#1A1A1A;margin:7px 0;}
+.s4m-min-sub{font-size:7px;color:#888;line-height:1.5;}
+.s4m-min-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:5px 12px 7px;flex-shrink:0;}
+.s4m-min-gi{height:44px;}
+.s4m-min-gi1{background:#F0F0F0;}
+.s4m-min-gi2{background:#E4E4E4;}
+.s4m-min-gi3{background:#EBEBEB;}
+.s4m-min-footer{background:#1A1A1A;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.s4m-min-footer-logo{font-size:7px;font-weight:300;letter-spacing:.12em;color:#fff;text-transform:uppercase;}
+.s4m-min-footer-link{font-size:6.5px;color:#888;}
+
+/* ── CSS mockup: Earthy Studio ── */
+.s4m-e-nav{background:#3D5230;}
+.s4m-e-logo{font-size:10px;font-weight:600;color:#E8F0DE;letter-spacing:.02em;}
+.s4m-e-hero{background:#F5EDDF;flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;}
+.s4m-e-circ1{position:absolute;width:180px;height:180px;border-radius:50%;background:#8BA882;opacity:.45;top:-40px;right:-30px;}
+.s4m-e-circ2{position:absolute;width:90px;height:90px;border-radius:50%;background:#C5B89A;opacity:.5;bottom:-10px;left:-5px;}
+.s4m-e-inner{position:relative;z-index:2;text-align:center;padding:10px;}
+.s4m-e-hl{font-family:Georgia,serif;font-size:15px;font-weight:400;color:#2C1A0A;line-height:1.15;}
+.s4m-e-sub{font-size:7px;color:#6A5040;margin-top:4px;line-height:1.5;}
+.s4m-e-cta{margin-top:8px;height:20px;padding:0 12px;background:#3D5230;color:#E8F0DE;font-size:7px;border:none;border-radius:10px;cursor:pointer;}
+.s4m-e-workshops{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:6px 10px;flex-shrink:0;background:#EFE7D9;}
+.s4m-e-ws{background:#E5DBCC;border-radius:5px;padding:5px 7px;}
+.s4m-e-ws-lbl{font-size:6.5px;text-transform:uppercase;letter-spacing:.06em;color:#8A7060;margin-bottom:2px;}
+.s4m-e-ws-title{font-size:7.5px;font-weight:600;color:#2C1A0A;}
+.s4m-e-ws-price{font-size:7px;color:#6A5040;margin-top:1px;}
 
 /* ── CSS site mockup: Warm Studio ── */
 .s4m{height:100%;display:flex;flex-direction:column;overflow:hidden;font-family:'Wix Madefor Text',sans-serif;}
@@ -954,115 +1002,84 @@ textarea,input{font-family:inherit;}
         <div class="tpl-header">Choose the design you'd like to generate your full site from</div>
         <div class="tpl-cols">
 
-          <!-- Left: Warm Studio -->
-          <div class="tpl-col">
-            <div class="tpl-col-lbl">Warm studio</div>
-            <div class="tpl-card" onclick="goTo('s5')" style="padding:0;overflow:hidden;">
-              <!-- CSS-rendered Clay and Calm warm studio mockup -->
-              <div class="s4m s4m-w">
-                <div class="s4m-nav">
-                  <span class="s4m-logo-serif">Clay and Calm</span>
-                  <div class="s4m-nav-links">
-                    <span class="s4m-nav-link">SHOP</span>
-                    <span class="s4m-nav-link">ABOUT</span>
-                    <span class="s4m-nav-link">CLASSES</span>
-                  </div>
-                  <span class="s4m-nav-auth">Login</span>
+          <!-- Left slot: cycles between Warm Studio and Minimal Studio -->
+          <div class="tpl-col" id="tpl-left">
+            <!-- Variant A: Warm Studio -->
+            <div class="tpl-v active">
+              <div class="tpl-col-lbl">Warm studio</div>
+              <div class="tpl-card" onclick="goTo('s5')" style="padding:0;">
+                <div class="s4m s4m-w">
+                  <div class="s4m-nav"><span class="s4m-logo-serif">Clay and Calm</span><div class="s4m-nav-links"><span class="s4m-nav-link">SHOP</span><span class="s4m-nav-link">ABOUT</span><span class="s4m-nav-link">CLASSES</span></div><span class="s4m-nav-auth">Login</span></div>
+                  <div class="s4m-w-hero"><div class="s4m-w-circle"></div><div class="s4m-w-bowl1"></div><div class="s4m-w-bowl2"></div><div class="s4m-w-bowl3"></div><div class="s4m-w-hero-inner"><div class="s4m-w-hl">CRAFTED<br>WITH CARE</div><div class="s4m-w-sub">explore a world of handcrafted pottery &amp; ceramics by Clay and Calm</div><button class="s4m-w-cta">SHOP NOW</button></div></div>
+                  <div class="s4m-w-gallery"><div class="s4m-w-gi s4m-w-gi1"></div><div class="s4m-w-gi s4m-w-gi2"></div></div>
+                  <div class="s4m-w-about"><div class="s4m-w-about-lbl">About</div><div class="s4m-w-about-text">Clay and Calm is a ceramics studio rooted in slow making. Hand-thrown pottery and small-batch workshops.</div></div>
                 </div>
-                <div class="s4m-w-hero">
-                  <div class="s4m-w-circle"></div>
-                  <div class="s4m-w-bowl1"></div>
-                  <div class="s4m-w-bowl2"></div>
-                  <div class="s4m-w-bowl3"></div>
-                  <div class="s4m-w-hero-inner">
-                    <div class="s4m-w-hl">CRAFTED<br>WITH CARE</div>
-                    <div class="s4m-w-sub">explore a world of handcrafted pottery &amp; ceramics by Clay and Calm</div>
-                    <button class="s4m-w-cta">SHOP NOW</button>
-                  </div>
-                </div>
-                <div class="s4m-w-gallery">
-                  <div class="s4m-w-gi s4m-w-gi1"></div>
-                  <div class="s4m-w-gi s4m-w-gi2"></div>
-                </div>
-                <div class="s4m-w-about">
-                  <div class="s4m-w-about-lbl">About</div>
-                  <div class="s4m-w-about-text">Clay and Calm is a ceramics studio rooted in slow making. Hand-thrown pottery, small-batch workshops, and a calm space to disconnect.</div>
-                </div>
-                <div class="s4m-w-banner">Featured Creations</div>
-              </div>
-              <div class="tpl-hover-ov">
-                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
-                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
+                <div class="tpl-hover-ov"><button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button><button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button></div>
               </div>
             </div>
-            <button class="see-more-link" onclick="event.stopPropagation()">↻ Generate more options</button>
+            <!-- Variant B: Minimal Studio -->
+            <div class="tpl-v">
+              <div class="tpl-col-lbl">Minimal studio</div>
+              <div class="tpl-card" onclick="goTo('s5')" style="padding:0;">
+                <div class="s4m" style="background:#fff;">
+                  <div class="s4m-nav s4m-min-nav"><span class="s4m-min-logo">Clay &amp; Calm</span><div class="s4m-nav-links"><span class="s4m-nav-link" style="color:#555;">Shop</span><span class="s4m-nav-link" style="color:#555;">Journal</span><span class="s4m-nav-link" style="color:#555;">Contact</span></div></div>
+                  <div class="s4m-min-hero"><div class="s4m-min-tag">Hand-thrown ceramics · Est. 2019</div><div class="s4m-min-hl">Clay<br>and<br>Calm.</div><div class="s4m-min-line"></div><div class="s4m-min-sub">A ceramics studio where slow making meets quiet beauty. Pottery classes, workshops, and one-of-a-kind pieces.</div></div>
+                  <div class="s4m-min-grid"><div class="s4m-min-gi s4m-min-gi1"></div><div class="s4m-min-gi s4m-min-gi2"></div><div class="s4m-min-gi s4m-min-gi3"></div></div>
+                  <div class="s4m-min-footer"><span class="s4m-min-footer-logo">Clay &amp; Calm</span><span class="s4m-min-footer-link">clayandcalm.com</span></div>
+                </div>
+                <div class="tpl-hover-ov"><button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button><button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button></div>
+              </div>
+            </div>
           </div>
 
-          <!-- Middle: AI Tailor Made -->
+          <!-- Middle: AI Tailor Made (fixed) -->
           <div class="tpl-col">
             <div class="tpl-col-lbl ai">AI Tailor Made</div>
             <div class="tpl-card tm" onclick="goTo('s5')">
               <div class="tm-alive-bg"></div>
               <div class="tm-glass"></div>
               <div class="tm-inner">
-                <div class="tm-orb-wrap">
-                  <div class="tm-orb"><div class="tm-orb-eyes"><div class="tm-orb-eye"></div><div class="tm-orb-eye"></div></div></div>
-                </div>
+                <div class="tm-orb-wrap"><div class="tm-orb"><div class="tm-orb-eyes"><div class="tm-orb-eye"></div><div class="tm-orb-eye"></div></div></div></div>
                 <div class="tm-title">Let's build together<br>a custom site that<br>fits you perfectly</div>
                 <div class="tm-dots"><div class="tm-dot"></div><div class="tm-dot"></div><div class="tm-dot"></div></div>
               </div>
-              <div class="tpl-hover-ov">
-                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
-                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
-              </div>
+              <div class="tpl-hover-ov"><button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button><button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button></div>
             </div>
           </div>
 
-          <!-- Right: Bold Studio -->
-          <div class="tpl-col">
-            <div class="tpl-col-lbl">Bold studio</div>
-            <div class="tpl-card" onclick="goTo('s5')" style="padding:0;overflow:hidden;">
-              <!-- CSS-rendered Clay and Calm bold studio mockup -->
-              <div class="s4m" style="background:#F5F2EB;">
-                <div class="s4m-nav s4m-b-nav">
-                  <span class="s4m-b-logo">Clay and calm</span>
-                  <div class="s4m-nav-links">
-                    <span class="s4m-nav-link">About</span>
-                    <span class="s4m-nav-link">Shop</span>
-                    <span class="s4m-nav-link">Classes</span>
-                  </div>
+          <!-- Right slot: cycles between Bold Studio and Earthy Studio -->
+          <div class="tpl-col" id="tpl-right">
+            <!-- Variant A: Bold Studio -->
+            <div class="tpl-v active">
+              <div class="tpl-col-lbl">Bold studio</div>
+              <div class="tpl-card" onclick="goTo('s5')" style="padding:0;">
+                <div class="s4m" style="background:#F5F2EB;">
+                  <div class="s4m-nav s4m-b-nav"><span class="s4m-b-logo">Clay and calm</span><div class="s4m-nav-links"><span class="s4m-nav-link">About</span><span class="s4m-nav-link">Shop</span><span class="s4m-nav-link">Classes</span></div></div>
+                  <div class="s4m-b-hero"><div class="s4m-b-hero-bg"></div><div class="s4m-b-content"><div class="s4m-b-hl">Welcome to<br>our studio</div><div class="s4m-b-sub">Hand-thrown ceramics and workshops for curious hands — Clay and Calm</div><div class="s4m-b-btns"><button class="s4m-b-btn1">Shop Now</button><button class="s4m-b-btn2">Book a Class</button></div></div></div>
+                  <div class="s4m-b-gallery-lbl">Product gallery</div>
+                  <div class="s4m-b-gallery"><div class="s4m-b-gi s4m-b-gi1"></div><div class="s4m-b-gi s4m-b-gi2"></div><div class="s4m-b-gi s4m-b-gi3"></div></div>
+                  <div class="s4m-b-prods"><div class="s4m-b-prod"><span class="s4m-b-prod-name">Stoneware Mug</span><span class="s4m-b-prod-price">$48</span></div><div class="s4m-b-prod"><span class="s4m-b-prod-name">Thrown Vase</span><span class="s4m-b-prod-price">$85</span></div><div class="s4m-b-prod"><span class="s4m-b-prod-name">Pottery Class</span><span class="s4m-b-prod-price">$65</span></div></div>
                 </div>
-                <div class="s4m-b-hero">
-                  <div class="s4m-b-hero-bg"></div>
-                  <div class="s4m-b-content">
-                    <div class="s4m-b-hl">Welcome to<br>our studio</div>
-                    <div class="s4m-b-sub">Hand-thrown ceramics and workshops for curious hands — Clay and Calm, in the heart of the city</div>
-                    <div class="s4m-b-btns">
-                      <button class="s4m-b-btn1">Shop Now</button>
-                      <button class="s4m-b-btn2">Book a Class</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="s4m-b-gallery-lbl">Product gallery</div>
-                <div class="s4m-b-gallery">
-                  <div class="s4m-b-gi s4m-b-gi1"></div>
-                  <div class="s4m-b-gi s4m-b-gi2"></div>
-                  <div class="s4m-b-gi s4m-b-gi3"></div>
-                </div>
-                <div class="s4m-b-prods">
-                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Stoneware Mug</span><span class="s4m-b-prod-price">$48</span></div>
-                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Thrown Vase</span><span class="s4m-b-prod-price">$85</span></div>
-                  <div class="s4m-b-prod"><span class="s4m-b-prod-name">Pottery Class</span><span class="s4m-b-prod-price">$65</span></div>
-                </div>
+                <div class="tpl-hover-ov"><button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button><button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button></div>
               </div>
-              <div class="tpl-hover-ov">
-                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
-                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
+            </div>
+            <!-- Variant B: Earthy Studio -->
+            <div class="tpl-v">
+              <div class="tpl-col-lbl">Earthy studio</div>
+              <div class="tpl-card" onclick="goTo('s5')" style="padding:0;">
+                <div class="s4m" style="background:#F5EDDF;">
+                  <div class="s4m-nav s4m-e-nav"><span class="s4m-e-logo">Clay and Calm</span><div class="s4m-nav-links"><span class="s4m-nav-link" style="color:#C5D8B0;">Shop</span><span class="s4m-nav-link" style="color:#C5D8B0;">Classes</span></div></div>
+                  <div class="s4m-e-hero"><div class="s4m-e-circ1"></div><div class="s4m-e-circ2"></div><div class="s4m-e-inner"><div class="s4m-e-hl">Slow made.<br>Clay and Calm.</div><div class="s4m-e-sub">Hand-thrown pottery and small-batch workshops for curious hands</div><button class="s4m-e-cta">Book a Workshop</button></div></div>
+                  <div class="s4m-e-workshops"><div class="s4m-e-ws"><div class="s4m-e-ws-lbl">Workshop</div><div class="s4m-e-ws-title">Intro to Throwing</div><div class="s4m-e-ws-price">$65 · 2h</div></div><div class="s4m-e-ws"><div class="s4m-e-ws-lbl">Workshop</div><div class="s4m-e-ws-title">Glazing Masterclass</div><div class="s4m-e-ws-price">$80 · 3h</div></div></div>
+                </div>
+                <div class="tpl-hover-ov"><button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button><button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button></div>
               </div>
             </div>
           </div>
 
         </div>
+        <!-- Floating "Generate more options" on canvas surface -->
+        <button class="see-more-link" onclick="generateMoreOptions()">↻ Generate more options</button>
       </div>
       <div class="dots-wizard" id="dots-s4"></div>
     </div>
@@ -1844,6 +1861,17 @@ const EXTRA_PROMPTS = [
   "Pet services — a grooming salon and dog-walking service for pet owners, with easy online booking.",
 ];
 let extraIdx = 0;
+
+let tplPair = 0;
+function generateMoreOptions() {
+  tplPair = 1 - tplPair;
+  ['tpl-left','tpl-right'].forEach(colId => {
+    const col = document.getElementById(colId);
+    if (!col) return;
+    col.querySelectorAll('.tpl-v').forEach(v => v.classList.remove('active'));
+    col.querySelectorAll('.tpl-v')[tplPair === 0 ? 0 : 1].classList.add('active');
+  });
+}
 
 function fillPrompt(text) {
   const ta = document.querySelector('.s1-ta');
