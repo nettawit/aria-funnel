@@ -832,15 +832,15 @@ textarea,input{font-family:inherit;}
       <div class="s1-try-lbl">Try an example prompt</div>
       <div class="s1-chips">
         <div class="s1-chips-scroll">
-          <button class="s1-chip">Fashion store</button>
-          <button class="s1-chip">Online course</button>
-          <button class="s1-chip">Wellness service</button>
-          <button class="s1-chip">Consulting website</button>
-          <button class="s1-chip">Community hub</button>
-          <button class="s1-chip">Creative portfolio</button>
-          <button class="s1-chip">Restaurant &amp; Café</button>
-          <button class="s1-chip">Photography Studio</button>
-          <button class="s1-chip s1-chip-more">↻ More Ideas</button>
+          <button class="s1-chip" onclick="fillPrompt('Fashion store — a curated clothing boutique selling seasonal collections, accessories, and gifts online and in-store.')">Fashion store</button>
+          <button class="s1-chip" onclick="fillPrompt('Online course — a platform for teaching design skills through video lessons, live workshops, and downloadable resources.')">Online course</button>
+          <button class="s1-chip" onclick="fillPrompt('Wellness service — a holistic health studio offering yoga classes, massage therapy, nutrition coaching, and online bookings.')">Wellness service</button>
+          <button class="s1-chip" onclick="fillPrompt('Consulting website — an independent strategy consultant helping startups and scale-ups with growth, product, and operations.')">Consulting website</button>
+          <button class="s1-chip" onclick="fillPrompt('Community hub — a local gathering space hosting events, workshops, and memberships for creatives and makers.')">Community hub</button>
+          <button class="s1-chip" onclick="fillPrompt('Creative portfolio — a freelance designer and illustrator showcasing branding projects, client work, and available for hire.')">Creative portfolio</button>
+          <button class="s1-chip" onclick="fillPrompt('Restaurant &amp; Café — a neighbourhood café serving seasonal brunch, specialty coffee, and homemade baked goods. Open daily.')">Restaurant &amp; Café</button>
+          <button class="s1-chip" onclick="fillPrompt('Photography Studio — a portrait and event photographer offering sessions, packages, and an online gallery for clients.')">Photography Studio</button>
+          <button class="s1-chip s1-chip-more" onclick="rotateChips()">↻ More Ideas</button>
         </div>
       </div>
     </div>
@@ -1831,6 +1831,30 @@ const TOTAL_DOTS = 5;
 let cur = 0;
 let bpVisible = false;
 let activeConcept = 'orig'; // 'orig' | 'A' | 'B'
+
+const EXTRA_PROMPTS = [
+  "Beauty & Spa — a luxury day spa offering facials, massages, nail treatments, and online appointment booking.",
+  "Education platform — an online school with structured courses, live tutoring sessions, and student progress tracking.",
+  "Architecture firm — a boutique studio specialising in residential renovations, interiors, and sustainable design.",
+  "Event planning — a full-service event company organising weddings, corporate events, and private celebrations.",
+  "Fitness studio — a boutique gym offering HIIT, pilates, and personal training with class scheduling and memberships.",
+  "Pet services — a grooming salon and dog-walking service for pet owners, with easy online booking.",
+];
+let extraIdx = 0;
+
+function fillPrompt(text) {
+  const ta = document.querySelector('.s1-ta');
+  if (!ta) return;
+  ta.value = text;
+  ta.focus();
+  ta.setSelectionRange(text.length, text.length);
+}
+
+function rotateChips() {
+  const prompt = EXTRA_PROMPTS[extraIdx % EXTRA_PROMPTS.length];
+  extraIdx++;
+  fillPrompt(prompt);
+}
 
 function setConcept(c) {
   activeConcept = c;
