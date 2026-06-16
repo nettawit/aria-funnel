@@ -550,84 +550,155 @@ textarea,input{font-family:inherit;}
 .ca-path-ai:hover .ca-path-cta{background:var(--blue-h);}
 
 /* ════════════════════════════════════
-   CONCEPT B — GALLERY LAYOUT
+   CONCEPT B — SIDE-BY-SIDE LAYOUT
 ════════════════════════════════════ */
 .gb-wrap{
   position:absolute;inset:0;display:flex;flex-direction:column;
-  padding:20px 24px 50px;overflow-y:auto;
+  padding:20px 24px 20px;overflow:hidden;
 }
-.gb-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-shrink:0;}
-.gb-title{font-family:'Wix Madefor Display',sans-serif;font-size:17px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;}
-.gb-count{font-size:13px;color:var(--grey-4);}
-.gb-hero{
-  width:100%;border-radius:16px;overflow:hidden;cursor:pointer;
-  border:2px solid rgba(47,93,255,.3);
-  background:linear-gradient(145deg,#E6EBFF 0%,#EAE8FF 45%,#F0E8FF 75%,#FAE8F8 100%);
-  flex-shrink:0;height:200px;position:relative;
-  box-shadow:0 2px 12px rgba(47,93,255,.1);
-  margin-bottom:12px;transition:border-color .2s,box-shadow .2s;
-  display:flex;align-items:center;
+.gb-page-title{
+  font-size:15px;font-weight:600;color:var(--grey-1);
+  margin-bottom:14px;flex-shrink:0;letter-spacing:-0.1px;
 }
-.gb-hero:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(47,93,255,.2);}
-.gb-hero-glow{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 55% 80% at 20% 60%,rgba(100,130,255,.18),transparent 70%),
-             radial-gradient(ellipse 40% 60% at 80% 35%,rgba(180,130,255,.12),transparent 60%);}
-.gb-hero-left{position:relative;z-index:1;padding:28px 32px;flex:1;}
-.gb-hero-label{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
-.gb-hero-label-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
-.gb-hero-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:700;color:#1A1A3A;line-height:1.3;letter-spacing:-0.3px;margin-bottom:8px;}
-.gb-hero-desc{font-size:13px;color:#4A4A7A;line-height:1.55;max-width:360px;margin-bottom:18px;}
-.gb-hero-btn{height:36px;padding:0 20px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(47,93,255,.3);cursor:pointer;font-family:inherit;}
-.gb-hero-btn:hover{background:var(--blue-h);}
-.gb-hero-right{position:relative;z-index:1;width:240px;flex-shrink:0;padding:20px 24px 20px 0;display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
-.gb-orb-ring{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.6);border:1.5px solid rgba(100,130,255,.25);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
-.gb-orb{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);box-shadow:0 3px 14px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;}
-.gb-orb-eyes{display:flex;gap:6px;}
-.gb-orb-eye{width:6px;height:6px;border-radius:50%;background:#fff;}
-.gb-hero-chip{background:rgba(255,255,255,.8);border:1px solid rgba(100,130,255,.2);border-radius:8px;padding:5px 10px;font-size:11px;font-weight:500;color:#3848D8;backdrop-filter:blur(4px);}
+.gb-main{display:flex;gap:14px;flex:1;min-height:0;}
 
-.gb-grid-lbl{font-size:11px;font-weight:600;color:var(--grey-4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;flex-shrink:0;}
-.gb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;min-height:0;}
-.gb-card{
-  border-radius:12px;overflow:hidden;cursor:pointer;
-  border:2px solid transparent;background:#fff;
-  box-shadow:var(--sh-card);
-  transition:border-color .2s,box-shadow .2s;
-  display:flex;flex-direction:column;min-height:150px;
+/* Left column — AI Tailor Made */
+.gb-ai-col{width:272px;flex-shrink:0;display:flex;flex-direction:column;}
+.gb-ai-lbl{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.04em;margin-bottom:7px;}
+.gb-ai-card{
+  flex:1;border-radius:16px;overflow:hidden;cursor:pointer;
+  border:2px solid rgba(47,93,255,.22);
+  position:relative;transition:border-color .2s,box-shadow .2s;
+  box-shadow:0 1px 6px rgba(47,93,255,.08);
 }
-.gb-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
-.gb-card-thumb{flex:1;position:relative;overflow:hidden;}
-.gb-card-lbl{padding:8px 10px;font-size:11px;font-weight:600;color:var(--grey-3);border-top:1px solid var(--grey-7);background:#fff;flex-shrink:0;}
-/* Skeleton for Concept B loader — reuses .sk-card shimmer */
-.gb-hero-sk{
-  width:100%;height:200px;border-radius:16px;flex-shrink:0;
-  margin-bottom:12px;border:1px solid var(--grey-6);
-  background:linear-gradient(145deg,#f0f2ff 0%,#eeeeff 50%,#f0eeff 100%);
+.gb-ai-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.16);}
+.gb-ai-card-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(155deg,#E2F0EA 0%,#EBF0F8 35%,#EDE8F8 65%,#F8EAF5 100%);
+}
+.gb-ai-card-glass{
+  position:absolute;inset:0;
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(14px);
+}
+.gb-ai-card-inner{
+  position:relative;z-index:1;height:100%;
+  display:flex;flex-direction:column;padding:20px 18px;
+}
+.gb-ai-body{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;gap:16px;padding:0 8px;
+}
+.gb-ai-text{
+  font-size:15px;line-height:1.55;color:var(--blue);
+  font-weight:400;
+}
+.gb-ai-cursor{font-size:26px;opacity:.7;}
+
+/* Right column — templates */
+.gb-tpl-col{flex:1;display:flex;flex-direction:column;min-width:0;}
+.gb-tpl-hdr{margin-bottom:10px;flex-shrink:0;}
+.gb-tpl-hdr-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:3px;}
+.gb-tpl-hdr-sub{font-size:12px;color:var(--grey-4);line-height:1.4;}
+.gb-tpl-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px;flex:1;min-height:0;
+  overflow-y:auto;
+}
+.gb-tpl-card{
+  border-radius:10px;overflow:hidden;cursor:pointer;
+  border:1.5px solid var(--grey-6);background:#fff;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  transition:border-color .18s,box-shadow .18s;
+  display:flex;flex-direction:column;
+}
+.gb-tpl-card:hover{border-color:var(--blue);box-shadow:0 3px 16px rgba(47,93,255,.14);}
+.gb-tpl-thumb{height:140px;flex-shrink:0;overflow:hidden;position:relative;}
+.gb-tpl-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:7px 10px;background:#fff;flex-shrink:0;
+}
+.gb-tpl-name{font-size:12px;font-weight:500;color:var(--grey-2);}
+.gb-harmony-badge{
+  background:#C8F080;color:#1A4A00;
+  font-size:9px;font-weight:700;padding:2px 6px;
+  border-radius:4px;letter-spacing:.02em;white-space:nowrap;
+}
+
+/* Skeleton states */
+.gb-sk-ai{
+  flex:1;border-radius:16px;border:1px solid var(--grey-6);
+  background:linear-gradient(155deg,#f0f5f2 0%,#eef0f8 50%,#f0eef8 100%);
   position:relative;overflow:hidden;
 }
-.gb-hero-sk::after{
+.gb-sk-ai::after,.gb-tpl-sk::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.7) 40%,rgba(210,225,255,.4) 50%,transparent 65%);
-  background-size:200% 100%;animation:sk-sweep 2s ease-in-out infinite;
+  background-size:200% 100%;animation:sk-sweep 2.1s ease-in-out infinite;
 }
-.gb-card-sk{
-  border-radius:12px;overflow:hidden;min-height:150px;
-  border:1px solid var(--grey-6);
-  background:linear-gradient(180deg,#fff 0%,#f4f6ff 50%,#eef4f2 100%);
-  position:relative;overflow:hidden;
+.gb-tpl-sk{
+  border-radius:10px;border:1px solid var(--grey-6);
+  background:linear-gradient(180deg,#fff 0%,#f4f6ff 55%,#eef4f2 100%);
+  position:relative;overflow:hidden;min-height:170px;
 }
-.gb-card-sk::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.7) 40%,rgba(210,225,255,.4) 50%,transparent 65%);
-  background-size:200% 100%;animation:sk-sweep 2.2s ease-in-out infinite;
-}
-/* Template thumb colors for gb-grid */
-.gb-t1{background:linear-gradient(160deg,#C8956A,#A8704A 50%,#8A5530);}
-.gb-t2{background:linear-gradient(155deg,#1A1A1A,#0D0D0D 60%);}
-.gb-t3{background:linear-gradient(160deg,#D4C4B0,#B0A090 50%,#907860);}
-.gb-t4{background:linear-gradient(155deg,#4A7A5A,#2A5A3A 60%);}
-.gb-t5{background:linear-gradient(160deg,#E8E0D5,#C8B8A5 50%,#A89880);}
-.gb-t6{background:linear-gradient(155deg,#2A3A5A,#1A2A4A 60%);}
+
+/* Mini website mockups for template thumbs */
+.gt-conf{background:#08121E;}
+.gt-conf-nav{height:16px;background:#0D1A2E;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 8px;gap:4px;}
+.gt-conf-logo{font-size:6px;font-weight:800;color:#3EDA78;letter-spacing:.05em;}
+.gt-conf-hero{padding:10px 8px;color:#fff;}
+.gt-conf-eyebrow{font-size:5px;color:rgba(255,255,255,.4);margin-bottom:3px;}
+.gt-conf-h{font-size:15px;font-weight:800;line-height:1.1;color:#fff;letter-spacing:-.3px;}
+.gt-conf-date{font-size:5px;color:rgba(255,255,255,.4);margin-top:4px;}
+.gt-conf-bar{width:36px;height:3px;background:linear-gradient(90deg,#3EDA78,#A8FFD0);border-radius:2px;margin-top:8px;}
+
+.gt-sleek{background:#0B0E2A;position:relative;overflow:hidden;}
+.gt-sleek-orb1{position:absolute;top:20px;right:16px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#5B6BE8,#2A3ACF 60%,#1A2A9F);opacity:.85;}
+.gt-sleek-orb2{position:absolute;top:35px;right:36px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#7BA0FF,#4060D8 60%);opacity:.6;}
+.gt-sleek-nav{height:16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 8px;}
+.gt-sleek-logo{font-size:7px;font-weight:700;color:#fff;letter-spacing:.02em;}
+.gt-sleek-hero{padding:12px 8px;}
+.gt-sleek-tag{font-size:5px;color:#7BA0FF;margin-bottom:4px;font-weight:600;}
+.gt-sleek-h{font-size:12px;font-weight:800;color:#fff;line-height:1.2;max-width:70px;}
+
+.gt-ai{background:#FFF8F4;position:relative;}
+.gt-ai-blob1{position:absolute;top:10px;right:8px;width:65px;height:55px;border-radius:50% 30% 40% 60%;background:linear-gradient(135deg,#FF8C6A,#FF6B35);opacity:.7;transform:rotate(20deg);}
+.gt-ai-blob2{position:absolute;top:28px;right:28px;width:40px;height:42px;border-radius:40% 60% 50% 40%;background:linear-gradient(135deg,#FFB380,#FF8A55);opacity:.5;transform:rotate(-15deg);}
+.gt-ai-blob3{position:absolute;top:15px;right:50px;width:28px;height:28px;border-radius:50%;background:#FFCBA8;opacity:.6;}
+.gt-ai-nav{height:16px;background:#fff;border-bottom:1px solid #F0EAE4;display:flex;align-items:center;padding:0 8px;}
+.gt-ai-logo{font-size:7px;font-weight:700;color:#1A1A2E;}
+.gt-ai-hero{padding:10px 8px;position:relative;}
+.gt-ai-tag{font-size:5px;color:#FF6B35;font-weight:700;margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase;}
+.gt-ai-h{font-size:11px;font-weight:800;color:#1A1A2E;line-height:1.25;max-width:80px;}
+
+.gt-web{background:#1A4A2E;position:relative;}
+.gt-web-nav{height:16px;background:#0F3020;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;padding:0 8px;}
+.gt-web-logo{font-size:7px;font-weight:700;color:#fff;}
+.gt-web-hero{padding:12px 8px;color:#fff;}
+.gt-web-tag{font-size:5px;color:#A8F0C0;font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;}
+.gt-web-h{font-size:13px;font-weight:800;color:#fff;line-height:1.2;max-width:90px;}
+.gt-web-cta{margin-top:8px;display:inline-block;background:#3EDA78;color:#0A2A18;font-size:6px;font-weight:700;padding:3px 8px;border-radius:3px;}
+
+.gt-saas{background:linear-gradient(145deg,#1E1E3A,#0F1228);position:relative;overflow:hidden;}
+.gt-saas-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(100,120,255,.12) 1px,transparent 1px);background-size:14px 14px;}
+.gt-saas-card1{position:absolute;top:22px;left:8px;width:60px;height:32px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:5px;}
+.gt-saas-card2{position:absolute;top:38px;right:8px;width:50px;height:26px;background:rgba(100,120,255,.12);border:1px solid rgba(100,120,255,.2);border-radius:5px;}
+.gt-saas-nav{height:16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 8px;}
+.gt-saas-logo{font-size:6px;font-weight:800;color:#fff;letter-spacing:.05em;}
+.gt-saas-hero{padding:8px 8px;position:relative;}
+.gt-saas-h{font-size:10px;font-weight:800;color:#fff;line-height:1.2;max-width:80px;}
+.gt-saas-sub{font-size:5px;color:rgba(255,255,255,.4);margin-top:3px;}
+
+.gt-events{background:#1A0A06;position:relative;overflow:hidden;}
+.gt-events-img1{position:absolute;top:16px;right:0;width:72px;height:100px;background:linear-gradient(160deg,#8B5A3A,#5A3020);border-radius:6px 0 0 6px;overflow:hidden;}
+.gt-events-img1::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,10,6,.6));}
+.gt-events-img2{position:absolute;bottom:8px;right:10px;width:44px;height:36px;background:linear-gradient(160deg,#C8906A,#A06040);border-radius:4px;}
+.gt-events-nav{height:16px;background:#100604;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 8px;}
+.gt-events-logo{font-size:6px;font-weight:800;color:#E8B090;letter-spacing:.03em;}
+.gt-events-hero{padding:8px 8px;position:relative;}
+.gt-events-tag{font-size:5px;color:#C87040;font-weight:600;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em;}
+.gt-events-h{font-size:11px;font-weight:800;color:#F5E8E0;line-height:1.25;max-width:80px;}
 </style>
 </head>
 <body>
@@ -1276,23 +1347,33 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
-<!-- ══ CONCEPT B LOADER — GALLERY SKELETON ══ -->
+<!-- ══ CONCEPT B LOADER — SKELETON ══ -->
 <div class="screen" id="sBloader" style="padding-top:46px;">
   <div class="ed-body">
     <div class="ed-canvas" style="position:relative;">
       <div class="gb-wrap">
-        <div class="gb-top">
-          <div class="gb-title">Finding the best designs for Clay and Calm…</div>
-        </div>
-        <div class="gb-hero-sk"></div>
-        <div class="gb-grid-lbl">Template options</div>
-        <div class="gb-grid">
-          <div class="gb-card-sk"></div>
-          <div class="gb-card-sk"></div>
-          <div class="gb-card-sk"></div>
-          <div class="gb-card-sk"></div>
-          <div class="gb-card-sk"></div>
-          <div class="gb-card-sk"></div>
+        <div class="gb-page-title">Choose the design you'd like to generate your full site from</div>
+        <div class="gb-main">
+          <!-- Left: AI col skeleton -->
+          <div class="gb-ai-col">
+            <div style="height:18px;width:90px;border-radius:5px;background:var(--grey-6);margin-bottom:7px;"></div>
+            <div class="gb-sk-ai"></div>
+          </div>
+          <!-- Right: template grid skeleton -->
+          <div class="gb-tpl-col">
+            <div class="gb-tpl-hdr" style="opacity:.4;">
+              <div style="height:14px;width:200px;border-radius:5px;background:var(--grey-6);margin-bottom:6px;"></div>
+              <div style="height:10px;width:300px;border-radius:4px;background:var(--grey-6);"></div>
+            </div>
+            <div class="gb-tpl-grid">
+              <div class="gb-tpl-sk"></div>
+              <div class="gb-tpl-sk"></div>
+              <div class="gb-tpl-sk"></div>
+              <div class="gb-tpl-sk"></div>
+              <div class="gb-tpl-sk"></div>
+              <div class="gb-tpl-sk"></div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="dots-wizard" id="dots-sBloader"></div>
@@ -1312,55 +1393,138 @@ textarea,input{font-family:inherit;}
   <div class="ed-body">
     <div class="ed-canvas" style="position:relative;">
       <div class="gb-wrap">
-        <div class="gb-top">
-          <div class="gb-title">Choose your design direction</div>
-          <div class="gb-count">7 options for Clay and Calm</div>
-        </div>
-        <!-- Hero: AI Tailor Made -->
-        <div class="gb-hero" onclick="goTo('s5')">
-          <div class="gb-hero-glow"></div>
-          <div class="gb-hero-left">
-            <div class="gb-hero-label"><div class="gb-hero-label-dot"></div>AI Tailor Made</div>
-            <div class="gb-hero-title">A site built around<br>Clay and Calm's identity</div>
-            <div class="gb-hero-desc">Aria will design every section — colors, fonts, layout — tailored to your ceramics studio's unique character.</div>
-            <button class="gb-hero-btn" onclick="event.stopPropagation();goTo('s5')">Generate with Aria →</button>
-          </div>
-          <div class="gb-hero-right">
-            <div class="gb-orb-ring">
-              <div class="gb-orb"><div class="gb-orb-eyes"><div class="gb-orb-eye"></div><div class="gb-orb-eye"></div></div></div>
+        <div class="gb-page-title">Choose the design you'd like to generate your full site from</div>
+        <div class="gb-main">
+
+          <!-- Left: AI Tailor Made -->
+          <div class="gb-ai-col">
+            <div class="gb-ai-lbl">AI Tailor Made</div>
+            <div class="gb-ai-card" onclick="goTo('s5')">
+              <div class="gb-ai-card-bg"></div>
+              <div class="gb-ai-card-glass"></div>
+              <div class="gb-ai-card-inner">
+                <div class="gb-ai-body">
+                  <div class="gb-ai-text">Let's build together<br>a custom made site<br>that fits your intent<br>properly</div>
+                  <div class="gb-ai-cursor">☛</div>
+                </div>
+              </div>
             </div>
-            <div class="gb-hero-chip">Crafting your brand…</div>
-            <div class="gb-hero-chip" style="opacity:.6;">Earthy palette selected</div>
           </div>
-        </div>
-        <!-- 6 template cards -->
-        <div class="gb-grid-lbl">Or choose a template</div>
-        <div class="gb-grid">
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t1"></div>
-            <div class="gb-card-lbl">Warm Studio</div>
-          </div>
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t2"></div>
-            <div class="gb-card-lbl">Monochrome</div>
-          </div>
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t3"></div>
-            <div class="gb-card-lbl">Natural Linen</div>
-          </div>
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t4"></div>
-            <div class="gb-card-lbl">Forest Green</div>
-          </div>
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t5"></div>
-            <div class="gb-card-lbl">Soft Clay</div>
-          </div>
-          <div class="gb-card" onclick="goTo('s5')">
-            <div class="gb-card-thumb gb-t6"></div>
-            <div class="gb-card-lbl">Deep Indigo</div>
-          </div>
-        </div>
+
+          <!-- Right: template grid -->
+          <div class="gb-tpl-col">
+            <div class="gb-tpl-hdr">
+              <div class="gb-tpl-hdr-title">Start from a recommended template</div>
+              <div class="gb-tpl-hdr-sub">Choose from pre-designed templates tailored to your site's unique vision.</div>
+            </div>
+            <div class="gb-tpl-grid">
+
+              <!-- Card 1: Conference (Sleek) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-conf">
+                  <div class="gt-conf-nav"><span class="gt-conf-logo">VEXTA</span></div>
+                  <div class="gt-conf-hero">
+                    <div class="gt-conf-eyebrow">Global AI · Oct 20, 2025</div>
+                    <div class="gt-conf-h">Global AI<br>Conference</div>
+                    <div class="gt-conf-bar"></div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">Conference (Sleek)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+              <!-- Card 2: Design Conference (Sleek) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-sleek">
+                  <div class="gt-sleek-orb1"></div>
+                  <div class="gt-sleek-orb2"></div>
+                  <div class="gt-sleek-nav"><span class="gt-sleek-logo">Atelier</span></div>
+                  <div class="gt-sleek-hero">
+                    <div class="gt-sleek-tag">Design &amp; Innovation</div>
+                    <div class="gt-sleek-h">Sculpting<br>Tomorrow's<br>Reality</div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">Design Conference (Sleek)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+              <!-- Card 3: AI Company (Detailed) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-ai">
+                  <div class="gt-ai-blob1"></div>
+                  <div class="gt-ai-blob2"></div>
+                  <div class="gt-ai-blob3"></div>
+                  <div class="gt-ai-nav"><span class="gt-ai-logo">Aster</span></div>
+                  <div class="gt-ai-hero">
+                    <div class="gt-ai-tag">AI Company</div>
+                    <div class="gt-ai-h">Controlled<br>language,<br>powered by AI</div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">AI Company (Detailed)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+              <!-- Card 4: Webinar (Green) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-web">
+                  <div class="gt-web-nav"><span class="gt-web-logo">Fulment</span></div>
+                  <div class="gt-web-hero">
+                    <div class="gt-web-tag">Webinar Series</div>
+                    <div class="gt-web-h">Accelerating<br>Climate<br>Change</div>
+                    <div class="gt-web-cta">Register now →</div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">Webinar (Green)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+              <!-- Card 5: SAAS (Innovative) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-saas">
+                  <div class="gt-saas-dots"></div>
+                  <div class="gt-saas-card1"></div>
+                  <div class="gt-saas-card2"></div>
+                  <div class="gt-saas-nav"><span class="gt-saas-logo">FLOWIX</span></div>
+                  <div class="gt-saas-hero">
+                    <div class="gt-saas-h">The Future of<br>Workflow is Here</div>
+                    <div class="gt-saas-sub">Automate. Scale. Ship.</div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">SAAS Company (Innovative)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+              <!-- Card 6: Events (Vibrant) -->
+              <div class="gb-tpl-card" onclick="goTo('s5')">
+                <div class="gb-tpl-thumb gt-events">
+                  <div class="gt-events-img1"></div>
+                  <div class="gt-events-img2"></div>
+                  <div class="gt-events-nav"><span class="gt-events-logo">V&amp;R</span></div>
+                  <div class="gt-events-hero">
+                    <div class="gt-events-tag">Events &amp; Production</div>
+                    <div class="gt-events-h">Crafting<br>Unforgettable<br>Atmospheres</div>
+                  </div>
+                </div>
+                <div class="gb-tpl-meta">
+                  <span class="gb-tpl-name">Events Production (Vibrant)</span>
+                  <span class="gb-harmony-badge">WIX Harmony</span>
+                </div>
+              </div>
+
+            </div><!-- /gb-tpl-grid -->
+          </div><!-- /gb-tpl-col -->
+
+        </div><!-- /gb-main -->
       </div>
       <div class="dots-wizard" id="dots-sB"></div>
     </div>
@@ -1368,7 +1532,20 @@ textarea,input{font-family:inherit;}
       <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
       <div class="ap-msgs">
         <div class="msg-u">Hand-thrown ceramics &amp; pottery classes</div>
-        <div class="msg-a">Here are your design options for Clay and Calm. The top card is fully AI-tailored to your brand — or pick any template to start from.</div>
+        <div class="msg-a">Great — here are 3 options to start with pre-generated templates or tailor made AI we will do together.</div>
+      </div>
+      <div class="q-card">
+        <button class="q-close" onclick="goTo('s5')">×</button>
+        <div class="q-hdr"><div class="q-title">Choose the design you'd like</div></div>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="sBq"><div class="q-opt-lbl">Monochrome studio</div></label>
+          <label class="q-opt"><input type="radio" name="sBq"><div class="q-opt-lbl">Warm studio</div></label>
+          <label class="q-opt"><input type="radio" name="sBq"><div class="q-opt-lbl">AI Tailor Made</div></label>
+        </div>
+        <div class="q-footer">
+          <button class="q-skipgen" onclick="goTo('s5')">Skip &amp; Generate</button>
+          <button class="q-next" onclick="goTo('s5')">Next</button>
+        </div>
       </div>
     </div>
   </div>
