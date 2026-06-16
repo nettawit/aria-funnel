@@ -1291,7 +1291,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
 
   const footnote = (
     <div style={{ background: '#f8f6f6', borderTop: '1px solid #e8e8e8', borderRadius: '0 0 12px 12px', padding: '16px 24px' }}>
-      <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>Only use URLs where you have rights to the content</span>
+      <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>Only use URLs for sites you own or have permission to use</span>
     </div>
   );
 
@@ -1308,7 +1308,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
         onFocus={() => setInputFocused(true)}
         onBlur={() => setInputFocused(false)}
         onKeyDown={(e) => { if (e.key === 'Enter' && !isBusy) scan(); }}
-        placeholder="www.yoursite.com"
+        placeholder="Paste a URL"
         style={{ flex: 1, height: '100%', border: 0, background: 'transparent', fontSize: 14, color: '#151414', outline: 'none', fontFamily: 'inherit', padding: '0 4px 0 0' }}
       />
       {url && !isBusy && (
@@ -1324,8 +1324,14 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
   /* ── Step 1: URL entry + scanning ── */
   if (phase !== 'results') return <Overlay><div onClick={(e) => e.stopPropagation()} style={modalShell}>
     {modalHdr}
-    <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {urlField}
+    <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {/* Input + Continue inline row */}
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div style={{ flex: 1 }}>{urlField}</div>
+        <button onClick={scan} disabled={isBusy} className="hbtn" style={{ height: 38, padding: '0 18px', background: isBusy ? '#b0c4ff' : '#2f5dff', color: '#fff', border: 0, borderRadius: 8, fontSize: 14, fontWeight: 600, cursor: isBusy ? 'default' : 'pointer', fontFamily: 'inherit', transition: 'background 120ms', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          {isBusy ? 'Scanning…' : 'Continue'}
+        </button>
+      </div>
       {isBusy && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ width: '100%', height: 3, background: '#EEEEF6', borderRadius: 3, overflow: 'hidden' }}>
@@ -1340,11 +1346,6 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
           <span style={{ fontSize: 12, color: '#D32F2F', lineHeight: '16px' }}>{ERR[error]}</span>
         </div>
       )}
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <button onClick={scan} disabled={isBusy} className="hbtn" style={{ height: 30, padding: '0 16px', background: isBusy ? '#b0c4ff' : '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: isBusy ? 'default' : 'pointer', fontFamily: 'inherit', transition: 'background 120ms' }}>
-          {isBusy ? 'Scanning…' : 'Continue'}
-        </button>
-      </div>
     </div>
     {footnote}
   </div></Overlay>;
@@ -1639,8 +1640,16 @@ const FG_ASSETS = {
 
 const DEV_PRESETS = [
   { label: 'Regular site', host: 'example.com' },
-  { label: 'mystore.s', host: 'mystore.shopify.com', badge: 'Shopify', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
-  { label: 'store.woo', host: 'store.woocommerce.com', badge: 'WooCommerce', badgeColor: '#7B3FC4', badgeBg: '#F3EEFF' },
+  { label: 'Shopify store', host: 'mystore.myshopify.com', badge: 'Shopify', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
+  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'WooCommerce', badgeColor: '#7B3FC4', badgeBg: '#F3EEFF' },
+];
+
+const ERR_PRESETS = [
+  { label: 'Wix site', host: 'mysite.wixsite.com' },
+  { label: 'Social media', host: 'instagram.com/mybrand' },
+  { label: 'File URL', host: 'example.com/brochure.pdf' },
+  { label: 'Private / localhost', host: 'localhost:3000' },
+  { label: 'Bad format', host: 'not a url!!' },
 ];
 
 function FigmaEntryScreen({ onGenerate }) {
@@ -1753,8 +1762,8 @@ function FigmaEntryScreen({ onGenerate }) {
                     Create from URL
                   </button>
                   {hovUrl && (
-                    <div style={{ position: 'absolute', bottom: 'calc(100% + 10px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
-                      <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
+                    <div style={{ position: 'absolute', top: 'calc(100% + 8px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
+                      <div style={{ position: 'absolute', top: -6, left: 18, width: 12, height: 12, background: '#ECF0F3', transform: 'rotate(45deg)', boxShadow: '-2px -2px 4px rgba(0,0,0,0.04)', zIndex: 1 }} />
                       <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
                         <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
                           {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
@@ -1822,12 +1831,18 @@ function FigmaEntryScreen({ onGenerate }) {
       {/* ── Floating dev tweaks panel ── */}
       <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9000, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
         {tweaksOpen && (
-          <div style={{ background: '#1E1E2E', borderRadius: 12, padding: '14px 16px', width: 220, boxShadow: '0 8px 32px rgba(0,0,0,0.30)', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Dev — Simulate URL scan</div>
+          <div style={{ background: '#1E1E2E', borderRadius: 12, padding: '14px 16px', width: 230, boxShadow: '0 8px 32px rgba(0,0,0,0.30)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Valid sites → results</div>
             {DEV_PRESETS.map(({ label, host, badge, badgeColor, badgeBg }) => (
-              <button key={host} onClick={() => { setImportPreset({ host }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#32324D', color: '#fff', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <button key={host} onClick={() => { setImportPreset({ host, phase: 'results' }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#32324D', color: '#fff', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
                 {label}
                 {badge && <span style={{ background: badgeBg, borderRadius: 6, padding: '1px 5px', fontSize: 9, fontWeight: 700, color: badgeColor }}>{badge}</span>}
+              </button>
+            ))}
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 4 }}>Edge cases → errors</div>
+            {ERR_PRESETS.map(({ label, host }) => (
+              <button key={host} onClick={() => { setImportPreset({ host, phase: 'url' }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#4D2020', color: '#FFB3B3', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
+                ⛔ {label}
               </button>
             ))}
           </div>
@@ -1841,7 +1856,7 @@ function FigmaEntryScreen({ onGenerate }) {
       {showImport && (
         <ImportFlow
           initialUrl={importPreset ? importPreset.host : ''}
-          initialPhase={importPreset ? 'results' : 'url'}
+          initialPhase={importPreset ? (importPreset.phase || 'results') : 'url'}
           onClose={() => { setShowImport(false); setImportPreset(null); }}
           onImport={(site) => { setImportedSite(site); setShowImport(false); setImportPreset(null); }}
         />
@@ -2010,12 +2025,18 @@ function HarmonyV11Screen({ onGenerate }) {
       {/* ── Floating dev tweaks panel ── */}
       <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9000, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
         {tweaksOpen && (
-          <div style={{ background: '#1E1E2E', borderRadius: 12, padding: '14px 16px', width: 220, boxShadow: '0 8px 32px rgba(0,0,0,0.30)', display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Dev — Simulate URL scan</div>
+          <div style={{ background: '#1E1E2E', borderRadius: 12, padding: '14px 16px', width: 230, boxShadow: '0 8px 32px rgba(0,0,0,0.30)', display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Valid sites → results</div>
             {DEV_PRESETS.map(({ label, host, badge, badgeColor, badgeBg }) => (
-              <button key={host} onClick={() => { setImportPreset({ host }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#32324D', color: '#fff', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <button key={host} onClick={() => { setImportPreset({ host, phase: 'results' }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#32324D', color: '#fff', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
                 {label}
                 {badge && <span style={{ background: badgeBg, borderRadius: 6, padding: '1px 5px', fontSize: 9, fontWeight: 700, color: badgeColor }}>{badge}</span>}
+              </button>
+            ))}
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#9090A8', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: 4 }}>Edge cases → errors</div>
+            {ERR_PRESETS.map(({ label, host }) => (
+              <button key={host} onClick={() => { setImportPreset({ host, phase: 'url' }); setShowImport(true); setTweaksOpen(false); }} style={{ textAlign: 'left', height: 30, padding: '0 10px', border: 0, borderRadius: 6, fontSize: 11, fontWeight: 500, cursor: 'pointer', background: '#4D2020', color: '#FFB3B3', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 6 }}>
+                ⛔ {label}
               </button>
             ))}
           </div>
@@ -2029,7 +2050,7 @@ function HarmonyV11Screen({ onGenerate }) {
       {showImport && (
         <ImportFlow
           initialUrl={importPreset ? importPreset.host : ''}
-          initialPhase={importPreset ? 'results' : 'url'}
+          initialPhase={importPreset ? (importPreset.phase || 'results') : 'url'}
           onClose={() => { setShowImport(false); setImportPreset(null); }}
           onImport={(site) => { setImportedSite(site); setShowImport(false); setImportPreset(null); }}
         />
