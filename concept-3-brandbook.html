@@ -241,7 +241,7 @@ textarea,input{font-family:inherit;}
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
   opacity:0;transition:opacity .2s;pointer-events:none;z-index:20;
 }
-.tpl-card:hover .tpl-hover-ov{opacity:1;pointer-events:all;}
+.tpl-card:hover .tpl-hover-ov,.gb-ai-card:hover .tpl-hover-ov{opacity:1;pointer-events:all;}
 .tpl-hbtn{
   width:200px;height:42px;
   border:none;border-radius:var(--rad-btn);
@@ -648,7 +648,7 @@ textarea,input{font-family:inherit;}
 .gb-main{display:flex;gap:14px;flex:1;min-height:0;}
 
 /* Left column — AI Tailor Made */
-.gb-ai-col{width:272px;flex-shrink:0;display:flex;flex-direction:column;}
+.gb-ai-col{flex:1;min-width:0;display:flex;flex-direction:column;}
 .gb-ai-lbl{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.04em;margin-bottom:7px;}
 .gb-ai-card{
   flex:1;border-radius:16px;overflow:hidden;cursor:pointer;
@@ -682,7 +682,7 @@ textarea,input{font-family:inherit;}
 .gb-ai-cursor{font-size:26px;opacity:.7;}
 
 /* Right column — templates */
-.gb-tpl-col{flex:1;display:flex;flex-direction:column;min-width:0;}
+.gb-tpl-col{flex:2;display:flex;flex-direction:column;min-width:0;}
 .gb-tpl-hdr{margin-bottom:10px;flex-shrink:0;}
 .gb-tpl-hdr-title{font-size:14px;font-weight:600;color:var(--grey-1);margin-bottom:3px;}
 .gb-tpl-hdr-sub{font-size:12px;color:var(--grey-4);line-height:1.4;}
@@ -1632,6 +1632,10 @@ textarea,input{font-family:inherit;}
                   <div class="gb-ai-text">Let's build together<br>a custom made site<br>that fits your intent<br>properly</div>
                   <div class="gb-ai-cursor">☛</div>
                 </div>
+              </div>
+              <div class="tpl-hover-ov">
+                <button class="tpl-hbtn tpl-hbtn-primary" onclick="event.stopPropagation();goTo('s5')">Generate design</button>
+                <button class="tpl-hbtn tpl-hbtn-secondary" onclick="event.stopPropagation()">View design</button>
               </div>
             </div>
           </div>
