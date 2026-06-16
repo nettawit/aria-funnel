@@ -1280,7 +1280,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 2 }}>
         <div style={{ width: 24, height: 24, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#383838" strokeWidth="1.2"/><path d="M9 5.5v4.5" stroke="#383838" strokeWidth="1.4" strokeLinecap="round"/><circle cx="9" cy="12.5" r=".9" fill="#383838"/></svg>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#383838" strokeWidth="1.2"/><circle cx="9" cy="5.5" r=".9" fill="#383838"/><path d="M9 8v5" stroke="#383838" strokeWidth="1.4" strokeLinecap="round"/></svg>
         </div>
         <button onClick={onClose} style={{ width: 24, height: 24, borderRadius: '50%', border: 0, background: '#f0efef', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><path d="M1 1l6 6M7 1L1 7" stroke="#151414" strokeWidth="1.5" strokeLinecap="round"/></svg>
@@ -1324,7 +1324,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
   /* ── Step 1: URL entry + scanning ── */
   if (phase !== 'results') return <Overlay><div onClick={(e) => e.stopPropagation()} style={modalShell}>
     {modalHdr}
-    <div style={{ padding: '0 24px 16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <div style={{ padding: '0 24px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
       {urlField}
       {isBusy && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -1340,12 +1340,11 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
           <span style={{ fontSize: 12, color: '#D32F2F', lineHeight: '16px' }}>{ERR[error]}</span>
         </div>
       )}
-    </div>
-    {/* footer with Continue CTA */}
-    <div style={{ padding: '0 24px 24px', display: 'flex', justifyContent: 'flex-end' }}>
-      <button onClick={scan} disabled={isBusy} className="hbtn" style={{ height: 30, padding: '0 16px', background: isBusy ? '#b0c4ff' : '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: isBusy ? 'default' : 'pointer', fontFamily: 'inherit', transition: 'background 120ms' }}>
-        {isBusy ? 'Scanning…' : 'Continue'}
-      </button>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button onClick={scan} disabled={isBusy} className="hbtn" style={{ height: 30, padding: '0 16px', background: isBusy ? '#b0c4ff' : '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: isBusy ? 'default' : 'pointer', fontFamily: 'inherit', transition: 'background 120ms' }}>
+          {isBusy ? 'Scanning…' : 'Continue'}
+        </button>
+      </div>
     </div>
     {footnote}
   </div></Overlay>;
@@ -1664,11 +1663,21 @@ function FigmaEntryScreen({ onGenerate }) {
   return (
     <div style={{ width: '100%', minHeight: '100vh', background: 'linear-gradient(169deg, #F6F6F6 8.4%, #F0F0F0 61.3%)', fontFamily: '"Wix Madefor Text", sans-serif', overflowX: 'hidden' }}>
 
+      {/* ── Floating prototype nav (separate layer) ── */}
+      <div style={{ position: 'fixed', top: 12, left: 12, zIndex: 10000, display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(30,30,46,0.82)', backdropFilter: 'blur(8px)', borderRadius: 20, padding: '5px 12px 5px 8px', boxShadow: '0 2px 12px rgba(0,0,0,0.18)' }}>
+        <button onClick={() => { window.location.href = 'lobby.html'; }} style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'none', border: 0, cursor: 'pointer', fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.85)', fontFamily: 'inherit', padding: 0 }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Lobby
+        </button>
+        <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.2)' }} />
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontFamily: 'inherit' }}>V0.5</span>
+      </div>
+
       {/* ── Page nav ── */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '24px 24px' }}>
-        <button onClick={() => { window.location.href = 'lobby.html'; }} className="hbtn hbtn-ghost" style={{ ...hBtnGhost('small'), color: '#000624', gap: 6 }}>
+        <button className="hbtn hbtn-ghost" style={{ ...hBtnGhost('small'), color: '#000624', gap: 6 }}>
           <HIc name="arrow-left" size={18} color="#000624" />
-          Back to lobby
+          Back
         </button>
         <button className="hbtn hbtn-ghost" style={{ ...hBtnGhost('small'), color: '#000624', gap: 6 }}>
           Continue with setup for now
@@ -1735,37 +1744,30 @@ function FigmaEntryScreen({ onGenerate }) {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               {/* Create from URL — Default state only (chip is now above) */}
               {!importedSite && (
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <div style={{ position: 'relative', display: 'inline-flex' }}
-                    onMouseEnter={() => setHovUrl(true)}
-                    onMouseLeave={() => setHovUrl(false)}
-                  >
-                    <button onClick={() => setShowImport(true)} className="hbtn" style={{ ...hBtn('small'), borderRadius: 24, gap: 6, background: hovUrl ? 'rgba(19,23,32,0.03)' : 'transparent', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', color: '#32324D', transition: 'background 150ms, border-color 150ms' }}>
-                      <HIc name="globe" size={14} color="#32324D" />
-                      Create from URL
-                    </button>
-                    {hovUrl && (
-                      <div style={{ position: 'absolute', bottom: 'calc(100% + 10px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
-                        <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
-                        {/* Image grid — clipped, rotated */}
-                        <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
-                          <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
-                            {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
-                              <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
-                            ))}
-                          </div>
-                        </div>
-                        {/* Text */}
-                        <div style={{ padding: '12px 18px 16px' }}>
-                          <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
-                          <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+                <div style={{ position: 'relative', display: 'inline-flex' }}
+                  onMouseEnter={() => setHovUrl(true)}
+                  onMouseLeave={() => setHovUrl(false)}
+                >
+                  <button onClick={() => setShowImport(true)} className="hbtn" style={{ ...hBtn('small'), borderRadius: 24, gap: 6, background: hovUrl ? 'rgba(19,23,32,0.03)' : 'transparent', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', color: '#32324D', transition: 'background 150ms, border-color 150ms' }}>
+                    <HIc name="globe" size={14} color="#32324D" />
+                    Create from URL
+                  </button>
+                  {hovUrl && (
+                    <div style={{ position: 'absolute', bottom: 'calc(100% + 10px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
+                      <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
+                      <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
+                        <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
+                          {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
+                            <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                          ))}
                         </div>
                       </div>
-                    )}
-                  </div>
-                  <button onClick={() => { setImportPreset({ host: 'mystore.myshopify.com' }); setShowImport(true); }} className="hbtn" style={{ ...hBtn('small'), borderRadius: 24, gap: 5, background: 'transparent', border: '1px solid transparent', color: '#32324D', transition: 'background 150ms, border-color 150ms' }}>
-                    🛍️ Try a Shopify store
-                  </button>
+                      <div style={{ padding: '12px 18px 16px' }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
+                        <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -1873,6 +1875,16 @@ function HarmonyV11Screen({ onGenerate }) {
   return (
     <div style={{ width: '100%', minHeight: '100vh', background: 'radial-gradient(ellipse 90% 55% at 50% 130%, rgba(225,237,255,0.95) 0%, rgba(255,255,255,0) 70%), #f6f6f6', fontFamily: '"Wix Madefor Text", sans-serif', display: 'flex', flexDirection: 'column' }}>
 
+      {/* ── Floating prototype nav (separate layer) ── */}
+      <div style={{ position: 'fixed', top: 12, left: 12, zIndex: 10000, display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(30,30,46,0.82)', backdropFilter: 'blur(8px)', borderRadius: 20, padding: '5px 12px 5px 8px', boxShadow: '0 2px 12px rgba(0,0,0,0.18)' }}>
+        <button onClick={() => { window.location.href = 'lobby.html'; }} style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'none', border: 0, cursor: 'pointer', fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.85)', fontFamily: 'inherit', padding: 0 }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Lobby
+        </button>
+        <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.2)' }} />
+        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontFamily: 'inherit' }}>V1.1</span>
+      </div>
+
       {/* ── Header ── */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72, padding: '0 56px', flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -1883,10 +1895,7 @@ function HarmonyV11Screen({ onGenerate }) {
           {/* Avatar placeholder */}
           <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid #2f5dff', background: '#dde8ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#2f5dff', flexShrink: 0 }}>N</div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <button onClick={() => { window.location.href = 'lobby.html'; }} style={{ background: 'none', border: 0, cursor: 'pointer', fontSize: 13, fontWeight: 500, color: '#888898', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4 }}>← Lobby</button>
-          <button style={{ background: 'none', border: 0, cursor: 'pointer', fontSize: 15, fontWeight: 700, color: '#2f5dff', fontFamily: 'inherit' }}>Upgrade</button>
-        </div>
+        <button style={{ background: 'none', border: 0, cursor: 'pointer', fontSize: 15, fontWeight: 700, color: '#2f5dff', fontFamily: 'inherit' }}>Upgrade</button>
       </div>
 
       {/* ── Main stage ── */}
@@ -1945,35 +1954,30 @@ function HarmonyV11Screen({ onGenerate }) {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 8 }}>
             {/* Create from URL — default state only (chip is above) */}
             {!importedSite && (
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-              <div style={{ position: 'relative', display: 'inline-flex' }}
-                onMouseEnter={() => setHovUrl(true)}
-                onMouseLeave={() => setHovUrl(false)}
-              >
-                <button onClick={() => setShowImport(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: hovUrl ? 'rgba(19,23,32,0.03)' : 'none', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', cursor: 'pointer', fontSize: 16, fontWeight: 700, color: '#151414', fontFamily: 'inherit', padding: '8px 12px', borderRadius: 24, transition: 'background 150ms, border-color 150ms' }}>
-                  <HIc name="globe" size={18} color="#151414" />
-                  Create from URL
-                </button>
-                {hovUrl && (
-                  <div style={{ position: 'absolute', bottom: 'calc(100% + 10px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
-                    <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
-                    <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
-                      <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
-                        {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
-                          <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
-                        ))}
-                      </div>
-                    </div>
-                    <div style={{ padding: '12px 18px 16px' }}>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
-                      <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+            <div style={{ position: 'relative', display: 'inline-flex' }}
+              onMouseEnter={() => setHovUrl(true)}
+              onMouseLeave={() => setHovUrl(false)}
+            >
+              <button onClick={() => setShowImport(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: hovUrl ? 'rgba(19,23,32,0.03)' : 'none', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', cursor: 'pointer', fontSize: 16, fontWeight: 700, color: '#151414', fontFamily: 'inherit', padding: '8px 12px', borderRadius: 24, transition: 'background 150ms, border-color 150ms' }}>
+                <HIc name="globe" size={18} color="#151414" />
+                Create from URL
+              </button>
+              {hovUrl && (
+                <div style={{ position: 'absolute', bottom: 'calc(100% + 10px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
+                  <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
+                  <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
+                    <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
+                      {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
+                        <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                      ))}
                     </div>
                   </div>
-                )}
-              </div>
-              <button onClick={() => { setImportPreset({ host: 'mystore.myshopify.com' }); setShowImport(true); }} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'none', border: '1px solid transparent', cursor: 'pointer', fontSize: 16, fontWeight: 700, color: '#151414', fontFamily: 'inherit', padding: '8px 12px', borderRadius: 24, transition: 'background 150ms' }}>
-                🛍️ Try a Shopify store
-              </button>
+                  <div style={{ padding: '12px 18px 16px' }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
+                    <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+                  </div>
+                </div>
+              )}
             </div>
             )}
 
