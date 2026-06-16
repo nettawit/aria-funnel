@@ -1415,6 +1415,13 @@ function setConcept(c) {
   ['orig','A','B'].forEach(k => {
     document.getElementById('cb-' + k).classList.toggle('active', k === c);
   });
+  // If already past S3, navigate immediately to the concept screen
+  const conceptScreens = ['s4','sA','sB','sBloader'];
+  if (cur >= 3 || conceptScreens.includes(SCREENS[cur])) {
+    if (c === 'orig') goTo('s4');
+    else if (c === 'A') goTo('sA');
+    else if (c === 'B') goTo('sB');
+  }
 }
 
 // Called from S3 — routes to the right next screen
