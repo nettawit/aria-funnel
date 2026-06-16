@@ -32,68 +32,65 @@ textarea,input{font-family:inherit;}
 /* ════════════════════════════════════
    S1 — FULL-SCREEN OPEN PROMPT
 ════════════════════════════════════ */
-#s1{background:#EAEAF5;position:relative;}
+#s1{background:#ECEDF5;position:relative;}
 #s1::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 55% 45% at 30% 65%,rgba(143,163,255,.14) 0%,transparent 70%),
-    radial-gradient(ellipse 45% 40% at 78% 28%,rgba(237,222,242,.13) 0%,transparent 70%);
+    radial-gradient(ellipse 50% 40% at 25% 70%,rgba(143,163,255,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 35% at 80% 20%,rgba(180,160,240,.06) 0%,transparent 70%);
 }
-.s1-body{flex:1;display:flex;flex-direction:column;padding:28px 80px 32px;position:relative;z-index:1;}
 #s1{height:100vh;}
-.s1-wix{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:800;color:#000;letter-spacing:-.2px;margin-bottom:88px;}
-.s1-hl-wrap{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px;}
-.s1-orb-sm{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%,#000);box-shadow:0 1px 8px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;margin-top:4px;}
+.s1-body{flex:1;display:flex;flex-direction:column;padding:0 100px 28px;position:relative;z-index:1;}
+.s1-topbar{height:62px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.s1-logo{font-family:'Wix Madefor Display',sans-serif;font-size:16px;font-weight:800;color:#000;letter-spacing:-.2px;}
+.s1-topbar-right{display:flex;align-items:center;gap:12px;}
+.s1-avatar{width:30px;height:30px;border-radius:50%;overflow:hidden;}
+.s1-avatar img{width:100%;height:100%;object-fit:cover;}
+.s1-upgrade{font-size:14px;font-weight:600;color:var(--blue);background:none;border:none;cursor:pointer;font-family:inherit;}
+.s1-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:80px;}
+.s1-hl-wrap{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
+.s1-orb-sm{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%,#000);box-shadow:0 1px 8px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;margin-top:5px;}
 .s1-orb-sm-eyes{display:flex;gap:5px;}
 .s1-orb-sm-eye{width:5px;height:5px;border-radius:50%;background:#fff;}
 .s1-hl1{font-family:'Wix Madefor Display',sans-serif;font-size:36px;font-weight:700;line-height:1.2;letter-spacing:-0.5px;background:linear-gradient(90deg,#1A1ADE 0%,#4A5CE8 40%,#8FA0F0 75%,#BCC9FA 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.s1-hl2{font-size:24px;font-weight:400;line-height:1.4;letter-spacing:-0.2px;margin-bottom:0;padding-left:44px;background:linear-gradient(90deg,#3848D8 0%,#6070E4 40%,#9AAAF5 75%,#C8D2FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-/* spacer pushes input to start 180px from bottom */
-.s1-spacer{flex:1;min-height:180px;}
-/* Glass input box */
+.s1-hl2{font-size:24px;font-weight:400;line-height:1.4;letter-spacing:-0.2px;margin-bottom:28px;padding-left:44px;color:#1E1E2E;}
+.s1-hl2-hi{background:linear-gradient(90deg,#3848D8,#6A7CF0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:500;}
 .s1-box{
-  background:rgba(255,255,255,.50);
-  -webkit-backdrop-filter:blur(16px);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.68);
-  border-radius:14px;
-  box-shadow:0 4px 24px rgba(0,0,0,.07),0 1px 6px rgba(0,0,0,.04),inset 0 1px 0 rgba(255,255,255,.8);
+  background:#fff;
+  border:1px solid rgba(210,212,230,.85);
+  border-radius:16px;
+  box-shadow:0 2px 16px rgba(0,0,0,.06),0 1px 4px rgba(0,0,0,.04);
   display:flex;flex-direction:column;
-  height:190px;
+  height:260px;
   flex-shrink:0;
 }
-.s1-ta{padding:18px 24px 12px;font-size:17px;font-weight:400;color:var(--grey-1);background:none;border:none;outline:none;resize:none;flex:1;min-height:0;line-height:1.65;caret-color:var(--blue);}
-.s1-ta::placeholder{color:#BABACE;}
-.s1-box-bar{display:flex;align-items:center;padding:10px 14px;border-top:1px solid rgba(220,222,240,.5);gap:2px;}
+.s1-ta{padding:20px 24px 12px;font-size:17px;font-weight:400;color:var(--grey-1);background:none;border:none;outline:none;resize:none;flex:1;min-height:0;line-height:1.65;caret-color:var(--blue);}
+.s1-ta::placeholder{color:#B0B2C8;}
+.s1-box-bar{display:flex;align-items:center;padding:10px 14px;border-top:1px solid #ECEDF5;gap:2px;}
 .s1-box-btn{display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:7px;border:none;background:none;font-size:13px;font-weight:500;color:var(--grey-3);transition:background .15s;white-space:nowrap;}
-.s1-box-btn:hover{background:rgba(255,255,255,.6);}
-.s1-box-sep{width:1px;height:16px;background:rgba(220,222,240,.7);margin:0 2px;flex-shrink:0;}
+.s1-box-btn:hover{background:#F4F4F8;}
+.s1-box-sep{width:1px;height:16px;background:#E4E5EF;margin:0 2px;flex-shrink:0;}
 .s1-gen{margin-left:auto;display:flex;align-items:center;gap:7px;height:38px;padding:0 20px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:14px;font-weight:600;box-shadow:0 1px 3px rgba(47,93,255,.3),0 3px 10px rgba(47,93,255,.2);transition:background .15s;white-space:nowrap;}
 .s1-gen:hover{background:var(--blue-h);}
-/* Business type chips */
-.s1-chips{margin-top:10px;flex-shrink:0;overflow:hidden;}
+.s1-try-lbl{font-size:13px;color:var(--grey-4);margin-top:16px;margin-bottom:10px;flex-shrink:0;}
+.s1-chips{flex-shrink:0;overflow:hidden;}
 .s1-chips-scroll{display:flex;gap:7px;overflow-x:auto;padding-bottom:3px;-ms-overflow-style:none;scrollbar-width:none;}
 .s1-chips-scroll::-webkit-scrollbar{display:none;}
 .s1-chip{
-  display:inline-flex;align-items:center;gap:0;
-  height:32px;padding:0 14px;
-  border-radius:20px;border:1px solid rgba(200,205,240,.7);
-  background:rgba(255,255,255,.52);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
-  font-size:12.5px;color:var(--grey-2);white-space:nowrap;
+  display:inline-flex;align-items:center;
+  height:34px;padding:0 16px;
+  border-radius:20px;border:1px solid rgba(200,205,235,.9);
+  background:#fff;
+  font-size:13px;color:var(--grey-2);font-weight:500;white-space:nowrap;
   cursor:pointer;transition:all .15s;font-family:inherit;
-  box-shadow:0 1px 4px rgba(0,0,0,.05);
 }
-.s1-chip:hover{background:rgba(255,255,255,.82);border-color:rgba(47,93,255,.35);color:var(--blue);}
-.s1-chip-type{font-weight:600;}
-.s1-chip-sep{color:var(--grey-5);margin:0 4px;font-weight:400;}
-.s1-chip-detail{color:var(--grey-4);font-weight:400;}
+.s1-chip:hover{background:#F0F2FF;border-color:rgba(47,93,255,.35);color:var(--blue);}
 .s1-chip-more{
-  background:rgba(47,93,255,.07);
-  border-color:rgba(47,93,255,.22);
-  color:var(--blue);font-weight:600;
+  background:rgba(47,93,255,.06);border-color:rgba(47,93,255,.22);color:var(--blue);font-weight:600;
+  display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 16px;
+  border-radius:20px;font-size:13px;font-family:inherit;cursor:pointer;transition:all .15s;
 }
-.s1-chip-more:hover{background:rgba(47,93,255,.14);}
+.s1-chip-more:hover{background:rgba(47,93,255,.12);}
 
 /* ════════════════════════════════════
    EDITOR CHROME
@@ -794,67 +791,57 @@ textarea,input{font-family:inherit;}
 <!-- ══ S1 — FULL-SCREEN OPEN PROMPT ══ -->
 <div class="screen active" id="s1">
   <div class="s1-body">
-    <div class="s1-wix">WIX</div>
-    <div class="s1-hl-wrap">
-      <div class="s1-orb-sm"><div class="s1-orb-sm-eyes"><div class="s1-orb-sm-eye"></div><div class="s1-orb-sm-eye"></div></div></div>
-      <div class="s1-hl1">Hi! I'm Aria, your friendly <span class="s1-blue">design</span> assistant.</div>
-    </div>
-    <div class="s1-hl2">Tell me your site's name, what kind of business it is, and what makes it unique.</div>
-    <div class="s1-spacer"></div>
-    <div class="s1-box">
-      <textarea class="s1-ta" rows="4">Clay and calm — a ceramics studio in the heart of the city. We offer hand-thrown pottery, small-batch workshops, and a calm space to slow down and make something beautiful.</textarea>
-      <div class="s1-box-bar">
-        <button class="s1-box-btn">
-          <!-- Upload / Add Assets -->
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 10V3"/>
-            <path d="M5 6l3-3 3 3"/>
-            <path d="M2 12h12"/>
-            <path d="M2 12v1.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V12"/>
-          </svg>
-          Add Assets
-        </button>
-        <div class="s1-box-sep"></div>
-        <button class="s1-box-btn">
-          <!-- Image + sparkle / Add design references -->
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1.5" y="3" width="10" height="8" rx="1.5"/>
-            <path d="M1.5 8.5l2.5-2 2.5 2.5 2-1.5 1.5 1.5"/>
-            <circle cx="4.5" cy="5.5" r=".8" fill="currentColor" stroke="none"/>
-            <path d="M13 2v3M11.5 3.5h3" stroke-width="1.3"/>
-            <path d="M13.5 7.5v2M12.5 8.5h2" stroke-width="1.2"/>
-          </svg>
-          Add design references
-        </button>
-        <div class="s1-box-sep"></div>
-        <button class="s1-box-btn">
-          <!-- Browser / globe for Create from URL -->
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="8" cy="8" r="6"/>
-            <path d="M8 2c-1.8 2-2.8 3.8-2.8 6s1 4 2.8 6"/>
-            <path d="M8 2c1.8 2 2.8 3.8 2.8 6s-1 4-2.8 6"/>
-            <path d="M2 8h12"/>
-          </svg>
-          Create from URL
-        </button>
-        <button class="s1-gen" onclick="goTo('s2')">
-          Generate now
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10"/><path d="M9 4l4 4-4 4"/></svg>
-        </button>
+    <!-- Top bar -->
+    <div class="s1-topbar">
+      <div class="s1-logo">WIX</div>
+      <div class="s1-topbar-right">
+        <div class="s1-avatar"><img src="image-1781023178778.webp" alt=""></div>
+        <button class="s1-upgrade">Upgrade</button>
       </div>
     </div>
-  </div>
-    <div class="s1-chips">
-      <div class="s1-chips-scroll">
-        <button class="s1-chip"><span class="s1-chip-type">Restaurant &amp; Café</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">dine-in, takeout &amp; reservations</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Retail Store</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">online &amp; in-store shopping</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Photography Studio</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">portfolio &amp; client bookings</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Fitness &amp; Wellness</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">classes, schedules &amp; memberships</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Creative Studio</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">commissions, projects &amp; portfolio</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Beauty &amp; Spa</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">appointments, services &amp; products</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Consulting</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">expert sessions &amp; resources</span></button>
-        <button class="s1-chip"><span class="s1-chip-type">Education</span><span class="s1-chip-sep">·</span><span class="s1-chip-detail">courses, lessons &amp; enrollments</span></button>
-        <button class="s1-chip s1-chip-more">+ More ideas</button>
+    <!-- Main content centered -->
+    <div class="s1-main">
+      <div class="s1-hl-wrap">
+        <div class="s1-orb-sm"><div class="s1-orb-sm-eyes"><div class="s1-orb-sm-eye"></div><div class="s1-orb-sm-eye"></div></div></div>
+        <div class="s1-hl1">Hi! I'm Aria, your friendly design assistant.</div>
+      </div>
+      <div class="s1-hl2">Tell me your site's <span class="s1-hl2-hi">name</span>, what kind of <span class="s1-hl2-hi">business it is</span>, and what <span class="s1-hl2-hi">makes it unique</span>.</div>
+      <div class="s1-box">
+        <textarea class="s1-ta" rows="4" placeholder="Describe the site you want to build...">Clay and calm — a ceramics studio in the heart of the city. We offer hand-thrown pottery, small-batch workshops, and a calm space to slow down and make something beautiful.</textarea>
+        <div class="s1-box-bar">
+          <button class="s1-box-btn">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10V3"/><path d="M5 6l3-3 3 3"/><path d="M2 12h12"/><path d="M2 12v1.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V12"/></svg>
+            Add Assets
+          </button>
+          <div class="s1-box-sep"></div>
+          <button class="s1-box-btn">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="3" width="10" height="8" rx="1.5"/><path d="M1.5 8.5l2.5-2 2.5 2.5 2-1.5 1.5 1.5"/><circle cx="4.5" cy="5.5" r=".8" fill="currentColor" stroke="none"/><path d="M13 2v3M11.5 3.5h3" stroke-width="1.3"/><path d="M13.5 7.5v2M12.5 8.5h2" stroke-width="1.2"/></svg>
+            Add design references
+          </button>
+          <div class="s1-box-sep"></div>
+          <button class="s1-box-btn">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M8 2c-1.8 2-2.8 3.8-2.8 6s1 4 2.8 6"/><path d="M8 2c1.8 2 2.8 3.8 2.8 6s-1 4-2.8 6"/><path d="M2 8h12"/></svg>
+            Create from URL
+          </button>
+          <button class="s1-gen" onclick="goTo('s2')">
+            Generate
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10"/><path d="M4 9l4 4 4-4"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="s1-try-lbl">Try an example prompt</div>
+      <div class="s1-chips">
+        <div class="s1-chips-scroll">
+          <button class="s1-chip">Fashion store</button>
+          <button class="s1-chip">Online course</button>
+          <button class="s1-chip">Wellness service</button>
+          <button class="s1-chip">Consulting website</button>
+          <button class="s1-chip">Community hub</button>
+          <button class="s1-chip">Creative portfolio</button>
+          <button class="s1-chip">Restaurant &amp; Café</button>
+          <button class="s1-chip">Photography Studio</button>
+          <button class="s1-chip s1-chip-more">↻ More Ideas</button>
+        </div>
       </div>
     </div>
   </div>
