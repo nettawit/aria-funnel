@@ -490,6 +490,144 @@ textarea,input{font-family:inherit;}
 .dev-arr{width:30px;height:30px;background:rgba(255,255,255,.92);border:1px solid var(--grey-6);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;backdrop-filter:blur(4px);box-shadow:var(--sh-raised);transition:all .15s;}
 .dev-arr:hover{border-color:var(--blue);color:var(--blue);}
 .dev-lbl{font-size:11px;color:var(--grey-5);padding:0 6px;pointer-events:none;}
+
+/* ════════════════════════════════════
+   CONCEPT SWITCHER
+════════════════════════════════════ */
+.concept-bar{
+  position:fixed;top:8px;left:50%;transform:translateX(-50%);
+  z-index:500;display:flex;align-items:center;gap:2px;
+  background:rgba(255,255,255,.94);border:1px solid var(--grey-6);
+  border-radius:11px;padding:3px;
+  box-shadow:0 2px 14px rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.06);
+  backdrop-filter:blur(10px);
+}
+.concept-btn{
+  height:29px;padding:0 14px;border:none;border-radius:8px;
+  font-size:12px;font-weight:500;color:var(--grey-3);background:none;
+  cursor:pointer;transition:all .15s;white-space:nowrap;font-family:inherit;
+}
+.concept-btn:hover{background:var(--grey-7);color:var(--grey-1);}
+.concept-btn.active{background:var(--grey-1);color:#fff;font-weight:600;}
+.concept-sep{width:1px;height:16px;background:var(--grey-6);}
+
+/* ════════════════════════════════════
+   CONCEPT A — MODAL PATH CHOOSER
+════════════════════════════════════ */
+.ca-overlay{
+  position:absolute;inset:0;
+  background:rgba(20,20,30,.38);
+  backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;
+  z-index:10;
+}
+.ca-modal{
+  background:#fff;border-radius:20px;width:680px;max-width:92%;
+  padding:36px 32px 32px;
+  box-shadow:0 12px 48px rgba(0,0,0,.22),0 3px 10px rgba(0,0,0,.1);
+  display:flex;flex-direction:column;align-items:center;
+}
+.ca-eyebrow{font-size:12px;font-weight:600;color:var(--grey-4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.ca-modal-title{font-family:'Wix Madefor Display',sans-serif;font-size:24px;font-weight:700;color:var(--grey-1);letter-spacing:-0.3px;text-align:center;margin-bottom:6px;}
+.ca-modal-sub{font-size:14px;color:var(--grey-4);text-align:center;margin-bottom:28px;}
+.ca-paths{display:flex;gap:14px;width:100%;}
+.ca-path{
+  flex:1;border-radius:14px;border:1.5px solid var(--grey-6);padding:24px 20px;
+  cursor:pointer;transition:all .18s;display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  background:#fff;position:relative;
+}
+.ca-path:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.1);}
+.ca-path.ca-path-ai{border-color:rgba(47,93,255,.3);background:linear-gradient(145deg,#F2F5FF,#EEF2FF);}
+.ca-path.ca-path-ai:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(47,93,255,.18);}
+.ca-rec-badge{position:absolute;top:-10px;right:16px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:12px;letter-spacing:.03em;}
+.ca-path-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--grey-75);border:1px solid var(--grey-6);}
+.ca-path-ai .ca-path-icon{background:var(--blue-lt);border-color:var(--blue-md);}
+.ca-path-name{font-family:'Wix Madefor Display',sans-serif;font-size:17px;font-weight:700;color:var(--grey-1);}
+.ca-path-desc{font-size:13px;color:var(--grey-4);line-height:1.55;flex:1;}
+.ca-path-cta{height:36px;padding:0 18px;border:none;border-radius:var(--rad-btn);font-size:13px;font-weight:600;background:var(--grey-7);color:var(--grey-2);cursor:pointer;margin-top:4px;font-family:inherit;}
+.ca-path:hover .ca-path-cta{background:var(--grey-6);}
+.ca-path-ai .ca-path-cta{background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(47,93,255,.25);}
+.ca-path-ai:hover .ca-path-cta{background:var(--blue-h);}
+
+/* ════════════════════════════════════
+   CONCEPT B — GALLERY LAYOUT
+════════════════════════════════════ */
+.gb-wrap{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:20px 24px 50px;overflow-y:auto;
+}
+.gb-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-shrink:0;}
+.gb-title{font-family:'Wix Madefor Display',sans-serif;font-size:17px;font-weight:700;color:var(--grey-1);letter-spacing:-0.2px;}
+.gb-count{font-size:13px;color:var(--grey-4);}
+.gb-hero{
+  width:100%;border-radius:16px;overflow:hidden;cursor:pointer;
+  border:2px solid rgba(47,93,255,.3);
+  background:linear-gradient(145deg,#E6EBFF 0%,#EAE8FF 45%,#F0E8FF 75%,#FAE8F8 100%);
+  flex-shrink:0;height:200px;position:relative;
+  box-shadow:0 2px 12px rgba(47,93,255,.1);
+  margin-bottom:12px;transition:border-color .2s,box-shadow .2s;
+  display:flex;align-items:center;
+}
+.gb-hero:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(47,93,255,.2);}
+.gb-hero-glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 55% 80% at 20% 60%,rgba(100,130,255,.18),transparent 70%),
+             radial-gradient(ellipse 40% 60% at 80% 35%,rgba(180,130,255,.12),transparent 60%);}
+.gb-hero-left{position:relative;z-index:1;padding:28px 32px;flex:1;}
+.gb-hero-label{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.gb-hero-label-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+.gb-hero-title{font-family:'Wix Madefor Display',sans-serif;font-size:22px;font-weight:700;color:#1A1A3A;line-height:1.3;letter-spacing:-0.3px;margin-bottom:8px;}
+.gb-hero-desc{font-size:13px;color:#4A4A7A;line-height:1.55;max-width:360px;margin-bottom:18px;}
+.gb-hero-btn{height:36px;padding:0 20px;border:none;border-radius:var(--rad-btn);background:var(--blue);color:#fff;font-size:13px;font-weight:600;box-shadow:0 2px 8px rgba(47,93,255,.3);cursor:pointer;font-family:inherit;}
+.gb-hero-btn:hover{background:var(--blue-h);}
+.gb-hero-right{position:relative;z-index:1;width:240px;flex-shrink:0;padding:20px 24px 20px 0;display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
+.gb-orb-ring{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.6);border:1.5px solid rgba(100,130,255,.25);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.gb-orb{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#3A3A3A,#111 60%);box-shadow:0 3px 14px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;}
+.gb-orb-eyes{display:flex;gap:6px;}
+.gb-orb-eye{width:6px;height:6px;border-radius:50%;background:#fff;}
+.gb-hero-chip{background:rgba(255,255,255,.8);border:1px solid rgba(100,130,255,.2);border-radius:8px;padding:5px 10px;font-size:11px;font-weight:500;color:#3848D8;backdrop-filter:blur(4px);}
+
+.gb-grid-lbl{font-size:11px;font-weight:600;color:var(--grey-4);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;flex-shrink:0;}
+.gb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;min-height:0;}
+.gb-card{
+  border-radius:12px;overflow:hidden;cursor:pointer;
+  border:2px solid transparent;background:#fff;
+  box-shadow:var(--sh-card);
+  transition:border-color .2s,box-shadow .2s;
+  display:flex;flex-direction:column;min-height:150px;
+}
+.gb-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(47,93,255,.14);}
+.gb-card-thumb{flex:1;position:relative;overflow:hidden;}
+.gb-card-lbl{padding:8px 10px;font-size:11px;font-weight:600;color:var(--grey-3);border-top:1px solid var(--grey-7);background:#fff;flex-shrink:0;}
+/* Skeleton for Concept B loader — reuses .sk-card shimmer */
+.gb-hero-sk{
+  width:100%;height:200px;border-radius:16px;flex-shrink:0;
+  margin-bottom:12px;border:1px solid var(--grey-6);
+  background:linear-gradient(145deg,#f0f2ff 0%,#eeeeff 50%,#f0eeff 100%);
+  position:relative;overflow:hidden;
+}
+.gb-hero-sk::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.7) 40%,rgba(210,225,255,.4) 50%,transparent 65%);
+  background-size:200% 100%;animation:sk-sweep 2s ease-in-out infinite;
+}
+.gb-card-sk{
+  border-radius:12px;overflow:hidden;min-height:150px;
+  border:1px solid var(--grey-6);
+  background:linear-gradient(180deg,#fff 0%,#f4f6ff 50%,#eef4f2 100%);
+  position:relative;overflow:hidden;
+}
+.gb-card-sk::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.7) 40%,rgba(210,225,255,.4) 50%,transparent 65%);
+  background-size:200% 100%;animation:sk-sweep 2.2s ease-in-out infinite;
+}
+/* Template thumb colors for gb-grid */
+.gb-t1{background:linear-gradient(160deg,#C8956A,#A8704A 50%,#8A5530);}
+.gb-t2{background:linear-gradient(155deg,#1A1A1A,#0D0D0D 60%);}
+.gb-t3{background:linear-gradient(160deg,#D4C4B0,#B0A090 50%,#907860);}
+.gb-t4{background:linear-gradient(155deg,#4A7A5A,#2A5A3A 60%);}
+.gb-t5{background:linear-gradient(160deg,#E8E0D5,#C8B8A5 50%,#A89880);}
+.gb-t6{background:linear-gradient(155deg,#2A3A5A,#1A2A4A 60%);}
 </style>
 </head>
 <body>
@@ -608,7 +746,7 @@ textarea,input{font-family:inherit;}
         <div class="msg-a">Perfect name — it captures the feeling exactly.<br>Now tell me a bit more about what you do so I can shape the right identity for you.</div>
       </div>
       <div class="q-card">
-        <button class="q-close" onclick="goTo('s4')">×</button>
+        <button class="q-close" onclick="goToAfterS3()">×</button>
         <div class="q-hdr">
           <div class="q-title">What does your studio offer?</div>
           <div class="q-sub">Help Aria understand what makes you unique</div>
@@ -620,8 +758,8 @@ textarea,input{font-family:inherit;}
         </div>
         <div class="q-text-row"><input type="text" class="q-input" placeholder="Or describe your studio…"></div>
         <div class="q-footer">
-          <button class="q-skip" onclick="goTo('s4')">Skip</button>
-          <button class="q-next" onclick="goTo('s4')">Next</button>
+          <button class="q-skip" onclick="goToAfterS3()">Skip</button>
+          <button class="q-next" onclick="goToAfterS3()">Next</button>
         </div>
       </div>
     </div>
@@ -1072,6 +1210,151 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
+<!-- ══ CONCEPT A — MODAL PATH CHOOSER ══ -->
+<div class="screen" id="sA" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <!-- dimmed skeleton behind -->
+      <div class="sk-wrap" style="opacity:.18;filter:blur(2px);pointer-events:none;">
+        <div class="sk-cols">
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"><div class="sk-card-accent"></div></div></div>
+          <div class="sk-col"><div class="sk-label">Tailor made</div><div class="sk-card"><div class="sk-card-accent"></div></div></div>
+          <div class="sk-col"><div class="sk-label">Template option</div><div class="sk-card"><div class="sk-card-accent"></div></div></div>
+        </div>
+      </div>
+      <!-- modal overlay -->
+      <div class="ca-overlay">
+        <div class="ca-modal">
+          <div class="ca-eyebrow">Clay and Calm · Ceramics Studio</div>
+          <div class="ca-modal-title">How would you like to design your site?</div>
+          <div class="ca-modal-sub">Choose the path that works best for you — you can always switch later.</div>
+          <div class="ca-paths">
+            <div class="ca-path" onclick="goTo('s4')">
+              <div class="ca-path-icon">🗂️</div>
+              <div class="ca-path-name">Start with a template</div>
+              <div class="ca-path-desc">Browse 100+ curated templates and customize every detail to match your style.</div>
+              <button class="ca-path-cta">Browse templates</button>
+            </div>
+            <div class="ca-path ca-path-ai" onclick="goTo('s5')">
+              <div class="ca-rec-badge">✦ Recommended</div>
+              <div class="ca-path-icon" style="background:var(--blue-lt);border-color:var(--blue-md);">✦</div>
+              <div class="ca-path-name">Let Aria design it</div>
+              <div class="ca-path-desc">Get a fully tailored site built around your brand, content, and unique identity — in minutes.</div>
+              <button class="ca-path-cta" style="background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(47,93,255,.25);">Generate with Aria</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dots-wizard" id="dots-sA"></div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">Hand-thrown ceramics &amp; pottery classes</div>
+        <div class="msg-a">Got it! Now let's choose how to build your site — pick a template to start from, or let me design something custom just for Clay and Calm.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONCEPT B LOADER — GALLERY SKELETON ══ -->
+<div class="screen" id="sBloader" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <div class="gb-wrap">
+        <div class="gb-top">
+          <div class="gb-title">Finding the best designs for Clay and Calm…</div>
+        </div>
+        <div class="gb-hero-sk"></div>
+        <div class="gb-grid-lbl">Template options</div>
+        <div class="gb-grid">
+          <div class="gb-card-sk"></div>
+          <div class="gb-card-sk"></div>
+          <div class="gb-card-sk"></div>
+          <div class="gb-card-sk"></div>
+          <div class="gb-card-sk"></div>
+          <div class="gb-card-sk"></div>
+        </div>
+      </div>
+      <div class="dots-wizard" id="dots-sBloader"></div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">Hand-thrown ceramics &amp; pottery classes</div>
+        <div class="msg-a"><span class="spin">⟳</span> Preparing design options for Clay and Calm…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONCEPT B — GALLERY PICKER ══ -->
+<div class="screen" id="sB" style="padding-top:46px;">
+  <div class="ed-body">
+    <div class="ed-canvas" style="position:relative;">
+      <div class="gb-wrap">
+        <div class="gb-top">
+          <div class="gb-title">Choose your design direction</div>
+          <div class="gb-count">7 options for Clay and Calm</div>
+        </div>
+        <!-- Hero: AI Tailor Made -->
+        <div class="gb-hero" onclick="goTo('s5')">
+          <div class="gb-hero-glow"></div>
+          <div class="gb-hero-left">
+            <div class="gb-hero-label"><div class="gb-hero-label-dot"></div>AI Tailor Made</div>
+            <div class="gb-hero-title">A site built around<br>Clay and Calm's identity</div>
+            <div class="gb-hero-desc">Aria will design every section — colors, fonts, layout — tailored to your ceramics studio's unique character.</div>
+            <button class="gb-hero-btn" onclick="event.stopPropagation();goTo('s5')">Generate with Aria →</button>
+          </div>
+          <div class="gb-hero-right">
+            <div class="gb-orb-ring">
+              <div class="gb-orb"><div class="gb-orb-eyes"><div class="gb-orb-eye"></div><div class="gb-orb-eye"></div></div></div>
+            </div>
+            <div class="gb-hero-chip">Crafting your brand…</div>
+            <div class="gb-hero-chip" style="opacity:.6;">Earthy palette selected</div>
+          </div>
+        </div>
+        <!-- 6 template cards -->
+        <div class="gb-grid-lbl">Or choose a template</div>
+        <div class="gb-grid">
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t1"></div>
+            <div class="gb-card-lbl">Warm Studio</div>
+          </div>
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t2"></div>
+            <div class="gb-card-lbl">Monochrome</div>
+          </div>
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t3"></div>
+            <div class="gb-card-lbl">Natural Linen</div>
+          </div>
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t4"></div>
+            <div class="gb-card-lbl">Forest Green</div>
+          </div>
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t5"></div>
+            <div class="gb-card-lbl">Soft Clay</div>
+          </div>
+          <div class="gb-card" onclick="goTo('s5')">
+            <div class="gb-card-thumb gb-t6"></div>
+            <div class="gb-card-lbl">Deep Indigo</div>
+          </div>
+        </div>
+      </div>
+      <div class="dots-wizard" id="dots-sB"></div>
+    </div>
+    <div class="ap">
+      <div class="ap-hdr"><div class="ap-title">Ask Aria</div></div>
+      <div class="ap-msgs">
+        <div class="msg-u">Hand-thrown ceramics &amp; pottery classes</div>
+        <div class="msg-a">Here are your design options for Clay and Calm. The top card is fully AI-tailored to your brand — or pick any template to start from.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ SHARED EDITOR CHROME (overlay) ══ -->
 <div id="chrome" style="display:none;position:fixed;top:0;left:0;right:0;z-index:100;">
   <div class="ec">
@@ -1100,6 +1383,15 @@ textarea,input{font-family:inherit;}
   </div>
 </div>
 
+<!-- ══ CONCEPT SWITCHER ══ -->
+<div class="concept-bar" id="concept-bar">
+  <button class="concept-btn active" id="cb-orig" onclick="setConcept('orig')">Original</button>
+  <div class="concept-sep"></div>
+  <button class="concept-btn" id="cb-A" onclick="setConcept('A')">Concept A · Modal</button>
+  <div class="concept-sep"></div>
+  <button class="concept-btn" id="cb-B" onclick="setConcept('B')">Concept B · Gallery</button>
+</div>
+
 <!-- ══ DEV NAV ══ -->
 <div class="dev-nav">
   <button class="dev-arr" onclick="navStep(-1)">←</button>
@@ -1108,14 +1400,35 @@ textarea,input{font-family:inherit;}
 </div>
 
 <script>
-const SCREENS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9'];
-const LABELS  = ['S1: Open prompt','S2: Skeleton Q1','S3: Skeleton Q2','S4: Templates','S5: BP Loading','S6: BP Revealed','S7: BP + Domain','S8: Loading','S9: Generated'];
+const SCREENS = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','sA','sBloader','sB'];
+const LABELS  = ['S1: Open prompt','S2: Skeleton Q1','S3: Skeleton Q2','S4: Templates','S5: BP Loading','S6: BP Revealed','S7: BP + Domain','S8: Loading','S9: Generated','A: Modal chooser','B: Gallery loader','B: Gallery picker'];
 // Step index for dots (0-based, -1 = no dots)
-const DOT_STEP = [0, 1, 2, 3, 4, 4, 4, 4, -1];
+const DOT_STEP = [0, 1, 2, 3, 4, 4, 4, 4, -1, 3, 3, 3];
 const TOTAL_DOTS = 5;
 
 let cur = 0;
-let bpVisible = false; // for S9 blueprint toggle
+let bpVisible = false;
+let activeConcept = 'orig'; // 'orig' | 'A' | 'B'
+
+function setConcept(c) {
+  activeConcept = c;
+  ['orig','A','B'].forEach(k => {
+    document.getElementById('cb-' + k).classList.toggle('active', k === c);
+  });
+}
+
+// Called from S3 — routes to the right next screen
+function goToAfterS3() {
+  if (activeConcept === 'A') {
+    goTo('sA');
+  } else if (activeConcept === 'B') {
+    goTo('sBloader');
+    // Auto-advance to sB after 1.6s
+    setTimeout(() => goTo('sB'), 1600);
+  } else {
+    goTo('s4');
+  }
+}
 
 function renderDots(containerId, active) {
   const el = document.getElementById(containerId);
