@@ -1784,7 +1784,7 @@ function FigmaEntryScreen({ onGenerate }) {
               )}
 
               {/* Generate Site button */}
-              <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#116DFF' }}>
+              <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#116DFF', marginLeft: 'auto' }}>
                 Generate Site
               </button>
             </div>
