@@ -1641,7 +1641,7 @@ const FG_ASSETS = {
 const DEV_PRESETS = [
   { label: 'Regular site', host: 'example.com' },
   { label: 'Shopify store', host: 'mystore.myshopify.com', badge: 'Shopify', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
-  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'WooCommerce', badgeColor: '#7B3FC4', badgeBg: '#F3EEFF' },
+  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'Woohoo', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
 ];
 
 const ERR_PRESETS = [
@@ -1858,6 +1858,7 @@ function FigmaEntryScreen({ onGenerate }) {
       {/* ── ImportFlow modal ── */}
       {showImport && (
         <ImportFlow
+          key={importPreset ? importPreset.host : 'default'}
           initialUrl={importPreset ? importPreset.host : ''}
           initialPhase={importPreset ? (importPreset.phase || 'results') : 'url'}
           onClose={() => { setShowImport(false); setImportPreset(null); }}
@@ -2054,6 +2055,7 @@ function HarmonyV11Screen({ onGenerate }) {
       {/* ── ImportFlow modal (shared component) ── */}
       {showImport && (
         <ImportFlow
+          key={importPreset ? importPreset.host : 'default'}
           initialUrl={importPreset ? importPreset.host : ''}
           initialPhase={importPreset ? (importPreset.phase || 'results') : 'url'}
           onClose={() => { setShowImport(false); setImportPreset(null); }}
