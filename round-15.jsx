@@ -819,7 +819,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                       <img src={`https://www.google.com/s2/favicons?domain=${importedSite.host}&sz=32`} width={13} height={13} style={{ borderRadius: 2, flexShrink: 0, display: 'block' }} onError={(e) => { e.target.style.display='none'; }} />
                       <span style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{importedSite.host}</span>
                       {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 8, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
-                      <button onClick={() => { const s = importedSite; setImportedSite(null); showUndo(s.host, () => setImportedSite(s)); }} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', lineHeight: 0, marginLeft: 2, flexShrink: 0 }}>
+                      <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', lineHeight: 0, marginLeft: 2, flexShrink: 0 }}>
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="#888" strokeWidth="1.6" strokeLinecap="round"/></svg>
                       </button>
                     </div>
@@ -1378,10 +1378,16 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
           />
         </div>
         {/* site name row */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12 }}>
-          <span style={{ fontSize: 12, fontWeight: 500, color: '#383838', lineHeight: '16px' }}>{host}</span>
-          {isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#383838' }}>Shopify</span>}
-          {isWoo && <span style={{ background: '#F3EEFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#7B3FC4' }}>WooCommerce</span>}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 12, fontWeight: 500, color: '#383838', lineHeight: '16px' }}>{host}</span>
+          </div>
+          {(isShopify || isWoo) && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              {isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Shopify</span>}
+              {isWoo && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Woohoo</span>}
+            </div>
+          )}
         </div>
       </div>
       {/* info section helper */}
@@ -1649,7 +1655,7 @@ const FG_ASSETS = {
 const DEV_PRESETS = [
   { label: 'Regular site', host: 'example.com' },
   { label: 'Shopify store', host: 'mystore.myshopify.com', badge: 'Shopify', badgeColor: '#1A8A5A', badgeBg: '#EDFAF3' },
-  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'Woohoo', badgeColor: '#7B3FC4', badgeBg: '#F3EEFF' },
+  { label: 'WooCommerce', host: 'store.woocommerce.com', badge: 'Woohoo', badgeColor: '#383838', badgeBg: '#D5DFFF' },
 ];
 
 const ERR_PRESETS = [
@@ -1669,13 +1675,7 @@ function FigmaEntryScreen({ onGenerate }) {
   const [importPreset, setImportPreset] = hs(null); // { host } to pre-load in modal
   const undoTimer = hr(null);
 
-  const removeSite = () => {
-    const s = importedSite;
-    setImportedSite(null);
-    setUndoSite(s);
-    clearTimeout(undoTimer.current);
-    undoTimer.current = setTimeout(() => setUndoSite(null), 4000);
-  };
+  const removeSite = () => { setImportedSite(null); };
 
   return (
     <div style={{ width: '100%', minHeight: '100vh', background: 'linear-gradient(169deg, #F6F6F6 8.4%, #F0F0F0 61.3%)', fontFamily: '"Wix Madefor Text", sans-serif', overflowX: 'hidden' }}>
