@@ -118,6 +118,24 @@
       font-size: 18px;
       flex-shrink: 0;
     }
+    .figma-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6B6B7E;
+      border: 1px solid #E8E8EE;
+      background: #fff;
+      cursor: pointer;
+      font-family: "Wix Madefor Text", sans-serif;
+      flex-shrink: 0;
+      transition: border-color 150ms, color 150ms, background 150ms;
+    }
+    .figma-link:hover { border-color: #C8C8D8; color: #1E1E2E; background: #F8F8FB; }
+    .figma-link.placeholder { opacity: 0.4; pointer-events: none; cursor: default; }
     .divider {
       width: 100%;
       max-width: 680px;
@@ -154,6 +172,10 @@
         <div class="flow-title">Bring your site &mdash; V0.5</div>
         <div class="flow-desc">Entry screen: Wix Harmony "Design your site with Aria" + card composer. "Create from URL" ghost pill opens ImportFlow modal.</div>
       </div>
+      <button class="figma-link" onclick="event.stopPropagation(); window.open('https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev','_blank')">
+        <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="#1ABCFE"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="#0ACF83"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="#FF7262"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="#F24E1E"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="#FF7262"/></svg>
+        Figma
+      </button>
       <span class="flow-tag tag-ready">Ready for dev</span>
       <span class="flow-arrow">›</span>
     </a>
@@ -164,6 +186,10 @@
         <div class="flow-title">Harmony Creation &mdash; V1.1</div>
         <div class="flow-desc">Entry screen: Aria prompt composer ("Tell me your site's name…") with example chips. "Create from URL" text button opens the same ImportFlow modal.</div>
       </div>
+      <button class="figma-link placeholder" disabled>
+        <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="currentColor"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="currentColor"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="currentColor"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="currentColor"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="currentColor"/></svg>
+        Figma
+      </button>
       <span class="flow-tag tag-ready">Ready for dev</span>
       <span class="flow-arrow">›</span>
     </a>
@@ -177,6 +203,10 @@
         <div class="flow-title">Harmony Creation &mdash; V1.2</div>
         <div class="flow-desc">TBD</div>
       </div>
+      <button class="figma-link placeholder" disabled>
+        <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="currentColor"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="currentColor"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="currentColor"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="currentColor"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="currentColor"/></svg>
+        Figma
+      </button>
       <span class="flow-tag tag-tbd">TBD</span>
     </div>
 
@@ -186,6 +216,10 @@
         <div class="flow-title">Harmony Creation &mdash; V2.2 Concepts</div>
         <div class="flow-desc">TBD</div>
       </div>
+      <button class="figma-link placeholder" disabled>
+        <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="currentColor"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="currentColor"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="currentColor"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="currentColor"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="currentColor"/></svg>
+        Figma
+      </button>
       <span class="flow-tag tag-tbd">TBD</span>
     </div>
 
