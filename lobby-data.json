@@ -56,7 +56,7 @@
     {
       "id": "c4",
       "num": 4,
-      "title": "Harmony Creation V1.2 + Create from URL",
+      "title": "Harmony Creation V1.2 + Create from URL + \"Add\" Features",
       "bullets": [
         "· Updated modal experience",
         "· Flow matched to the relevant test scenario"
@@ -69,23 +69,8 @@
       "thumbUrl": null
     },
     {
-      "id": "c5",
-      "num": 5,
-      "title": "Harmony Creation V1.3 + Create from URL",
-      "bullets": [
-        "· Add assets from imported site",
-        "· Reference injection & info experiences"
-      ],
-      "status": "tbd",
-      "statusLabel": "TBD",
-      "href": null,
-      "figmaUrl": null,
-      "specFile": null,
-      "thumbUrl": null
-    },
-    {
       "id": "c6",
-      "num": 6,
+      "num": 5,
       "title": "Harmony V2 — All features",
       "bullets": [
         "· All features combined",
