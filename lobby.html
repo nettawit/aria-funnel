@@ -41,20 +41,22 @@
     div.flow-card[onclick]:hover { box-shadow: 0 8px 32px rgba(0,0,80,0.10); border-color: #C8C8D8; transform: translateY(-2px); }
     .flow-card.tbd { opacity: 0.55; pointer-events: none; }
     .flow-num {
-      width: 22px; height: 22px; border-radius: 6px; background: #F0F0F8;
+      width: 22px; height: 22px; border-radius: 6px; background: rgba(0,0,0,0.28);
       display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 700; color: #32324D; flex-shrink: 0;
+      font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0;
+      backdrop-filter: blur(4px);
     }
-    .flow-num.active { background: #2F5DFF; color: #fff; }
-    .flow-body { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 14px 14px 14px; }
+    .flow-num.active { background: rgba(47,93,255,0.85); }
+    .flow-body { flex: 1; display: flex; flex-direction: column; padding: 14px 14px 0; }
+    .flow-body-content { flex: 1; display: flex; flex-direction: column; gap: 6px; }
     .flow-title { font-size: 13px; font-weight: 700; color: #1E1E2E; line-height: 1.4; }
-    .flow-desc { font-size: 11px; color: #6B6B7E; line-height: 1.5; }
+    .flow-desc { font-size: 11px; color: #6B6B7E; line-height: 1.5; flex: 1; }
     .flow-tag { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; flex-shrink: 0; }
-    .tag-ready      { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
-    .tag-tbd        { background: #F0F0F4; color: #888898; }
-    .tag-wip        { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
-    .tag-concepts   { background: #F4EEFF; color: #6E35BE; border: 1px solid #D4B6FF; }
-    .tag-inprogress { background: #E8F4FF; color: #1060C9; border: 1px solid #9DCAFF; }
+    .tag-ready      { background: rgba(240,255,246,0.92); color: #1A7A50; border: 1px solid #B2E4CE; }
+    .tag-tbd        { background: rgba(240,240,244,0.88); color: #888898; }
+    .tag-wip        { background: rgba(255,248,230,0.92); color: #8A6000; border: 1px solid #F5D98A; }
+    .tag-concepts   { background: rgba(244,238,255,0.92); color: #6E35BE; border: 1px solid #D4B6FF; }
+    .tag-inprogress { background: rgba(232,244,255,0.92); color: #1060C9; border: 1px solid #9DCAFF; }
     .flow-eta {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: 600;
@@ -62,11 +64,15 @@
     }
     .flow-arrow { display: none; }
     .flow-thumb {
-      width: 100%; height: 120px; border-radius: 0; overflow: hidden;
+      width: 100%; height: 150px; overflow: hidden;
       background: #EEEEF6; border-bottom: 1px solid rgba(0,0,0,0.07); position: relative; flex-shrink: 0;
     }
     .flow-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-    .flow-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .flow-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #EEEEF6; }
+    .flow-card-footer {
+      border-top: 1px solid #F0F0F4; margin-top: 10px;
+      padding: 10px 14px; display: flex; gap: 6px; flex-wrap: wrap; background: #FAFAFA;
+    }
     .doc-btn {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
@@ -290,7 +296,7 @@
     </div>
   </div>
 
-  <!-- LOBBY_DATA_START --><script>window.LOBBY_DATA = {"header":{"label":"Planned User Test","title":"Flow Lobby","subtitle":"Interactive prototypes for the upcoming user test. Pick a flow to preview it.","slidesUrl":"https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38"},"cards":[{"id":"c1","num":1,"title":"Create from URL V0.5","bullets":["· New modal experience (URL → scan → preview)","· Store integration — Shopify & WooCommerce detection","· images injection"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-funnel-v1.2.html","figmaUrl":"https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev","specFile":"spec-v05.md","thumbUrl":"https://nettawit.github.io/aria-funnel/thumb-c1.png"},{"id":"c2","num":2,"title":"Create from URL V1 — Design feature","bullets":["· Choose: content + design, or design style only","· Prototype needs update"],"status":"wip","statusLabel":"Needs update","href":"v1.html","figmaUrl":null,"specFile":null,"thumbUrl":"https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/v1.html"},{"id":"c3","num":3,"title":"Harmony Creation V1.1 + Create from URL","bullets":["· UX fixes: first screen layout & composer flows","· Modal: clean dismiss during scan","· Remove line breaks & overflow issues"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-v1.1.html","figmaUrl":"https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1","specFile":"spec-v11.md","thumbUrl":"https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-v1.1.html"},{"id":"c4","num":4,"title":"Harmony Creation V1.2 + Create from URL","bullets":["· Updated modal experience","· Flow matched to the relevant test scenario"],"status":"tbd","statusLabel":"TBD","href":null,"figmaUrl":null,"specFile":null,"thumbUrl":null},{"id":"c6","num":5,"title":"Harmony V2 — All features","bullets":["· All features combined","· New concept of the flow — TBD"],"status":"tbd","statusLabel":"TBD","href":null,"figmaUrl":null,"specFile":null,"thumbUrl":null}]};</script><!-- LOBBY_DATA_END -->
+  <!-- LOBBY_DATA_START --><script>window.LOBBY_DATA = {"header":{"label":"Planned User Test","title":"Flow Lobby","subtitle":"Interactive prototypes for the upcoming user test. Pick a flow to preview it.","slidesUrl":"https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38"},"cards":[{"id":"c1","num":1,"title":"Create from URL V0.5","bullets":["· New modal experience (URL → scan → preview)","· Store integration — Shopify & WooCommerce detection","· Image injection"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-funnel-v1.2.html","figmaUrl":"https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev","specFile":"spec-v05.md","thumbUrl":"thumb-c1.png","eta":"25 Jun"},{"id":"c2","num":2,"title":"Create from URL V1 — Design feature","bullets":["· Choose: content + design, or design style only","· Prototype needs update"],"status":"wip","statusLabel":"Needs update","href":"v1-design.html","figmaUrl":null,"specFile":"spec-v1-design.md","thumbUrl":"thumb-placeholder.svg","eta":"TBD date"},{"id":"c3","num":3,"title":"Harmony Creation V1.1 + Create from URL","bullets":["· UX fixes: first screen layout & composer flows","· Premium modal when site generating","· Remove line breaks & overflow issues"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-v1.1.html","figmaUrl":"https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1","specFile":"spec-v11.md","thumbUrl":"thumb-c3.png","eta":"25 Jun"},{"id":"c4","num":4,"title":"Harmony Creation V1.2 + Create from URL + \"Add\" Features","bullets":["· Updated modal experience","· Flow matched to the relevant test scenario"],"status":"wip","statusLabel":"Needs update","href":"v4.html","figmaUrl":null,"specFile":"spec-v12.md","thumbUrl":"thumb-placeholder.svg","eta":null},{"id":"c6","num":5,"title":"Harmony V2 — All features","bullets":["· All features combined","· New concept of the flow — TBD"],"status":"concepts","statusLabel":"Concepts","href":null,"figmaUrl":null,"specFile":null,"thumbUrl":"thumb-placeholder.svg","eta":null}]};</script><!-- LOBBY_DATA_END -->
 
   <script>
   (function () {
@@ -371,18 +377,17 @@
         var btnsHtml = docBtns ? '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">'+docBtns+'</div>' : '';
 
         var inner = '<div class="flow-thumb">'+thumb
-          + '<div class="'+numClass+'" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:11px;">'+c.num+'</div>'
+          + '<div class="'+numClass+'" style="position:absolute;bottom:8px;left:8px;width:22px;height:22px;border-radius:6px;font-size:11px;">'+c.num+'</div>'
+          + '<div style="position:absolute;top:8px;right:8px;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.18));">'+tag+'</div>'
           + '</div>'
           + '<div class="flow-body">'
-          + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:4px;">'
+          + '<div class="flow-body-content">'
           + '<div class="flow-title">'+esc(c.title)+'</div>'
-          + '</div>'
+          + (c.eta ? '<div>'+etaBadge+'</div>' : '')
           + '<ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;">'+bullets+'</ul>'
-          + '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:8px;">'
-          + tag + (etaBadge ? etaBadge : '')
           + '</div>'
-          + btnsHtml
-          + '</div>';
+          + '</div>'
+          + (btnsHtml ? '<div class="flow-card-footer">'+docBtns+'</div>' : '<div style="padding-bottom:14px;"></div>');
 
         // Always use div — open prototype in new tab via onclick so doc buttons don't interfere
         if (!isTbd && c.href) {
