@@ -118,16 +118,17 @@ function useTypewriter(text, speed = 22, thinkDelay = 0) {
 
 /* Typewriter title — re-animates when text changes */
 function TypewriterTitle({ text, className, style }) {
-  const displayed = useTypewriter(text, 20, 500);
+  const displayed = window.STATIC_GREETING ? text : useTypewriter(text, 20, 500);
+  if (window.STATIC_GREETING) return <div className={className} style={style}>{text}</div>;
   return <div className={className} style={style}>{displayed}<span style={{ opacity: displayed.length < text.length ? 1 : 0, borderLeft: '2px solid #315FFF', marginLeft: 1, display: 'inline-block', height: '0.85em', verticalAlign: 'middle', animation: 'tw-blink 0.7s step-end infinite', WebkitTextFillColor: 'initial' }} /></div>;
 }
 
 /* Typewriter body — flat text then colorize inline highlights */
 function TypewriterBody({ parts, delay = 0 }) {
   const fullText = parts.map(p => Array.isArray(p) ? p[0] : p).join('');
-  const [started, setStarted] = hs(delay === 0);
-  he(() => { setStarted(false); const t = setTimeout(() => setStarted(true), delay); return () => clearTimeout(t); }, [fullText]);
-  const displayed = useTypewriter(started ? fullText : '', 14);
+  const [started, setStarted] = hs(window.STATIC_GREETING || delay === 0);
+  he(() => { if (window.STATIC_GREETING) return; setStarted(false); const t = setTimeout(() => setStarted(true), delay); return () => clearTimeout(t); }, [fullText]);
+  const displayed = window.STATIC_GREETING ? fullText : useTypewriter(started ? fullText : '', 14);
   let cursor = 0;
   const nodes = parts.map((p, i) => {
     const chunk = Array.isArray(p) ? p[0] : p;
