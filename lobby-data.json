@@ -1,6 +1,6 @@
 {
   "header": {
-    "label": "Create from URL · Planned User Test",
+    "label": "Create from URL \u00b7 Planned User Test",
     "title": "Flow Lobby",
     "subtitle": "Interactive prototypes for the upcoming user test. Pick a flow to preview it.",
     "slidesUrl": "https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38"
@@ -11,24 +11,24 @@
       "num": 1,
       "title": "Create from URL V0.5",
       "bullets": [
-        "· New modal experience (URL → scan → preview)",
-        "· Store integration — Shopify & WooCommerce detection",
-        "· Site screenshot injected into chip & modal"
+        "\u00b7 New modal experience (URL \u2192 scan \u2192 preview)",
+        "\u00b7 Store integration \u2014 Shopify & WooCommerce detection",
+        "\u00b7 Site screenshot injected into chip & modal"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
       "href": "harmony-funnel-v1.2.html",
       "figmaUrl": "https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev",
       "specFile": "spec-v05.md",
-      "thumbUrl": "https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-funnel-v1.2.html"
+      "thumbUrl": "https://nettawit.github.io/aria-funnel/thumb-c1.png"
     },
     {
       "id": "c2",
       "num": 2,
-      "title": "Create from URL V1 — Design feature",
+      "title": "Create from URL V1 \u2014 Design feature",
       "bullets": [
-        "· Choose: content + design, or design style only",
-        "· Prototype needs update"
+        "\u00b7 Choose: content + design, or design style only",
+        "\u00b7 Prototype needs update"
       ],
       "status": "wip",
       "statusLabel": "Needs update",
@@ -42,9 +42,9 @@
       "num": 3,
       "title": "Harmony Creation V1.1 + Create from URL",
       "bullets": [
-        "· UX fixes: first screen layout & composer flows",
-        "· Modal: clean dismiss during scan",
-        "· Remove line breaks & overflow issues"
+        "\u00b7 UX fixes: first screen layout & composer flows",
+        "\u00b7 Modal: clean dismiss during scan",
+        "\u00b7 Remove line breaks & overflow issues"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
@@ -58,8 +58,8 @@
       "num": 4,
       "title": "Harmony Creation V1.2 + Create from URL + \"Add\" Features",
       "bullets": [
-        "· Updated modal experience",
-        "· Flow matched to the relevant test scenario"
+        "\u00b7 Updated modal experience",
+        "\u00b7 Flow matched to the relevant test scenario"
       ],
       "status": "tbd",
       "statusLabel": "TBD",
@@ -71,10 +71,10 @@
     {
       "id": "c6",
       "num": 5,
-      "title": "Harmony V2 — All features",
+      "title": "Harmony V2 \u2014 All features",
       "bullets": [
-        "· All features combined",
-        "· New concept of the flow — TBD"
+        "\u00b7 All features combined",
+        "\u00b7 New concept of the flow \u2014 TBD"
       ],
       "status": "tbd",
       "statusLabel": "TBD",
@@ -88,7 +88,7 @@
       "num": 6,
       "title": "Test Liat",
       "bullets": [
-        "· Description"
+        "\u00b7 Description"
       ],
       "status": "tbd",
       "statusLabel": "TBD",
