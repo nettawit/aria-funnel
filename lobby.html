@@ -357,7 +357,8 @@
           : c.status === 'inprogress' ? 'tag-inprogress'
           : 'tag-tbd';
         var tag = '<span class="flow-tag '+tagClass+'" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>';
-        var etaBadge = c.eta ? '<span class="flow-eta" style="align-self:flex-start;margin-top:4px;">📅 '+esc(c.eta)+'</span>' : '';
+        var etaVal = c.eta && c.eta.toLowerCase() !== 'tbd date' && c.eta.toLowerCase() !== 'tbd' ? c.eta : null;
+        var etaBadge = etaVal ? '<span class="flow-eta" style="align-self:flex-start;margin-top:4px;"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" style="margin-right:2px"><rect x="1" y="2" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 1v2M8 1v2M1 5h10" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>'+esc(etaVal)+'</span>' : '';
 
         var thumb = c.thumbUrl
           ? '<img src="'+esc(c.thumbUrl)+'" alt="" onerror="this.style.display=\'none\'">'
