@@ -49,12 +49,19 @@
     .flow-title { font-size: 16px; font-weight: 700; color: #1E1E2E; }
     .flow-desc { font-size: 13px; color: #6B6B7E; line-height: 1.5; }
     .flow-tag { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
-    .tag-ready { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
-    .tag-tbd   { background: #F0F0F4; color: #888898; }
-    .tag-wip   { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
+    .tag-ready    { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
+    .tag-tbd      { background: #F0F0F4; color: #888898; }
+    .tag-wip      { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
+    .tag-concepts { background: #F4EEFF; color: #6E35BE; border: 1px solid #D4B6FF; }
+    .flow-eta {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 600;
+      background: #FFF8EC; color: #8A5A00; border: 1px solid #F5D07A;
+      flex-shrink: 0;
+    }
     .flow-arrow { color: #C0C0CC; font-size: 18px; flex-shrink: 0; }
     .flow-thumb {
-      width: 88px; height: 58px; border-radius: 8px; overflow: hidden;
+      width: 140px; height: 93px; border-radius: 8px; overflow: hidden;
       flex-shrink: 0; background: #EEEEF6; border: 1px solid rgba(0,0,0,0.07); position: relative;
     }
     .flow-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -333,20 +340,21 @@
       var container = document.getElementById('flows-container');
       var html = '';
       var activeCards = data.cards.filter(function(c){ return c.status !== 'tbd'; });
-      var tbdCards    = data.cards.filter(function(c){ return c.status === 'tbd'; });
+      var tbdCards    = data.cards.filter(function(c){ return c.status === 'tbd';  });
 
       function cardHtml(c) {
         var isTbd = c.status === 'tbd';
-        var tag = c.status === 'ready'
-          ? '<span class="flow-tag tag-ready" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>'
-          : c.status === 'wip'
-          ? '<span class="flow-tag tag-wip" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>'
-          : '<span class="flow-tag tag-tbd" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>';
+        var tagClass = c.status === 'ready' ? 'tag-ready'
+          : c.status === 'wip' ? 'tag-wip'
+          : c.status === 'concepts' ? 'tag-concepts'
+          : 'tag-tbd';
+        var tag = '<span class="flow-tag '+tagClass+'" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>';
+        var etaBadge = c.eta ? '<span class="flow-eta" style="align-self:flex-start;margin-top:4px;">📅 '+esc(c.eta)+'</span>' : '';
 
         var thumb = c.thumbUrl
           ? '<img src="'+esc(c.thumbUrl)+'" alt="" onerror="this.style.display=\'none\'">'
           : thumbPlaceholder();
-        var numClass = (c.status !== 'tbd') ? 'flow-num active' : 'flow-num';
+        var numClass = (c.status !== 'tbd' && c.status !== 'concepts') ? 'flow-num active' : 'flow-num';
 
         var bullets = (c.bullets||[]).map(function(b){ return '<li>'+esc(b)+'</li>'; }).join('');
 
@@ -368,7 +376,9 @@
           + '<ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">'+bullets+'</ul>'
           + btnsHtml
           + '</div>'
-          + tag;
+          + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;align-self:flex-start;margin-top:2px;">'
+          + tag + etaBadge
+          + '</div>';
 
         if (!isTbd && c.href) {
           return '<a class="flow-card" href="'+esc(c.href)+'">' + inner + '<span class="flow-arrow">›</span></a>';
@@ -448,9 +458,10 @@
       div.dataset.idx = idx;
 
       var statusOpts = [
-        {val:'ready', label:'Ready for dev', cls:'tag-ready'},
-        {val:'wip',   label:'Needs update',  cls:'tag-wip'},
-        {val:'tbd',   label:'TBD',           cls:'tag-tbd'},
+        {val:'ready',    label:'Ready for dev', cls:'tag-ready'},
+        {val:'concepts', label:'Concepts',       cls:'tag-concepts'},
+        {val:'wip',      label:'Needs update',   cls:'tag-wip'},
+        {val:'tbd',      label:'TBD',            cls:'tag-tbd'},
       ];
       var statusHtml = statusOpts.map(function(s){
         return '<button type="button" class="ep-status-opt '+s.cls+(card.status===s.val?' sel':'')+'" data-val="'+s.val+'">'+s.label+'</button>';
@@ -489,7 +500,9 @@
         + '<div class="ep-field"><div class="ep-label">Status</div>'
         + '<div class="ep-status-row">'+statusHtml+'</div>'
         + '<div style="margin-top:6px;"><div class="ep-label" style="margin-bottom:4px;">Status label</div>'
-        + '<input class="ep-input ep-card-status-label" value="'+esc(card.statusLabel||'')+'" style="max-width:200px;"></div></div>';
+        + '<input class="ep-input ep-card-status-label" value="'+esc(card.statusLabel||'')+'" style="max-width:200px;"></div></div>'
+        + '<div class="ep-field"><div class="ep-label">ETA (optional — e.g. Q3 2026, Jul 2026)</div>'
+        + '<input class="ep-input ep-card-eta" value="'+esc(card.eta||'')+'" placeholder="e.g. Q3 2026" style="max-width:200px;"></div>';
 
       // wire inputs
       div.querySelector('.ep-card-title').addEventListener('input', function(e){
@@ -501,6 +514,7 @@
       div.querySelector('.ep-card-spec').addEventListener('input', function(e){ editDraft.cards[idx].specFile = e.target.value || null; });
       div.querySelector('.ep-card-thumb').addEventListener('input', function(e){ editDraft.cards[idx].thumbUrl = e.target.value || null; });
       div.querySelector('.ep-card-status-label').addEventListener('input', function(e){ editDraft.cards[idx].statusLabel = e.target.value; });
+      div.querySelector('.ep-card-eta').addEventListener('input', function(e){ editDraft.cards[idx].eta = e.target.value || null; });
 
       div.querySelectorAll('.ep-bullet').forEach(function(inp){
         inp.addEventListener('input', function(e){
