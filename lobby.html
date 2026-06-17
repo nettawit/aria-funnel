@@ -286,10 +286,11 @@
 
   <script>
   (function () {
+    var DATA_API_URL = 'https://api.github.com/repos/nettawit/aria-funnel/contents/lobby-data.json';
     var HTML_API_URL = 'https://api.github.com/repos/nettawit/aria-funnel/contents/lobby.html';
     var TOKEN_KEY = 'aria-funnel-gh-token';
 
-    var state = JSON.parse(JSON.stringify(window.LOBBY_DATA));
+    var state = null;
     var editDraft = null; // working copy in panel
 
     // ── Helpers ──────────────────────────────────────────────────────────
@@ -386,8 +387,25 @@
       container.innerHTML = html;
     }
 
-    // ── Render immediately from embedded data (no fetch, no rate limits) ──
-    render(state);
+    // ── Load data: authenticated API = always fresh, no CDN cache ─────────
+    function loadData() {
+      var token = localStorage.getItem(TOKEN_KEY) || '';
+      var headers = token ? { 'Authorization': 'token ' + token } : {};
+      fetch(DATA_API_URL, { headers: headers })
+        .then(function(r) { return r.json(); })
+        .then(function(file) {
+          if (!file.content) throw new Error('no content');
+          var data = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g,'')))));
+          state = data;
+          render(state);
+        })
+        .catch(function() {
+          // Fallback to embedded data if API unavailable
+          state = JSON.parse(JSON.stringify(window.LOBBY_DATA));
+          render(state);
+        });
+    }
+    loadData();
 
     // ── Edit panel ───────────────────────────────────────────────────────
     var panel = document.getElementById('edit-panel');
@@ -603,22 +621,16 @@
       saveBtn.textContent = 'Saving…';
       saveBtn.disabled = true;
 
-      // Fetch lobby.html, splice in the new data, push back
-      fetch(HTML_API_URL, { headers: { 'Authorization': 'token ' + token } })
+      // Save to lobby-data.json via GitHub API — bypasses CDN, instantly fresh
+      fetch(DATA_API_URL, { headers: { 'Authorization': 'token ' + token } })
         .then(function(r){ return r.json(); })
         .then(function(file){
           if (!file.sha) throw new Error(file.message || 'GitHub API error — check your token.');
-          var html = decodeURIComponent(escape(atob(file.content.replace(/\n/g,''))));
-          var newDataTag = '<!-- LOBBY_DATA_START --><script>window.LOBBY_DATA = '
-            + JSON.stringify(editDraft)
-            + ';<\/script><!-- LOBBY_DATA_END -->';
-          var updated = html.replace(/<!-- LOBBY_DATA_START -->[\s\S]*?<!-- LOBBY_DATA_END -->/, newDataTag);
-          if (updated === html) throw new Error('Could not find data marker in lobby.html. Contact the admin.');
-          var encoded = btoa(unescape(encodeURIComponent(updated)));
-          return fetch(HTML_API_URL, {
+          var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(editDraft, null, 2))));
+          return fetch(DATA_API_URL, {
             method: 'PUT',
             headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: 'Update lobby content', content: encoded, sha: file.sha })
+            body: JSON.stringify({ message: 'Update lobby data', content: encoded, sha: file.sha })
           });
         })
         .then(function(r){ return r.json(); })
