@@ -1892,7 +1892,7 @@ function FigmaEntryScreen({ onGenerate }) {
    ============================================================ */
 
 function HarmonyV11Screen({ onGenerate }) {
-  const [showImport, setShowImport] = hs(false);
+  const [showImport, setShowImport] = hs(!!window.OPEN_IMPORT);
   const [importPreset, setImportPreset] = hs(null);
   const [importedSite, setImportedSite] = hs(null);
   const [hovUrl, setHovUrl] = hs(false);
