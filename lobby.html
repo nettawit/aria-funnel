@@ -52,7 +52,8 @@
     .tag-ready    { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
     .tag-tbd      { background: #F0F0F4; color: #888898; }
     .tag-wip      { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
-    .tag-concepts { background: #F4EEFF; color: #6E35BE; border: 1px solid #D4B6FF; }
+    .tag-concepts   { background: #F4EEFF; color: #6E35BE; border: 1px solid #D4B6FF; }
+    .tag-inprogress { background: #E8F4FF; color: #1060C9; border: 1px solid #9DCAFF; }
     .flow-eta {
       display: inline-flex; align-items: center; gap: 4px;
       padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 600;
@@ -347,6 +348,7 @@
         var tagClass = c.status === 'ready' ? 'tag-ready'
           : c.status === 'wip' ? 'tag-wip'
           : c.status === 'concepts' ? 'tag-concepts'
+          : c.status === 'inprogress' ? 'tag-inprogress'
           : 'tag-tbd';
         var tag = '<span class="flow-tag '+tagClass+'" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>';
         var etaBadge = c.eta ? '<span class="flow-eta" style="align-self:flex-start;margin-top:4px;">📅 '+esc(c.eta)+'</span>' : '';
@@ -380,8 +382,9 @@
           + tag + etaBadge
           + '</div>';
 
+        // Always use div — open prototype in new tab via onclick so doc buttons don't interfere
         if (!isTbd && c.href) {
-          return '<a class="flow-card" href="'+esc(c.href)+'">' + inner + '<span class="flow-arrow">›</span></a>';
+          return '<div class="flow-card" style="cursor:pointer;" onclick="window.open(\''+esc(c.href)+'\',\'_blank\')">' + inner + '<span class="flow-arrow">›</span></div>';
         } else if (!isTbd) {
           return '<div class="flow-card">' + inner + '</div>';
         } else {
@@ -458,10 +461,11 @@
       div.dataset.idx = idx;
 
       var statusOpts = [
-        {val:'ready',    label:'Ready for dev', cls:'tag-ready'},
-        {val:'concepts', label:'Concepts',       cls:'tag-concepts'},
-        {val:'wip',      label:'Needs update',   cls:'tag-wip'},
-        {val:'tbd',      label:'TBD',            cls:'tag-tbd'},
+        {val:'ready',      label:'Ready for dev', cls:'tag-ready'},
+        {val:'concepts',   label:'Concepts',      cls:'tag-concepts'},
+        {val:'inprogress', label:'On process',    cls:'tag-inprogress'},
+        {val:'wip',        label:'Needs update',  cls:'tag-wip'},
+        {val:'tbd',        label:'TBD',           cls:'tag-tbd'},
       ];
       var statusHtml = statusOpts.map(function(s){
         return '<button type="button" class="ep-status-opt '+s.cls+(card.status===s.val?' sel':'')+'" data-val="'+s.val+'">'+s.label+'</button>';
