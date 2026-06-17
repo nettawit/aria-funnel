@@ -35,7 +35,7 @@
       "statusLabel": "Needs update",
       "href": "v1-design.html",
       "figmaUrl": null,
-      "specFile": null,
+      "specFile": "spec-v1-design.md",
       "thumbUrl": "thumb-placeholder.svg",
       "eta": "TBD date"
     },
@@ -68,7 +68,7 @@
       "statusLabel": "Needs update",
       "href": "v4.html",
       "figmaUrl": null,
-      "specFile": null,
+      "specFile": "spec-v12.md",
       "thumbUrl": "thumb-placeholder.svg",
       "eta": null
     },
