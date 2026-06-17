@@ -29,41 +29,41 @@
     .header-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #888898; }
     .header-title { font-family: "Wix Madefor Display", sans-serif; font-size: 40px; font-weight: 700; color: #1E1E2E; letter-spacing: -0.8px; line-height: 1.1; }
     .header-sub { font-size: 16px; color: #6B6B7E; max-width: 480px; line-height: 1.6; }
-    .flows { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 680px; }
+    .flows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; max-width: 960px; }
     .flow-card {
-      display: flex; align-items: center; gap: 20px;
-      background: #fff; border: 1px solid #E8E8EE; border-radius: 16px;
-      padding: 20px 24px; text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      background: #fff; border: 1px solid #E8E8EE; border-radius: 14px;
+      overflow: hidden; text-decoration: none; color: inherit;
       transition: box-shadow 150ms, border-color 150ms, transform 100ms;
-      position: relative;
+      position: relative; cursor: default;
     }
-    a.flow-card:hover { box-shadow: 0 8px 32px rgba(0,0,80,0.10); border-color: #C8C8D8; transform: translateY(-1px); }
-    .flow-card.tbd { opacity: 0.55; cursor: default; pointer-events: none; }
+    .flow-card[style*="cursor:pointer"]:hover,
+    div.flow-card[onclick]:hover { box-shadow: 0 8px 32px rgba(0,0,80,0.10); border-color: #C8C8D8; transform: translateY(-2px); }
+    .flow-card.tbd { opacity: 0.55; pointer-events: none; }
     .flow-num {
-      width: 40px; height: 40px; border-radius: 12px; background: #F0F0F8;
+      width: 22px; height: 22px; border-radius: 6px; background: #F0F0F8;
       display: flex; align-items: center; justify-content: center;
-      font-size: 17px; font-weight: 700; color: #32324D; flex-shrink: 0;
+      font-size: 11px; font-weight: 700; color: #32324D; flex-shrink: 0;
     }
     .flow-num.active { background: #2F5DFF; color: #fff; }
-    .flow-body { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-    .flow-title { font-size: 16px; font-weight: 700; color: #1E1E2E; }
-    .flow-desc { font-size: 13px; color: #6B6B7E; line-height: 1.5; }
-    .flow-tag { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
-    .tag-ready    { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
-    .tag-tbd      { background: #F0F0F4; color: #888898; }
-    .tag-wip      { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
+    .flow-body { flex: 1; display: flex; flex-direction: column; gap: 4px; padding: 14px 14px 14px; }
+    .flow-title { font-size: 13px; font-weight: 700; color: #1E1E2E; line-height: 1.4; }
+    .flow-desc { font-size: 11px; color: #6B6B7E; line-height: 1.5; }
+    .flow-tag { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; flex-shrink: 0; }
+    .tag-ready      { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
+    .tag-tbd        { background: #F0F0F4; color: #888898; }
+    .tag-wip        { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
     .tag-concepts   { background: #F4EEFF; color: #6E35BE; border: 1px solid #D4B6FF; }
     .tag-inprogress { background: #E8F4FF; color: #1060C9; border: 1px solid #9DCAFF; }
     .flow-eta {
       display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 600;
-      background: #FFF8EC; color: #8A5A00; border: 1px solid #F5D07A;
-      flex-shrink: 0;
+      padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: 600;
+      background: #FFF8EC; color: #8A5A00; border: 1px solid #F5D07A; flex-shrink: 0;
     }
-    .flow-arrow { color: #C0C0CC; font-size: 18px; flex-shrink: 0; }
+    .flow-arrow { display: none; }
     .flow-thumb {
-      width: 140px; height: 93px; border-radius: 8px; overflow: hidden;
-      flex-shrink: 0; background: #EEEEF6; border: 1px solid rgba(0,0,0,0.07); position: relative;
+      width: 100%; height: 120px; border-radius: 0; overflow: hidden;
+      background: #EEEEF6; border-bottom: 1px solid rgba(0,0,0,0.07); position: relative; flex-shrink: 0;
     }
     .flow-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
     .flow-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
@@ -79,8 +79,8 @@
     .doc-btn.dl { color: #2F5DFF; border-color: #D0D9FF; background: #F5F7FF; }
     .doc-btn.dl:hover { border-color: #7896FF; background: #EEF2FF; }
     .doc-btn.placeholder { opacity: 0.35; pointer-events: none; cursor: default; }
-    .divider { width: 100%; max-width: 680px; border: 0; border-top: 1px solid #E8E8EE; margin: 8px 0 16px; }
-    .section-label { width: 100%; max-width: 680px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: #AAA; margin-bottom: 4px; }
+    .divider { width: 100%; max-width: 960px; border: 0; border-top: 1px solid #E8E8EE; margin: 8px 0 16px; }
+    .section-label { width: 100%; max-width: 960px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: #AAA; margin-bottom: 4px; }
 
     /* ── Edit mode ── */
     #lobby-edit-btn {
@@ -371,20 +371,22 @@
         var btnsHtml = docBtns ? '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">'+docBtns+'</div>' : '';
 
         var inner = '<div class="flow-thumb">'+thumb
-          + '<div class="'+numClass+'" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">'+c.num+'</div>'
+          + '<div class="'+numClass+'" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:11px;">'+c.num+'</div>'
           + '</div>'
           + '<div class="flow-body">'
+          + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:4px;">'
           + '<div class="flow-title">'+esc(c.title)+'</div>'
-          + '<ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">'+bullets+'</ul>'
-          + btnsHtml
           + '</div>'
-          + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;align-self:flex-start;margin-top:2px;">'
-          + tag + etaBadge
+          + '<ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;">'+bullets+'</ul>'
+          + '<div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:8px;">'
+          + tag + (etaBadge ? etaBadge : '')
+          + '</div>'
+          + btnsHtml
           + '</div>';
 
         // Always use div — open prototype in new tab via onclick so doc buttons don't interfere
         if (!isTbd && c.href) {
-          return '<div class="flow-card" style="cursor:pointer;" onclick="window.open(\''+esc(c.href)+'\',\'_blank\')">' + inner + '<span class="flow-arrow">›</span></div>';
+          return '<div class="flow-card" style="cursor:pointer;" onclick="window.open(\''+esc(c.href)+'\',\'_blank\')">' + inner + '</div>';
         } else if (!isTbd) {
           return '<div class="flow-card">' + inner + '</div>';
         } else {
@@ -461,11 +463,11 @@
       div.dataset.idx = idx;
 
       var statusOpts = [
-        {val:'ready',      label:'Ready for dev', cls:'tag-ready'},
+        {val:'tbd',        label:'TBD',           cls:'tag-tbd'},
         {val:'concepts',   label:'Concepts',      cls:'tag-concepts'},
         {val:'inprogress', label:'On process',    cls:'tag-inprogress'},
         {val:'wip',        label:'Needs update',  cls:'tag-wip'},
-        {val:'tbd',        label:'TBD',           cls:'tag-tbd'},
+        {val:'ready',      label:'Ready for dev', cls:'tag-ready'},
       ];
       var statusHtml = statusOpts.map(function(s){
         return '<button type="button" class="ep-status-opt '+s.cls+(card.status===s.val?' sel':'')+'" data-val="'+s.val+'">'+s.label+'</button>';
