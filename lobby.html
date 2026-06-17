@@ -284,7 +284,6 @@
 
   <script>
   (function () {
-    var DATA_URL = 'https://raw.githubusercontent.com/nettawit/aria-funnel/main/lobby-data.json';
     var API_URL  = 'https://api.github.com/repos/nettawit/aria-funnel/contents/lobby-data.json';
     var TOKEN_KEY = 'aria-funnel-gh-token';
 
@@ -385,10 +384,11 @@
       container.innerHTML = html;
     }
 
-    // ── Load data ────────────────────────────────────────────────────────
-    fetch(DATA_URL + '?t=' + Date.now())
+    // ── Load data (via GitHub Contents API — no CDN caching) ─────────────
+    fetch(API_URL, { headers: { 'Cache-Control': 'no-cache' } })
       .then(function(r){ return r.json(); })
-      .then(function(data){
+      .then(function(file){
+        var data = JSON.parse(decodeURIComponent(escape(atob(file.content.replace(/\n/g,'')))));
         state = data;
         render(state);
       })
