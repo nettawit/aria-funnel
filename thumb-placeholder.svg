@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 186" width="280" height="186">
+  <rect width="280" height="186" rx="10" fill="#E8F0FE"/>
+  <!-- browser chrome -->
+  <rect x="8" y="8" width="264" height="170" rx="8" fill="#D0E1FC"/>
+  <!-- top bar -->
+  <rect x="8" y="8" width="264" height="28" rx="8" fill="#BDD4FA"/>
+  <rect x="8" y="28" width="264" height="8" fill="#BDD4FA"/>
+  <!-- traffic lights -->
+  <circle cx="26" cy="22" r="4" fill="#A8C4F8"/>
+  <circle cx="40" cy="22" r="4" fill="#A8C4F8"/>
+  <circle cx="54" cy="22" r="4" fill="#A8C4F8"/>
+  <!-- address bar -->
+  <rect x="70" y="15" width="148" height="14" rx="7" fill="#C8DAFC"/>
+  <!-- content area placeholder lines -->
+  <rect x="24" y="52" width="100" height="8" rx="4" fill="#BDD4FA"/>
+  <rect x="24" y="68" width="160" height="6" rx="3" fill="#C8DAFC"/>
+  <rect x="24" y="82" width="140" height="6" rx="3" fill="#C8DAFC"/>
+  <rect x="24" y="96" width="120" height="6" rx="3" fill="#C8DAFC"/>
+  <rect x="24" y="118" width="232" height="44" rx="6" fill="#BDD4FA"/>
+</svg>

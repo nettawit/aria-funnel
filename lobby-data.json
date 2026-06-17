@@ -20,7 +20,7 @@
       "href": "harmony-funnel-v1.2.html",
       "figmaUrl": "https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev",
       "specFile": "spec-v05.md",
-      "thumbUrl": "https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-funnel-v1.2.html",
+      "thumbUrl": "thumb-c1.png",
       "eta": "25 Jun"
     },
     {
@@ -36,7 +36,7 @@
       "href": "v1-design.html",
       "figmaUrl": null,
       "specFile": null,
-      "thumbUrl": "https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-v1.1.html",
+      "thumbUrl": "thumb-placeholder.svg",
       "eta": "TBD date"
     },
     {
@@ -45,7 +45,7 @@
       "title": "Harmony Creation V1.1 + Create from URL",
       "bullets": [
         "· UX fixes: first screen layout & composer flows",
-        "·Premium modal when site generating",
+        "· Premium modal when site generating",
         "· Remove line breaks & overflow issues"
       ],
       "status": "ready",
@@ -53,7 +53,7 @@
       "href": "harmony-v1.1.html",
       "figmaUrl": "https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1",
       "specFile": "spec-v11.md",
-      "thumbUrl": "https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-v1.1.html",
+      "thumbUrl": "thumb-c3.png",
       "eta": "25 jun"
     },
     {
@@ -69,7 +69,8 @@
       "href": "v4.html",
       "figmaUrl": null,
       "specFile": null,
-      "thumbUrl": null
+      "thumbUrl": "thumb-placeholder.svg",
+      "eta": null
     },
     {
       "id": "c6",
@@ -84,7 +85,7 @@
       "href": null,
       "figmaUrl": null,
       "specFile": null,
-      "thumbUrl": null,
+      "thumbUrl": "thumb-placeholder.svg",
       "eta": null
     }
   ]
