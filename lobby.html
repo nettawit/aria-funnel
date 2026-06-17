@@ -16,7 +16,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 64px 24px 80px;
+      padding: 64px 24px 120px;
     }
     .header {
       display: flex;
@@ -26,312 +26,621 @@
       margin-bottom: 56px;
       text-align: center;
     }
-    .header-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #888898;
-    }
-    .header-title {
-      font-family: "Wix Madefor Display", sans-serif;
-      font-size: 40px;
-      font-weight: 700;
-      color: #1E1E2E;
-      letter-spacing: -0.8px;
-      line-height: 1.1;
-    }
-    .header-sub {
-      font-size: 16px;
-      color: #6B6B7E;
-      max-width: 480px;
-      line-height: 1.6;
-    }
-    .flows {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      width: 100%;
-      max-width: 680px;
-    }
+    .header-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #888898; }
+    .header-title { font-family: "Wix Madefor Display", sans-serif; font-size: 40px; font-weight: 700; color: #1E1E2E; letter-spacing: -0.8px; line-height: 1.1; }
+    .header-sub { font-size: 16px; color: #6B6B7E; max-width: 480px; line-height: 1.6; }
+    .flows { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 680px; }
     .flow-card {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      background: #fff;
-      border: 1px solid #E8E8EE;
-      border-radius: 16px;
-      padding: 20px 24px;
-      text-decoration: none;
-      color: inherit;
+      display: flex; align-items: center; gap: 20px;
+      background: #fff; border: 1px solid #E8E8EE; border-radius: 16px;
+      padding: 20px 24px; text-decoration: none; color: inherit;
       transition: box-shadow 150ms, border-color 150ms, transform 100ms;
       position: relative;
     }
-    .flow-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,80,0.10);
-      border-color: #C8C8D8;
-      transform: translateY(-1px);
-    }
-    .flow-card.tbd {
-      opacity: 0.55;
-      cursor: default;
-      pointer-events: none;
-    }
+    a.flow-card:hover { box-shadow: 0 8px 32px rgba(0,0,80,0.10); border-color: #C8C8D8; transform: translateY(-1px); }
+    .flow-card.tbd { opacity: 0.55; cursor: default; pointer-events: none; }
     .flow-num {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: #F0F0F8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      font-weight: 700;
-      color: #32324D;
-      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 12px; background: #F0F0F8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; font-weight: 700; color: #32324D; flex-shrink: 0;
     }
     .flow-num.active { background: #2F5DFF; color: #fff; }
-    .flow-body { flex: 1; display: flex; flex-direction: column; gap: 4; }
-    .flow-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1E1E2E;
-    }
-    .flow-desc {
-      font-size: 13px;
-      color: #6B6B7E;
-      line-height: 1.5;
-    }
-    .flow-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
+    .flow-body { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .flow-title { font-size: 16px; font-weight: 700; color: #1E1E2E; }
+    .flow-desc { font-size: 13px; color: #6B6B7E; line-height: 1.5; }
+    .flow-tag { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; flex-shrink: 0; }
     .tag-ready { background: #F0FFF6; color: #1A7A50; border: 1px solid #B2E4CE; }
     .tag-tbd   { background: #F0F0F4; color: #888898; }
-    .flow-arrow {
-      color: #C0C0CC;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    .tag-wip { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
+    .tag-wip   { background: #FFF8E6; color: #8A6000; border: 1px solid #F5D98A; }
+    .flow-arrow { color: #C0C0CC; font-size: 18px; flex-shrink: 0; }
     .flow-thumb {
-      width: 88px;
-      height: 58px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #EEEEF6;
-      border: 1px solid rgba(0,0,0,0.07);
-      position: relative;
+      width: 88px; height: 58px; border-radius: 8px; overflow: hidden;
+      flex-shrink: 0; background: #EEEEF6; border: 1px solid rgba(0,0,0,0.07); position: relative;
     }
     .flow-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
     .flow-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
     .doc-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-      border: 1px solid #E8E8EE;
-      background: #fff;
-      cursor: pointer;
-      font-family: "Wix Madefor Text", sans-serif;
-      flex-shrink: 0;
-      text-decoration: none;
-      color: #6B6B7E;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      border: 1px solid #E8E8EE; background: #fff; cursor: pointer;
+      font-family: "Wix Madefor Text", sans-serif; flex-shrink: 0;
+      text-decoration: none; color: #6B6B7E;
       transition: border-color 150ms, color 150ms, background 150ms;
     }
     .doc-btn:hover { border-color: #C8C8D8; color: #1E1E2E; background: #F8F8FB; }
-    .doc-btn.figma { }
-    .doc-btn.spec { }
-    .doc-btn.placeholder { opacity: 0.35; pointer-events: none; cursor: default; }
     .doc-btn.dl { color: #2F5DFF; border-color: #D0D9FF; background: #F5F7FF; }
     .doc-btn.dl:hover { border-color: #7896FF; background: #EEF2FF; }
-    .divider {
-      width: 100%;
-      max-width: 680px;
-      border: 0;
-      border-top: 1px solid #E8E8EE;
-      margin: 8px 0 16px;
+    .doc-btn.placeholder { opacity: 0.35; pointer-events: none; cursor: default; }
+    .divider { width: 100%; max-width: 680px; border: 0; border-top: 1px solid #E8E8EE; margin: 8px 0 16px; }
+    .section-label { width: 100%; max-width: 680px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: #AAA; margin-bottom: 4px; }
+
+    /* ── Edit mode ── */
+    #lobby-edit-btn {
+      position: fixed; bottom: 28px; right: 28px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; font-family: "Wix Madefor Text", sans-serif;
+      border: none; background: #1E1E2E; color: #fff;
+      cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.18); z-index: 9999;
+      transition: background 150ms;
     }
-    .section-label {
-      width: 100%;
-      max-width: 680px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: #AAA;
-      margin-bottom: 4px;
+    #lobby-edit-btn:hover { background: #2F5DFF; }
+    #lobby-edit-btn.saving { background: #888898; pointer-events: none; }
+    #lobby-edit-btn.done-state { background: #1A7A50; }
+    #lobby-edit-btn.done-state:hover { background: #155E3D; }
+
+    /* Edit panel overlay */
+    #edit-panel {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,0.45); backdrop-filter: blur(2px);
+      align-items: flex-end; justify-content: center;
     }
+    #edit-panel.open { display: flex; }
+    #edit-panel-inner {
+      background: #fff; border-radius: 20px 20px 0 0;
+      width: 100%; max-width: 760px;
+      max-height: 88vh; overflow-y: auto;
+      padding: 28px 28px 40px;
+      box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
+    }
+    .ep-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .ep-title { font-size: 17px; font-weight: 700; color: #1E1E2E; }
+    .ep-close {
+      width: 28px; height: 28px; border-radius: 50%; border: none;
+      background: #F0F0F4; color: #6B6B7E; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ep-close:hover { background: #E4E4EC; }
+    .ep-section { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: #AAA; margin: 20px 0 10px; }
+    .ep-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+    .ep-label { font-size: 12px; font-weight: 600; color: #44445A; }
+    .ep-input {
+      height: 36px; padding: 0 10px; border: 1px solid #C1C2C3; border-radius: 8px;
+      font-size: 13px; font-family: "Wix Madefor Text", sans-serif; color: #1E1E2E;
+      background: #FAFAFA; outline: none;
+    }
+    .ep-input:focus { border-color: #2F5DFF; box-shadow: 0 0 0 3px rgba(47,93,255,0.10); background: #fff; }
+    .ep-bullets { display: flex; flex-direction: column; gap: 6px; }
+    .ep-bullet-row { display: flex; gap: 6px; align-items: center; }
+    .ep-bullet-row .ep-input { flex: 1; }
+    .ep-rm-bullet {
+      width: 26px; height: 26px; border: none; border-radius: 6px; background: #FFF0F0;
+      color: #CC3333; font-size: 14px; cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ep-rm-bullet:hover { background: #FFE0E0; }
+    .ep-add-bullet {
+      font-size: 11px; font-weight: 600; color: #2F5DFF; background: none;
+      border: 1px dashed #B0BFFF; border-radius: 6px; padding: 4px 10px;
+      cursor: pointer; font-family: "Wix Madefor Text", sans-serif;
+      align-self: flex-start; margin-top: 2px;
+    }
+    .ep-add-bullet:hover { background: #F0F4FF; }
+    .ep-status-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ep-status-opt {
+      padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;
+      border: 2px solid transparent; cursor: pointer; transition: all 120ms;
+    }
+    .ep-status-opt.sel { border-color: #2F5DFF; box-shadow: 0 0 0 2px rgba(47,93,255,0.15); }
+    .ep-card-block {
+      border: 1px solid #E8E8EE; border-radius: 12px; padding: 16px;
+      margin-bottom: 12px; position: relative;
+    }
+    .ep-card-block-title {
+      font-size: 13px; font-weight: 700; color: #1E1E2E; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ep-card-actions { display: flex; gap: 6px; margin-left: auto; }
+    .ep-card-btn {
+      font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px;
+      border: 1px solid #E8E8EE; background: #fff; cursor: pointer; color: #6B6B7E;
+      font-family: "Wix Madefor Text", sans-serif;
+    }
+    .ep-card-btn:hover { border-color: #C8C8D8; color: #1E1E2E; background: #F8F8FB; }
+    .ep-card-btn.danger { color: #CC3333; border-color: #FFD0D0; background: #FFF8F8; }
+    .ep-card-btn.danger:hover { background: #FFE8E8; border-color: #FF9999; }
+    .ep-add-card {
+      width: 100%; padding: 10px; border: 2px dashed #C8C8D8; border-radius: 12px;
+      background: none; font-size: 13px; font-weight: 600; color: #6B6B7E;
+      cursor: pointer; font-family: "Wix Madefor Text", sans-serif;
+      transition: border-color 150ms, color 150ms, background 150ms;
+      margin-top: 4px;
+    }
+    .ep-add-card:hover { border-color: #2F5DFF; color: #2F5DFF; background: #F5F7FF; }
+    .ep-save-row { display: flex; gap: 10px; margin-top: 28px; }
+    .ep-save-btn {
+      flex: 1; height: 40px; border: none; border-radius: 10px;
+      background: #2F5DFF; color: #fff; font-size: 14px; font-weight: 600;
+      font-family: "Wix Madefor Text", sans-serif; cursor: pointer;
+    }
+    .ep-save-btn:hover { background: #2448E8; }
+    .ep-save-btn:disabled { background: #B0BFFF; pointer-events: none; }
+    .ep-cancel-btn {
+      height: 40px; padding: 0 20px; border: 1px solid #C1C2C3; border-radius: 10px;
+      background: #fff; color: #44445A; font-size: 14px; font-weight: 600;
+      font-family: "Wix Madefor Text", sans-serif; cursor: pointer;
+    }
+    .ep-cancel-btn:hover { background: #F4F4F8; }
+    .ep-token-notice {
+      font-size: 12px; color: #888898; margin-top: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Token setup modal */
+    #token-modal {
+      display: none; position: fixed; inset: 0; z-index: 10001;
+      background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
+    }
+    #token-modal.open { display: flex; }
+    #token-modal-inner {
+      background: #fff; border-radius: 16px; padding: 28px;
+      width: 420px; max-width: 95vw;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+    }
+    #token-modal h3 { font-size: 16px; font-weight: 700; color: #1E1E2E; margin-bottom: 8px; }
+    #token-modal p { font-size: 13px; color: #6B6B7E; line-height: 1.5; margin-bottom: 16px; }
+    #token-input {
+      width: 100%; height: 38px; padding: 0 12px; border: 1px solid #C1C2C3;
+      border-radius: 8px; font-size: 13px; font-family: "Wix Madefor Text", sans-serif;
+      margin-bottom: 12px; outline: none;
+    }
+    #token-input:focus { border-color: #2F5DFF; box-shadow: 0 0 0 3px rgba(47,93,255,0.10); }
+    #token-save-btn {
+      width: 100%; height: 38px; border: none; border-radius: 8px;
+      background: #2F5DFF; color: #fff; font-size: 14px; font-weight: 600;
+      font-family: "Wix Madefor Text", sans-serif; cursor: pointer;
+    }
+    #token-save-btn:hover { background: #2448E8; }
+    #token-error { font-size: 12px; color: #CC3333; margin-top: 8px; display: none; }
   </style>
 </head>
 <body>
+
   <div class="header">
-    <div class="header-label">Create from URL · Planned User Test</div>
-    <div class="header-title">Flow Lobby</div>
-    <div class="header-sub">Interactive prototypes for the upcoming user test. Pick a flow to preview it.</div>
-    <div style="display:flex;align-items:center;gap:10px;margin-top:4px;flex-wrap:wrap;justify-content:center;">
-      <a href="https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:#1E1E2E;border:1px solid #E8E8EE;background:#fff;text-decoration:none;transition:border-color 150ms,box-shadow 150ms;" onmouseover="this.style.borderColor='#C8C8D8';this.style.boxShadow='0 2px 8px rgba(0,0,0,0.07)'" onmouseout="this.style.borderColor='#E8E8EE';this.style.boxShadow='none'">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" fill="#FBBC04"/><path d="M4 5h6M4 7h6M4 9h4" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Test overview slides
-      </a>
+    <div class="header-label" id="disp-header-label"></div>
+    <div class="header-title" id="disp-header-title"></div>
+    <div class="header-sub" id="disp-header-sub"></div>
+    <div id="disp-slides-link"></div>
+  </div>
+
+  <div class="flows" id="flows-container">
+    <div style="text-align:center;padding:40px;color:#888898;font-size:14px;">Loading…</div>
+  </div>
+
+  <!-- Floating edit button -->
+  <button id="lobby-edit-btn" title="Edit lobby content">
+    <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M9.5 2.5l2 2L4 12H2v-2L9.5 2.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+    Edit
+  </button>
+
+  <!-- Edit panel -->
+  <div id="edit-panel">
+    <div id="edit-panel-inner">
+      <div class="ep-header">
+        <div class="ep-title">Edit Lobby</div>
+        <button class="ep-close" id="ep-close-btn">×</button>
+      </div>
+
+      <div class="ep-section">Header</div>
+      <div class="ep-field">
+        <div class="ep-label">Label (small text above title)</div>
+        <input class="ep-input" id="ep-header-label">
+      </div>
+      <div class="ep-field">
+        <div class="ep-label">Title</div>
+        <input class="ep-input" id="ep-header-title">
+      </div>
+      <div class="ep-field">
+        <div class="ep-label">Subtitle</div>
+        <input class="ep-input" id="ep-header-sub">
+      </div>
+      <div class="ep-field">
+        <div class="ep-label">Test slides link (Google Slides URL)</div>
+        <input class="ep-input" id="ep-slides-url" placeholder="https://docs.google.com/...">
+      </div>
+
+      <div class="ep-section">Project cards</div>
+      <div id="ep-cards-container"></div>
+      <button class="ep-add-card" id="ep-add-card-btn">+ Add new project</button>
+
+      <div class="ep-save-row">
+        <button class="ep-cancel-btn" id="ep-cancel-btn">Cancel</button>
+        <button class="ep-save-btn" id="ep-save-btn">Save &amp; publish</button>
+      </div>
+      <div class="ep-token-notice" id="ep-token-notice"></div>
     </div>
   </div>
 
-  <div class="flows">
-
-    <!-- ── Card 1: Create from URL V0.5 ── -->
-    <a class="flow-card" href="harmony-funnel-v1.2.html">
-      <div class="flow-thumb">
-        <img src="https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-funnel-v1.2.html" alt="" onerror="this.style.display='none'">
-        <div class="flow-num active" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">1</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Create from URL V0.5</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· New modal experience (URL → scan → preview)</li>
-          <li>· Store integration — Shopify &amp; WooCommerce detection</li>
-          <li>· Site screenshot injected into chip &amp; modal</li>
-        </ul>
-        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-          <button class="doc-btn figma" onclick="event.stopPropagation();window.open('https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev','_blank')">
-            <svg width="9" height="12" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="#1ABCFE"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="#0ACF83"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="#FF7262"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="#F24E1E"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="#FF7262"/></svg>
-            Figma
-          </button>
-          <button class="doc-btn spec" onclick="event.stopPropagation();window.open('spec-v05.md','_blank')">
-            <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1" width="11" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4.5h6M4 7h6M4 9.5h4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-            UX Spec
-          </button>
-          <button class="doc-btn dl" onclick="event.stopPropagation();(()=>{const a=document.createElement('a');a.href='spec-v05.md';a.download='spec-v05.md';a.click()})()">
-            <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 6.5L7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5v1A.5.5 0 0 0 2.5 12h9a.5.5 0 0 0 .5-.5v-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            .md
-          </button>
-        </div>
-      </div>
-      <span class="flow-tag tag-ready" style="align-self:flex-start;margin-top:2px;">Ready for dev</span>
-      <span class="flow-arrow">›</span>
-    </a>
-
-    <!-- ── Card 2: Create from URL V1 ── -->
-    <a class="flow-card" href="v1.html">
-      <div class="flow-thumb">
-        <img src="https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/v1.html" alt="" onerror="this.style.display='none'">
-        <div class="flow-num active" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">2</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Create from URL V1 — Design feature</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· Choose: content + design, or design style only</li>
-          <li style="color:#B08000;">· Prototype needs update</li>
-        </ul>
-        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-          <button class="doc-btn figma placeholder" disabled>
-            <svg width="9" height="12" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="currentColor"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="currentColor"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="currentColor"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="currentColor"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="currentColor"/></svg>
-            Figma
-          </button>
-        </div>
-      </div>
-      <span class="flow-tag tag-wip" style="align-self:flex-start;margin-top:2px;">Needs update</span>
-      <span class="flow-arrow">›</span>
-    </a>
-
-    <!-- ── Card 3: Harmony Creation V1.1 ── -->
-    <a class="flow-card" href="harmony-v1.1.html">
-      <div class="flow-thumb">
-        <img src="https://image.thum.io/get/width/176/crop/116/https://nettawit.github.io/aria-funnel/harmony-v1.1.html" alt="" onerror="this.style.display='none'">
-        <div class="flow-num active" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">3</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Harmony Creation V1.1 + Create from URL</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· UX fixes: first screen layout &amp; composer flows</li>
-          <li>· Modal: clean dismiss during scan</li>
-          <li>· Remove line breaks &amp; overflow issues</li>
-        </ul>
-        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-          <button class="doc-btn figma" onclick="event.stopPropagation();window.open('https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1','_blank')">
-            <svg width="9" height="12" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="#1ABCFE"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="#0ACF83"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="#FF7262"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="#F24E1E"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="#FF7262"/></svg>
-            Figma
-          </button>
-          <button class="doc-btn spec" onclick="event.stopPropagation();window.open('spec-v11.md','_blank')">
-            <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1" width="11" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4.5h6M4 7h6M4 9.5h4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
-            UX Spec
-          </button>
-          <button class="doc-btn dl" onclick="event.stopPropagation();(()=>{const a=document.createElement('a');a.href='spec-v11.md';a.download='spec-v11.md';a.click()})()">
-            <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 6.5L7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5v1A.5.5 0 0 0 2.5 12h9a.5.5 0 0 0 .5-.5v-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            .md
-          </button>
-        </div>
-      </div>
-      <span class="flow-tag tag-ready" style="align-self:flex-start;margin-top:2px;">Ready for dev</span>
-      <span class="flow-arrow">›</span>
-    </a>
-
-    <hr class="divider">
-    <div class="section-label">Coming soon</div>
-
-    <!-- ── Card 4: Harmony Creation V1.2 ── -->
-    <div class="flow-card tbd">
-      <div class="flow-thumb">
-        <div class="flow-thumb-placeholder">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="#C0C0D0" stroke-width="1.4"/><path d="M7 10h6M10 7v6" stroke="#C0C0D0" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </div>
-        <div class="flow-num" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">4</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Harmony Creation V1.2 + Create from URL</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· Updated modal experience</li>
-          <li>· Flow matched to the relevant test scenario</li>
-        </ul>
-      </div>
-      <span class="flow-tag tag-tbd" style="align-self:flex-start;margin-top:2px;">TBD</span>
+  <!-- Token modal -->
+  <div id="token-modal">
+    <div id="token-modal-inner">
+      <h3>Enter your GitHub token</h3>
+      <p>To save changes, enter your GitHub personal access token. It's stored only in your browser — never in the page source.</p>
+      <input id="token-input" type="password" placeholder="ghp_...">
+      <div id="token-error">Token looks invalid — make sure it has public_repo access.</div>
+      <button id="token-save-btn">Save token &amp; continue</button>
     </div>
-
-    <!-- ── Card 5: Harmony Creation V1.3 ── -->
-    <div class="flow-card tbd">
-      <div class="flow-thumb">
-        <div class="flow-thumb-placeholder">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="#C0C0D0" stroke-width="1.4"/><path d="M7 10h6M10 7v6" stroke="#C0C0D0" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </div>
-        <div class="flow-num" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">5</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Harmony Creation V1.3 + Create from URL</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· Add assets from imported site</li>
-          <li>· Reference injection &amp; info experiences</li>
-        </ul>
-      </div>
-      <span class="flow-tag tag-tbd" style="align-self:flex-start;margin-top:2px;">TBD</span>
-    </div>
-
-    <!-- ── Card 6: Harmony V2 ── -->
-    <div class="flow-card tbd">
-      <div class="flow-thumb">
-        <div class="flow-thumb-placeholder">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="#C0C0D0" stroke-width="1.4"/><path d="M7 10h6M10 7v6" stroke="#C0C0D0" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </div>
-        <div class="flow-num" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">6</div>
-      </div>
-      <div class="flow-body">
-        <div class="flow-title">Harmony V2 — All features</div>
-        <ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">
-          <li>· All features combined</li>
-          <li>· New concept of the flow — TBD</li>
-        </ul>
-      </div>
-      <span class="flow-tag tag-tbd" style="align-self:flex-start;margin-top:2px;">TBD</span>
-    </div>
-
   </div>
+
+  <script>
+  (function () {
+    var DATA_URL = 'https://raw.githubusercontent.com/nettawit/aria-funnel/main/lobby-data.json';
+    var API_URL  = 'https://api.github.com/repos/nettawit/aria-funnel/contents/lobby-data.json';
+    var TOKEN_KEY = 'aria-funnel-gh-token';
+
+    var state = null; // live data object
+    var editDraft = null; // working copy in panel
+
+    // ── Helpers ──────────────────────────────────────────────────────────
+    function esc(s) {
+      return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function figmaSvg(colored) {
+      return colored
+        ? '<svg width="9" height="12" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="#1ABCFE"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="#0ACF83"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="#FF7262"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="#F24E1E"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="#FF7262"/></svg>'
+        : '<svg width="9" height="12" viewBox="0 0 10 14" fill="none"><path d="M2.5 7A2.5 2.5 0 0 1 5 4.5h0A2.5 2.5 0 0 1 7.5 7h0A2.5 2.5 0 0 1 5 9.5h0A2.5 2.5 0 0 1 2.5 7z" fill="currentColor"/><path d="M0 11.5A2.5 2.5 0 0 1 2.5 9H5v2.5A2.5 2.5 0 0 1 2.5 14h0A2.5 2.5 0 0 1 0 11.5z" fill="currentColor"/><path d="M5 0v5h2.5A2.5 2.5 0 0 0 7.5 0H5z" fill="currentColor"/><path d="M0 2.5A2.5 2.5 0 0 0 2.5 5H5V0H2.5A2.5 2.5 0 0 0 0 2.5z" fill="currentColor"/><path d="M0 7A2.5 2.5 0 0 0 2.5 9.5H5V4.5H2.5A2.5 2.5 0 0 0 0 7z" fill="currentColor"/></svg>';
+    }
+    function docSvg() {
+      return '<svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1" width="11" height="12" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4.5h6M4 7h6M4 9.5h4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>';
+    }
+    function dlSvg() {
+      return '<svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 2v7M4.5 6.5L7 9l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5v1A.5.5 0 0 0 2.5 12h9a.5.5 0 0 0 .5-.5v-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+    }
+    function thumbPlaceholder() {
+      return '<div class="flow-thumb-placeholder"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="#C0C0D0" stroke-width="1.4"/><path d="M7 10h6M10 7v6" stroke="#C0C0D0" stroke-width="1.4" stroke-linecap="round"/></svg></div>';
+    }
+    function uid() { return 'c' + Math.random().toString(36).slice(2,7); }
+
+    // ── Render ──────────────────────────────────────────────────────────
+    function render(data) {
+      // header
+      document.getElementById('disp-header-label').textContent = data.header.label || '';
+      document.getElementById('disp-header-title').textContent = data.header.title || '';
+      document.getElementById('disp-header-sub').textContent   = data.header.subtitle || '';
+      var slidesEl = document.getElementById('disp-slides-link');
+      if (data.header.slidesUrl) {
+        slidesEl.innerHTML = '<a href="'+esc(data.header.slidesUrl)+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;color:#1E1E2E;border:1px solid #E8E8EE;background:#fff;text-decoration:none;" onmouseover="this.style.borderColor=\'#C8C8D8\';this.style.boxShadow=\'0 2px 8px rgba(0,0,0,0.07)\'" onmouseout="this.style.borderColor=\'#E8E8EE\';this.style.boxShadow=\'none\'">'
+          + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" fill="#FBBC04"/><path d="M4 5h6M4 7h6M4 9h4" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>'
+          + 'Test overview slides</a>';
+        slidesEl.style.marginTop = '4px';
+      } else {
+        slidesEl.innerHTML = '';
+      }
+
+      // cards
+      var container = document.getElementById('flows-container');
+      var html = '';
+      var activeCards = data.cards.filter(function(c){ return c.status !== 'tbd'; });
+      var tbdCards    = data.cards.filter(function(c){ return c.status === 'tbd'; });
+
+      function cardHtml(c) {
+        var isTbd = c.status === 'tbd';
+        var tag = c.status === 'ready'
+          ? '<span class="flow-tag tag-ready" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>'
+          : c.status === 'wip'
+          ? '<span class="flow-tag tag-wip" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>'
+          : '<span class="flow-tag tag-tbd" style="align-self:flex-start;margin-top:2px;">'+esc(c.statusLabel)+'</span>';
+
+        var thumb = c.thumbUrl
+          ? '<img src="'+esc(c.thumbUrl)+'" alt="" onerror="this.style.display=\'none\'">'
+          : thumbPlaceholder();
+        var numClass = (c.status !== 'tbd') ? 'flow-num active' : 'flow-num';
+
+        var bullets = (c.bullets||[]).map(function(b){ return '<li>'+esc(b)+'</li>'; }).join('');
+
+        var docBtns = '';
+        if (c.figmaUrl) {
+          docBtns += '<button class="doc-btn figma" onclick="event.stopPropagation();window.open(\''+esc(c.figmaUrl)+'\',\'_blank\')">'+figmaSvg(true)+' Figma</button>';
+        }
+        if (c.specFile) {
+          docBtns += '<button class="doc-btn spec" onclick="event.stopPropagation();window.open(\''+esc(c.specFile)+'\',\'_blank\')">'+docSvg()+' UX Spec</button>';
+          docBtns += '<button class="doc-btn dl" onclick="event.stopPropagation();(()=>{var a=document.createElement(\'a\');a.href=\''+esc(c.specFile)+'\';a.download=\''+esc(c.specFile)+'\';a.click()})()">'+dlSvg()+' .md</button>';
+        }
+        var btnsHtml = docBtns ? '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">'+docBtns+'</div>' : '';
+
+        var inner = '<div class="flow-thumb">'+thumb
+          + '<div class="'+numClass+'" style="position:absolute;bottom:6px;left:6px;width:22px;height:22px;border-radius:6px;font-size:12px;">'+c.num+'</div>'
+          + '</div>'
+          + '<div class="flow-body">'
+          + '<div class="flow-title">'+esc(c.title)+'</div>'
+          + '<ul class="flow-desc" style="list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:3px;">'+bullets+'</ul>'
+          + btnsHtml
+          + '</div>'
+          + tag;
+
+        if (!isTbd && c.href) {
+          return '<a class="flow-card" href="'+esc(c.href)+'">' + inner + '<span class="flow-arrow">›</span></a>';
+        } else if (!isTbd) {
+          return '<div class="flow-card">' + inner + '</div>';
+        } else {
+          return '<div class="flow-card tbd">' + inner + '</div>';
+        }
+      }
+
+      activeCards.forEach(function(c){ html += cardHtml(c); });
+      if (tbdCards.length) {
+        html += '<hr class="divider"><div class="section-label">Coming soon</div>';
+        tbdCards.forEach(function(c){ html += cardHtml(c); });
+      }
+      container.innerHTML = html;
+    }
+
+    // ── Load data ────────────────────────────────────────────────────────
+    fetch(DATA_URL + '?t=' + Date.now())
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        state = data;
+        render(state);
+      })
+      .catch(function(){
+        document.getElementById('flows-container').innerHTML = '<div style="text-align:center;padding:40px;color:#CC3333;font-size:14px;">Could not load lobby data. Check the console.</div>';
+      });
+
+    // ── Edit panel ───────────────────────────────────────────────────────
+    var panel = document.getElementById('edit-panel');
+    var editBtn = document.getElementById('lobby-edit-btn');
+
+    function openPanel() {
+      editDraft = JSON.parse(JSON.stringify(state));
+      populatePanel();
+      panel.classList.add('open');
+    }
+    function closePanel() {
+      panel.classList.remove('open');
+    }
+
+    editBtn.addEventListener('click', openPanel);
+    document.getElementById('ep-close-btn').addEventListener('click', closePanel);
+    document.getElementById('ep-cancel-btn').addEventListener('click', closePanel);
+    panel.addEventListener('click', function(e){ if (e.target === panel) closePanel(); });
+
+    function populatePanel() {
+      document.getElementById('ep-header-label').value = editDraft.header.label || '';
+      document.getElementById('ep-header-title').value = editDraft.header.title || '';
+      document.getElementById('ep-header-sub').value   = editDraft.header.subtitle || '';
+      document.getElementById('ep-slides-url').value   = editDraft.header.slidesUrl || '';
+      renderCardBlocks();
+      updateTokenNotice();
+    }
+
+    function renderCardBlocks() {
+      var container = document.getElementById('ep-cards-container');
+      container.innerHTML = '';
+      editDraft.cards.forEach(function(card, idx) {
+        container.appendChild(buildCardBlock(card, idx));
+      });
+    }
+
+    function buildCardBlock(card, idx) {
+      var div = document.createElement('div');
+      div.className = 'ep-card-block';
+      div.dataset.idx = idx;
+
+      var statusOpts = [
+        {val:'ready', label:'Ready for dev', cls:'tag-ready'},
+        {val:'wip',   label:'Needs update',  cls:'tag-wip'},
+        {val:'tbd',   label:'TBD',           cls:'tag-tbd'},
+      ];
+      var statusHtml = statusOpts.map(function(s){
+        return '<button type="button" class="ep-status-opt '+s.cls+(card.status===s.val?' sel':'')+'" data-val="'+s.val+'">'+s.label+'</button>';
+      }).join('');
+
+      var bulletsHtml = (card.bullets||[]).map(function(b, bi){
+        return '<div class="ep-bullet-row"><input class="ep-input ep-bullet" data-bi="'+bi+'" value="'+esc(b)+'"><button type="button" class="ep-rm-bullet" data-bi="'+bi+'">×</button></div>';
+      }).join('');
+
+      div.innerHTML = '<div class="ep-card-block-title">'
+        + '<span>#'+(idx+1)+' — '+esc(card.title)+'</span>'
+        + '<div class="ep-card-actions">'
+        + '<button type="button" class="ep-card-btn dup-btn">Duplicate</button>'
+        + '<button type="button" class="ep-card-btn danger rm-btn">Remove</button>'
+        + '</div></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Title</div>'
+        + '<input class="ep-input ep-card-title" value="'+esc(card.title)+'"></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Prototype link</div>'
+        + '<input class="ep-input ep-card-href" value="'+esc(card.href||'')+'" placeholder="e.g. harmony-v1.1.html or leave blank"></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Figma link</div>'
+        + '<input class="ep-input ep-card-figma" value="'+esc(card.figmaUrl||'')+'" placeholder="https://www.figma.com/design/..."></div>'
+
+        + '<div class="ep-field"><div class="ep-label">UX Spec file (filename in repo)</div>'
+        + '<input class="ep-input ep-card-spec" value="'+esc(card.specFile||'')+'" placeholder="e.g. spec-v05.md"></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Thumbnail URL (leave blank for auto)</div>'
+        + '<input class="ep-input ep-card-thumb" value="'+esc(card.thumbUrl||'')+'" placeholder="auto (thum.io) or paste custom URL"></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Description bullets</div>'
+        + '<div class="ep-bullets">'+bulletsHtml+'</div>'
+        + '<button type="button" class="ep-add-bullet">+ Add bullet</button></div>'
+
+        + '<div class="ep-field"><div class="ep-label">Status</div>'
+        + '<div class="ep-status-row">'+statusHtml+'</div>'
+        + '<div style="margin-top:6px;"><div class="ep-label" style="margin-bottom:4px;">Status label</div>'
+        + '<input class="ep-input ep-card-status-label" value="'+esc(card.statusLabel||'')+'" style="max-width:200px;"></div></div>';
+
+      // wire inputs
+      div.querySelector('.ep-card-title').addEventListener('input', function(e){
+        editDraft.cards[idx].title = e.target.value;
+        div.querySelector('.ep-card-block-title span').textContent = '#'+(idx+1)+' — '+e.target.value;
+      });
+      div.querySelector('.ep-card-href').addEventListener('input', function(e){ editDraft.cards[idx].href = e.target.value || null; });
+      div.querySelector('.ep-card-figma').addEventListener('input', function(e){ editDraft.cards[idx].figmaUrl = e.target.value || null; });
+      div.querySelector('.ep-card-spec').addEventListener('input', function(e){ editDraft.cards[idx].specFile = e.target.value || null; });
+      div.querySelector('.ep-card-thumb').addEventListener('input', function(e){ editDraft.cards[idx].thumbUrl = e.target.value || null; });
+      div.querySelector('.ep-card-status-label').addEventListener('input', function(e){ editDraft.cards[idx].statusLabel = e.target.value; });
+
+      div.querySelectorAll('.ep-bullet').forEach(function(inp){
+        inp.addEventListener('input', function(e){
+          editDraft.cards[idx].bullets[parseInt(e.target.dataset.bi)] = e.target.value;
+        });
+      });
+      div.querySelectorAll('.ep-rm-bullet').forEach(function(btn){
+        btn.addEventListener('click', function(e){
+          editDraft.cards[idx].bullets.splice(parseInt(e.target.dataset.bi),1);
+          renderCardBlocks();
+        });
+      });
+      div.querySelector('.ep-add-bullet').addEventListener('click', function(){
+        editDraft.cards[idx].bullets.push('· ');
+        renderCardBlocks();
+        // focus the last new bullet
+        setTimeout(function(){
+          var blocks = document.querySelectorAll('.ep-card-block');
+          var block = blocks[idx];
+          if (block) {
+            var bullets = block.querySelectorAll('.ep-bullet');
+            if (bullets.length) bullets[bullets.length-1].focus();
+          }
+        }, 50);
+      });
+      div.querySelectorAll('.ep-status-opt').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          editDraft.cards[idx].status = btn.dataset.val;
+          renderCardBlocks();
+        });
+      });
+      div.querySelector('.dup-btn').addEventListener('click', function(){
+        var copy = JSON.parse(JSON.stringify(editDraft.cards[idx]));
+        copy.id = uid();
+        copy.num = editDraft.cards.length + 1;
+        editDraft.cards.splice(idx+1, 0, copy);
+        renderCardBlocks();
+      });
+      div.querySelector('.rm-btn').addEventListener('click', function(){
+        if (editDraft.cards.length <= 1) return;
+        editDraft.cards.splice(idx, 1);
+        // renumber
+        editDraft.cards.forEach(function(c, i){ c.num = i+1; });
+        renderCardBlocks();
+      });
+
+      return div;
+    }
+
+    document.getElementById('ep-add-card-btn').addEventListener('click', function(){
+      editDraft.cards.push({
+        id: uid(),
+        num: editDraft.cards.length + 1,
+        title: 'New project',
+        bullets: ['· Description'],
+        status: 'tbd',
+        statusLabel: 'TBD',
+        href: null,
+        figmaUrl: null,
+        specFile: null,
+        thumbUrl: null
+      });
+      renderCardBlocks();
+      // scroll to the new block
+      setTimeout(function(){
+        var blocks = document.querySelectorAll('.ep-card-block');
+        if (blocks.length) blocks[blocks.length-1].scrollIntoView({behavior:'smooth',block:'start'});
+      }, 50);
+    });
+
+    // header inputs
+    ['ep-header-label','ep-header-title','ep-header-sub','ep-slides-url'].forEach(function(id){
+      document.getElementById(id).addEventListener('input', function(e){
+        var map = {'ep-header-label':'label','ep-header-title':'title','ep-header-sub':'subtitle','ep-slides-url':'slidesUrl'};
+        editDraft.header[map[id]] = e.target.value;
+      });
+    });
+
+    // ── Token handling ───────────────────────────────────────────────────
+    function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+    function updateTokenNotice() {
+      var el = document.getElementById('ep-token-notice');
+      if (getToken()) {
+        el.innerHTML = '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#1A7A50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub token saved in your browser. <a href="#" id="ep-change-token" style="color:#2F5DFF;text-decoration:none;">Change</a>';
+        document.getElementById('ep-change-token').addEventListener('click', function(e){ e.preventDefault(); showTokenModal(); });
+      } else {
+        el.innerHTML = '<svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1a4 4 0 0 1 4 4v2H3V5a4 4 0 0 1 4-4z" stroke="currentColor" stroke-width="1.2"/><rect x="2" y="7" width="10" height="6" rx="1.5" stroke="currentColor" stroke-width="1.2"/></svg> No token — <a href="#" id="ep-add-token" style="color:#2F5DFF;text-decoration:none;">add token to enable saving</a>';
+        document.getElementById('ep-add-token').addEventListener('click', function(e){ e.preventDefault(); showTokenModal(); });
+      }
+    }
+
+    function showTokenModal() {
+      document.getElementById('token-modal').classList.add('open');
+      document.getElementById('token-input').value = getToken();
+      document.getElementById('token-error').style.display = 'none';
+    }
+    document.getElementById('token-save-btn').addEventListener('click', function(){
+      var t = document.getElementById('token-input').value.trim();
+      if (!t.startsWith('ghp_') && !t.startsWith('github_pat_')) {
+        document.getElementById('token-error').style.display = 'block';
+        return;
+      }
+      localStorage.setItem(TOKEN_KEY, t);
+      document.getElementById('token-modal').classList.remove('open');
+      updateTokenNotice();
+    });
+    document.getElementById('token-modal').addEventListener('click', function(e){
+      if (e.target === document.getElementById('token-modal'))
+        document.getElementById('token-modal').classList.remove('open');
+    });
+
+    // ── Save to GitHub ───────────────────────────────────────────────────
+    document.getElementById('ep-save-btn').addEventListener('click', function(){
+      var token = getToken();
+      if (!token) { showTokenModal(); return; }
+
+      var saveBtn = document.getElementById('ep-save-btn');
+      saveBtn.textContent = 'Saving…';
+      saveBtn.disabled = true;
+
+      // get current file SHA
+      fetch(API_URL, { headers: { 'Authorization': 'token ' + token } })
+        .then(function(r){ return r.json(); })
+        .then(function(file){
+          var content = btoa(unescape(encodeURIComponent(JSON.stringify(editDraft, null, 2))));
+          return fetch(API_URL, {
+            method: 'PUT',
+            headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: 'Update lobby data', content: content, sha: file.sha })
+          });
+        })
+        .then(function(r){ return r.json(); })
+        .then(function(result){
+          if (result.content) {
+            state = JSON.parse(JSON.stringify(editDraft));
+            render(state);
+            closePanel();
+            saveBtn.textContent = 'Saved ✓';
+            setTimeout(function(){ saveBtn.textContent = 'Save & publish'; saveBtn.disabled = false; }, 2000);
+          } else {
+            throw new Error(result.message || 'GitHub API error');
+          }
+        })
+        .catch(function(err){
+          alert('Save failed: ' + err.message + '\n\nCheck that your token has public_repo access.');
+          saveBtn.textContent = 'Save & publish';
+          saveBtn.disabled = false;
+        });
+    });
+
+  })();
+  </script>
 </body>
 </html>
