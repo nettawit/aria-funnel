@@ -43,7 +43,7 @@
       "title": "Harmony Creation V1.1 + Create from URL",
       "bullets": [
         "· UX fixes: first screen layout & composer flows",
-        "· Modal: clean dismiss during scan",
+        "·Premium modal when site generating",
         "· Remove line breaks & overflow issues"
       ],
       "status": "ready",
