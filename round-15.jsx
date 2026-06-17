@@ -467,7 +467,7 @@ function HomeFlow({ start = 'empty', onGenerate }) {
   const [importedSite, setImportedSite] = hs(null); // null | { host, isShopify, mode: 'both' | 'design' }
   const [fileTypes, setFileTypes] = hs({}); // name -> 'asset' | 'file' | 'ref'
   const recordTypes = (names, type) => setFileTypes(prev => { const m = { ...prev }; names.forEach(n => { if (!m[n]) m[n] = type; }); return m; });
-  const [ov, setOv] = hs(null); // overlay/modal id
+  const [ov, setOv] = hs(window.OPEN_IMPORT ? 'import-url' : null); // overlay/modal id
   const [refHover, setRefHover] = hs(false);
   const [scanPct, setScanPct] = hs(60);
   const [showMore, setShowMore] = hs(false);
