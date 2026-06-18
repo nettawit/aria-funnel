@@ -1842,8 +1842,8 @@ function FigmaEntryScreen({ onGenerate }) {
                       <div style={{ position: 'absolute', top: -6, left: 18, width: 12, height: 12, background: '#ECF0F3', transform: 'rotate(45deg)', boxShadow: '-2px -2px 4px rgba(0,0,0,0.04)', zIndex: 1 }} />
                       <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
                         <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
-                          {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
-                            <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                          {['8ea8430a-abb2-45b7-9597-071759b52c6d.jpg','f7754d35-c806-409c-bd7f-8f6d75271ce7.jpg','75c4c04a-d83e-40ae-aa5d-c7c1553ea6da.jpg','65b05b3b-b9ff-4f79-a1f8-a3c726dd47e0.jpg','a132e872-a8c0-4baf-bd6d-6e2eb1d1f004.jpg','4d4797e1-23e2-45f5-b115-88f3c987278b.jpg','49051db8-b1ca-4c92-a412-434bb6611701.jpg','4d121948-c889-4cc4-9f84-367f7240d465.jpg','e9dcaa69-7c19-4682-a51f-fee7251b8e67.jpg'].map(id => (
+                            <img key={id} src={`https://images-wixmp-530a50041672c69d335ba4cf.wixmp.com/templates/image/${id}/v1/fill/w_180%2Ch_120%2Cq_90%2Cusm_0.60_1.00_0.01/${id}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
                           ))}
                         </div>
                       </div>
@@ -2065,8 +2065,8 @@ function HarmonyV11Screen({ onGenerate }) {
                   <div style={{ position: 'absolute', bottom: -6, left: 18, width: 12, height: 12, background: '#fff', transform: 'rotate(45deg)', boxShadow: '2px 2px 6px rgba(0,0,0,0.06)', zIndex: 1 }} />
                   <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
                     <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
-                      {['allbirds.com','notion.so','stripe.com','linear.app','framer.com','figma.com','vercel.com','shopify.com','squarespace.com'].map(site => (
-                        <img key={site} src={`https://image.thum.io/get/width/120/crop/80/${site}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                      {['8ea8430a-abb2-45b7-9597-071759b52c6d.jpg','f7754d35-c806-409c-bd7f-8f6d75271ce7.jpg','75c4c04a-d83e-40ae-aa5d-c7c1553ea6da.jpg','65b05b3b-b9ff-4f79-a1f8-a3c726dd47e0.jpg','a132e872-a8c0-4baf-bd6d-6e2eb1d1f004.jpg','4d4797e1-23e2-45f5-b115-88f3c987278b.jpg','49051db8-b1ca-4c92-a412-434bb6611701.jpg','4d121948-c889-4cc4-9f84-367f7240d465.jpg','e9dcaa69-7c19-4682-a51f-fee7251b8e67.jpg'].map(id => (
+                        <img key={id} src={`https://images-wixmp-530a50041672c69d335ba4cf.wixmp.com/templates/image/${id}/v1/fill/w_180%2Ch_120%2Cq_90%2Cusm_0.60_1.00_0.01/${id}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
                       ))}
                     </div>
                   </div>
