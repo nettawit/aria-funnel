@@ -321,11 +321,13 @@ function SiteChip({ site, onRemove }) {
     <span onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} title="Site" style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', background: '#fff', ...typeEdge('site'), borderRadius: 8, overflow: 'visible', flexShrink: 0 }}>
       <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, paddingTop: 4, paddingBottom: 4, paddingLeft: 6, paddingRight: onRemove ? 16 : 10 }}>
         {favErr ? <GlobeIcon /> : <img src={`https://www.google.com/s2/favicons?domain=${site.host}&sz=64`} alt="" width={20} height={20} onError={() => setFavErr(true)} style={{ borderRadius: 4, display: 'block', flexShrink: 0 }} />}
-        <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.25 }}>
+        <span style={{ display: 'flex', flexDirection: 'column', gap: 3, lineHeight: 1.25 }}>
           <span style={{ fontSize: 12, fontWeight: 600, color: '#151414', whiteSpace: 'nowrap', maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis' }}>{site.host}</span>
-          <span style={{ fontSize: 10, color: '#888898', whiteSpace: 'nowrap' }}>{site.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+          <span style={{ display: 'flex', gap: 4 }}>
+            <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{site.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+            {site.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
+          </span>
         </span>
-        {site.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '2px 7px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
       </span>
       {onRemove && hovered && <CloseBtn onRemove={onRemove} transparent={false} />}
     </span>
@@ -818,11 +820,13 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                     {/* URL chip */}
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, height: 30, padding: '0 10px 0 10px', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 24, fontSize: 12, color: '#151414', fontWeight: 400, fontFamily: 'inherit' }}>
                       <img src={`https://www.google.com/s2/favicons?domain=${importedSite.host}&sz=32`} width={13} height={13} style={{ borderRadius: 2, flexShrink: 0, display: 'block' }} onError={(e) => { e.target.style.display='none'; }} />
-                      <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+                      <span style={{ display: 'flex', flexDirection: 'column', gap: 3, lineHeight: 1.2 }}>
                         <span style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: 12, fontWeight: 500 }}>{importedSite.host}</span>
-                        <span style={{ fontSize: 10, color: '#888898', whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+                        <span style={{ display: 'flex', gap: 4 }}>
+                          <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+                          {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
+                        </span>
                       </span>
-                      {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 8, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
                       <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', lineHeight: 0, marginLeft: 2, flexShrink: 0 }}>
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="#888" strokeWidth="1.6" strokeLinecap="round"/></svg>
                       </button>
@@ -1401,15 +1405,17 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
           )}
         </div>
       </div>
-      {/* info section helper */}
-      <div style={{ background: '#f5f7ff', border: '1px solid #7896ff', borderRadius: 12, display: 'flex', alignItems: 'center', padding: '6px 16px', gap: 6 }}>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}><circle cx="9" cy="9" r="7.5" stroke="#2F5DFF" strokeWidth="1.2"/><path d="M9 6v5" stroke="#2F5DFF" strokeWidth="1.4" strokeLinecap="round"/><circle cx="9" cy="13" r=".85" fill="#2F5DFF"/></svg>
-        <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>
-          {isShopify
-            ? "Aria will use your site's pages, content and visual style, including product data, images and prices."
-            : "Aria will use your site's pages, content and visual style."}
-        </span>
-      </div>
+      {/* info banner — only when no design options (keep it for the base flow) */}
+      {!showDesignOptions && (
+        <div style={{ background: '#f5f7ff', border: '1px solid #7896ff', borderRadius: 12, display: 'flex', alignItems: 'center', padding: '6px 16px', gap: 6 }}>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}><circle cx="9" cy="9" r="7.5" stroke="#2F5DFF" strokeWidth="1.2"/><path d="M9 6v5" stroke="#2F5DFF" strokeWidth="1.4" strokeLinecap="round"/><circle cx="9" cy="13" r=".85" fill="#2F5DFF"/></svg>
+          <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>
+            {isShopify
+              ? "Aria will use your site's pages, content and visual style, including product data, images and prices."
+              : "Aria will use your site's pages, content and visual style."}
+          </span>
+        </div>
+      )}
 
       {/* design mode options — V1 design feature */}
       {showDesignOptions && (
@@ -1455,11 +1461,6 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
                 </div>
               );
             })}
-          </div>
-          {/* all pages row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '2px 4px' }}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" fill="#E6F9EE" stroke="#1A7A50" strokeWidth="1"/><path d="M4 7l2.2 2.2L10 5" stroke="#1A7A50" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            <span style={{ fontSize: 11, color: '#44445A' }}>All pages — always imported</span>
           </div>
         </div>
       )}
@@ -2027,12 +2028,12 @@ function HarmonyV11Screen({ onGenerate }) {
                   onError={e => { e.target.style.opacity = '0'; }}
                 />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '0 0 0 10px', minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
-                  {importedSite.isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#383838', flexShrink: 0 }}>Shopify</span>}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '0 0 0 10px', minWidth: 0 }}>
+                <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+                  {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
                 </div>
-                <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 180 }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
               </div>
               <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3 }}>
                 <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>

@@ -134,15 +134,13 @@ Opens at the **results step** pre-loaded with `mystore.com`. The full 3-step flo
 
 **Results step** shows:
 - Site preview card (thum.io screenshot)
-- Info banner: `Aria will use your site's pages, content and visual style.`
-- Design mode selection:
+- Design mode selection (two cards side by side):
 
 | Option | Label | Description | Default |
 |--------|-------|-------------|---------|
-| Content & design | Keep the layout, style and content | — | ✓ Selected |
+| Content & design | Keep the pages, content and style | — | ✓ Selected |
 | Design only | Keep the same visual style | — | — |
 
-- **"All pages — always imported"** row with green checkmark (always on)
 - Footer: **Cancel** | **Add to Aria**
 
 For full URL entry, scanning, validation, and platform detection details see `spec-v1-design.md`.
@@ -157,7 +155,7 @@ After adding, a chip appears **above the textarea**:
 - File icon + filename + remove button
 
 **Site chip (Create from URL)**
-- Thumbnail (48×32px) + domain name + mode label (`Content & design` / `Design only`) + platform badge
+- Thumbnail (48×32px) + domain name + mode label badge (`Content & design` / `Design only`, blue) + platform badge (Shopify green if applicable)
 
 Multiple chips can be stacked. Each has its own remove button.
 

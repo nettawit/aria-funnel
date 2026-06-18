@@ -74,18 +74,12 @@ If user edits the URL after results are shown, modal resets to Step 1.
 - Domain name below screenshot
 - Platform badge if detected (see detection logic below)
 
-**Info banner** (blue, below preview card)
-- Regular site: `Aria will use your site's pages, content and visual style.`
-- Shopify: `Aria will use your site's pages, content and visual style, including product data, images and prices.`
-
 **Design mode selection** (two options)
 
 | Option | Label | Description | Default |
 |--------|-------|-------------|---------|
 | Content & design | Keep the layout, style and content | Includes products, categories & prices (Shopify only) | ✓ Selected |
 | Design only | Keep the same visual style | No content imported | — |
-
-**"All pages — always imported"** row with green checkmark (always on, not toggleable)
 
 **Footer actions**
 - **Cancel** (outlined blue)
@@ -110,8 +104,8 @@ After clicking **Add to Aria** a chip appears above the textarea:
 
 - Thumbnail (thum.io screenshot, 48×32px)
 - Domain name
-- Mode label: `Content & design` or `Design only`
-- Shopify badge (if applicable)
+- Mode label badge: `Content & design` (blue) or `Design only` (blue)
+- Platform badge if applicable: `Shopify` (green), `WooCommerce` (blue)
 - Remove button (×) in top-right corner of chip
 
 Removing the chip allows re-opening the modal.
