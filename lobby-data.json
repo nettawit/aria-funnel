@@ -11,9 +11,9 @@
       "num": 1,
       "title": "Create from URL V0.5",
       "bullets": [
-        "· New modal experience (URL → scan → preview)",
+        "· New modal experience (URL → scan → results)",
         "· Store integration — Shopify & WooCommerce detection",
-        "· Image injection"
+        "· Inspire your design — upload an image to inspire your site's look & feel"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
@@ -28,16 +28,17 @@
       "num": 2,
       "title": "Create from URL V1 — Design feature",
       "bullets": [
-        "· Choose: content + design, or design style only",
-        "· Prototype needs update"
+        "· Design mode selection: Content & design vs Design only",
+        "· Site chip with thumbnail above the textarea after attachment",
+        "· Hover popover with Wix template previews on the Create from URL button"
       ],
-      "status": "wip",
-      "statusLabel": "Needs update",
+      "status": "ready",
+      "statusLabel": "Ready for dev",
       "href": "v1-design.html",
       "figmaUrl": null,
       "specFile": "spec-v1-design.md",
       "thumbUrl": "thumb-c2.png",
-      "eta": "TBD date"
+      "eta": null
     },
     {
       "id": "c3",
@@ -46,7 +47,7 @@
       "bullets": [
         "· UX fixes: first screen layout & composer flows",
         "· Premium modal when site generating",
-        "· Remove line breaks & overflow issues"
+        "· Create from URL with hover popover opening below the button"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
@@ -54,18 +55,19 @@
       "figmaUrl": "https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1",
       "specFile": "spec-v11.md",
       "thumbUrl": "thumb-c3.png",
-      "eta": "25 jun"
+      "eta": "25 Jun"
     },
     {
       "id": "c4",
       "num": 4,
       "title": "Harmony Creation V1.2 + Create from URL + \"Add\" Features",
       "bullets": [
-        "· Updated modal experience",
-        "· Flow matched to the relevant test scenario"
+        "· + Add dropdown: assets, visual references, info docs",
+        "· Create from URL with design mode selection and site chip",
+        "· All entry points stay visible after attaching a site"
       ],
-      "status": "wip",
-      "statusLabel": "Needs update",
+      "status": "ready",
+      "statusLabel": "Ready for dev",
       "href": "v4.html",
       "figmaUrl": null,
       "specFile": "spec-v12.md",
