@@ -89,6 +89,20 @@
       "specFile": null,
       "thumbUrl": "thumb-placeholder.svg",
       "eta": null
+    },
+    {
+      "id": "csmegh",
+      "num": 6,
+      "title": "Harmony Prompt Screen Design ",
+      "bullets": [
+        "· Description"
+      ],
+      "status": "inprogress",
+      "statusLabel": "ASAP",
+      "href": null,
+      "figmaUrl": null,
+      "specFile": null,
+      "thumbUrl": null
     }
   ]
 }
