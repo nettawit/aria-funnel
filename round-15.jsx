@@ -818,7 +818,10 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                     {/* URL chip */}
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, height: 30, padding: '0 10px 0 10px', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 24, fontSize: 12, color: '#151414', fontWeight: 400, fontFamily: 'inherit' }}>
                       <img src={`https://www.google.com/s2/favicons?domain=${importedSite.host}&sz=32`} width={13} height={13} style={{ borderRadius: 2, flexShrink: 0, display: 'block' }} onError={(e) => { e.target.style.display='none'; }} />
-                      <span style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{importedSite.host}</span>
+                      <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+                        <span style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: 12, fontWeight: 500 }}>{importedSite.host}</span>
+                        <span style={{ fontSize: 10, color: '#888898', whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+                      </span>
                       {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 8, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
                       <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', lineHeight: 0, marginLeft: 2, flexShrink: 0 }}>
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="#888" strokeWidth="1.6" strokeLinecap="round"/></svg>
@@ -1410,26 +1413,51 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
 
       {/* design mode options — V1 design feature */}
       {showDesignOptions && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {[
-            { val: 'content', label: 'Content & design', desc: 'Keep the layout, style and content' + (isShopify ? ', including products, categories & prices' : '') },
-            { val: 'design',  label: 'Design only',      desc: 'Keep the same visual style' },
-          ].map(opt => {
-            const sel = designMode === opt.val;
-            return (
-              <div key={opt.val} onClick={() => setDesignMode(opt.val)}
-                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 10, border: sel ? '1.5px solid #2F5DFF' : '1.5px solid #E0E0E8', background: sel ? '#F5F7FF' : '#fff', cursor: 'pointer', transition: 'border-color 120ms, background 120ms' }}>
-                {/* radio */}
-                <div style={{ width: 16, height: 16, borderRadius: '50%', border: sel ? '5px solid #2F5DFF' : '1.5px solid #C1C2C3', flexShrink: 0, background: '#fff', boxSizing: 'border-box' }} />
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1E1E2E', lineHeight: '18px' }}>{opt.label}</div>
-                  <div style={{ fontSize: 11, color: '#6B6B7E', lineHeight: '16px', marginTop: 1 }}>{opt.desc}</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {[
+              {
+                val: 'content',
+                label: 'Content & design',
+                desc: isShopify ? 'Keep the pages, content and data' : 'Keep the pages, content and style',
+                sub: isShopify ? 'includes products, images & prices' : null,
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <rect x="3" y="2" width="14" height="16" rx="2" stroke="#2F5DFF" strokeWidth="1.4"/>
+                    <path d="M6 6h8M6 9h8M6 12h5" stroke="#2F5DFF" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                ),
+              },
+              {
+                val: 'design',
+                label: 'Design only',
+                desc: 'Keep the same visual style',
+                sub: null,
+                icon: (
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="10" r="7" stroke="#2F5DFF" strokeWidth="1.4"/>
+                    <path d="M10 6v4l3 2" stroke="#2F5DFF" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="10" cy="10" r="1.5" fill="#2F5DFF"/>
+                  </svg>
+                ),
+              },
+            ].map(opt => {
+              const sel = designMode === opt.val;
+              return (
+                <div key={opt.val} onClick={() => setDesignMode(opt.val)}
+                  style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6, padding: '12px 14px', borderRadius: 10, border: sel ? '1.5px solid #2F5DFF' : '1.5px solid #E0E0E8', background: sel ? '#F5F8FF' : '#FAFAFA', cursor: 'pointer', transition: 'border-color 120ms, background 120ms', position: 'relative' }}>
+                  {/* selected indicator dot */}
+                  <div style={{ position: 'absolute', top: 10, right: 10, width: 14, height: 14, borderRadius: '50%', border: sel ? '4.5px solid #2F5DFF' : '1.5px solid #C1C2C3', background: '#fff', boxSizing: 'border-box', transition: 'border-color 120ms' }} />
+                  <div style={{ marginBottom: 2 }}>{opt.icon}</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: '#1E1E2E', lineHeight: '16px' }}>{opt.label}</div>
+                  <div style={{ fontSize: 11, color: '#6B6B7E', lineHeight: '15px' }}>{opt.desc}</div>
+                  {opt.sub && <div style={{ fontSize: 10, color: '#2F5DFF', fontWeight: 600, lineHeight: '14px' }}>+ {opt.sub}</div>}
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
           {/* all pages row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '2px 4px' }}>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" fill="#E6F9EE" stroke="#1A7A50" strokeWidth="1"/><path d="M4 7l2.2 2.2L10 5" stroke="#1A7A50" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
             <span style={{ fontSize: 11, color: '#44445A' }}>All pages — always imported</span>
           </div>
@@ -2004,7 +2032,7 @@ function HarmonyV11Screen({ onGenerate }) {
                   <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
                   {importedSite.isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#383838', flexShrink: 0 }}>Shopify</span>}
                 </div>
-                <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 180 }}>{importedSite.host}</span>
+                <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 180 }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
               </div>
               <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3 }}>
                 <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
