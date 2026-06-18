@@ -1400,16 +1400,10 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
           />
         </div>
         {/* site name row */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 12 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, fontWeight: 500, color: '#383838', lineHeight: '16px' }}>{host}</span>
-          </div>
-          {(isShopify || isWoo) && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              {isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Shopify</span>}
-              {isWoo && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>WooCommerce</span>}
-            </div>
-          )}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
+          <span style={{ fontSize: 12, fontWeight: 500, color: '#383838', lineHeight: '16px' }}>{host}</span>
+          {isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Shopify</span>}
+          {isWoo && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>WooCommerce</span>}
         </div>
       </div>
       {/* info banner — only when no design options (keep it for the base flow) */}
