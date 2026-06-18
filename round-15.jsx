@@ -1828,7 +1828,7 @@ function FigmaEntryScreen({ onGenerate }) {
               <p style={{ margin: 0, fontSize: 14, color: importedSite ? '#868AA5' : '#000624', lineHeight: '18px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}>
                 {importedSite
                   ? 'Use a more playful color palette and keep the messaging short'
-                  : 'Create a bright, modern website for "Happy Moments", a shoe store in Tel Aviv, using soft sky blue, warm coral, and clean white for a cheerful, welcoming vi..'}
+                  : 'Create a professional website for a business that showcases our services and what we offer.'}
               </p>
             </div>
 
@@ -1855,8 +1855,8 @@ function FigmaEntryScreen({ onGenerate }) {
                         </div>
                       </div>
                       <div style={{ padding: '12px 18px 16px' }}>
-                        <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
-                        <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Inspire your design</div>
+                        <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Upload an image to inspire your site's look & feel.</div>
                       </div>
                     </div>
                   )}
