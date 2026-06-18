@@ -1967,12 +1967,12 @@ function HarmonyV11Screen({ onGenerate }) {
   const [hovUrl, setHovUrl] = hs(false);
   const [tweaksOpen, setTweaksOpen] = hs(false);
 
-  const EXAMPLE_PROMPTS = ['Fashion store', 'Online course', 'Wellness service', 'Consulting website', 'Community hub', 'Creative portfolio'];
+  const EXAMPLE_PROMPTS = ['Fashion store', 'Online course', 'Wellness service', 'Consulting website', 'Community hub', 'Event landing page', 'Creative portfolio', 'Travel blog'];
 
   return (
-    <div style={{ width: '100%', minHeight: '100vh', background: 'radial-gradient(ellipse 90% 55% at 50% 130%, rgba(225,237,255,0.95) 0%, rgba(255,255,255,0) 70%), #f6f6f6', fontFamily: '"Wix Madefor Text", sans-serif', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ width: '100%', height: '100vh', overflow: 'hidden', fontFamily: '"Wix Madefor Text", sans-serif', display: 'flex', flexDirection: 'column', background: '#2B2B2B' }}>
 
-      {/* ── Floating prototype nav (separate layer) ── */}
+      {/* ── Floating prototype nav ── */}
       <div style={{ position: 'fixed', top: 12, left: 12, zIndex: 10000, display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(30,30,46,0.82)', backdropFilter: 'blur(8px)', borderRadius: 20, padding: '5px 12px 5px 8px', boxShadow: '0 2px 12px rgba(0,0,0,0.18)' }}>
         <button onClick={() => { window.location.href = 'lobby.html'; }} style={{ display: 'flex', alignItems: 'center', gap: 5, background: 'none', border: 0, cursor: 'pointer', fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.85)', fontFamily: 'inherit', padding: 0 }}>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -1982,127 +1982,163 @@ function HarmonyV11Screen({ onGenerate }) {
         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontFamily: 'inherit' }}>V1.1</span>
       </div>
 
-      {/* ── Header ── */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72, padding: '0 56px', flexShrink: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          {/* Wix wordmark */}
-          <svg width="40" height="22" viewBox="0 0 80 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="22" fontSize="26" fontWeight="900" fontFamily="'Wix Madefor Display', Arial, sans-serif" fill="#000">Wix</text>
-          </svg>
-          {/* Avatar placeholder */}
-          <div style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid #2f5dff', background: '#dde8ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#2f5dff', flexShrink: 0 }}>N</div>
+      {/* ── Browser tabs bar ── */}
+      <div style={{ background: '#1F1F1F', height: 36, display: 'flex', alignItems: 'flex-end', padding: '0 0 0 80px', flexShrink: 0, gap: 2, userSelect: 'none' }}>
+        <div style={{ background: '#F1F3F4', borderRadius: '6px 6px 0 0', padding: '0 12px', fontSize: 11, color: '#202124', display: 'flex', alignItems: 'center', gap: 6, height: 28, minWidth: 160, maxWidth: 200 }}>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#4285F4"/><path d="M5 8h6M8 5v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/></svg>
+          <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Editor | Wix.com</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="#5F6368" strokeWidth="1.2" strokeLinecap="round"/></svg>
         </div>
-        <button style={{ background: 'none', border: 0, cursor: 'pointer', fontSize: 15, fontWeight: 700, color: '#2f5dff', fontFamily: 'inherit' }}>Upgrade</button>
+        <div style={{ padding: '0 12px', fontSize: 11, color: 'rgba(255,255,255,0.55)', display: 'flex', alignItems: 'center', gap: 6, height: 28, minWidth: 130 }}>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#555"/></svg>
+          <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>My Sites | Wix.com</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round"/></svg>
+        </div>
+        <div style={{ padding: '0 12px', fontSize: 11, color: 'rgba(255,255,255,0.55)', display: 'flex', alignItems: 'center', gap: 6, height: 28 }}>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#555"/></svg>
+          Inbox (5)
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round"/></svg>
+        </div>
       </div>
 
-      {/* ── Main stage ── */}
-      <div style={{ flex: 1, padding: '0 130px', maxWidth: 1440, margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
-
-        {/* Heading block */}
-        <div style={{ paddingTop: 46, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {/* Aria greeting */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1E1E2E', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <HAria size={22} />
-            </div>
-            <div style={{ fontSize: 34, fontWeight: 400, fontFamily: '"Wix Madefor Display", sans-serif', letterSpacing: '-0.8px', lineHeight: '39.1px', background: 'linear-gradient(90deg, #315FFF 0%, #1D3999 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Hi! I'm Aria, your friendly design assistant.
-            </div>
-          </div>
-          {/* Subtitle */}
-          <div style={{ fontSize: 32, fontWeight: 400, fontFamily: '"Wix Madefor Display", sans-serif', letterSpacing: '-0.8px', lineHeight: '36.8px', color: '#151414' }}>
-            Tell me your site's{' '}<span style={{ color: '#2f5dff' }}>name</span>, what kind of{' '}
-            <span style={{ color: '#2f5dff' }}>business it is,</span> and what{' '}
-            <span style={{ color: '#2f5dff' }}>makes it unique.</span>
-          </div>
+      {/* ── Browser address bar ── */}
+      <div style={{ background: '#F1F3F4', height: 40, display: 'flex', alignItems: 'center', gap: 8, padding: '0 14px', flexShrink: 0, userSelect: 'none' }}>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 8H6M8 6v4" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 8h4" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8A5 5 0 1 1 8 3" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/><path d="M13 3v3h-3" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <div style={{ flex: 1, background: '#fff', borderRadius: 20, height: 26, display: 'flex', alignItems: 'center', padding: '0 12px', gap: 6, fontSize: 12, color: '#202124' }}>
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><rect x="1" y="4" width="8" height="7" rx="1.5" stroke="#5F6368" strokeWidth="1.1"/><path d="M3 4V3a2 2 0 1 1 4 0v1" stroke="#5F6368" strokeWidth="1.1"/></svg>
+          <span style={{ color: '#34A853', fontWeight: 500 }}>manage.wix.com</span>
+          <span style={{ color: '#5F6368' }}>/editor/8f4c2d1a-...</span>
         </div>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.6 3.3L13 6.1l-2.5 2.4.6 3.5L8 10.3l-3.1 1.6.6-3.5L3 6.1l3.4-.8z" stroke="#80868B" strokeWidth="1.2" strokeLinejoin="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="1.3" fill="#80868B"/><circle cx="8" cy="8" r="1.3" fill="#80868B"/><circle cx="8" cy="11" r="1.3" fill="#80868B"/></svg>
+      </div>
 
-        {/* Composer card */}
-        <div style={{ marginTop: 40, borderRadius: 24, background: '#fff', border: '1.5px solid #9db9ff', padding: '26px 28px 18px', minHeight: 296, display: 'flex', flexDirection: 'column', boxShadow: '0 2px 2px rgba(0,6,36,0.05), 0 0 3px rgba(0,6,36,0.1)', position: 'relative' }}>
-          {/* Attachment chip — shown ABOVE textarea when site is imported */}
-          {importedSite && (
-            <div style={{ display: 'inline-flex', alignItems: 'center', height: 48, background: '#fff', border: '1px solid #DFE5EB', borderRadius: 8, overflow: 'hidden', fontFamily: 'inherit', alignSelf: 'flex-start', flexShrink: 0, maxWidth: '100%', marginBottom: 4 }}>
-              <div style={{ width: 48, height: 32, flexShrink: 0, borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)', overflow: 'hidden', background: '#ECF0F3', margin: '0 0 0 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img
-                  src={`https://image.thum.io/get/width/96/crop/136/https://${importedSite.host}`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
-                  onError={e => { e.target.style.opacity = '0'; }}
-                />
+      {/* ── Bookmarks bar ── */}
+      <div style={{ background: '#F1F3F4', height: 28, display: 'flex', alignItems: 'center', gap: 4, padding: '0 14px', borderTop: '1px solid #DADCE0', flexShrink: 0, userSelect: 'none' }}>
+        {['Apps', 'Wix Website Editor', 'The official site of…', 'YouTube'].map(b => (
+          <div key={b} style={{ padding: '0 8px', height: 20, display: 'flex', alignItems: 'center', fontSize: 11, color: '#202124', borderRadius: 4, cursor: 'default', whiteSpace: 'nowrap' }}>{b}</div>
+        ))}
+      </div>
+
+      {/* ── Wix Editor top bar ── */}
+      <div style={{ background: '#1E1E2E', height: 52, display: 'flex', alignItems: 'center', padding: '0 16px', gap: 6, flexShrink: 0, userSelect: 'none' }}>
+        <svg width="38" height="20" viewBox="0 0 80 28" fill="none"><text x="0" y="22" fontSize="26" fontWeight="900" fontFamily="'Wix Madefor Display', Arial, sans-serif" fill="#fff">Wix</text></svg>
+        <span style={{ width: 1, height: 20, background: 'rgba(255,255,255,0.15)', margin: '0 4px' }} />
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 5L7 9l4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 5l4 4-4 4" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <span style={{ width: 1, height: 20, background: 'rgba(255,255,255,0.15)', margin: '0 4px' }} />
+        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit' }}>Site Name</button>
+        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit' }}>Brand</button>
+        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4 }}>
+          Fit
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <div style={{ flex: 1 }} />
+        <button style={{ background: '#7B5CF5', border: 0, borderRadius: 6, padding: '0 14px', height: 28, fontSize: 12, fontWeight: 600, color: '#fff', cursor: 'default', fontFamily: 'inherit' }}>Upgrade</button>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M7 7l-3 3 3 3" stroke="rgba(255,255,255,0.25)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 10H5M13 7l3 3-3 3" stroke="rgba(255,255,255,0.25)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <button style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 6, padding: '0 14px', height: 28, fontSize: 12, color: 'rgba(255,255,255,0.7)', cursor: 'default', fontFamily: 'inherit' }}>Preview</button>
+        <button style={{ background: '#116DFF', border: 0, borderRadius: 6, padding: '0 16px', height: 28, fontSize: 12, fontWeight: 600, color: '#fff', cursor: 'default', fontFamily: 'inherit' }}>Publish</button>
+      </div>
+
+      {/* ── Main content area ── */}
+      <div style={{ flex: 1, overflow: 'auto', background: 'radial-gradient(ellipse 80% 60% at 50% 110%, rgba(210,228,255,0.9) 0%, rgba(240,245,255,0.5) 45%, rgba(246,246,246,0) 75%), #f6f6f6' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 20px 48px' }}>
+
+          {/* Heading block */}
+          <div style={{ width: 700, display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ width: 32, height: 32, borderRadius: '50%', background: '#1E1E2E', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <HAria size={22} />
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '0 0 0 10px', minWidth: 0 }}>
-                <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                  <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
-                  {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
+              <div style={{ fontSize: 28, fontWeight: 400, fontFamily: '"Wix Madefor Display", sans-serif', letterSpacing: '-0.5px', lineHeight: 1.3, background: 'linear-gradient(90deg, #315FFF 0%, #1D3999 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                Hi! I'm Aria, let's work together to create your site.
+              </div>
+            </div>
+            <div style={{ fontSize: 28, fontWeight: 400, fontFamily: '"Wix Madefor Display", sans-serif', letterSpacing: '-0.5px', lineHeight: 1.3, color: '#151414', paddingLeft: 44 }}>
+              Start by telling me your{' '}<span style={{ color: '#2f5dff' }}>site's name</span>, business{' '}
+              <span style={{ color: '#2f5dff' }}>type</span> and what makes it{' '}
+              <span style={{ color: '#2f5dff' }}>unique.</span>
+            </div>
+          </div>
+
+          {/* Composer card */}
+          <div style={{ marginTop: 28, width: 700, borderRadius: 16, background: '#fff', border: '1.5px solid #9db9ff', padding: '20px 20px 14px', display: 'flex', flexDirection: 'column', boxShadow: '0 2px 8px rgba(0,6,36,0.06)' }}>
+            {/* Attachment chip */}
+            {importedSite && (
+              <div style={{ display: 'inline-flex', alignItems: 'center', height: 44, background: '#fff', border: '1px solid #DFE5EB', borderRadius: 8, overflow: 'hidden', fontFamily: 'inherit', alignSelf: 'flex-start', flexShrink: 0, maxWidth: '100%', marginBottom: 8 }}>
+                <div style={{ width: 44, height: 30, flexShrink: 0, borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)', overflow: 'hidden', background: '#ECF0F3', margin: '0 0 0 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src={`https://image.thum.io/get/width/96/crop/136/https://${importedSite.host}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} onError={e => { e.target.style.opacity = '0'; }} />
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 3, padding: '0 0 0 10px', minWidth: 0 }}>
+                  <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 180, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.name || importedSite.host}</span>
+                  <span style={{ fontSize: 11, color: '#868AA5', whiteSpace: 'nowrap' }}>{importedSite.host}</span>
+                </div>
+                <div style={{ display: 'flex', height: 44, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 4, paddingTop: 4 }}>
+                  <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
+                    <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><path d="M1 1l4 4M5 1L1 5" stroke="#32324D" strokeWidth="1.3" strokeLinecap="round"/></svg>
+                  </button>
                 </div>
               </div>
-              <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3 }}>
-                <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
-                  <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><path d="M1 1l4 4M5 1L1 5" stroke="#32324D" strokeWidth="1.3" strokeLinecap="round"/></svg>
-                </button>
-              </div>
-            </div>
-          )}
+            )}
 
-          {/* Textarea */}
-          <textarea
-            placeholder="Describe the site you want to build…"
-            style={{ flex: 1, width: '100%', fontSize: 22, fontFamily: '"Wix Madefor Text", sans-serif', color: '#767574', border: 0, outline: 0, resize: 'none', lineHeight: '29.7px', background: 'transparent', minHeight: 168, boxSizing: 'border-box', '::placeholder': { color: '#767574' } }}
-          />
-          {/* Composer footer */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 8 }}>
-            {/* Create from URL — always visible */}
-            <div style={{ position: 'relative', display: 'inline-flex' }}
-              onMouseEnter={() => setHovUrl(true)}
-              onMouseLeave={() => setHovUrl(false)}
-            >
-              <button onClick={() => setShowImport(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: hovUrl ? 'rgba(19,23,32,0.03)' : 'none', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', cursor: 'pointer', fontSize: 16, fontWeight: 700, color: '#151414', fontFamily: 'inherit', padding: '8px 12px', borderRadius: 24, transition: 'background 150ms, border-color 150ms' }}>
-                <HIc name="globe" size={18} color="#151414" />
-                Create from URL
-              </button>
-              {hovUrl && (
-                <div style={{ position: 'absolute', top: 'calc(100% + 8px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
-                  <div style={{ position: 'absolute', top: -6, left: 18, width: 12, height: 12, background: '#ECF0F3', transform: 'rotate(45deg)', boxShadow: '-2px -2px 4px rgba(0,0,0,0.04)', zIndex: 1 }} />
-                  <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
-                    <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
-                      {['8ea8430a-abb2-45b7-9597-071759b52c6d.jpg','f7754d35-c806-409c-bd7f-8f6d75271ce7.jpg','75c4c04a-d83e-40ae-aa5d-c7c1553ea6da.jpg','65b05b3b-b9ff-4f79-a1f8-a3c726dd47e0.jpg','a132e872-a8c0-4baf-bd6d-6e2eb1d1f004.jpg','4d4797e1-23e2-45f5-b115-88f3c987278b.jpg','49051db8-b1ca-4c92-a412-434bb6611701.jpg','4d121948-c889-4cc4-9f84-367f7240d465.jpg','e9dcaa69-7c19-4682-a51f-fee7251b8e67.jpg'].map(id => (
-                        <img key={id} src={`https://images-wixmp-530a50041672c69d335ba4cf.wixmp.com/templates/image/${id}/v1/fill/w_180%2Ch_120%2Cq_90%2Cusm_0.60_1.00_0.01/${id}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
-                      ))}
+            {/* Textarea */}
+            <textarea
+              placeholder="e.g., Create a site for my bakery, Sweet Crumbs..."
+              style={{ flex: 1, width: '100%', fontSize: 16, fontFamily: '"Wix Madefor Text", sans-serif', color: '#151414', border: 0, outline: 0, resize: 'none', lineHeight: '24px', background: 'transparent', minHeight: 80, boxSizing: 'border-box' }}
+            />
+
+            {/* Action bar */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 10, borderTop: '1px solid #F0F0F4', marginTop: 8 }}>
+              <div style={{ position: 'relative', display: 'inline-flex' }}
+                onMouseEnter={() => setHovUrl(true)}
+                onMouseLeave={() => setHovUrl(false)}
+              >
+                <button onClick={() => setShowImport(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: hovUrl ? 'rgba(19,23,32,0.04)' : 'none', border: hovUrl ? '1px solid rgba(19,23,32,0.08)' : '1px solid transparent', cursor: 'pointer', fontSize: 13, fontWeight: 600, color: '#32324D', fontFamily: 'inherit', padding: '6px 10px', borderRadius: 20, transition: 'background 150ms, border-color 150ms' }}>
+                  <HIc name="globe" size={14} color="#32324D" />
+                  Create from URL
+                </button>
+                {hovUrl && (
+                  <div style={{ position: 'absolute', top: 'calc(100% + 8px)', left: 0, zIndex: 200, width: 220, background: '#fff', borderRadius: 8, boxShadow: '0 0 18px rgba(0,6,36,0.1), 0 6px 6px rgba(0,6,36,0.05)', overflow: 'hidden', pointerEvents: 'none' }}>
+                    <div style={{ position: 'absolute', top: -6, left: 18, width: 12, height: 12, background: '#ECF0F3', transform: 'rotate(45deg)', boxShadow: '-2px -2px 4px rgba(0,0,0,0.04)', zIndex: 1 }} />
+                    <div style={{ background: '#ECF0F3', height: 118, overflow: 'hidden', position: 'relative' }}>
+                      <div style={{ position: 'absolute', top: -28, left: -30, width: 340, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 4, padding: 4, transform: 'rotate(6deg)', transformOrigin: 'top left' }}>
+                        {['8ea8430a-abb2-45b7-9597-071759b52c6d.jpg','f7754d35-c806-409c-bd7f-8f6d75271ce7.jpg','75c4c04a-d83e-40ae-aa5d-c7c1553ea6da.jpg','65b05b3b-b9ff-4f79-a1f8-a3c726dd47e0.jpg','a132e872-a8c0-4baf-bd6d-6e2eb1d1f004.jpg','4d4797e1-23e2-45f5-b115-88f3c987278b.jpg','49051db8-b1ca-4c92-a412-434bb6611701.jpg','4d121948-c889-4cc4-9f84-367f7240d465.jpg','e9dcaa69-7c19-4682-a51f-fee7251b8e67.jpg'].map(id => (
+                          <img key={id} src={`https://images-wixmp-530a50041672c69d335ba4cf.wixmp.com/templates/image/${id}/v1/fill/w_180%2Ch_120%2Cq_90%2Cusm_0.60_1.00_0.01/${id}`} style={{ width: '100%', height: 58, objectFit: 'cover', objectPosition: 'top', borderRadius: 3, display: 'block', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
+                        ))}
+                      </div>
+                    </div>
+                    <div style={{ padding: '12px 18px 16px' }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
+                      <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Keep your pages' content and brand style. Get a fully customizable new site design.</div>
                     </div>
                   </div>
-                  <div style={{ padding: '12px 18px 16px' }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
-                    <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Keep your pages' content and brand style. Get a fully customizable new site design.</div>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
+
+              {/* Send button */}
+              <button className="hbtn" style={{ width: 32, height: 32, borderRadius: '50%', background: '#116DFF', border: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M3 7l4-4 4 4" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
             </div>
-
-            {/* Generate Site button — always pinned to right */}
-            <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#2f5dff', gap: 10, borderRadius: 12, boxShadow: '0 4px 7px rgba(47,93,255,0.35)', marginLeft: 'auto' }}>
-              Generate Site
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </button>
           </div>
-        </div>
 
-        {/* Example prompts */}
-        <div style={{ marginTop: 40, paddingLeft: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <div style={{ fontSize: 14, fontWeight: 500, color: '#151414' }}>Try an example prompt</div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-            {EXAMPLE_PROMPTS.map(p => (
-              <button key={p} style={{ background: 'rgba(255,255,255,0.5)', border: '1.5px solid #fff', borderRadius: 8, padding: '8px 12px', fontSize: 14, fontWeight: 500, color: '#383838', cursor: 'pointer', fontFamily: 'inherit', boxShadow: '1px 8px 17px rgba(120,150,255,0.08)' }}>{p}</button>
-            ))}
-            <button style={{ background: 'rgba(255,255,255,0.5)', border: '1.5px solid #fff', borderRadius: 8, padding: '8px 12px', fontSize: 14, fontWeight: 500, color: '#2f5dff', cursor: 'pointer', fontFamily: 'inherit', display: 'inline-flex', alignItems: 'center', gap: 6, boxShadow: '1px 8px 17px rgba(120,150,255,0.08)' }}>
-              <HIc name="refresh" size={16} color="#2f5dff" />
-              More Ideas
-            </button>
+          {/* Prompt chips */}
+          <div style={{ marginTop: 20, width: 700, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{ fontSize: 13, fontWeight: 500, color: '#151414' }}>Need prompt inspiration?</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {EXAMPLE_PROMPTS.map(p => (
+                <button key={p} style={{ background: 'rgba(255,255,255,0.7)', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 20, padding: '7px 14px', fontSize: 13, fontWeight: 500, color: '#32324D', cursor: 'pointer', fontFamily: 'inherit', backdropFilter: 'blur(4px)' }}>{p}</button>
+              ))}
+            </div>
           </div>
+
+          {/* Disclaimer */}
+          <div style={{ marginTop: 20, fontSize: 12, color: '#868AA5' }}>AI can make mistakes. Double check the results.</div>
         </div>
       </div>
-
-      {/* Footer */}
-      <div style={{ textAlign: 'center', padding: '24px 20px 32px', fontSize: 13, color: '#6b6b6f', flexShrink: 0 }}>AI can make mistakes. Double check the results.</div>
 
       {/* ── Floating dev tweaks panel ── */}
       <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9000, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
@@ -2128,7 +2164,7 @@ function HarmonyV11Screen({ onGenerate }) {
         </button>
       </div>
 
-      {/* ── ImportFlow modal (shared component) ── */}
+      {/* ── ImportFlow modal ── */}
       {showImport && (
         <ImportFlow
           key={importPreset ? importPreset.host : 'default'}
