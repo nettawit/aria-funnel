@@ -66,8 +66,8 @@
         "· Create from URL with design mode selection and site chip",
         "· All entry points stay visible after attaching a site"
       ],
-      "status": "ready",
-      "statusLabel": "Ready for dev",
+      "status": "inprogress",
+      "statusLabel": "On Process",
       "href": "v4.html",
       "figmaUrl": null,
       "specFile": "spec-v12.md",
