@@ -2078,7 +2078,7 @@ function HarmonyV11Screen({ onGenerate }) {
                   </div>
                   <div style={{ padding: '12px 18px 16px' }}>
                     <div style={{ fontSize: 14, fontWeight: 700, color: '#000624', lineHeight: '18px' }}>Start with your existing site</div>
-                    <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Aria brings over your pages, content and brand style, ready to customize.</div>
+                    <div style={{ fontSize: 12, color: '#44485F', lineHeight: '18px', marginTop: 3 }}>Keep your pages' content and brand style. Get a fully customizable new site design.</div>
                   </div>
                 </div>
               )}
