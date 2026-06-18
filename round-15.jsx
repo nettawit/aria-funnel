@@ -1407,7 +1407,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
           {(isShopify || isWoo) && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               {isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Shopify</span>}
-              {isWoo && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>Woohoo</span>}
+              {isWoo && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#383838' }}>WooCommerce</span>}
             </div>
           )}
         </div>
@@ -1813,7 +1813,7 @@ function FigmaEntryScreen({ onGenerate }) {
                     <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
                     {importedSite.isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#383838', flexShrink: 0 }}>Shopify</span>}
                   </div>
-                  <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 150 }}>{importedSite.host}</span>
+                  <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 150 }}>Imported site</span>
                 </div>
                 <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3 }}>
                   <button onClick={removeSite} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
