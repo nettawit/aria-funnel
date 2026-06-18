@@ -917,7 +917,13 @@ function HomeFlow({ start = 'empty', onGenerate }) {
         {ov === 'files' && <AssetsModal onClose={closeOverlay} onAdd={(names) => confirmAsset(names, 'file')} title="Add info" sub="Any info that helps Aria build a better site" hints={['Briefs, docs, brand guides, product lists — anything with context', 'Aria will use them to shape a better prompt for your site']} />}
         {ov === 'extract' && <ExtractModal onClose={closeOverlay} onAdd={confirmAsset} />}
         {ov === 'url' && <UrlModal onClose={closeOverlay} onAdd={confirmVisualRef} onBack={() => setOv('dropdown')} />}
-        {ov === 'import-url' && <ImportFlow onClose={closeOverlay} onImport={(site) => {setImportedSite(site);if (screen === 'empty') setScreen('text');setOv(null);}} />}
+        {ov === 'import-url' && <ImportFlow
+          initialUrl={window.IMPORT_HOST || ''}
+          initialPhase={window.IMPORT_PHASE || 'url'}
+          showDesignOptions={!!window.SHOW_DESIGN_OPTIONS}
+          onClose={closeOverlay}
+          onImport={(site) => {setImportedSite(site);if (screen === 'empty') setScreen('text');setOv(null);}}
+        />}
 
         {/* Undo toast — fixed at bottom of viewport */}
         {undoItem && (

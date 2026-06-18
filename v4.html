@@ -69,11 +69,14 @@
 <body style="background: linear-gradient(180deg, #ffffff 0%, #eaf0fb 55%, #d8e5f5 100%) no-repeat fixed; background-size: 100% 100vh">
   <div id="root"></div>
   <script>
-    window.START_STEP = 4; // HomeFlow with Add + Create from URL
-    window.STATIC_GREETING = true; // static title, no typewriter
-    window.OPEN_IMPORT = true; // auto-open Create from URL modal
+    window.START_STEP = 4;
+    window.STATIC_GREETING = true;
+    window.OPEN_IMPORT = true;
+    window.IMPORT_HOST = 'mystore.com';
+    window.IMPORT_PHASE = 'results';
+    window.SHOW_DESIGN_OPTIONS = true;
     window.DISABLE_GENERATE = true;
-    fetch('round-15.jsx?v=20260617c')
+    fetch('round-15.jsx?v=20260618c')
       .then(r => r.text())
       .then(src => {
         const compiled = Babel.transform(src, { presets: ['react'] }).code;
