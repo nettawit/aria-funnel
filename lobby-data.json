@@ -98,11 +98,12 @@
         "· Description"
       ],
       "status": "inprogress",
-      "statusLabel": "ASAP",
+      "statusLabel": "On Process",
       "href": null,
       "figmaUrl": null,
       "specFile": null,
-      "thumbUrl": "thumb-upload-1781776076228.jpg"
+      "thumbUrl": "thumb-upload-1781776076228.jpg",
+      "eta": "ASAP"
     }
   ]
 }
