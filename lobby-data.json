@@ -45,9 +45,9 @@
       "num": 3,
       "title": "Harmony Creation V1.1 + Create from URL",
       "bullets": [
-        "· UX fixes: first screen layout & composer flows",
         "· Premium modal when site generating",
-        "· Create from URL with hover popover opening below the button"
+        "· Create from URL entry point + flow ",
+        "· UX fixes - Composer and remove breaks"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
