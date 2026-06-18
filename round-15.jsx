@@ -1298,7 +1298,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
     <div style={{ padding: '24px 20px 24px 24px', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
       <div>
         <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.5px', color: '#151414', lineHeight: '24px' }}>Create from URL</div>
-        <div style={{ fontSize: 14, color: '#383838', marginTop: 2, lineHeight: '20px' }}>Use any website as a starting point</div>
+        <div style={{ fontSize: 14, color: '#383838', marginTop: 2, lineHeight: '20px' }}>Use your website as a starting point</div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 2, marginTop: 2 }}>
         <div style={{ width: 24, height: 24, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
@@ -1313,7 +1313,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
 
   const footnote = (
     <div style={{ background: '#f8f6f6', borderTop: '1px solid #e8e8e8', borderRadius: '0 0 12px 12px', padding: '16px 24px' }}>
-      <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>Only use URLs for sites you own or have permission to use</span>
+      <span style={{ fontSize: 12, color: '#151414', lineHeight: '16px' }}>Only use URLs where you have rights to the content</span>
     </div>
   );
 
@@ -1330,7 +1330,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
         onFocus={() => setInputFocused(true)}
         onBlur={() => setInputFocused(false)}
         onKeyDown={(e) => { if (e.key === 'Enter' && !isBusy) scan(); }}
-        placeholder="Paste a URL"
+        placeholder="https://example.com/"
         style={{ flex: 1, height: '100%', border: 0, background: 'transparent', fontSize: 14, color: '#151414', outline: 'none', fontFamily: 'inherit', padding: '0 4px 0 0' }}
       />
       {url && !isBusy && (
@@ -1475,7 +1475,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
     {/* footer */}
     <div style={{ padding: '12px 24px 20px', borderTop: '1px solid #F0F0F4', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
       <button onClick={onClose} className="hbtn" style={{ height: 30, padding: '0 16px', background: 'transparent', color: '#2f5dff', border: '1px solid #7896ff', borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Cancel</button>
-      <button onClick={() => { const base = host.replace(/^www\./,'').split('.')[0]; const name = base.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); onImport({ host, name, isShopify, isWoo, mode: designMode, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null }); }} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add to Aria</button>
+      <button onClick={() => { const base = host.replace(/^www\./,'').split('.')[0]; const name = base.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); onImport({ host, name, isShopify, isWoo, mode: designMode, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null }); }} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add site</button>
     </div>
     {footnote}
   </div></Overlay>;

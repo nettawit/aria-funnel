@@ -76,7 +76,7 @@
     window.IMPORT_PHASE = 'results';
     window.SHOW_DESIGN_OPTIONS = true;
     window.DISABLE_GENERATE = true;
-    fetch('round-15.jsx?v=20260618o')
+    fetch('round-15.jsx?v=20260618p')
       .then(r => r.text())
       .then(src => {
         const compiled = Babel.transform(src, { presets: ['react'] }).code;
