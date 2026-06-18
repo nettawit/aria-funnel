@@ -296,7 +296,7 @@
     </div>
   </div>
 
-  <!-- LOBBY_DATA_START --><script>window.LOBBY_DATA = {"header":{"label":"Planned User Test","title":"Flow Lobby","subtitle":"Interactive prototypes for the upcoming user test. Pick a flow to preview it.","slidesUrl":"https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38"},"cards":[{"id":"c1","num":1,"title":"Create from URL V0.5","bullets":["· New modal experience (URL → scan → results)","· Store integration — Shopify & WooCommerce detection","· Inspire your design — upload an image to inspire your site's look & feel"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-funnel-v1.2.html","figmaUrl":"https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev","specFile":"spec-v05.md","thumbUrl":"thumb-c1.png","eta":"25 Jun"},{"id":"c2","num":2,"title":"Create from URL V1 — Design feature","bullets":["· Design mode selection: Content & design vs Design only","· Site chip with thumbnail above the textarea after attachment","· Hover popover with Wix template previews on the Create from URL button"],"status":"ready","statusLabel":"Ready for dev","href":"v1-design.html","figmaUrl":null,"specFile":"spec-v1-design.md","thumbUrl":"thumb-c2.png","eta":null},{"id":"c3","num":3,"title":"Harmony Creation V1.1 + Create from URL","bullets":["· UX fixes: first screen layout & composer flows","· Premium modal when site generating","· Create from URL with hover popover opening below the button"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-v1.1.html","figmaUrl":"https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1","specFile":"spec-v11.md","thumbUrl":"thumb-c3.png","eta":"25 Jun"},{"id":"c4","num":4,"title":"Harmony Creation V1.2 + Create from URL + \"Add\" Features","bullets":["· + Add dropdown: assets, visual references, info docs","· Create from URL with design mode selection and site chip","· All entry points stay visible after attaching a site"],"status":"ready","statusLabel":"Ready for dev","href":"v4.html","figmaUrl":null,"specFile":"spec-v12.md","thumbUrl":"thumb-placeholder.svg","eta":null},{"id":"c6","num":5,"title":"Harmony V2 — All features","bullets":["· All features combined","· New concept of the flow — TBD"],"status":"concepts","statusLabel":"Concepts","href":null,"figmaUrl":null,"specFile":null,"thumbUrl":"thumb-placeholder.svg","eta":null}]};</script><!-- LOBBY_DATA_END -->
+  <!-- LOBBY_DATA_START --><script>window.LOBBY_DATA = {"header":{"label":"Planned User Test","title":"Flow Lobby","subtitle":"Interactive prototypes for the upcoming user test. Pick a flow to preview it.","slidesUrl":"https://docs.google.com/presentation/d/1BzNxlZvvSOSIlKLMsJ5_bSbOagkuLKaIRjB1dbz8n0M/edit?slide=id.g3eaf126193a_0_38"},"cards":[{"id":"c1","num":1,"title":"Create from URL V0.5","bullets":["· New modal experience (URL → scan → results)","· Store integration — Shopify & WooCommerce detection","· Inspire your design — upload an image to inspire your site's look & feel"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-funnel-v1.2.html","figmaUrl":"https://www.figma.com/design/ooyDmc0Qr8sQFSo6A9sWLu/Create-from-URL---Harmony?node-id=15814-40022&m=dev","specFile":"spec-v05.md","thumbUrl":"thumb-c1.png","eta":"25 Jun","keysUrl":"https://wix-bo.com/dev/tool/babel/project/792c8970-f5a1-4d72-9970-f8b9da9baf7a?viewId=allItems"},{"id":"c2","num":2,"title":"Create from URL V1 — Design feature","bullets":["· Design mode selection: Content & design vs Design only","· Site chip with thumbnail above the textarea after attachment","· Hover popover with Wix template previews on the Create from URL button"],"status":"ready","statusLabel":"Ready for dev","href":"v1-design.html","figmaUrl":null,"specFile":"spec-v1-design.md","thumbUrl":"thumb-c2.png","eta":null},{"id":"c3","num":3,"title":"Harmony Creation V1.1 + Create from URL","bullets":["· UX fixes: first screen layout & composer flows","· Premium modal when site generating","· Create from URL with hover popover opening below the button"],"status":"ready","statusLabel":"Ready for dev","href":"harmony-v1.1.html","figmaUrl":"https://www.figma.com/design/GvxmzuhE97Zyl4ekbmZkig/Funnel-Updates?node-id=17147-9105&t=L0dLo4uWAGjeSWgB-1","specFile":"spec-v11.md","thumbUrl":"thumb-c3.png","eta":"25 Jun"},{"id":"c4","num":4,"title":"Harmony Creation V1.2 + Create from URL + \"Add\" Features","bullets":["· + Add dropdown: assets, visual references, info docs","· Create from URL with design mode selection and site chip","· All entry points stay visible after attaching a site"],"status":"ready","statusLabel":"Ready for dev","href":"v4.html","figmaUrl":null,"specFile":"spec-v12.md","thumbUrl":"thumb-placeholder.svg","eta":null},{"id":"c6","num":5,"title":"Harmony V2 — All features","bullets":["· All features combined","· New concept of the flow — TBD"],"status":"concepts","statusLabel":"Concepts","href":null,"figmaUrl":null,"specFile":null,"thumbUrl":"thumb-placeholder.svg","eta":null}]};</script><!-- LOBBY_DATA_END -->
 
   <script>
   (function () {
@@ -374,6 +374,9 @@
         if (c.specFile) {
           docBtns += '<button class="doc-btn spec" onclick="event.stopPropagation();window.open(\''+esc(c.specFile)+'\',\'_blank\')">'+docSvg()+' UX Spec</button>';
           docBtns += '<button class="doc-btn dl" onclick="event.stopPropagation();(()=>{var a=document.createElement(\'a\');a.href=\''+esc(c.specFile)+'\';a.download=\''+esc(c.specFile)+'\';a.click()})()">'+dlSvg()+' .md</button>';
+        }
+        if (c.keysUrl) {
+          docBtns += '<button class="doc-btn keys" onclick="event.stopPropagation();window.open(\''+esc(c.keysUrl)+'\',\'_blank\')"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="5.5" r="3.5" stroke="currentColor" stroke-width="1.2"/><path d="M8.5 8.5L12 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M5.5 4v3M4 5.5h3" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg> Keys</button>';
         }
         var btnsHtml = docBtns ? '<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">'+docBtns+'</div>' : '';
 
@@ -502,6 +505,9 @@
         + '<div class="ep-field"><div class="ep-label">UX Spec file (filename in repo)</div>'
         + '<input class="ep-input ep-card-spec" value="'+esc(card.specFile||'')+'" placeholder="e.g. spec-v05.md"></div>'
 
+        + '<div class="ep-field"><div class="ep-label">Keys link (optional)</div>'
+        + '<input class="ep-input ep-card-keys" value="'+esc(card.keysUrl||'')+'" placeholder="https://wix-bo.com/dev/tool/babel/..."></div>'
+
         + '<div class="ep-field"><div class="ep-label">Thumbnail</div>'
         + '<div style="display:flex;gap:8px;align-items:center;">'
         + '<input class="ep-input ep-card-thumb" value="'+esc(card.thumbUrl||'')+'" placeholder="filename or URL" style="flex:1;">'
@@ -531,6 +537,7 @@
       div.querySelector('.ep-card-href').addEventListener('input', function(e){ editDraft.cards[idx].href = e.target.value || null; });
       div.querySelector('.ep-card-figma').addEventListener('input', function(e){ editDraft.cards[idx].figmaUrl = e.target.value || null; });
       div.querySelector('.ep-card-spec').addEventListener('input', function(e){ editDraft.cards[idx].specFile = e.target.value || null; });
+      div.querySelector('.ep-card-keys').addEventListener('input', function(e){ editDraft.cards[idx].keysUrl = e.target.value || null; });
       div.querySelector('.ep-card-thumb').addEventListener('input', function(e){ editDraft.cards[idx].thumbUrl = e.target.value || null; });
 
       // Image upload
@@ -644,6 +651,7 @@
         href: null,
         figmaUrl: null,
         specFile: null,
+        keysUrl: null,
         thumbUrl: null
       });
       renderCardBlocks();
