@@ -104,6 +104,22 @@
       "specFile": null,
       "thumbUrl": "thumb-upload-1781776076228.jpg",
       "eta": "ASAP"
+    },
+    {
+      "id": "coj2yl",
+      "num": 7,
+      "title": "Removing setup test",
+      "bullets": [
+        "· Removing \"Continue with setup\" CTA"
+      ],
+      "status": "ready",
+      "statusLabel": "TBD",
+      "href": null,
+      "figmaUrl": null,
+      "specFile": null,
+      "keysUrl": null,
+      "thumbUrl": "thumb-upload-1781799331670.png",
+      "eta": "June 22"
     }
   ]
 }
