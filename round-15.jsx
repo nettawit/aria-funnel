@@ -2078,8 +2078,8 @@ function HarmonyV11Screen({ onGenerate }) {
             </div>
             )}
 
-            {/* Generate Site button */}
-            <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#2f5dff', gap: 10, borderRadius: 12, boxShadow: '0 4px 7px rgba(47,93,255,0.35)' }}>
+            {/* Generate Site button — always pinned to right */}
+            <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#2f5dff', gap: 10, borderRadius: 12, boxShadow: '0 4px 7px rgba(47,93,255,0.35)', marginLeft: 'auto' }}>
               Generate Site
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H5M12 2V9" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
