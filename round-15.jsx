@@ -713,7 +713,28 @@ function HomeFlow({ start = 'empty', onGenerate }) {
                         </div>
                       </div>
                     ))}
-                    {/* importedSite is now shown inline in the action bar — no separate chip here */}
+                    {importedSite && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                        <span style={{ fontSize: 10, fontWeight: 600, color: '#9A9AB0', textTransform: 'uppercase', letterSpacing: '0.07em' }}>Site</span>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', height: 48, background: '#fff', border: '1px solid #DFE5EB', borderRadius: 8, overflow: 'hidden', fontFamily: 'inherit', alignSelf: 'flex-start', flexShrink: 0, maxWidth: 280 }}>
+                          <div style={{ width: 48, height: 32, flexShrink: 0, borderRadius: 4, border: '1px solid rgba(0,6,36,0.1)', overflow: 'hidden', background: '#ECF0F3', margin: '0 0 0 8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <img src={`https://image.thum.io/get/width/96/crop/136/https://${importedSite.host}`} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }} onError={e => { e.target.style.opacity = '0'; }} />
+                          </div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '0 0 0 10px', minWidth: 0 }}>
+                            <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                              <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
+                              {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 7px', height: 18, display: 'inline-flex', alignItems: 'center', fontSize: 11, fontWeight: 600, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
+                            </div>
+                          </div>
+                          <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3, marginLeft: 4 }}>
+                            <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
+                              <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><path d="M1 1l4 4M5 1L1 5" stroke="#32324D" strokeWidth="1.3" strokeLinecap="round"/></svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })()}
@@ -795,42 +816,21 @@ function HomeFlow({ start = 'empty', onGenerate }) {
               {/* action row */}
               <div style={{ borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: 17, paddingBottom: 5, paddingLeft: 14, paddingRight: 14, display: 'flex', alignItems: 'center' }}>
                 {importedSite ? (
-                  /* ── "Added" state: site imported → inline URL chip in action bar ── */
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-                    <button className="hbtn hbtn-ghost" onClick={() => setOv('import-url')} style={{ ...hBtnGhost('medium'), gap: 5, paddingLeft: 6, paddingRight: 10, color: '#32324D' }}>
-                      <HIc name="link" size={14} color="#32324D" />
-                      <span style={{ fontSize: 12, fontWeight: 500 }}>Create from URL</span>
+                  /* ── "Added" state: chip is above textarea — just show + Add button ── */
+                  <div style={{ position: 'relative' }}>
+                    {ov === 'dropdown' &&
+                      <div style={{ position: 'absolute', bottom: 'calc(100% + 12px)', left: 0, width: 280, background: '#fff', border: '0.5px solid rgba(0,0,0,0.10)', borderRadius: 14, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', padding: 6, zIndex: 30, animation: 'h-menu 160ms ease-out' }}>
+                        <div style={{ fontSize: 10, fontWeight: 600, color: '#AAAAAA', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '8px 10px 4px' }}>Add to your prompt</div>
+                        <DropRow icon="image" bg="#FFF0E8" fg="#C05B2A" title="Add assets" desc="Upload media to use in your site" onClick={() => setOv('assets')} />
+                        <DropRow icon="link" icon2="image" bg="#EDE9FF" fg="#6040D0" title="Add visual references" desc="Give Aria a look & feel to start from" onClick={() => setOv('url')} />
+                        <DropRow icon="document" bg="#E8F3FF" fg="#1A6CC0" title="Add info" desc="Any info that helps Aria build a better site" onClick={() => setOv('files')} />
+                        <span style={{ position: 'absolute', left: 22, bottom: -7, width: 14, height: 14, background: '#fff', borderRight: '0.5px solid rgba(0,0,0,0.10)', borderBottom: '0.5px solid rgba(0,0,0,0.10)', transform: 'rotate(45deg)' }} />
+                      </div>
+                    }
+                    <button className="hbtn hbtn-secondary" onClick={() => setOv(ov === 'dropdown' ? null : 'dropdown')} style={{ ...hBtnSecondary('medium'), border: `1px solid ${ov === 'dropdown' ? H_BLUE : '#E0E0E0'}`, background: ov === 'dropdown' ? 'rgba(45,78,224,0.06)' : '#fff', color: ov === 'dropdown' ? H_BLUE : '#32324D' }}>
+                      <HIc name="plus" size={14} color={ov === 'dropdown' ? H_BLUE : '#32324D'} />
+                      Add
                     </button>
-                    <span style={{ width: 1, height: 18, background: 'rgba(0,0,0,0.12)', margin: '0 6px' }} />
-                    <div style={{ position: 'relative' }}>
-                      {ov === 'dropdown' &&
-                        <div style={{ position: 'absolute', bottom: 'calc(100% + 12px)', left: 0, width: 280, background: '#fff', border: '0.5px solid rgba(0,0,0,0.10)', borderRadius: 14, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', padding: 6, zIndex: 30, animation: 'h-menu 160ms ease-out' }}>
-                          <div style={{ fontSize: 10, fontWeight: 600, color: '#AAAAAA', textTransform: 'uppercase', letterSpacing: '0.08em', padding: '8px 10px 4px' }}>Add to your prompt</div>
-                          <DropRow icon="image" bg="#FFF0E8" fg="#C05B2A" title="Add assets" desc="Upload media to use in your site" onClick={() => setOv('assets')} />
-                          <DropRow icon="link" icon2="image" bg="#EDE9FF" fg="#6040D0" title="Add visual references" desc="Give Aria a look & feel to start from" onClick={() => setOv('url')} />
-                          <DropRow icon="document" bg="#E8F3FF" fg="#1A6CC0" title="Add info" desc="Any info that helps Aria build a better site" onClick={() => setOv('files')} />
-                          <span style={{ position: 'absolute', left: 12, bottom: -7, width: 14, height: 14, background: '#fff', borderRight: '0.5px solid rgba(0,0,0,0.10)', borderBottom: '0.5px solid rgba(0,0,0,0.10)', transform: 'rotate(45deg)' }} />
-                        </div>
-                      }
-                      <button className="hbtn hbtn-ghost" onClick={() => setOv(ov === 'dropdown' ? null : 'dropdown')} style={{ ...hBtnGhost('medium'), width: 32, padding: 0, minWidth: 0, color: '#32324D' }}>
-                        <HIc name="plus" size={14} color="#32324D" />
-                      </button>
-                    </div>
-                    <span style={{ width: 1, height: 18, background: 'rgba(0,0,0,0.12)', margin: '0 6px' }} />
-                    {/* URL chip */}
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, height: 30, padding: '0 10px 0 10px', background: '#fff', border: '1px solid #E8E7E7', borderRadius: 24, fontSize: 12, color: '#151414', fontWeight: 400, fontFamily: 'inherit' }}>
-                      <img src={`https://www.google.com/s2/favicons?domain=${importedSite.host}&sz=32`} width={13} height={13} style={{ borderRadius: 2, flexShrink: 0, display: 'block' }} onError={(e) => { e.target.style.display='none'; }} />
-                      <span style={{ display: 'flex', flexDirection: 'column', gap: 3, lineHeight: 1.2 }}>
-                        <span style={{ maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: 12, fontWeight: 500 }}>{importedSite.host}</span>
-                        <span style={{ display: 'flex', gap: 4 }}>
-                          <span style={{ background: '#EEF2FF', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 600, color: '#2F5DFF', flexShrink: 0, whiteSpace: 'nowrap' }}>{importedSite.mode === 'design' ? 'Design only' : 'Content & design'}</span>
-                          {importedSite.isShopify && <span style={{ background: '#EDFAF3', borderRadius: 4, padding: '1px 6px', fontSize: 10, fontWeight: 700, color: '#1A8A5A', flexShrink: 0 }}>Shopify</span>}
-                        </span>
-                      </span>
-                      <button onClick={() => setImportedSite(null)} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', lineHeight: 0, marginLeft: 2, flexShrink: 0 }}>
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2L8 8M8 2L2 8" stroke="#888" strokeWidth="1.6" strokeLinecap="round"/></svg>
-                      </button>
-                    </div>
                   </div>
                 ) : (
                   /* ── "Default" state: Add dropdown + Create from URL ── */
