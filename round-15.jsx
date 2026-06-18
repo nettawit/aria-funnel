@@ -2057,8 +2057,7 @@ function HarmonyV11Screen({ onGenerate }) {
           />
           {/* Composer footer */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 8 }}>
-            {/* Create from URL — default state only (chip is above) */}
-            {!importedSite && (
+            {/* Create from URL — always visible */}
             <div style={{ position: 'relative', display: 'inline-flex' }}
               onMouseEnter={() => setHovUrl(true)}
               onMouseLeave={() => setHovUrl(false)}
@@ -2084,7 +2083,6 @@ function HarmonyV11Screen({ onGenerate }) {
                 </div>
               )}
             </div>
-            )}
 
             {/* Generate Site button — always pinned to right */}
             <button className="hbtn" style={{ ...hBtnPrimary('medium'), background: '#2f5dff', gap: 10, borderRadius: 12, boxShadow: '0 4px 7px rgba(47,93,255,0.35)', marginLeft: 'auto' }}>
