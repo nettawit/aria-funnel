@@ -1475,7 +1475,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', 
     {/* footer */}
     <div style={{ padding: '12px 24px 20px', borderTop: '1px solid #F0F0F4', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
       <button onClick={onClose} className="hbtn" style={{ height: 30, padding: '0 16px', background: 'transparent', color: '#2f5dff', border: '1px solid #7896ff', borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Cancel</button>
-      <button onClick={() => onImport({ host, isShopify, isWoo, mode: designMode, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null })} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add to Aria</button>
+      <button onClick={() => { const base = host.replace(/^www\./,'').split('.')[0]; const name = base.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); onImport({ host, name, isShopify, isWoo, mode: designMode, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null }); }} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add to Aria</button>
     </div>
     {footnote}
   </div></Overlay>;
@@ -1810,10 +1810,10 @@ function FigmaEntryScreen({ onGenerate }) {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 2, padding: '0 0 0 10px', minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.host}</span>
+                    <span style={{ fontSize: 12, fontWeight: 500, color: '#000624', whiteSpace: 'nowrap', maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis' }}>{importedSite.name || importedSite.host}</span>
                     {importedSite.isShopify && <span style={{ background: '#D5DFFF', borderRadius: 4, padding: '0 6px', height: 20, display: 'inline-flex', alignItems: 'center', fontSize: 12, fontWeight: 500, color: '#383838', flexShrink: 0 }}>Shopify</span>}
                   </div>
-                  <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 150 }}>Imported site</span>
+                  <span style={{ fontSize: 12, color: '#868AA5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 150 }}>{importedSite.host}</span>
                 </div>
                 <div style={{ display: 'flex', height: 48, alignItems: 'flex-start', justifyContent: 'flex-end', paddingRight: 3, paddingTop: 3 }}>
                   <button onClick={removeSite} style={{ border: 0, background: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 18, height: 18, borderRadius: '50%' }}>
