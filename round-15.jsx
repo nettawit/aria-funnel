@@ -1970,7 +1970,7 @@ function HarmonyV11Screen({ onGenerate }) {
   const EXAMPLE_PROMPTS = ['Fashion store', 'Online course', 'Wellness service', 'Consulting website', 'Community hub', 'Event landing page', 'Creative portfolio', 'Travel blog'];
 
   return (
-    <div style={{ width: '100%', height: '100vh', overflow: 'hidden', fontFamily: '"Wix Madefor Text", sans-serif', display: 'flex', flexDirection: 'column', background: '#2B2B2B' }}>
+    <div style={{ width: '100%', height: '100vh', overflow: 'hidden', fontFamily: '"Wix Madefor Text", sans-serif', display: 'flex', flexDirection: 'column', background: '#3C3C3C' }}>
 
       {/* ── Floating prototype nav ── */}
       <div style={{ position: 'fixed', top: 12, left: 12, zIndex: 10000, display: 'flex', alignItems: 'center', gap: 8, background: 'rgba(30,30,46,0.82)', backdropFilter: 'blur(8px)', borderRadius: 20, padding: '5px 12px 5px 8px', boxShadow: '0 2px 12px rgba(0,0,0,0.18)' }}>
@@ -1982,69 +1982,125 @@ function HarmonyV11Screen({ onGenerate }) {
         <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.45)', fontFamily: 'inherit' }}>V1.1</span>
       </div>
 
-      {/* ── Browser tabs bar ── */}
-      <div style={{ background: '#1F1F1F', height: 36, display: 'flex', alignItems: 'flex-end', padding: '0 0 0 80px', flexShrink: 0, gap: 2, userSelect: 'none' }}>
-        <div style={{ background: '#F1F3F4', borderRadius: '6px 6px 0 0', padding: '0 12px', fontSize: 11, color: '#202124', display: 'flex', alignItems: 'center', gap: 6, height: 28, minWidth: 160, maxWidth: 200 }}>
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#4285F4"/><path d="M5 8h6M8 5v6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"/></svg>
-          <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Editor | Wix.com</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="#5F6368" strokeWidth="1.2" strokeLinecap="round"/></svg>
+      {/* ── macOS browser tabs bar ── */}
+      <div style={{ background: '#D8D8D8', height: 44, display: 'flex', alignItems: 'center', padding: '0 8px 0 80px', flexShrink: 0, userSelect: 'none', gap: 0 }}>
+        {/* Traffic lights */}
+        <div style={{ position: 'absolute', left: 16, display: 'flex', gap: 8, alignItems: 'center' }}>
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FF5F57', border: '0.5px solid rgba(0,0,0,0.1)' }} />
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#FFBD2E', border: '0.5px solid rgba(0,0,0,0.1)' }} />
+          <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#28C840', border: '0.5px solid rgba(0,0,0,0.1)' }} />
         </div>
-        <div style={{ padding: '0 12px', fontSize: 11, color: 'rgba(255,255,255,0.55)', display: 'flex', alignItems: 'center', gap: 6, height: 28, minWidth: 130 }}>
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#555"/></svg>
+        {/* Active tab */}
+        <div style={{ background: '#F2F2F2', borderRadius: '8px 8px 0 0', padding: '0 14px', fontSize: 12, color: '#1a1a1a', display: 'flex', alignItems: 'center', gap: 6, height: 34, minWidth: 180, maxWidth: 220, position: 'relative', bottom: -5 }}>
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" fill="#006EFF"/><path d="M6 10h8M10 6v8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
+          <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: 12 }}>Editor | Wix.com</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="#999" strokeWidth="1.3" strokeLinecap="round"/></svg>
+        </div>
+        {/* Inactive tab 2 */}
+        <div style={{ padding: '0 14px', fontSize: 12, color: '#555', display: 'flex', alignItems: 'center', gap: 6, height: 34, minWidth: 160 }}>
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" fill="#006EFF"/><path d="M6 10h8M10 6v8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
           <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>My Sites | Wix.com</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round"/></svg>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="#aaa" strokeWidth="1.3" strokeLinecap="round"/></svg>
         </div>
-        <div style={{ padding: '0 12px', fontSize: 11, color: 'rgba(255,255,255,0.55)', display: 'flex', alignItems: 'center', gap: 6, height: 28 }}>
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#555"/></svg>
-          Inbox (5)
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round"/></svg>
+        {/* Inactive tab 3 — Gmail */}
+        <div style={{ padding: '0 14px', fontSize: 12, color: '#555', display: 'flex', alignItems: 'center', gap: 6, height: 34, minWidth: 160 }}>
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><rect x="1" y="4" width="18" height="13" rx="2" fill="#fff" stroke="#ddd" strokeWidth="1"/><path d="M1 6l9 6 9-6" stroke="#EA4335" strokeWidth="1.5" strokeLinejoin="round" fill="none"/></svg>
+          <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Inbox (5) - uxhive@wix.com</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3L3 9" stroke="#aaa" strokeWidth="1.3" strokeLinecap="round"/></svg>
+        </div>
+        <div style={{ width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: 4 }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="#666" strokeWidth="1.5" strokeLinecap="round"/></svg>
         </div>
       </div>
 
       {/* ── Browser address bar ── */}
-      <div style={{ background: '#F1F3F4', height: 40, display: 'flex', alignItems: 'center', gap: 8, padding: '0 14px', flexShrink: 0, userSelect: 'none' }}>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 8H6M8 6v4" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/></svg>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 8h4" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/></svg>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8A5 5 0 1 1 8 3" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round"/><path d="M13 3v3h-3" stroke="#80868B" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <div style={{ flex: 1, background: '#fff', borderRadius: 20, height: 26, display: 'flex', alignItems: 'center', padding: '0 12px', gap: 6, fontSize: 12, color: '#202124' }}>
-          <svg width="10" height="12" viewBox="0 0 10 12" fill="none"><rect x="1" y="4" width="8" height="7" rx="1.5" stroke="#5F6368" strokeWidth="1.1"/><path d="M3 4V3a2 2 0 1 1 4 0v1" stroke="#5F6368" strokeWidth="1.1"/></svg>
-          <span style={{ color: '#34A853', fontWeight: 500 }}>manage.wix.com</span>
-          <span style={{ color: '#5F6368' }}>/editor/8f4c2d1a-...</span>
+      <div style={{ background: '#F2F2F2', height: 44, display: 'flex', alignItems: 'center', gap: 6, padding: '0 16px', flexShrink: 0, userSelect: 'none', borderBottom: '1px solid #DEDEDE' }}>
+        <div style={{ display: 'flex', gap: 4 }}>
+          <div style={{ width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <div style={{ width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="#ccc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+          <div style={{ width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 7A5 5 0 1 1 7 2" stroke="#777" strokeWidth="1.4" strokeLinecap="round"/><path d="M12 2v3H9" stroke="#777" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
         </div>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.6 3.3L13 6.1l-2.5 2.4.6 3.5L8 10.3l-3.1 1.6.6-3.5L3 6.1l3.4-.8z" stroke="#80868B" strokeWidth="1.2" strokeLinejoin="round"/></svg>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="1.3" fill="#80868B"/><circle cx="8" cy="8" r="1.3" fill="#80868B"/><circle cx="8" cy="11" r="1.3" fill="#80868B"/></svg>
+        <div style={{ flex: 1, background: '#fff', borderRadius: 8, height: 30, display: 'flex', alignItems: 'center', padding: '0 12px', gap: 6, fontSize: 12.5, color: '#1a1a1a', border: '1px solid #DADADA' }}>
+          <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><rect x="1" y="5" width="8" height="7" rx="1.5" stroke="#34A853" strokeWidth="1.1"/><path d="M3 5V3.5a2 2 0 1 1 4 0V5" stroke="#34A853" strokeWidth="1.1"/></svg>
+          <span style={{ color: '#1a1a1a' }}>manage.wix.com</span>
+          <span style={{ color: '#888' }}>/dashboard/e9febc06-1555-4988-804d-3ed187b4a460/home?referralInfo=my-sites</span>
+        </div>
+        <div style={{ width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#888" strokeWidth="1.2"/><path d="M8 5v3.5l2 1" stroke="#888" strokeWidth="1.2" strokeLinecap="round"/></svg>
+        </div>
+        <div style={{ width: 28, height: 28, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="4" r="1.3" fill="#888"/><circle cx="8" cy="8" r="1.3" fill="#888"/><circle cx="8" cy="12" r="1.3" fill="#888"/></svg>
+        </div>
       </div>
 
       {/* ── Bookmarks bar ── */}
-      <div style={{ background: '#F1F3F4', height: 28, display: 'flex', alignItems: 'center', gap: 4, padding: '0 14px', borderTop: '1px solid #DADCE0', flexShrink: 0, userSelect: 'none' }}>
-        {['Apps', 'Wix Website Editor', 'The official site of…', 'YouTube'].map(b => (
-          <div key={b} style={{ padding: '0 8px', height: 20, display: 'flex', alignItems: 'center', fontSize: 11, color: '#202124', borderRadius: 4, cursor: 'default', whiteSpace: 'nowrap' }}>{b}</div>
-        ))}
+      <div style={{ background: '#F2F2F2', height: 30, display: 'flex', alignItems: 'center', gap: 2, padding: '0 16px', borderBottom: '1px solid #DEDEDE', flexShrink: 0, userSelect: 'none' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '0 8px', height: 22, borderRadius: 4, fontSize: 11.5, color: '#1a1a1a' }}>
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" fill="#4285F4"/><path d="M5 8h6M8 5v6" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
+          Apps
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '0 8px', height: 22, borderRadius: 4, fontSize: 11.5, color: '#1a1a1a' }}>
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" fill="#006EFF"/><path d="M6 10h8M10 6v8" stroke="#fff" strokeWidth="2" strokeLinecap="round"/></svg>
+          Wix Website Editor
+        </div>
+        <div style={{ padding: '0 8px', height: 22, display: 'flex', alignItems: 'center', borderRadius: 4, fontSize: 11.5, color: '#1a1a1a' }}>The official site of…</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4, padding: '0 8px', height: 22, borderRadius: 4, fontSize: 11.5, color: '#1a1a1a' }}>
+          <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#FF0000"/><path d="M8 6l6 4-6 4V6z" fill="#fff"/></svg>
+          YouTube
+        </div>
       </div>
 
-      {/* ── Wix Editor top bar ── */}
-      <div style={{ background: '#1E1E2E', height: 52, display: 'flex', alignItems: 'center', padding: '0 16px', gap: 6, flexShrink: 0, userSelect: 'none' }}>
-        <svg width="38" height="20" viewBox="0 0 80 28" fill="none"><text x="0" y="22" fontSize="26" fontWeight="900" fontFamily="'Wix Madefor Display', Arial, sans-serif" fill="#fff">Wix</text></svg>
-        <span style={{ width: 1, height: 20, background: 'rgba(255,255,255,0.15)', margin: '0 4px' }} />
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 5L7 9l4 4" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 5l4 4-4 4" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <span style={{ width: 1, height: 20, background: 'rgba(255,255,255,0.15)', margin: '0 4px' }} />
-        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit' }}>Site Name</button>
-        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit' }}>Brand</button>
-        <button style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 6, padding: '0 10px', height: 28, fontSize: 11, color: 'rgba(255,255,255,0.35)', cursor: 'default', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: 4 }}>
-          Fit
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+      {/* ── Wix Editor top bar (white, matches real editor) ── */}
+      <div style={{ background: '#fff', height: 52, display: 'flex', alignItems: 'center', padding: '0 20px', gap: 0, flexShrink: 0, borderBottom: '1px solid #E8E8E8', userSelect: 'none' }}>
+        {/* Wix logo */}
+        <svg width="38" height="20" viewBox="0 0 80 28" fill="none"><text x="0" y="22" fontSize="26" fontWeight="900" fontFamily="'Wix Madefor Display', Arial, sans-serif" fill="#000">Wix</text></svg>
+        {/* User avatar */}
+        <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#E8E8E8', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: 10, flexShrink: 0 }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#888" strokeWidth="1.2"/><path d="M2 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#888" strokeWidth="1.2" strokeLinecap="round"/></svg>
+        </div>
+        {/* Site Name */}
+        <button style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'default', fontSize: 13, color: '#B0B0B0', fontFamily: 'inherit', marginLeft: 16, padding: '4px 6px', borderRadius: 4 }}>
+          Site Name
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#B0B0B0" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
-        <div style={{ flex: 1 }} />
-        <button style={{ background: '#7B5CF5', border: 0, borderRadius: 6, padding: '0 14px', height: 28, fontSize: 12, fontWeight: 600, color: '#fff', cursor: 'default', fontFamily: 'inherit' }}>Upgrade</button>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M7 7l-3 3 3 3" stroke="rgba(255,255,255,0.25)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 10H5M13 7l3 3-3 3" stroke="rgba(255,255,255,0.25)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
-        <button style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.25)', borderRadius: 6, padding: '0 14px', height: 28, fontSize: 12, color: 'rgba(255,255,255,0.7)', cursor: 'default', fontFamily: 'inherit' }}>Preview</button>
-        <button style={{ background: '#116DFF', border: 0, borderRadius: 6, padding: '0 16px', height: 28, fontSize: 12, fontWeight: 600, color: '#fff', cursor: 'default', fontFamily: 'inherit' }}>Publish</button>
+        {/* Brand */}
+        <button style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'default', fontSize: 13, color: '#B0B0B0', fontFamily: 'inherit', padding: '4px 6px', borderRadius: 4 }}>
+          Brand
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#B0B0B0" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        {/* Fit — centered */}
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <button style={{ display: 'flex', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'default', fontSize: 13, color: '#B0B0B0', fontFamily: 'inherit', padding: '4px 6px', borderRadius: 4 }}>
+            Fit (96%)
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="#B0B0B0" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
+        {/* Right actions */}
+        <button style={{ background: 'none', border: 'none', cursor: 'default', fontSize: 13.5, fontWeight: 500, color: '#116DFF', fontFamily: 'inherit', padding: '4px 8px' }}>Upgrade</button>
+        {/* Undo */}
+        <div style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 7h7a3 3 0 1 1 0 6H8" stroke="#C8C8C8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/><path d="M3 7L6 4M3 7l3 3" stroke="#C8C8C8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        {/* Redo */}
+        <div style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 7H6a3 3 0 1 0 0 6h2" stroke="#C8C8C8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/><path d="M13 7l-3-3M13 7l-3 3" stroke="#C8C8C8" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        {/* Cloud save */}
+        <div style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: 6 }}>
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M14 11H5a3.5 3.5 0 1 1 .7-6.93A4 4 0 1 1 14 8" stroke="#C8C8C8" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </div>
+        <button style={{ background: 'none', border: '1px solid #E0E0E0', cursor: 'default', fontSize: 13, fontWeight: 500, color: '#32324D', fontFamily: 'inherit', padding: '0 16px', height: 32, borderRadius: 6 }}>Preview</button>
+        <button style={{ background: '#116DFF', border: 'none', cursor: 'default', fontSize: 13, fontWeight: 600, color: '#fff', fontFamily: 'inherit', padding: '0 18px', height: 32, borderRadius: 6, marginLeft: 8 }}>Publish</button>
       </div>
 
       {/* ── Main content area ── */}
-      <div style={{ flex: 1, overflow: 'auto', background: 'radial-gradient(ellipse 80% 60% at 50% 110%, rgba(210,228,255,0.9) 0%, rgba(240,245,255,0.5) 45%, rgba(246,246,246,0) 75%), #f6f6f6' }}>
+      <div style={{ flex: 1, overflow: 'auto', background: '#fff' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 20px 48px' }}>
 
           {/* Heading block */}
