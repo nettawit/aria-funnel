@@ -32,12 +32,12 @@
         "· Site chip with thumbnail above the textarea after attachment",
         "· Hover popover with Wix template previews on the Create from URL button"
       ],
-      "status": "ready",
+      "status": "inprogress",
       "statusLabel": "Ready for dev",
       "href": "v1-design.html",
       "figmaUrl": null,
       "specFile": "spec-v1-design.md",
-      "thumbUrl": "thumb-c2.png",
+      "thumbUrl": "thumb-upload-1781776010090.png",
       "eta": null
     },
     {
