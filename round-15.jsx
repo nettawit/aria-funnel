@@ -1219,7 +1219,7 @@ function UrlModal({ onClose, onAdd, onBack }) {
 }
 
 
-function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }) {
+function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url', showDesignOptions = false }) {
   /* phases: 'url' | 'scanning' | 'results'
      errors:  'err-format' | 'err-private' | 'err-file' | 'err-reach' | 'err-timeout' */
   const [phase, setPhase] = hs(initialPhase);
@@ -1242,6 +1242,7 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
   const isValidFmt = !cleanUrl || /^https?:\/\/.{2,}/.test(resolvedUrl) || /^[a-zA-Z0-9][\w.-]+\.[a-zA-Z]{2,}/.test(cleanUrl);
 
   const [error, setError] = hs(null);
+  const [designMode, setDesignMode] = hs('content'); // 'content' | 'design'
   /* errors: 'err-format' | 'err-wix' | 'err-social' | 'err-file' | 'err-private' | 'err-reach' | 'err-timeout' */
 
   const ERR = {
@@ -1400,11 +1401,39 @@ function ImportFlow({ onClose, onImport, initialUrl = '', initialPhase = 'url' }
             : "Aria will use your site's pages, content and visual style."}
         </span>
       </div>
+
+      {/* design mode options — V1 design feature */}
+      {showDesignOptions && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {[
+            { val: 'content', label: 'Content & design', desc: 'Keep the layout, style and content' + (isShopify ? ', including products, categories & prices' : '') },
+            { val: 'design',  label: 'Design only',      desc: 'Keep the same visual style' },
+          ].map(opt => {
+            const sel = designMode === opt.val;
+            return (
+              <div key={opt.val} onClick={() => setDesignMode(opt.val)}
+                style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 10, border: sel ? '1.5px solid #2F5DFF' : '1.5px solid #E0E0E8', background: sel ? '#F5F7FF' : '#fff', cursor: 'pointer', transition: 'border-color 120ms, background 120ms' }}>
+                {/* radio */}
+                <div style={{ width: 16, height: 16, borderRadius: '50%', border: sel ? '5px solid #2F5DFF' : '1.5px solid #C1C2C3', flexShrink: 0, background: '#fff', boxSizing: 'border-box' }} />
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1E1E2E', lineHeight: '18px' }}>{opt.label}</div>
+                  <div style={{ fontSize: 11, color: '#6B6B7E', lineHeight: '16px', marginTop: 1 }}>{opt.desc}</div>
+                </div>
+              </div>
+            );
+          })}
+          {/* all pages row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 14px' }}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6.5" fill="#E6F9EE" stroke="#1A7A50" strokeWidth="1"/><path d="M4 7l2.2 2.2L10 5" stroke="#1A7A50" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <span style={{ fontSize: 11, color: '#44445A' }}>All pages — always imported</span>
+          </div>
+        </div>
+      )}
     </div>
     {/* footer */}
-    <div style={{ padding: '24px', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+    <div style={{ padding: '12px 24px 20px', borderTop: '1px solid #F0F0F4', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
       <button onClick={onClose} className="hbtn" style={{ height: 30, padding: '0 16px', background: 'transparent', color: '#2f5dff', border: '1px solid #7896ff', borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Cancel</button>
-      <button onClick={() => onImport({ host, isShopify, isWoo, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null })} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add site</button>
+      <button onClick={() => onImport({ host, isShopify, isWoo, mode: designMode, platform: isShopify ? 'Shopify' : isWoo ? 'WooCommerce' : null })} className="hbtn" style={{ height: 30, padding: '0 16px', background: '#2f5dff', color: '#fff', border: 0, borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>Add to Aria</button>
     </div>
     {footnote}
   </div></Overlay>;
@@ -2071,6 +2100,7 @@ function HarmonyV11Screen({ onGenerate }) {
           key={importPreset ? importPreset.host : 'default'}
           initialUrl={importPreset ? importPreset.host : ''}
           initialPhase={importPreset ? (importPreset.phase || 'results') : 'url'}
+          showDesignOptions={!!window.SHOW_DESIGN_OPTIONS}
           onClose={() => { setShowImport(false); setImportPreset(null); }}
           onImport={(site) => { setImportedSite(site); setShowImport(false); setImportPreset(null); }}
         />

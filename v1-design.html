@@ -40,7 +40,8 @@
     window.OPEN_IMPORT = true;
     window.IMPORT_HOST = 'mystore.com';
     window.IMPORT_PHASE = 'results';
-    fetch('round-15.jsx?v=20260618a')
+    window.SHOW_DESIGN_OPTIONS = true;
+    fetch('round-15.jsx?v=20260618b')
       .then(r => r.text())
       .then(src => {
         const compiled = Babel.transform(src, { presets: ['react'] }).code;
