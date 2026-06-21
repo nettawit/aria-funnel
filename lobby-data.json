@@ -12,8 +12,7 @@
       "title": "Create from URL V0.5",
       "bullets": [
         "· New modal experience (URL → scan → results)",
-        "· Store integration — Shopify & WooCommerce detection",
-        "· Inspire your design — upload an image to inspire your site's look & feel"
+        "· Store integration — Shopify & WooCommerce detection"
       ],
       "status": "ready",
       "statusLabel": "Ready for dev",
