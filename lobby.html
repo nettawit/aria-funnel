@@ -88,6 +88,22 @@
     .divider { width: 100%; max-width: 960px; border: 0; border-top: 1px solid #E8E8EE; margin: 8px 0 16px; }
     .section-label { width: 100%; max-width: 960px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: #AAA; margin-bottom: 4px; }
 
+    /* ── Sort bar ── */
+    .sort-bar {
+      width: 100%; max-width: 960px;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .sort-label { font-size: 12px; font-weight: 600; color: #888898; margin-right: 2px; }
+    .sort-btn {
+      padding: 4px 13px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      border: 1px solid #E8E8EE; background: #fff; color: #6B6B7E;
+      cursor: pointer; font-family: "Wix Madefor Text", sans-serif;
+      transition: all 120ms;
+    }
+    .sort-btn.active { background: #1E1E2E; color: #fff; border-color: #1E1E2E; }
+    .sort-btn:hover:not(.active) { border-color: #C8C8D8; color: #1E1E2E; background: #F8F8FB; }
+
     /* ── Edit mode ── */
     #lobby-edit-btn {
       position: fixed; bottom: 28px; right: 28px;
@@ -237,6 +253,14 @@
     <div id="disp-slides-link"></div>
   </div>
 
+  <div class="sort-bar">
+    <span class="sort-label">Sort:</span>
+    <button class="sort-btn active" data-sort="default">Default</button>
+    <button class="sort-btn" data-sort="status">By status</button>
+    <button class="sort-btn" data-sort="eta-asc">By date ↑</button>
+    <button class="sort-btn" data-sort="eta-desc">By date ↓</button>
+  </div>
+
   <div class="flows" id="flows-container">
     <div style="text-align:center;padding:40px;color:#888898;font-size:14px;">Loading…</div>
   </div>
@@ -306,6 +330,21 @@
 
     var state = null;
     var editDraft = null; // working copy in panel
+    var currentSort = 'default';
+
+    function etaToNum(eta) {
+      if (!eta || eta.toLowerCase() === 'tbd') return 9e9;
+      if (eta.toLowerCase() === 'asap') return 0;
+      var months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+      var m;
+      m = eta.match(/^(\d{1,2})\s+([A-Za-z]{3})/i);
+      if (m) return (months[m[2].toLowerCase()]||0)*100 + parseInt(m[1]);
+      m = eta.match(/^([A-Za-z]{3})\s+(\d{4})$/i);
+      if (m) return (parseInt(m[2])-2026)*12000 + (months[m[1].toLowerCase()]||0)*100;
+      m = eta.match(/^Q(\d)\s+(\d{4})$/i);
+      if (m) return (parseInt(m[2])-2026)*12000 + parseInt(m[1])*300;
+      return 8e9;
+    }
 
     // ── Helpers ──────────────────────────────────────────────────────────
     function esc(s) {
@@ -346,8 +385,19 @@
       // cards
       var container = document.getElementById('flows-container');
       var html = '';
-      var activeCards = data.cards.filter(function(c){ return c.status !== 'tbd'; });
-      var tbdCards    = data.cards.filter(function(c){ return c.status === 'tbd';  });
+      var statusOrder = {ready:0,inprogress:1,wip:2,concepts:3,tbd:4};
+      var cards = data.cards.slice();
+      if (currentSort === 'status') {
+        cards.sort(function(a,b){ return (statusOrder[a.status]||5) - (statusOrder[b.status]||5); });
+      } else if (currentSort === 'eta-asc') {
+        cards.sort(function(a,b){ return etaToNum(a.eta) - etaToNum(b.eta); });
+      } else if (currentSort === 'eta-desc') {
+        cards.sort(function(a,b){ return etaToNum(b.eta) - etaToNum(a.eta); });
+      } else {
+        cards.sort(function(a,b){ return (a.num||0) - (b.num||0); });
+      }
+      var activeCards = cards.filter(function(c){ return c.status !== 'tbd'; });
+      var tbdCards    = cards.filter(function(c){ return c.status === 'tbd';  });
 
       function cardHtml(c) {
         var isTbd = c.status === 'tbd';
@@ -547,7 +597,7 @@
         var fileInput = document.createElement('input');
         fileInput.type = 'file';
         fileInput.accept = 'image/png,image/jpeg,image/webp,image/gif';
-        fileInput.style.display = 'none';
+        fileInput.style.cssText = 'position:fixed;top:-200px;left:-200px;opacity:0;pointer-events:none;';
         document.body.appendChild(fileInput);
         fileInput.addEventListener('change', function() {
           var file = fileInput.files[0];
@@ -741,6 +791,16 @@
           saveBtn.textContent = 'Save & publish';
           saveBtn.disabled = false;
         });
+    });
+
+    // ── Sort bar wiring ──────────────────────────────────────────────────
+    document.querySelectorAll('.sort-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentSort = btn.dataset.sort;
+        document.querySelectorAll('.sort-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        if (state) render(state);
+      });
     });
 
   })();
