@@ -119,6 +119,24 @@
       "keysUrl": null,
       "thumbUrl": "thumb-upload-1781799446051.png",
       "eta": "June 22"
+    },
+    {
+      "id": "c9hf56",
+      "num": 8,
+      "title": "Template Injection",
+      "bullets": [
+        "· start from hompage Vo",
+        "·  content & images injection ",
+        "· same experience relevant also for V1.1"
+      ],
+      "status": "concepts",
+      "statusLabel": "TBD",
+      "href": "https://nettawit.github.io/aria-funnel-prototypes/template-injection-walkthrough.html#1",
+      "figmaUrl": null,
+      "specFile": null,
+      "keysUrl": null,
+      "thumbUrl": "thumb-upload-1782377367481.png",
+      "eta": "TBD"
     }
   ]
 }
